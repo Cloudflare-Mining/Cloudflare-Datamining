@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-12-20T06:13:04.461Z",
-					"updatedAt": "2024-09-04T06:35:48.316Z"
+					"updatedAt": "2024-09-11T06:20:32.061Z"
 				},
 				"contentfulId": "hngD3Mu1XyYwqmkqwK4mu",
 				"contentTypeId": "page",
@@ -66,1006 +66,627 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "31xKiZxNF64kU2qIeiqCAy",
-						"contentTypeId": "bladeHeroAnimation",
-						"title": "Custom Domain Protection for Cloudflare Registrar",
-						"titleSize": null,
-						"subtitle": "The Highest Level of Registrar Security",
-						"subtitleSize": null,
-						"copy": "Custom Domain Protection for Cloudflare Registrar, available on the Enterprise Plan, protects your organization from domain hijacking with exclusively out-of-band verification of any changes to your Registrar account. Cloudflare is an ICANN accredited registrar providing secure domain registration for high-profile domains.",
-						"buttonColor": "orange",
-						"buttonColor2": null,
-						"buttonText1": "Sign Up",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
-						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "registrar-custom-domain-protection-contact-sales",
-						"buttonText2": null,
-						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
-						"bladeBorder": "none",
-						"htmlId": null,
-						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"popupStreamId": null,
-						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
-						"streamThumbnails": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Large",
-						"imagePosition": null,
-						"leftLinkUrl": "https://www.cloudflare.com/registrar/layeredaccess",
-						"leftLink": "[WHOIS Data Access Request](https://www.cloudflare.com/registrar/layeredaccess/)",
-						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "show",
-						"backgroundColor": "white",
-						"textlayoutMode": null,
-						"backgroundAssetFile": null,
-						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/467QvWuzzimGOmkYiqaS4M/c4138ae8672c368e16e15e8d748c8e9a/registrar-diagram-domain-hijack.png"
+						"contentTypeId": "bladeHalfWidthHero",
+						"contentfulId": "7FS788av0IYsyR28CcUbAh",
+						"entityTitle": "Custom Domain Protection - Half width hero",
+						"leftHalf": {
+							"contentTypeId": "elementHalfWidthHeroContent",
+							"contentfulId": "2ivRzOnpN7XOEHtCCfrCNm",
+							"title": "Custom Domain Protection for Cloudflare Registrar",
+							"eyebrow": "A feature to defend against domain hijacking",
+							"copy": "Custom Domain Protection for Cloudflare Registrar, available on the Enterprise plan, protects your organization from domain hijacking with exclusively out-of-band verification of any changes to your Registrar account.",
+							"primaryCta": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "3zprl865NRMXxrWOxxnmhv",
+								"elementName": "Button Orange - Contact sales (Discussion Modal)",
+								"standardText": null,
+								"text": "Contact sales",
+								"url": null,
+								"loggedInUrl": null,
+								"buttonModal": {
+									"contentTypeId": "formModal",
+									"contentfulId": "62pm6Akrg4LxZpULl6wciJ",
+									"modalName": "Product Discussion - Form Modal",
+									"modalId": "product-discussion-form-modal",
+									"modalType": "single-form",
+									"marketoForm": {
+										"contentTypeId": "marketoEmbeddedForm",
+										"contentfulId": "5MjC5W1qncrQr8O9nIXgrX",
+										"bladeName": "Plans Enterprise Contact Us Form (1341)",
+										"backgroundColor": "blue",
+										"marketoFormId": 1341,
+										"marketoFormLeadSource": "Inbound - Web Form",
+										"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+										"marketoFormHeaderText": null,
+										"marketoFormDefaultComment": null,
+										"showCommentBox": true,
+										"marketoFormThankYouText": null,
+										"marketoFormCustomSuccessMessage": null,
+										"marketoFormPdfDownload": null,
+										"marketoFormPdfDownloadI18n": [],
+										"marketoFormAssetDownloadButtonText": null,
+										"marketoFormSuccessRedirectUrl": null,
+										"sendAdRoll": true,
+										"meta_adRollCustomSegment": null,
+										"enableSandbox": null,
+										"marketoFormSubmitButtonText": null,
+										"marketoFormSubmitButtonColor": null,
+										"enableEmailVerification": null,
+										"disableEnterpriseEmailNotification": null,
+										"enableRingout": null
+									},
+									"title": "Request a registrar custom domain protection discussion",
+									"regularCopy": "Talk to an expert",
+									"splitFormDefaultTab": null,
+									"selfServeTabText": null,
+									"selfServeCopy": null,
+									"enterpriseTabText": null,
+									"enterpriseCopy": null
+								},
+								"openInNewTab": false,
+								"locale": "en-US"
 							},
-							"description": "Diagram of custom domain protection for Cloudflare Registrar"
+							"secondaryCta": null,
+							"tertiaryCta": null
 						},
-						"imageAssetFile": null
+						"rightHalf": {
+							"contentTypeId": "elementHalfWidthHeroImage",
+							"contentfulId": "1PDGFgnCLXLaHFi5ZkB2Zh",
+							"entityTitle": "Custom Domain Protection -  Right side image",
+							"imageAsset": {
+								"id": "3be8bd30-e8f4-5124-a002-c5642afca44d",
+								"altText": "Custom Domain Protection -  Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gbkiofBGJZQHfdXxiGkO4/d1d6d663160c0ed6389fb6ace41c2fae/Group_48096345.png"
+									},
+									"description": "Custom Domain Protection -  Hero"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						},
+						"promotionalBanner": null,
+						"sectionPadding": null,
+						"htmlId": null
 					},
 					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "6N7Jc2b0WAo1SYUvq9aZRI",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "light-gray",
-						"bladeBorder": "none",
+						"contentfulId": "1gUTrhiO2fDfn2hnGGxxKt",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "WHAT IS DOMAIN HIJACKING?",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Two Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7vXtL5HWfIODr1vVvYdEBS",
+								"title": "Hijacked domain",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "When an attacker hijacks a domain, the owner no longer has control over the site content, email, VoIP, or any other services that rely on the domain name. This is a serious threat to an organization's brand and reputation.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ef1a024e-4e53-567d-9ed8-bfb121071658",
+									"altText": "Stop ransomware and phishing",
+									"title": "Ransomware",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4g0GjLzVuyCeq8zEa63JmM/e7d08a1a6e1ed266ceb9c8902e29df3b/ransomware-attack__1_.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3x1QgDx05cqUjUNZ9xm9cW",
+								"title": "Compromised registrar",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "One way that domain hijacking occurs is when an attacker compromises a registrar account and changes the nameserver or other registration information. The registrar, believing that the changes originated from an authorized registrant, sends the new information to the registry.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
+									"altText": "Traffic attack blue",
+									"title": "Traffic attack blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d282e08b82411f75db51ff233bb34247/traffic-attack-browser__1_.svg"
+										},
+										"description": "Prevent financial and identity theft icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
 						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "53vTG3nblh8y4LtZgz1uTN",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-2",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "What Is Domain Hijacking?",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Having your domain hijacked is essentially Internet identity theft. You no longer have control over the content your visitors see when they come to your website, your email, VoIP, or any other services that rely on your ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "domain name",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": ". This is a serious threat to an organization's brand and reputation. Your only recourse is to appeal to the registrar that lost your domain (and, if the attacker managed to transfer control of the domain to a new registrar, the one that now manages your domain) and hope they do the right thing. If that doesn't work, your only other option is to file a legal complaint with ICANN, which can take weeks to months to process.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare has built a free tool that helps you check the security state of your domain and registrar. Give it a try and grade your domain with the ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/products/registrar/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "Cloudflare security checker",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": ".",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "unordered-list",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Registries maintain the global list of domains.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Registrars",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " sell domains to registrants and upload domain information to registries.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Registrants purchase and manage domains through their registrar account.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Domain hijacking can occur at the registrar level when an attacker compromises a registrar account and changes the nameserver or other registration information associated with a domain. The registrar, believing that the changes originated from an authorized registrant, sends the new information up to the registry.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Registries serve as the authoritative source for the nameservers associated with all domains, so after they accept the changes from the registrar, all traffic to that domain will be rerouted to the new nameserver. In turn, this new nameserver sends visitors to an IP address of the attacker's choosing.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
+						"htmlId": null
 					},
 					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "6tfvKoTvfsAk7naoNsMdLa",
+						"contentfulId": "2Uck9Qhr6LvGxwXmfxyqP3",
+						"title": "Get the highest level of registrar security",
+						"copy": "With this feature, all changes to domain ownership or nameserver information are verified and executed manually. Cloudflare follows a strict change control protocol for all transfer requests with a goal of ensuring that any changes are approved by your organization.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "51b89695-3511-5969-8ee5-fbc00f7128d4",
+							"altText": "Custom Domain Protection - How it works image",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/tMA9juHkKUUddAagat5Ls/ca4d9367fe7c56c65345878c5644d6af/registrar-diagram-domain-hijack.webp"
+								},
+								"description": "Custom Domain Protection - How it works"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
-						"mainHeadline": null,
+						"titleSize": null,
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
+						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "e2ec94e1-5198-59de-ba36-d94e64d7299e",
+								"altText": "8x8",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nG9l7TAuZE0aHfxPGh1rd/0f1fa6e6aad0a54d231f753983caf0db/logo_8x8_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "320b153b-94ff-5d2f-8a97-af10d692025f",
+								"altText": "Applied Systems",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ccFypTv38XuGPWyX4t3mJ/152157e5f3544e7e6ff283a1ed408857/logo_applied-sciences_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f598f8df-db52-5bf1-b683-c9b55d79ffea",
+								"altText": "Canva",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xV3mJg17PDJd4s2gOmd0R/24268d39f36e83d00fbfd1d3bf05d74f/logo_canva_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "237cb76e-9942-5889-be23-901eece16b9a",
+								"altText": "DeliveryHero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1A7PvpqMbRgf25bIFlMRP8/5103cc54c23d69d716fef69fd02b6c3e/logo_delivery-hero_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ca260af0-8f63-5508-90b2-f8a6ba8b10bd",
+								"altText": "EQT",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2X4bbrSiy4xEnXAEqgf1WY/3f6d57ecd670d5adbfe0d067f61ef398/logo_EQT_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ee5ae45e-790a-5349-9e33-f5842aaf5210",
+								"altText": "Indeed",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vIlSpn8aLMYdbNLf2QAVk/606bbdcf8faabd23ee7e2db7b63c9ba3/logo_indeed_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "cd2d3f62-209f-5dad-a75a-cda7831b4fc5",
+								"altText": "Japan Airlines",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/L3DrbVVMwAkPCbHiTb5fN/3cd12946c2d3b5f8106d6dec92a08ed8/featured_logo_japan_airlines_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "18382700-5ac8-5805-b724-95e94acbd883",
+								"altText": "JetBlue Travel Products",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/27YorMcFFA3hbQ88Fgsv50/7a10904f6bfc1802ef8d203a5c8abdc6/logo_jetblue-travel-products_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f1a833c0-bb06-5d58-9fe4-051a30350e74",
+								"altText": "Knauf",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33wforxIaRsKYbxl1fnBpc/9a649de7c9f96154cbb747ddd6ecbf20/logo_knauf_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d15cb740-d67e-5443-b5d1-baac636002ec",
+								"altText": "Mindbody",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dDd4cLdsE3hBx6EZTBimX/a2f71a2356e787c3c0ee3edebd746c25/logo_mindbody_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "91342339-2914-572a-ae7a-3102347b7bdf",
+								"altText": "Werner Enterprises",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AWBiH3Kfe6OT7esKWR9I4/f804cd5bd32d31f7ecc51c47b33cd47d/logo_werner_enterprises_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "1fa3eb14-5ca6-5892-8a0d-6397cefdfc5a",
+								"altText": "Ziff Media",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h4ORr4AcL2kOW0Va6Q6dh/c253afc9b0bf1587ca8fa8698e6cdad5/logo_ziff-davis_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "2GzjnLFDDopU2LFOzkaJtQ",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Requiring multiple independent offline verification sources thwarts an attacker's attempt to compromise a registrar account.",
+						"eyebrowHeading": "Security features",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4ddZU7ugTZz18LPAQnZHeq",
+								"title": null,
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Multi-user offline confirmation for change requests",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
+									"altText": "User multi ",
+									"title": "User multi ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oO1wqLlaSM1U8pwMbT3jY/e894b1327f9ec28e674794ac78b233e5/user-multi.svg"
+										},
+										"description": "User Multi - Orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3LECmoVyDPkIkMiuhWSBw9",
+								"title": null,
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Consistent use of registrar lock and registry lock",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "cde61019-3234-56a4-8b39-49ff01e3a806",
+									"altText": "Cloudflare registrar blue",
+									"title": "Cloudflare registrar blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/rg2oKaLEh6klxdGgN2OyN/b0fb57e51670a4176d85bcdcb7ef2f78/cloudflare-registrar.svg"
+										},
+										"description": "www icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1BHk6oCK1EiGXaqSarlPZS",
+								"title": null,
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Customizable authorization process",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4bddfeb0-73c6-5576-807d-2e9b2b798f7e",
+									"altText": "Process flow orange",
+									"title": "Process flow orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tL1C2ZgSm10C0WAavK9Gi/dc4143fa3c2264c9d8c8a53f73fcd726/process-flow.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "aHwZj2gKNNXHa0a73cSRM",
+								"title": null,
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Plausibility check for accuracy",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
+									"altText": "Yes check blue",
+									"title": "Yes check blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
+										},
+										"description": "Checkmark icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
 						"sectionPadding": "tile--no-top-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "5Zu456bTjcAwevEkzO6jyd",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-2",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Registry Changes Should Be Authenticated and Strongly Validated",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Updating your ownership and authoritative nameserver information happens infrequently, and there are dangerous, long-term consequences when those updates are performed incorrectly. Therefore, changes to information in the global domain registry should be both secure and thorough.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare Registrar is designed with this in mind. All changes to domain ownership or nameserver information are verified and executed manually.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "1A9oblnUjYPz0eqVEIu3sO",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "6OOKsRRfjaUnQBu5J7YhkW",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-2",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Securing Domains with Custom Domain Protection",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Custom Domain Protection for Cloudflare Registrar follows a strict change control protocol for all transfer requests. The goal is to ensure that any change to your nameservers or registration data is approved by your organization as a whole. We offer the following security features:",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "unordered-list",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Multi-user, offline confirmation for all change requests",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Consistent use of registrar lock",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Consistent use of registry lock",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Two-factor authentication enforced for all registrant accounts",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Customizable authorization process",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Plausibility check",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Requiring multiple independent offline verification sources thwarts an attacker's attempt to compromise an online registrar account.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Many mass-market registrars support registrar lock, which prevents the registry from altering information unless the lock is explicitly removed. However, if an attacker compromises your registrar account, they can unlock it and make any kind of changes they want.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Registry lock provides much more security than registrar lock. It prevents changes by any registrar (including yours) until the lock is removed. Unlocking at the registry level requires out-of-band communication with the registry operator, and is thus very manual.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "vcwrk8Q5sk32eK1hP3IOv",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "1uzMcdN8MHE9ng5E8P5D2f",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-2",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "No Operational Changes Required",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Registry changes should not be confused with your operational DNS information. While altering a nameserver and registration information requires careful validation, altering the records in your nameservers should be nearly instantaneous.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare Registrar does not require any changes to your operational DNS infrastructure. You can still update A, AAAA, MX, and all the other records you need without any additional configuration. When migrating to Cloudflare Registrar, your registry information can point to the exact same nameservers—the only difference is that it will be much harder for an attacker to change those values.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "1vHGHfyKPyTFOXNgqlLgaR",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "4sGxhZwNMBrm93aR1MRSiN",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-2",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Layered Defense with Universal DNSSEC",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare Registrar Custom Domain Protection safeguards domains from being hijacked at the registry, but they're still vulnerable to DNS on-path attacks. Universal DNSSEC adds an additional layer of security by authenticating all DNS queries for your domains with cryptographic signatures. In cases where Cloudflare is both the registrar and the DNS provider of a domain, we can seamlessly deliver DNSSEC.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
+						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1Fxfp90GROYkAmOAMsEQyE",
-						"title": "Make The Switch to Cloudflare Registrar",
-						"titleSize": null,
+						"contentfulId": "6mUOusmsTxCGTBuZGZq6U7",
+						"title": "Get domain protection for your enterprise",
+						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
 						"buttonText2": null,
 						"buttonModalId2": null,
 						"buttonUrl2": null,
-						"bladeSizeType": "large",
+						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "3J87pjoBGaiOQ0EZGExA9K",
-							"elementName": "Contact Sales magic wan product page modal btn",
+							"contentfulId": "3ZvRO75p9QfDMIy6aWvPge",
+							"elementName": "Enterprise Plan-Talk to an Expert (popup form)",
 							"standardText": null,
-							"text": "Contact sales",
-							"url": "#",
+							"text": "Talk to an Expert",
+							"url": "#talk-to-an-expert-enterprise-form-modal",
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "6OV9ZX3SSsN6Bkzldub2l4",
-								"modalName": "Magic WAN Product Page Modal Form",
-								"modalId": "magic-wan-product-page-modal-form",
+								"contentfulId": "7hdB1wu6vTD4BMsbl7TBtq",
+								"modalName": "Talk to an Expert - Enterprise form modal",
+								"modalId": "talk-to-an-expert-enterprise-form-modal",
 								"modalType": "single-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "6kbApogZ0tZvhcgtVWw8JU",
-									"bladeName": "Magic WAN Product Page Marketo Form",
-									"backgroundColor": "white",
+									"contentfulId": "5MjC5W1qncrQr8O9nIXgrX",
+									"bladeName": "Plans Enterprise Contact Us Form (1341)",
+									"backgroundColor": "blue",
 									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Product Interest/Beta",
-									"marketoFormLeadSourceDetail": "[ACQ] Q1'21 WEB - GBL - Magic WAN Product Page",
-									"marketoFormHeaderText": "Contact us",
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": null,
 									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
+									"showCommentBox": true,
 									"marketoFormThankYouText": null,
 									"marketoFormCustomSuccessMessage": null,
 									"marketoFormPdfDownload": null,
 									"marketoFormPdfDownloadI18n": [],
 									"marketoFormAssetDownloadButtonText": null,
 									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
+									"sendAdRoll": true,
 									"meta_adRollCustomSegment": null,
 									"enableSandbox": null,
 									"marketoFormSubmitButtonText": null,
@@ -1074,8 +695,8 @@
 									"disableEnterpriseEmailNotification": null,
 									"enableRingout": null
 								},
-								"title": "Cloudflare Magic Wan",
-								"regularCopy": "Request Magic Wan demo",
+								"title": "Request a registrar custom domain protection discussion",
+								"regularCopy": "Speak to an expert about your needs & our Enterprise plan.",
 								"splitFormDefaultTab": null,
 								"selfServeTabText": null,
 								"selfServeCopy": null,

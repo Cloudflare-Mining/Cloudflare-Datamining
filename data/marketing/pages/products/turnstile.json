@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2022-09-28T11:00:04.166Z",
-					"updatedAt": "2024-08-17T05:07:17.275Z"
+					"updatedAt": "2024-09-11T04:12:17.370Z"
 				},
 				"contentfulId": "2VhJkiL2WrpaFOm19NR1oC",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "About us",
-					"linkText": "Learn more",
-					"linkUrl": "https://www.cloudflare.com/what-is-cloudflare/",
-					"desktopText": "Cloudflare's global network protects and accelerates everything on the Internet."
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -73,14 +68,14 @@
 					{
 						"contentfulId": "6WZDXnHBFMM0LugoopyHHW",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Free CAPTCHA Alternative",
+						"title": "Cloudflare Turnstile",
 						"titleSize": null,
-						"subtitle": "Cloudflare Turnstile is a free tool to replace CAPTCHAs",
+						"subtitle": "A verification tool to replace CAPTCHAs",
 						"subtitleSize": null,
-						"copy": "Turnstile delivers frustration-free, CAPTCHA-free web experiences to website visitors - with just a simple snippet of free code. Moreover, Turnstile stops abuse and confirms visitors are real without the data privacy concerns or awful user experience of CAPTCHAs.\n",
+						"copy": "Eliminate the frustrating experience of CAPTCHAs with a simple snippet of free code. Cloudflare Turnstile confirms web visitors are real and blocks unwanted bots without slowing down web experiences for real users. \n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Get Started For Free",
+						"buttonText1": "Get started for free",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "https://dash.cloudflare.com/sign-up?to=/:account/turnstile",
 						"buttonUrl1LoggedIn": null,
@@ -101,65 +96,77 @@
 						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
+						"button1OpenInNewTab": true,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": null,
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "[Enterprise plans include Turnstile, and more! Schedule a demo!](https://www.cloudflare.com/plans/enterprise/contact/)",
-						"leftLinkLoggedIn": "[Enterprise plans include Turnstile, and more! Schedule a demo!](https://www.cloudflare.com/lp/turnstile/)",
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2atsfrGgvgOc3DZ91qMlKN/0412afa63e5fac20964377c70c1a9a17/turnstile_gif.gif"
+						"image": null,
+						"imageAssetFile": {
+							"id": "e879e7e3-219d-5e99-922b-648642fd1a23",
+							"altText": "Animation of Cloudflare's free CAPTCHA alternative",
+							"title": "Turnstile - Hero - Gif",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2atsfrGgvgOc3DZ91qMlKN/0412afa63e5fac20964377c70c1a9a17/turnstile_gif.gif"
+								},
+								"description": "Animation of Cloudflare's free CAPTCHA alternative"
 							},
-							"description": "Animation of Cloudflare's free CAPTCHA alternative"
-						},
-						"imageAssetFile": null
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
-						"contentfulId": "5qfJGVIfZIFWs103JSVvII",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentfulId": "2TjzrTewC3BD7D2UDbizv2",
+						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"subtitle": "The benefits of eliminating CAPTCHAs",
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"eyebrowHeading": " BENEFITS OF CLOUDFLARE TURNSTILE",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "AxYeHqRFp7GMT9tpsGpLo",
-								"title": "Better experiences",
-								"makeTitleLink": null,
+								"contentfulId": "3fcT4TAoyofC3Aroe6pga3",
+								"title": "Deliver better experiences",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Give your web visitors an even better experience.  Turnstile confirms they are real with no visual puzzle - totally transparent to visitors.  ",
+								"titleSize": null,
+								"description": "Your users no longer have to waste time and effort solving visual puzzles. Turnstile works transparently to confirm they are real people. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/59kOnwxfMccnWexgfv1Gqs/b0cb3ed59263bfe2c2a79e698a0d663f/leader-crown.png"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "2332eb6b-5b91-5080-a95c-04d6dfea6ec2",
+									"altText": "Leader crown blue",
+									"title": "Leader crown blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/59kOnwxfMccnWexgfv1Gqs/b0cb3ed59263bfe2c2a79e698a0d663f/leader-crown.png"
+										},
+										"description": null
 									},
-									"description": null
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -169,24 +176,33 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3yM8zAB40ljBa6LL06voJ3",
-								"title": "Stronger privacy",
-								"makeTitleLink": null,
+								"contentfulId": "61tUUI3Qvgg7fBtv3Dxc5J",
+								"title": "Strengthen privacy",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Turnstile always preserves the privacy of web visitors on your site - without sacrificing effectiveness.  Unlike other CAPTCHA options, we never harvest data for ad retargeting. ",
+								"titleSize": null,
+								"description": "Unlike [CAPTCHA](https://www.cloudflare.com/learning/bots/how-captchas-work/) options, Turnstile never harvests data for ad retargeting. You can preserve the privacy of your users without sacrificing effectiveness.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QBYNDc2qNLipWvF4enfAL/19981dc2a05fbe5ffc944ee3790cfc3d/face-happy.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6620a316-2f57-5843-aae1-c6de82f97fef",
+									"altText": "Face happy icon",
+									"title": "Face happy icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WQ3rA9q6N1W2Zig4rIoCu/66daf32fef3dda35b1150ad9e3a728ec/face-happy.svg"
+										},
+										"description": "Face happy icon"
 									},
-									"description": ""
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -196,24 +212,33 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "XLxg1BMaaxbTG1ixJv070",
-								"title": "Fast and free",
-								"makeTitleLink": null,
+								"contentfulId": "1WuIIyWgQBabWmB3JfMgoa",
+								"title": "Integrated with application security",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Deploy in minutes with just a quick code snippet - and totally free of charge.",
+								"titleSize": null,
+								"description": "Easily integrate Turnstile with Cloudflare Web Application Firewall ([WAF](https://www.cloudflare.com/application-services/products/waf/)) rules, and manage challenges via the WAF. Improve user experiences while blocking more attacks.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XT9berNmP9XDlptO157K0/096043c3ff5e8ff33ae162ad5641ced7/performance-acceleration-rocket.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "81936886-7ce4-51c1-8472-58f3698d44a0",
+									"altText": "Cloudflare Firewall as a Service - Magic Firewall",
+									"title": "Firewall as a service icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/xAb8mJ3D3jImhUIC6I781/4e5fcde46add21ab9e397610b06c8e32/security-waf.svg"
+										},
+										"description": ""
 									},
-									"description": null
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -221,12 +246,14 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
+						],
+						"sectionPadding": null,
+						"htmlId": null
 					},
 					{
-						"contentfulId": "4FmAWI6CUd54LiAc4kjHVv",
-						"title": "500 years on CAPTCHAs",
-						"copy": "Humans spend about 500 years __each day__ solving CAPTCHAs - wasting time and creating frustration. \n\nThis is why Cloudflare built a better alternative to CAPTCHAs with Managed Challenge and now Turnstile.\n",
+						"contentfulId": "2ylvKTKBzgVzUbod8iq8zP",
+						"title": "Verify web visitors without CAPTCHA",
+						"copy": "Cloudflare Turnstile can be easily embedded into any website — without having to send traffic through the Cloudflare network. \n\nTurnstile can generate multiple types of non-intrusive challenges to verify users are human, all without showing visitors a puzzle.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -247,31 +274,475 @@
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3D8wYZZswWtE486uIMyN5A/ca53b1e0cd52884f94cde4fbe26f967e/end_of_road.png"
+						"image": null,
+						"imageAssetFile": {
+							"id": "c932221c-3526-5745-820a-fac81ae35f83",
+							"altText": "Turnstile - How it works - illustration",
+							"title": "Turnstile - How it works - illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3D8wYZZswWtE486uIMyN5A/55dd91b1589218af33a25c22adb729e0/End_of_the_Road_for_Captchas.png"
+								},
+								"description": "Illustration of the end of CAPTCHAs"
 							},
-							"description": "Illustration of the end of CAPTCHAs"
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
 						},
-						"imageAssetFile": null,
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "4CunCVHw7QbFyEpw0HTrfc",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Stop bots without degrading real user experiences",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "5krs73DGuETK27HqQ0xs7i",
+							"elementName": "Turnstile - ADDITIONAL OFFER BLADE - CTA",
+							"standardText": null,
+							"text": "Watch webinar",
+							"url": "https://gateway.on24.com/wcc/eh/2153307/lp/4335273/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
+						"contentfulId": "3OtZsU2Igu8es9WuD7Fy22",
+						"title": "Cloudflare named a Strong Performer in The Forrester Wave™: Bot Management Software, Q3 2024",
+						"copy": "We believe this recognition validates Cloudflare's application security approach that prioritizes an easy to use, enterprise-grade bot solution built on a global, programmable connectivity cloud.",
+						"toggleText": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "6XZXSEU3zkoEn70zO0eokT",
+								"elementName": "Turnstile - Analyst Recognition - CTA",
+								"standardText": null,
+								"text": "Read report",
+								"url": "https://www.cloudflare.com/forrester-wave-bot-management-2024/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "b967a010-8aa3-5240-9f68-75c9b445ee09",
+							"altText": "The Forrester Wave™: Bot Management Software",
+							"title": "The Forrester Wave™: Bot Management Software",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XZNNCKiwCK1UDu172GYRH/68e06d955363531a6af2d93b4fcaa543/BDES-4897_-_bot-analytics-hero-illustration.png"
+								},
+								"description": "The Forrester Wave™: Bot Management Software"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "ANALYST RECOGNITION",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
-						"imageSize": "small",
+						"imageSize": "large",
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "7xWjFZbQRsrYvLmBpV2obA",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "NeuoRT3ZKqRIq3wZR82gw",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"Based on Cloudflare's input we switched to a payment gateway that offered better security and integrated Turnstile, Cloudflare's smart CAPTCHA alternative.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Senior Manager",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " — ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Individual Giving UN Women Australia ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "e2ec94e1-5198-59de-ba36-d94e64d7299e",
+								"altText": "8x8",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nG9l7TAuZE0aHfxPGh1rd/0f1fa6e6aad0a54d231f753983caf0db/logo_8x8_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "320b153b-94ff-5d2f-8a97-af10d692025f",
+								"altText": "Applied Systems",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ccFypTv38XuGPWyX4t3mJ/152157e5f3544e7e6ff283a1ed408857/logo_applied-sciences_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f598f8df-db52-5bf1-b683-c9b55d79ffea",
+								"altText": "Canva",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xV3mJg17PDJd4s2gOmd0R/24268d39f36e83d00fbfd1d3bf05d74f/logo_canva_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "237cb76e-9942-5889-be23-901eece16b9a",
+								"altText": "DeliveryHero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1A7PvpqMbRgf25bIFlMRP8/5103cc54c23d69d716fef69fd02b6c3e/logo_delivery-hero_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ca260af0-8f63-5508-90b2-f8a6ba8b10bd",
+								"altText": "EQT",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2X4bbrSiy4xEnXAEqgf1WY/3f6d57ecd670d5adbfe0d067f61ef398/logo_EQT_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ee5ae45e-790a-5349-9e33-f5842aaf5210",
+								"altText": "Indeed",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vIlSpn8aLMYdbNLf2QAVk/606bbdcf8faabd23ee7e2db7b63c9ba3/logo_indeed_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "cd2d3f62-209f-5dad-a75a-cda7831b4fc5",
+								"altText": "Japan Airlines",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/L3DrbVVMwAkPCbHiTb5fN/3cd12946c2d3b5f8106d6dec92a08ed8/featured_logo_japan_airlines_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "18382700-5ac8-5805-b724-95e94acbd883",
+								"altText": "JetBlue Travel Products",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/27YorMcFFA3hbQ88Fgsv50/7a10904f6bfc1802ef8d203a5c8abdc6/logo_jetblue-travel-products_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f1a833c0-bb06-5d58-9fe4-051a30350e74",
+								"altText": "Knauf",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33wforxIaRsKYbxl1fnBpc/9a649de7c9f96154cbb747ddd6ecbf20/logo_knauf_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d15cb740-d67e-5443-b5d1-baac636002ec",
+								"altText": "Mindbody",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dDd4cLdsE3hBx6EZTBimX/a2f71a2356e787c3c0ee3edebd746c25/logo_mindbody_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "91342339-2914-572a-ae7a-3102347b7bdf",
+								"altText": "Werner Enterprises",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AWBiH3Kfe6OT7esKWR9I4/f804cd5bd32d31f7ecc51c47b33cd47d/logo_werner_enterprises_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "1fa3eb14-5ca6-5892-8a0d-6397cefdfc5a",
+								"altText": "Ziff Media",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h4ORr4AcL2kOW0Va6Q6dh/c253afc9b0bf1587ca8fa8698e6cdad5/logo_ziff-davis_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "3vzN3C1sFj9quZhSbp8xCB",
-						"title": "Learn about Cloudflare, the global network built for the cloud.",
-						"titleSize": null,
+						"contentfulId": "31ijCKPqRLEWQSoDrxlf5X",
+						"title": "Discover how global companies are using Cloudflare to protect websites ",
+						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
@@ -285,11 +756,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6gQdvvJTD7boiPifxSe3Z",
-							"elementName": "HP - What is Cloudflare",
+							"contentfulId": "4X3NJDmJZqCIs2CL7hmEtg",
+							"elementName": "Turnstile - Link to case studies - CTA",
 							"standardText": null,
-							"text": "Learn More",
-							"url": "/what-is-cloudflare/",
+							"text": "View case studies",
+							"url": "https://www.cloudflare.com/case-studies/?usecase=Secure+websites+%26+applications",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -865,6 +1336,202 @@
 						"contentfulId": "4tWqxuMwaPobpT6BulQaFj",
 						"htmlContent": "<p><small> * Turnstile Enterprise is also included with a Bot Management enterprise subscription</small></p>",
 						"htmlId": null
+					},
+					{
+						"contentfulId": "2nnBrwA8sx6UogeP4uL2Z0",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "74jKmdRp6bOWvFSVvANnAn",
+								"title": "Building secure websites: Cloudflare Pages & Turnstile plugin",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Discover how you can keep your website safe from malicious bots without degrading user experiences. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/guide-to-cloudflare-pages-and-turnstile-plugin/",
+								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6PZjR7i1LF3e1W7Zcz1KSs",
+								"title": "Cloudflare is free of CAPTCHAs; Turnstile is free for everyone",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn more about why Turnstile was created and how it works to stop bots.",
+								"learnMoreUrl": "https://blog.cloudflare.com/turnstile-ga/",
+								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1AWutEajdPX6WtnnQUy7ac",
+								"title": "Cloudflare Bot Management",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Read how Cloudflare can help ensure uninterrupted business and lighting-fast web performance.",
+								"learnMoreUrl": "https://cfl.re/3Xoq9eN",
+								"learnMoreText": "Download the data sheet",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "27nNn94Ne0eh7DFZw1yReB",
+						"title": "Get Cloudflare Turnstile for your enterprise",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "77WmdTsDoK0xuMwtwiPno",
+							"elementName": "Turnstile - ENABLEMENT BLADE - CTA",
+							"standardText": null,
+							"text": "Talk to an expert ",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "58HMMZoWFo8GPj3SvVul7D",
+								"modalName": "Turnstile - ENABLEMENT BLADE - Modal form",
+								"modalId": "turnstile-enablement-blade-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "4O6hDURALUkSR0noIIvUx3",
+									"bladeName": "Turnstile - ENABLEMENT BLADE - Marketo modal form",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Request a turnstile discussion",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentfulId": "25LFrDwqY88BT3Y7s6Cl9d",

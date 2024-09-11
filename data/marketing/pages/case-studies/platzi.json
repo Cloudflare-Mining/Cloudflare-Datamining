@@ -7,28 +7,7 @@
 				"name": "Platzi ",
 				"contentfulId": "3KeF1zijV3MjVeCJTA0Fzz",
 				"nameUrlSlug": "platzi",
-				"metaTags": {
-					"metaTitle": "Platzi | Case Study",
-					"metaDescription": "Platzi | Cloudflare Case Study",
-					"twitterCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10JwMXiMs8c9FGRORM2MFp/250808c3faf57f8439fd724d807fdb94/platzi_meta.png"
-						},
-						"description": ""
-					},
-					"metaImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10JwMXiMs8c9FGRORM2MFp/250808c3faf57f8439fd724d807fdb94/platzi_meta.png"
-						},
-						"description": ""
-					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10JwMXiMs8c9FGRORM2MFp/250808c3faf57f8439fd724d807fdb94/platzi_meta.png"
-						},
-						"description": ""
-					}
-				},
+				"metaTags": null,
 				"orderDate": "2021-10-22",
 				"homepageUrl": "https://platzi.com",
 				"hideFromCaseStudiesPage": false,
@@ -36,16 +15,7 @@
 				"longDescription": "## __Platzi partners with Cloudflare to implement Zero Trust remote access, optimize development processes, and mitigate malicious bots__\n\nPlatzi is a global professional education platform that helps over two million students worldwide acquire new, in-demand job skills in marketing, business, design, and information technology. The company operates completely remotely, with employees in 17 different countries. In addition to its own course catalog, Platzi creates employee training courses for large corporations, including Microsoft, IBM, Facebook, and Google. The company also hosts video conferences and live-streaming events for the tech industry.\n\n### __Challenge: Replace a burdensome VPN with a Zero Trust solution and mitigate malicious bot traffic__\n\nPrior to using Cloudflare, Platzi used a VPN to provide remote access to internal resources for instructors and other employees. However, the VPN was complex and time-consuming to manage. End users found it difficult to use, and the internal help desk spent a lot of time dealing with tickets related to VPN deployment, configuration, and troubleshooting. Additionally, the VPN did not support security best practices fundamental to Zero Trust, including default-deny, least-privilege access, and role-based access control. It was also difficult to disable access for former employees.\n\nPlatzi also struggled with malicious bot traffic, which was degrading performance and threatening platform security overall. The tool they were using generated too many false positives.\n\nHaving had prior success using the Cloudflare performance and security suite, Platzi upgraded their subscription. Platzi added Cloudflare Access, which enables remote users to [securely connect to internal resources](https://www.cloudflare.com/learning/access-management/what-is-remote-access-security/), and Cloudflare Bot Management, which uses global threat intelligence and machine learning to block malicious bot traffic. To streamline development processes, Platzi also added Cloudflare Workers, an edge-based serverless computing platform built on the Cloudflare network. Workers allows developers to create entirely new applications or augment existing ones with custom code at the Internet edge, without configuring or maintaining infrastructure. \n\n### __Cloudflare Access provides Platzi with no-hassle Zero Trust remote access__\n\nAfter years of struggling with its VPN, Platzi was highly motivated to transform its remote access approach while employees worked from home during the pandemic. After deploying Cloudflare Access, complaints from end users about remote login issues came to a near halt. Access now protects hundreds of Platzi's internal web-based resources and streamlines the authentication experience for their global workforce of instructors, developers, and other employees.\n\n\"Cloudflare Access is an amazing alternative to traditional VPNs,\" says Ronald Escalona, Head of Cloud Engineering at Platzi. \"Users just open their browsers and log in, without having to download and configure additional software.\"\n\nCloudflare has also bolstered employee productivity while moving Platzi closer to a Zero Trust security model. Access makes it easy for Platzi to set up accounts for new hires, disable accounts for departing employees, and configure role-based access controls with least-privilege access -- all with just a few clicks in the dashboard. When users need their login credentials reset, Platzi no longer has to generate new certificates, as VPNs require.\n\n\"Cloudflare's flexibility and ease of use enabled Platzi to achieve Zero Trust remote access with minimal effort,\" Ronald explains. \"It's Zero Trust in a box -- it just works!\"\n\n### __Cloudflare Workers streamlines back-end development processes__\n\nPlatzi uses Cloudflare Workers for several different use cases, including optimizing their cache and serving users customized content based on their location.\n\n\"It took us only about an hour to write a Workers script to route site traffic according to a user's country code,\" Ronald says. \"Without Workers, that job would have taken two weeks.\" \n\nFuture projects with Workers include optimizing Platzi's testing platform to automate repetitive manual processes and facilitate feedback loops between operations and development teams. This will allow iterative updates to be deployed faster to applications in production.\n\n\"Our back-end developers absolutely love Workers,\" Ronald says. \"They can easily write scripts to automate processes, enabling them to integrate code and deploy applications much faster.\"\n\n### __Cloudflare Bot Management filters out bad bots while hardening defenses against DDoS attacks__\n\nPlatzi had used Cloudflare distributed denial-of-service (DDoS), Cloudflare Web Application Firewall (WAF), and Cloudflare Rate Limiting to mitigate DDoS attacks. The addition of Bot Management hardened Platzi's existing defenses against DDoS while helping them mitigate attacks from other types of bad bots, all without blocking legitimate traffic.\n\n\"Our previous bot mitigation solution produced a lot of false positives. Cloudflare Bot Management is far more accurate,\" Ronald explains. \"The Bot Score is particularly helpful to discerning legitimate traffic from bot attacks.\"\n\nPlatzi is so happy with the Cloudflare solutions and pace of innovation that instructors bring up Cloudflare during their own cybersecurity classes. The company looks forward to continued expansion of its partnership with Cloudflare.\n\n\"We've dedicated an internal lab to evaluating new Cloudflare solutions as they come out,\" Ronald says. \"We're delighted with how Cloudflare is continually enhancing existing products and launching new ones.\"\n",
 				"cloudflareStreamVideoId": null,
 				"keyResults": "- Cloudflare Access completely eliminated help desk tickets related to VPN problems.\n\n- Cloudflare Workers allowed Platzi to slash the development time for a traffic-routing script from two weeks to only one hour.\n\n- Cloudflare Bot Management enables Platzi to separate legitimate traffic from bot attacks, a feature their previous bot mitigation solution lacked.",
-				"relatedCaseStudyLinks": [
-					{
-						"text": "eTeacher Group",
-						"url": "/case-studies/eteacher-group"
-					},
-					{
-						"text": "INSEAD",
-						"url": "/case-studies/insead"
-					}
-				],
+				"relatedCaseStudyLinks": [],
 				"inPartnershipWith": [],
 				"relatedCloudflareProducts": [
 					{
@@ -97,6 +67,7 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
+				"es-LA",
 				"zh-Hans-CN"
 			]
 		}

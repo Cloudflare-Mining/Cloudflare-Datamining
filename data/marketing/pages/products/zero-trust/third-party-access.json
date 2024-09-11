@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-01-24T18:27:05.749Z",
-					"updatedAt": "2024-08-09T21:49:36.739Z"
+					"updatedAt": "2024-09-11T02:59:13.542Z"
 				},
 				"contentfulId": "W6P7WWOOswy3Ut1w8YJfW",
 				"contentTypeId": "page",
@@ -2569,18 +2569,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "X2RTVnzFhYFnl1RYgIKZH",
-						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span\n            >Cloudflare named in 2024 Gartner® Magic Quadrant™ for SV-SASE.\n        </span>\n        <a\n            class=\"link-helper\"\n            href=\"https://www.cloudflare.com/lp/gartner-magic-quadrant-single-vendor-sase-2024/\"\n        >\n            <strong>Announcement ></strong></a\n        >\n    </div>\n</section>\n",
-						"htmlId": null
-					},
-					{
-						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
-						"contentTypeId": "bladePadding",
-						"height": 1,
-						"backgroundColor": "blue5"
-					},
-					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
 						"menuTitle": "SSE & SASE",
@@ -2677,22 +2665,22 @@
 					{
 						"contentfulId": "5glHuACQQ7WaioyQLwYH6M",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Secure Third Party Access ",
+						"title": "Secure third-party access with Cloudflare",
 						"titleSize": null,
-						"subtitle": "Give third party collaborators a first class experience, with fast and safe access to applications",
+						"subtitle": "Give external users a first-class experience, with fast,  safe access to applications",
 						"subtitleSize": null,
-						"copy": "Providing application access to collaborators outside your organization — whether they're contract workers, agencies, or partner organizations — can be a security risk and a logistical headache. Learn how Cloudflare Access makes connecting 3rd party users to  workforce apps secure and simple.",
+						"copy": "Providing application access to contractors, partners, and other external users can create security risks and management headaches. Learn how Cloudflare's connectivity cloud makes connecting third-party users to key apps secure and simple.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Sign Up",
-						"buttonText1LoggedIn": "Sign Up",
+						"buttonText1LoggedIn": null,
 						"buttonUrl1": "https://dash.cloudflare.com/sign-up/teams",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": null,
-						"buttonText2": "Contact Sales",
+						"button1ExtraClass": "teams-ent-plan-contact-us",
+						"buttonText2": null,
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "#",
-						"button2ExtraClass": "teams-ent-plan-contact-us",
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
@@ -2702,86 +2690,62 @@
 						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
+						"button1OpenInNewTab": true,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": null,
+						"imageSize": "Medium",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4et5hLZOxTfLKQmtIY54Cb/a4ea4e788e0c728adbd83b2f7fc16fad/teams_access_hero_third-party-users.svg"
-							},
-							"description": "Illustration of an identity with icons of identity providers"
-						},
+						"image": null,
 						"imageAssetFile": {
 							"id": "f3f72f21-7927-5d38-a2d0-124746566e84",
-							"altText": "teams access hero third-party-users",
-							"title": "teams access hero third-party-users",
-							"activeAsset": "Brandfolder Asset",
+							"altText": "Teams access hero third-party-users - Illustration",
+							"title": "Teams access hero third-party-users - Illustration",
+							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4et5hLZOxTfLKQmtIY54Cb/a4ea4e788e0c728adbd83b2f7fc16fad/teams_access_hero_third-party-users.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7g2zmZviiWuLjuodl7Hf9u/1321367c415fd236faeb1fcac14f2b9b/teams-access-third-party-users-spot-illustration.png"
 								},
-								"description": "Illustration of an identity with icons of identity providers"
+								"description": null
 							},
-							"brandfolderAsset": {
-								"size": 36112,
-								"height": 4400,
-								"width": 4939,
-								"filename": "teams-access-third-party-users-spot-illustration.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/teams-access-third-party-users-spot-illustration.svg"
-								}
-							},
+							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
 					},
 					{
-						"contentfulId": "2Q83cITJssUVR1HhSYOYwl",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Challenges with third party access management",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"contentfulId": "Q4GGJgO9j0aAqdX68SaB2",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "THE CLOUDFLARE DIFFERENCE",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5jPAuNvTFtevl8NlbcRApG",
-								"title": "Excessive privilege brings excessive risks",
-								"makeTitleLink": null,
+								"contentfulId": "1hhETLTKNdxOlTUNyJQjOp",
+								"title": "Avoid privilege creep",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Collaborators often need to reach a few critical applications to get their job done. Yet they tend to accrue excessive privileges over time. This excessive privilege can introduce risk.",
+								"description": "Protect critical resources and sensitive data by implementing app-specific, least-privilege access for external users based on Zero Trust principles.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/52HRlOQUb20zMebvThxRFj/a6017b1c356d40ef918a3a19677d8a0b/user.png"
-									},
-									"description": null
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
 									"id": "d19c09bd-84d4-5ee5-83f6-cb536e5c4227",
 									"altText": "User blue",
@@ -2806,23 +2770,18 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7yOgtz8EzP8apWXN9ecdRi",
-								"title": "Onerous to manage",
-								"makeTitleLink": null,
+								"contentfulId": "5Nq62bIeal2NydV9N9JYNs",
+								"title": "Onboard and offboard faster",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Onboarding external users is often time-consuming and expensive. Many organizations pay for SSO licenses for contractors, and have to manage their access separately.",
+								"description": "Avoid setting up VPN access or shipping out corporate devices. Now external users can authenticate with unmanaged devices through a simple clientless access flow.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xbnxzBLH0iZJ18futfvJx/42ab33f9795970fb54a118f354e3be47/server-3.png"
-									},
-									"description": null
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
 									"id": "096de851-410f-5df1-8f9a-58dd4a411b44",
 									"altText": "Server 3 blue",
@@ -2847,34 +2806,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "vvuBXCpfIIP4s9IPxU4w7",
-								"title": "Slower productivity onramp",
-								"makeTitleLink": null,
+								"contentfulId": "4UJdRSSNWwRJyYMIvvpAg0",
+								"title": "Streamline management",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Because it's harder to manage their access, contractors end up wasting hours or days waiting for the tools they need. ",
+								"description": "Cut the time and costs of access management. Support for multiple identity providers enables you to provide third-party user access without provisioning corporate identities for single sign-on (SSO).",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S37cDq0i3ZNu51iqW2BnU/6bda00b1ea28e81bb78ccf30fcd37526/device-mobile.png"
-									},
-									"description": null
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "c105eba9-14b5-5b6d-9d29-aefcc9064ed6",
-									"altText": "Device mobile blue",
-									"title": "Device mobile blue",
+									"id": "4ad77fba-3ae1-5ad0-a850-d814c56d9d9d",
+									"altText": "Reliability timer blue",
+									"title": "Reliability timer blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S37cDq0i3ZNu51iqW2BnU/6bda00b1ea28e81bb78ccf30fcd37526/device-mobile.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/41aBOr3gowykuADnSlJuCp/897c938c653f6d736e3832afe4fcab59/reliability-timer.svg"
 										},
-										"description": null
+										"description": "Stopwatch icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -2886,126 +2840,31 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
-					},
-					{
-						"contentfulId": "2AFfGE36EqG5E0npnk2ror",
-						"title": "The challenge of sharing identity sources",
-						"copy": "If your team has an application that you need to share with partners or contractors, both parties need to agree on a source of identity. Some teams opt to solve that challenge by onboarding external users to their own identity provider. When contractors join a project, the IT department receives help desk tickets to create new user accounts in the organization directory. Contractors receive instructions on how to sign-up. They spend time creating passwords and learning the new tool, and then use those credentials to login.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZBYH0cXEuA9Erbud7mwL/7cc28830f76f77eb92ef1cac45f2c068/Third_Party_Acccess_-_Before.png"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "2406b2c1-cce6-584c-bf78-5ab77cdea8d4",
-							"altText": "Third Party Access - Before",
-							"title": "Third Party Access - Before",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZBYH0cXEuA9Erbud7mwL/7cc28830f76f77eb92ef1cac45f2c068/Third_Party_Acccess_-_Before.png"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
+						],
 						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"htmlId": null
 					},
 					{
-						"contentfulId": "7IIX5d1fFfE1rvANzp5T2F",
-						"title": "Multi-SSO with Cloudflare Access",
-						"copy": "Access allows you to use multiple sources of identity to grant different groups of users access to the same application. This gives you the flexibility to extend access to external users (3rd parties, contractors, vendors) without having to onboard them onto your centralized Identity Provider.\n",
+						"contentfulId": "6i1Ly9XaORx5MGC0yfZZOi",
+						"title": "Manage third-party access confidently with Zero Trust security",
+						"copy": "[Cloudflare's Zero Trust Network Access (ZTNA) service](https://www.cloudflare.com/zero-trust/products/access/) provides simple yet secure access for third-party users. You can enforce least-privilege access for all apps without additional management overhead.",
 						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bI6roTFBE9q5PIulosKLT/d2727783c813af86467d10b19fbbfb27/image.png"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "1be8e0ac-1ae2-5c40-b2a3-06e729b10065",
-							"altText": "Third Party Access - After ",
-							"title": "Third Party Access - After ",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bI6roTFBE9q5PIulosKLT/d2727783c813af86467d10b19fbbfb27/image.png"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "60Z56trJHKXPoiLpf2T69y",
-						"title": "Manage third party access confidently with Zero Trust access",
-						"copy": "Cloudflare Access delivers [Zero Trust access](https://www.cloudflare.com/learning/access-management/what-is-ztna/) for third party collaborators, helping you enforce least privilege across all applications without additional overhead. ",
-						"toggleText": null,
-						"button": [],
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "7dbGIouGcxE69OgonQkpkE",
+								"elementName": "Third Party Access - HOW IT WORKS - CTA",
+								"standardText": null,
+								"text": "Explore a SASE reference architecture",
+								"url": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": true,
+								"locale": "en-US"
+							}
+						],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
@@ -3025,27 +2884,606 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "2bfeadde-c17d-56cd-9a29-06d2e4237f45",
+							"altText": "Third Party Access - How it works - Diagram",
+							"title": "Third Party Access - How it works - Diagram",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jArQroiQrmGTEMjKxxjvx/c995a4109680b1765478c984b3369ee0/Third-party-access-how-it-works.png"
+								},
+								"description": null
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
+						"imagePosition": true,
+						"imageSize": "large",
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "2jOeB8ZqDPYsBSaHwcwvUt",
+						"contentfulId": "32f3cBRHCHrWCac5sx8KUC",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "zyrWiEJreJ2RPsm5hTU5a",
+								"title": "Multiple identity sources",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Avoid onboarding external users to your centralized identity provider. With ZTNA, you can use multiple sources of identity to grant user access for every app.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7eeb6aea-18f5-5736-9b17-69295f2df58c",
+									"altText": "Security shield protection orange",
+									"title": "Security shield protection orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2CVGgDNOOdAXF9QY74Qggc",
+								"title": "Existing identities",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Enable contractors to bring existing identities from LinkedIn, GitHub, Google, or other providers for a seamless login experience.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6d5531b7-edaf-5b05-8686-6f455b1c5c6d",
+									"altText": "Optimization web blue",
+									"title": "Optimization web blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76OxPWvxXlUbcfGr05wpg5/429150d8058c40452ee038bd9198ba4d/optimization-web.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "Wg98TbbAUXPImuZKyedzw",
+								"title": "Clientless access",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Simplify onboarding by avoiding endpoint software. Cloudflare's reverse proxy offers secure clientless access to web apps and in-browser terminals, even on unmanaged devices.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
+									"altText": "Performance acceleration bolt orange",
+									"title": "Performance acceleration bolt orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/7104c2a5381e49f73144e8a6e1095b53/performance-acceleration-bolt.svg"
+										},
+										"description": "Lightning bolt icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4DGqQvERqjmQKmZlACKviv",
+								"title": "Data protection",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Enhance your third-party access implementation by adding clientless [remote browser isolation (RBI)](https://www.cloudflare.com/zero-trust/products/browser-isolation/) and [data loss prevention (DLP)](https://www.cloudflare.com/zero-trust/products/dlp/) to further prevent risks of data exfiltration.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "888981a6-dd85-5b86-af64-6ec8fa0d848e",
+									"altText": "Internet browser blue",
+									"title": "Internet browser blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17tDJ5kPaGE8eLFJvByBgR/c28fb006fa3ddfba75b2009591559296/internet-browser.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "3scAmksSEj3ufRBMygjgFe",
+						"htmlId": null,
+						"mainHeadline": "Canva uses Cloudflare to streamline access management ",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "Vul8MPp12Qp80oZ1t3s9t",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Canva graphic design platform is used by tens of millions of people worldwide. As the company has hired more employees and outsourced more work to third-party developers, IT managers needed a better way to authenticate users and track app usage.\n\nCanva adopted Cloudflare Access to provide secure access to internal apps. The company has improved security, eliminated the inefficient use of shared passwords, and avoided development of an internal identity and access management system. Cloudflare Access has made employee and contractor onboarding and offboarding easier and more secure.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4vNGK8RbrvHLUUxmZX4PPS",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"Cloudflare Access saved us from having to develop our own identity and access management (IAM) system.\"",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "— Head of Infrastructure, Canva",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "6fp4AwIlUGV41zFxpDbyf8",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "6fp4AwIlUGV41zFxpDbyf8",
+															"locale": "en-US",
+															"title": "teams logo canva color svg",
+															"file": {
+																"name": "logo_canva_color_svg.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fp4AwIlUGV41zFxpDbyf8/b5508b7f025945b83cb9d0814fe38419/logo_canva_color_svg.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6NqydqfR666pAs070wG8Wa",
+						"title": "Ready to discuss your third-party access needs?",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "6X0p0vmriXriy5KUeD4kxO",
+							"elementName": "Third Party Access - ENABLEMENT BLADE - CTA",
+							"standardText": null,
+							"text": "Contact us",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "quIwh8ZxD9pISQGe6WSfv",
+								"modalName": "Third Party Access - Contact Us",
+								"modalId": "third-party-access-contact-us",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "1ujDGExdXSfyindmg265xQ",
+									"bladeName": "Zero Trust Ent Plan - Contact us",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Zero Trust Contact Us - Ent Plan",
+									"marketoFormHeaderText": "Cloudflare Zero Trust",
+									"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
+									"showCommentBox": true,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": "Contact us",
+									"marketoFormSubmitButtonColor": "blue",
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Request a third-party access discussion",
+								"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized discussion of your third-party access journey and how Cloudflare may be able to help.",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "TfE1YQyNgVmNTnw9xcB6I",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudflare's connectivity cloud simplifies third-party access",
+						"eyebrowHeading": "WHY CLOUDFLARE",
+						"description": "Cloudflare's unified platform of cloud-native services facilitates secure access to apps for external users without adding management burdens.",
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1Ns66G4AQJrw9Z7EQKt7rc",
+								"title": "Composable architecture",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Address a full range of security and networking requirements by capitalizing on extensive interoperability and customizable networking.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "35aabb7a-ab80-5f86-bb2d-c0bd82a10871",
+									"altText": "Cloud internet ",
+									"title": "Cloud internet ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3T85OKKRCGnfnTwHlI8Qpe/ea9f2f9a3b57dc53b8066ef5a5b935cb/cloud-internet.png"
+										},
+										"description": "Cloud icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1SKlmXFiKvDxfLWozULqcP",
+								"title": "Performance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Deliver better user experiences with a global network that is approximately %{OperationMilliseconds} ms from ~%{GlobalInternetConnectedPercent}% of Internet users.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+										},
+										"description": "Performance acceleration rocket orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "58IKGDT0xSi9myiYkCLRoB",
+								"title": "Threat intelligence",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Prevent more attacks with intelligence gleaned from proxying ~20% of the web and blocking %{ThreatsBlockedPerDay} billion threats daily.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "746c8e68-0542-59e1-a219-d6a178c3543e",
+									"altText": null,
+									"title": "Threat intelligence radar icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Yx4fQ4JQKWiXHNopSEGHV/ab0d928d56a15ae462f4bfd09e1bcf93/cloudflare-radar.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3joLULq3zmBpahXtUYmbRp",
+								"title": "Unified interface",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Reduce tool sprawl and alert fatigue by uniting every hybrid work security service in one UI.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "9a20c38e-607d-5d1f-80bc-05dc54dd769b",
+									"altText": "Mobile Interface Icon - Orange",
+									"title": "Mobile Interface Icon - Orange",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NB3y8KzQdu3DK9Fm3JQia/1af7bbd168d821522e4d8779ba0a48bc/device-mobile.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentfulId": "4BfAKEM3SkW9QCoqgmFp0b",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": null,
+						"title": "Resources",
 						"subtitle": null,
 						"bladeStyle": null,
 						"bladeBorder": "none",
@@ -3056,540 +3494,113 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6SPJQIXrwF4DhhsJ8uxBr3",
-								"title": "Implement least-privilege access",
-								"makeTitleLink": null,
+								"contentfulId": "qO1XznQTY9hUuclZlG82m",
+								"title": "The Zero Trust guide to securing contractor application access",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Reduce risk by implementing app-specific, Zero Trust access scoped to users. ",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"description": "Discover how ZTNA can help you overcome the challenges of providing internal access to external users. ",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/guide-to-zero-trust-access/",
+								"learnMoreText": "Download the white paper",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": {
-									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
-									"altText": "Security shield zero trust ",
-									"title": "Security shield zero trust ",
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": null
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5Ul3bAv3pQoUQDDzy1Gy5l",
-								"title": "Onboard and offboard faster",
-								"makeTitleLink": null,
+								"contentfulId": "0C4bQJsZFF2Gpjp3YJuND",
+								"title": "How to deploy Zero Trust web access",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "No need to deploy a VPN or ship a corporate device to get users started. 3rd party users can authenticate to applications with a familiar login flow.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"description": "Walk through a series of modules that help you secure access to internal web apps without a device client, step by step.",
+								"learnMoreUrl": "https://developers.cloudflare.com/learning-paths/zero-trust-web-access/",
+								"learnMoreText": "Get the implementation guide",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": {
-									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
-									"altText": "Ease of use blue",
-									"title": "Ease of use blue",
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/447d1f23d1b8ac77e61e2819465f58fe/ease-of-use-toggle.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": "Ease of use orange"
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "21XHnIbbfXCVQdWYqfiUp9",
-								"title": "Reduce identity and access management spend",
-								"makeTitleLink": null,
+								"contentfulId": "7MpbtAxZ0PLm588Uy1MJOZ",
+								"title": "Beyond VPN replacement: Other ZTNA superpowers",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Support for multiple identity providers means you can give 3rd party users access without having to provision  SSO licenses. ",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"description": "Dive into ZTNA's untapped potential, with tangential value-add use cases that further reduce cyber risk and empower your business.",
+								"learnMoreUrl": "https://event.on24.com/wcc/r/4302342/68E52F6AF470AEAD341DD16C7BD93192?partnerref=cloudflare1",
+								"learnMoreText": "Watch the webinar",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": {
-									"id": "87f9101d-857c-5202-9a77-f2f35ff7e4a9",
-									"altText": "Cloudflare One  SASE Solution",
-									"title": "Cloudflare Access Orange",
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/64ekoyPlI1bPZ9MvWEuxqu/9de135bc78a1e1559505fcb8b59788c0/cloudflare-access.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": null
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
 						]
-					},
-					{
-						"contentfulId": "FKZYIF1IlHU7dr912gYXR",
-						"title": "Integrate multiple identity providers ",
-						"copy": "Your contractors can bring their own existing identities from LinkedIn, GitHub, Google or other providers for seamless login. IT teams save time and resources by keeping contractors out of the corporate identity tenant. Security gains peace of mind knowing third-party users have narrowly scoped permissions.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BKXLcRHJGghubMfAm8xo2/66d6b0ced23df6929bc590562c6828fa/Overview.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "6e9b635a-c805-5f08-9315-5cd34a9d7bd2",
-							"altText": "Screenshot of Cloudflare for Teams dashboard on identity providers screen. ",
-							"title": "VPN Replacement - Multiple Identity Provider",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BKXLcRHJGghubMfAm8xo2/66d6b0ced23df6929bc590562c6828fa/Overview.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "3rd party access use cases",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-bottom",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "23paaBttUc6PYooxhkoIHJ",
-						"title": "Time-based OTPs for authentication",
-						"copy": "Guest users can authenticate with time-based one-time passwords based on user email addresses. \n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/73QcIFkUS0zHbctWVmw6Wa/b140c219a1c2d384400f3f398b9c1267/OTP.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "3d417d5e-65d9-5ac3-ab42-9a9b31e2a1d7",
-							"altText": "Cloudflare Access login screen. ",
-							"title": "Third Party Access OTP ",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/73QcIFkUS0zHbctWVmw6Wa/b140c219a1c2d384400f3f398b9c1267/OTP.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-bottom",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "2CKIKOgzhRpRAWIXVTBAvL",
-						"title": "Granular access policies",
-						"copy": "Adopt [Zero Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) best practices by applying least privilege: Only provide your partners access to the apps they need to be successful and eliminate the unnecessary risks of granting permissions for apps they won't even use.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/psEoKVODRfZbvTAcN5kUB/5498b2636d50ba7b2ae7c3442b03712e/Location.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "a5a1c64d-23d2-5b2e-b820-4cc1a2938170",
-							"altText": "Screenshot of the Cloudflare for Teams dashboard's location configuration screen. ",
-							"title": "Location ",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/psEoKVODRfZbvTAcN5kUB/5498b2636d50ba7b2ae7c3442b03712e/Location.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-bottom",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "1pMsdQJWoFiqELQ6ZAoNme",
-						"title": "Monitor user access and change logs",
-						"copy": "View and search real-time access logs in the dashboard or send to a third party SIEM for analysis. Full visibility across your contractor activity enables auditing and helps your organization manage its security more proactively.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/66WZk8nlRawqI9du4dp5Br/f80684cb67caada4fc7fe7555e358e01/Overview__4_.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "1cfa7b65-04c2-5237-83d8-f88c7af2fd08",
-							"altText": "Screenshot of Cloudflare for Teams user activity logs list. ",
-							"title": "Third Party Access ",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/66WZk8nlRawqI9du4dp5Br/f80684cb67caada4fc7fe7555e358e01/Overview__4_.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "WaU09l56G4qCc4bdcWEHO",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "/case-studies?usecase=Enable+zero+trust+security+for+workforce",
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"title": "Helping organizations worldwide progress towards Zero Trust",
-						"copy": null,
-						"logoList": [
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ox6kZdsCZBSqhDUa0vBD/7ae8539f70a2db3a1566b3a375406cba/Canva-grayscale.png"
-								},
-								"description": ""
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l3uXN7rkllTveH1HRSct1/2725dc80c3773d23bbc382089c885a42/Delivery-Hero-grayscale.png"
-								},
-								"description": "Delivery Hero logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QqegCVRghNpJ5u3koSMIT/150638cc91b792966719e79e2fad1f4b/eTeacherGroup-grayscale.png"
-								},
-								"description": " eTeacher Group logo grayscale - Zero Trust logo blade"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2x1AgM10BcMFrIHXw3ye7k/d22413985484dfd7295fee3fb4e98621/ezCater-grayscale.png"
-								},
-								"description": "ezCater logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/WfJskUftbIg2L9wkJlpvk/fb58bb010585e1139d31ada16363fa51/logo_insead_trusted-by_gray.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k7S8k0jg0tXOAFBbXuHdg/efea000cb7c6ebf7ce8f12ffc8109954/logo_jetblue-travel-products_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/z4dEAjCkLg48nCqhqzE96/8e18c72e29608c99e6b32b8c20bdddea/Kathmandu-grayscale.png"
-								},
-								"description": "Kathmandu logo grayscale - Zero Trust logo blade"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XWZR07sp0nr55Vmvga4h2/1b3040aa46a01077e7b366c3d11f367c/logo_onetrust_gray_32px-wrapper.svg"
-								},
-								"description": "OneTrust logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Tr7JQ2TzJPJ7wY4AOzmqI/27e3c8aee40e5db8d0fc6f71825e7b55/logo_politico_gray_158px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sjx4ZVSwUCm4STib20hBG/c2592fdb19ddef806a8e9fd75c92f45c/ZiffMedia-grayscale.png"
-								},
-								"description": "Ziff Media Group logo grayscale - Zero Trust logo blade"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3N0npaMxlGf7sFDe5w8Y25/eb29f4658a2c4a0adb97ff904b3de0e6/Insead-grayscale.png"
-								},
-								"description": "Insead logo grayscale - Zero Trust logo blade"
-							}
-						],
-						"logoListAssetFile": [],
-						"logoUrlList": null
-					},
-					{
-						"contentfulId": "1MGe20pjeBadZle2HfBkC8",
-						"title": "Start Now",
-						"copy": "Secure access to your corporate applications without a VPN. Getting started with Access takes minutes. With our free plan, your first 50 users are free.",
-						"toggleText": null,
-						"button": [
-							{
-								"buttonAssetFile": null,
-								"buttonTextLoggedIn": null,
-								"contentTypeId": "button",
-								"contentfulId": "2z4BKbPjQR3VFA26pYebu2",
-								"elementName": "Teams Get Started",
-								"standardText": null,
-								"text": "Get Started",
-								"url": "https://dash.cloudflare.com/sign-up/teams",
-								"loggedInUrl": null,
-								"buttonModal": null,
-								"openInNewTab": true,
-								"locale": "en-US"
-							},
-							{
-								"buttonAssetFile": null,
-								"buttonTextLoggedIn": null,
-								"contentTypeId": "button",
-								"contentfulId": "3xdFhj9Cyw7GZCAKCabZVa",
-								"elementName": "Zero Trust / Teams- Contact Us",
-								"standardText": null,
-								"text": "Talk to an expert",
-								"url": null,
-								"loggedInUrl": null,
-								"buttonModal": {
-									"contentTypeId": "formModal",
-									"contentfulId": "32lRbGoNPloHxSaXZJnGh6",
-									"modalName": "Teams Ent Plan - Contact Us ",
-									"modalId": "teams-ent-plan-contact-us",
-									"modalType": "single-form",
-									"marketoForm": {
-										"contentTypeId": "marketoEmbeddedForm",
-										"contentfulId": "1ujDGExdXSfyindmg265xQ",
-										"bladeName": "Zero Trust Ent Plan - Contact us",
-										"backgroundColor": "white",
-										"marketoFormId": 1341,
-										"marketoFormLeadSource": "Inbound - Web Form",
-										"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Zero Trust Contact Us - Ent Plan",
-										"marketoFormHeaderText": "Cloudflare Zero Trust",
-										"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
-										"showCommentBox": true,
-										"marketoFormThankYouText": null,
-										"marketoFormCustomSuccessMessage": null,
-										"marketoFormPdfDownload": null,
-										"marketoFormPdfDownloadI18n": [],
-										"marketoFormAssetDownloadButtonText": null,
-										"marketoFormSuccessRedirectUrl": null,
-										"sendAdRoll": null,
-										"meta_adRollCustomSegment": null,
-										"enableSandbox": null,
-										"marketoFormSubmitButtonText": "Contact us",
-										"marketoFormSubmitButtonColor": "blue",
-										"enableEmailVerification": null,
-										"disableEnterpriseEmailNotification": null,
-										"enableRingout": null
-									},
-									"title": "Request a Zero Trust discussion",
-									"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized discussion of your Zero Trust journey and how Cloudflare may be able to help.",
-									"splitFormDefaultTab": null,
-									"selfServeTabText": null,
-									"selfServeCopy": null,
-									"enterpriseTabText": null,
-									"enterpriseCopy": null
-								},
-								"openInNewTab": false,
-								"locale": "en-US"
-							}
-						],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "46bb12b2-662b-57fb-9036-260968c9335e",
-							"altText": "Cloudflare for Teams - dashboard showing trends, logins, etc",
-							"title": "Access Start Now",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7giuVHnGQdTTdQWyYdkRto/e81ecddd7e8683e1c35dab96bb16c854/Access_Start_Now.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
 					}
 				],
 				"noindex": false,

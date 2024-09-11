@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-10-17T17:36:11.906Z",
-					"updatedAt": "2024-08-28T03:20:04.643Z"
+					"updatedAt": "2024-09-11T06:21:16.873Z"
 				},
 				"contentfulId": "2UBOeyq0cEUsYGmCOKS8o4",
 				"contentTypeId": "page",
@@ -70,9 +70,9 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Registrar",
 						"titleSize": null,
-						"subtitle": "Domain registrar with no-markup pricing",
+						"subtitle": "At-cost domain registration and renewal",
 						"subtitleSize": null,
-						"copy": "Securely register new domains, transfer existing domains, and effortlessly consolidate and manage all your domain portfolios, with transparent, no-markup pricing. Eliminate surprise renewal fees and hidden add-on charges.\n\n__You pay what we pay — you won't find better value.__\n",
+						"copy": "Securely register, transfer, consolidate, and manage your domain portfolios — without add-on fees or inflated renewal costs.\n",
 						"buttonColor": null,
 						"buttonColor2": null,
 						"buttonText1": "Register Now",
@@ -97,7 +97,7 @@
 						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
+						"button1OpenInNewTab": true,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
 						"sectionPadding": null,
@@ -125,10 +125,10 @@
 						"imageSize": "Medium",
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "<br>\n<a href=\"/registrar/layeredaccess/\" target=\"_blank\">WHOIS Data Access Request\n</a>",
+						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
@@ -150,91 +150,821 @@
 						}
 					},
 					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "4qzi1foOAh1dgGssDpIQLY",
-						"htmlContent": "<style>  \n.divTable{ display: table; justify-self: normal;}\n.divTableRow {display: table-row;}\n.center-align {text-align: center; }\n.border-right{ border-right: 1px solid #fd7f4f;}\n.divTableRow-header { background: linear-gradient(90deg, rgba(151,23,113,1) 0%, rgba(210,51,81,1) 50%, rgba(253,90,18,1) 100%); color: white;}\n.bgColor2 { background: linear-gradient(90deg, rgba(253,102,51,1) 0%, rgba(252,174,47,1) 49%); color: white;}\n.bgColor1{ background-color: #feefd9;}\n.divTableHeading {background-color: #EEE;display: table-header-group;}\n.divTableCell, .divTableHead {display: table-cell;padding: 10px 10px 10px 10px; vertical-align: middle;}\n.divTableHeading {background-color: #EEE;display: table-header-group;font-weight: bold;}\n.divTableFoot {background-color: #EEE;display: table-footer-group;font-weight: bold;}\n.divTableBody {display: inline-table; width:100%;border: 1px solid #fd7f4f; }\n.bold-text {font-weight: bold;}\n.div-wrapper{ display: grid; grid-template-columns: 1fr 1fr; grid-gap: 200px; margin: 40px 0px; align-items: center;}\n.table-description{ width: 100%; justify-self: center;}\n.bbottom{ border-bottom: 1px solid #fd7f4f;}\n\n#first-col {order: 1;}\n#second-col { order: 2;}\n\n@media (max-width: 768px) {\n   .div-wrapper {  grid-template-columns: 1fr;  grid-gap: 30px; } \n   .table-description { width: 95%; justify-self: center;}\n   .divTableCell,.divTableHead { padding: 10px 5px 10px 5px;}\n   #first-col {order: 2;}\n   #second-col { order: 1;}\n   .divTable{ font-size: 14px;}\n   }\n\n   @media (max-width: 1024px) {\n    .div-wrapper { grid-gap: 30px; } \n\n    }\n\n  </style> \n\n         <div class=\"div-wrapper\">\n          <div id=\"first-col\" class=\"divTable\">\n            <div class=\"divTableBody\">\n            <div class=\"divTableRow divTableRow-header\">\n            <div class=\"divTableCell\">Top level domain</div>\n            <div class=\"divTableCell center-align\">.com</div>\n            <div class=\"divTableCell center-align\">.net</div>\n            <div class=\"divTableCell center-align\">.info</div>\n            <div class=\"divTableCell center-align\">.org</div>\n            </div>\n            <div class=\"divTableRow\">\n            <div class=\"divTableCell bgColor1 border-right bbottom\">Wholesale registry fee (new registrations)</div>\n            <div class=\"divTableCell center-align border-right bbottom\">$9.59</div>\n            <div class=\"divTableCell center-align border-right bbottom\">$11.66</div>\n            <div class=\"divTableCell center-align border-right bbottom\">$17.50</div>\n            <div class=\"divTableCell center-align bbottom\">$7.32</div>\n            </div>\n            <div class=\"divTableRow\">\n            <div class=\"divTableCell bgColor1 border-right\">ICANN fee</div>\n            <div class=\"divTableCell center-align border-right\">$0.18</div>\n            <div class=\"divTableCell center-align border-right\">$0.18</div>\n            <div class=\"divTableCell center-align border-right\">$0.18</div>\n            <div class=\"divTableCell center-align\">$0.18</div>\n            </div>\n            <div class=\"divTableRow bgColor2\">\n            <div class=\"divTableCell\">Cloudflare fee</div>\n            <div class=\"divTableCell center-align\">$0.00</div>\n            <div class=\"divTableCell center-align\">$0.00</div>\n            <div class=\"divTableCell center-align\">$0.00</div>\n            <div class=\"divTableCell center-align\">$0.00</div>\n            </div>\n            <div class=\"divTableRow\">\n            <div class=\"divTableCell bgColor1 border-right\">Your cost</div>\n            <div class=\"divTableCell center-align border-right bold-text\">$9.77</div>\n            <div class=\"divTableCell center-align border-right bold-text\">$11.84</div>\n            <div class=\"divTableCell center-align border-right bold-text\">$17.68</div>\n            <div class=\"divTableCell center-align bold-text\">$7.50</div>\n            </div>\n            </div>\n            </div>\n\n            <div id=\"second-col\" class=\"table-description\"> \n            <h2 class=\"headline-2 \"> At-cost pricing for registration and renewal</h2>\n            <p><a href='https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/'>Domain name registration</a> is dominated by companies offering large discounts on the initial domain name purchase and then later surprising customers with incremental add-on fees and inflated renewal costs.</p>\n            <p>Cloudflare Registrar will only ever charge you what we pay to the registry for your <a href='https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/'>domain</a>. No markup and no surprise fees. Security features like two-factor authentication, multi-user support, and a security-focused customer support team gives you peace of mind that your domain is safe.</p>\n\n          </div>\n          </div>",
+						"contentfulId": "zMgdsM0rUOR3msflbRmK8",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Get robust threat protection and at-cost renewals for your domains",
+						"eyebrowHeading": "BENEFITS",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4vozAvl61y6ehJ6NEcold",
+								"title": "Transparent registration and renewal fees",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Registrar eliminates surprise fees and unnecessary add-ons. Only pay the registration and renewal fees charged by your registry.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "41UCipBP4WcONhVgpgn8sn",
+								"title": "Widespread TLD support",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Registrar supports over 200 top-level domains (TLDs), including .com, .net, .org, and more. See the [full list](https://www.cloudflare.com/tld-policies/) of supported TLDs.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "888981a6-dd85-5b86-af64-6ec8fa0d848e",
+									"altText": "Internet browser blue",
+									"title": "Internet browser blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17tDJ5kPaGE8eLFJvByBgR/c28fb006fa3ddfba75b2009591559296/internet-browser.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "689g5sBa9qESv3IoMuxSyG",
+								"title": "Built-in backend security",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Registrar natively integrates with Cloudflare DNS, CDN, and SSL services, so your domain receives best-in-class security and performance benefits.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eaeddebf-b730-5e34-b5cd-2dcca8d4cba2",
+									"altText": "security-shield-protection-230x301-664b7d5",
+									"title": "security-shield-protection-230x301-664b7d5",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
 						"htmlId": null
 					},
 					{
-						"contentfulId": "52JniWc5QvIqOXtuPpsU5q",
-						"title": "Hundreds of top level domains supported",
-						"copy": "Cloudflare Registrar supports common top level domains (TLDs) including .com, .net, .org, as well as hundreds more. In some cases, registration of certain top-level domains may be subject to the registrant meeting additional requirements or regulations. See the [full list](https://www.cloudflare.com/tld-policies/) of supported TLDs.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
+						"contentfulId": "x9JsXkVUdgVXCjGUkuPiY",
+						"contentTypeId": "bladeTabs",
+						"anchorTag": null,
 						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"backgroundColor": "white",
+						"heading": "How Cloudflare delivers at-cost domain registration and protection",
+						"tabPosition": "top",
+						"tabs": [
+							{
+								"contentfulId": "19JBRjJTvFhUcye61ci5eX",
+								"contentTypeId": "elementTab",
+								"title": "Domain registration",
+								"description": null,
+								"tabContent": [
+									{
+										"contentTypeId": "bladeRichTextColumnGroup",
+										"contentfulId": "4GDVoTskf3C2nf9yW8cvFL",
+										"htmlId": null,
+										"mainHeadline": null,
+										"backgroundColor": "white",
+										"bladeBorder": "none",
+										"sectionPadding": "tile--no-top-padding",
+										"columnLayout": "One Third & Two Thirds",
+										"columns": [
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "7LYLHFdWldSxCqveJAYvEh",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Cloudflare offers at-cost domain registration and renewal for hundreds of TLDs, allowing you to:",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														},
+														{
+															"nodeType": "unordered-list",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Maintain your existing domains or register new ones — with ",
+																					"marks": [],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "no surprise fees",
+																					"marks": [
+																						{
+																							"type": "bold"
+																						}
+																					],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Easily transfer domains",
+																					"marks": [
+																						{
+																							"type": "bold"
+																						}
+																					],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": " to or from Cloudflare",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Secure your domain with ",
+																					"marks": [],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "integrated, universal DNSSEC",
+																					"marks": [
+																						{
+																							"type": "bold"
+																						}
+																					],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											},
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "5GPs8Zx24S2TVOQisfYAiH",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "embedded-asset-block",
+															"data": {
+																"target": {
+																	"sys": {
+																		"id": "5vod7HNXmScH7fjbJs2oFa",
+																		"type": "Link",
+																		"linkType": "Asset"
+																	},
+																	"related_asset": [
+																		{
+																			"contentfulId": "5vod7HNXmScH7fjbJs2oFa",
+																			"locale": "en-US",
+																			"title": "A step-by-step guide to transferring domains to Cloudflare",
+																			"file": {
+																				"name": "A step-by-step guide to transferring domains to Cloudflare.png",
+																				"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vod7HNXmScH7fjbJs2oFa/77295daa789137094327c74033295458/A_step-by-step_guide_to_transferring_domains_to_Cloudflare.png",
+																				"internal": {
+																					"mediaType": "image/png"
+																				}
+																			}
+																		}
+																	],
+																	"entry_elementMarkdown": [],
+																	"entry_assetFile": [],
+																	"entry_button": [],
+																	"entry_elementLink": [],
+																	"entry_page": [],
+																	"entry_elementIcon": [],
+																	"entry_bladeTable": [],
+																	"entry_bladeThreeFeatures": [],
+																	"entry_bladeFourFeatures": []
+																},
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": []
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "4VZOqpmbZkdyzx4WaTdSXa",
+								"contentTypeId": "elementTab",
+								"title": "Domain protection",
+								"description": null,
+								"tabContent": [
+									{
+										"contentTypeId": "bladeRichTextColumnGroup",
+										"contentfulId": "2A524bLyAd15xj1jQhimya",
+										"htmlId": null,
+										"mainHeadline": null,
+										"backgroundColor": "white",
+										"bladeBorder": "none",
+										"sectionPadding": "tile--no-top-padding",
+										"columnLayout": "One Third & Two Thirds",
+										"columns": [
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "4OOgfOGwZhNr7sNOnctZut",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Enterprise Plan customers receive free custom protection for high-profile domains, helping you:",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														},
+														{
+															"nodeType": "unordered-list",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Ensure ",
+																					"marks": [],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "multi-user, offline confirmation",
+																					"marks": [
+																						{
+																							"type": "bold"
+																						}
+																					],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": " for change requests",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Enforce ",
+																					"marks": [],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "two-factor authentication",
+																					"marks": [
+																						{
+																							"type": "bold"
+																						}
+																					],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": " for all registrant accounts",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Enable consistent use of ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "registrar and registry locks",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											},
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "204dUrcUmOthhgw9saI85v",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "embedded-asset-block",
+															"data": {
+																"target": {
+																	"sys": {
+																		"id": "5Gx7aqxMQUwwtYkL5CBF2Y",
+																		"type": "Link",
+																		"linkType": "Asset"
+																	},
+																	"related_asset": [
+																		{
+																			"contentfulId": "5Gx7aqxMQUwwtYkL5CBF2Y",
+																			"locale": "en-US",
+																			"title": "domain-protected-long",
+																			"file": {
+																				"name": "registar-domain-protection-spot-illustration.svg",
+																				"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Gx7aqxMQUwwtYkL5CBF2Y/a1fa91730722b29b7a1b5abac218b6e5/registar-domain-protection-spot-illustration.svg",
+																				"internal": {
+																					"mediaType": "image/svg+xml"
+																				}
+																			}
+																		}
+																	],
+																	"entry_elementMarkdown": [],
+																	"entry_assetFile": [],
+																	"entry_button": [],
+																	"entry_elementLink": [],
+																	"entry_page": [],
+																	"entry_elementIcon": [],
+																	"entry_bladeTable": [],
+																	"entry_bladeThreeFeatures": [],
+																	"entry_bladeFourFeatures": []
+																},
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": []
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
 					},
 					{
-						"contentfulId": "3EfdR82Lerwb5hQ5lCARC6",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
+						"contentfulId": "3EQSBP96FsKdk70viEdo7t",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": "Get started",
+						"description": "Buy domains at-cost through Cloudflare Registrar",
+						"variant": "inline",
 						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "7eq5pIepOva28YUhOP08Tv",
+							"elementName": "CTA - Get started",
+							"standardText": null,
+							"text": "Get started",
+							"url": "https://developers.cloudflare.com/registrar/get-started/register-domain/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "7gxij2lftKsSB16b4XiFMN",
+						"title": "Top use cases",
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1Xjc6mMwVRYei7OTqz1IBR",
-								"title": null,
-								"makeTitleLink": null,
+								"contentfulId": "2P1EGHeJTQDewevNoYrMWm",
+								"title": "Buy new domains at-cost",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "- Wholesale pricing for all domains\n- No inflated registration or renewal fees\n- No add-on services required",
+								"description": "Register new domains through Cloudflare Registrar and only pay what is charged by registries and ICANN.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1N1pryI5VNeA9LdbAuwOl3/b451f6d49b92c7914dafde1501cb778d/icon-cost-purple.png"
-									},
-									"description": "icon cost purple"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
-									"altText": "Price",
-									"title": "Price",
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5DKAsNOowkNCWOYuUZ8QZW",
+								"title": "Transfer and renew existing domains",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Easily transfer, manage, and automatically renew existing domains through the Cloudflare Dashboard.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
+									"altText": "Optimization gear ",
+									"title": "Optimization gear ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
 										},
 										"description": ""
 									},
@@ -250,75 +980,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4TWFKhXWPICxBv8bL3liCC",
-								"title": null,
-								"makeTitleLink": null,
+								"contentfulId": "6dAH6afS6fyqQpPsjDLdgc",
+								"title": "Defend against domain hijacking",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "- Trusted by millions of Internet properties\n- Prioritized backend security features\n- Security-focused customer support",
+								"description": "Protect high-profile domains from domain hijacking with high-touch verification and advanced registrar security features.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2s3on5Z0Iq9HywlTfga1dp/19a9079def5bc9cae2c357901e2cb612/icon-ddos-purple.png"
-									},
-									"description": "icon ddos purple"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
-									"altText": "Security shield ddos protection blue",
-									"title": "Security shield ddos protection blue",
+									"id": "eaeddebf-b730-5e34-b5cd-2dcca8d4cba2",
+									"altText": "security-shield-protection-230x301-664b7d5",
+									"title": "security-shield-protection-230x301-664b7d5",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
 										},
-										"description": "Shield icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1HS3CLMH876oRZeYHgUPSf",
-								"title": null,
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "- Native DNS, CDN, and SSL services\n- Advanced security and performance\n- Secure domain name management",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7iQtFiPtm3iqMM6anfZ3a9/530e5f22152aa2723c1c87148e81475f/icon-global-purple.png"
-									},
-									"description": "icon global purple"
-								},
-								"iconAssetFile": {
-									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
-									"altText": "Internet globe orange",
-									"title": "Internet globe orange",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
-										},
-										"description": ""
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -333,90 +1017,10 @@
 						]
 					},
 					{
-						"contentfulId": "7rDrPKWGsWcn84ybza3iae",
-						"title": "Custom Domain Protection for Enterprise",
-						"copy": "Custom Domain Protection, a Cloudflare Registrar feature available on the Enterprise Plan, is the highest level of registrar security. It protects your organization from domain hijacking with high-touch, on and offline verification of any changes to your Registrar account. Cloudflare is an ICANN accredited registrar providing secure domain registration for high-profile domains.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": "/products/registrar/custom-domain-protection/",
-						"learnMoreText": "Learn more about custom domain protection",
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Gx7aqxMQUwwtYkL5CBF2Y/a1fa91730722b29b7a1b5abac218b6e5/registar-domain-protection-spot-illustration.svg"
-							},
-							"description": "Domain Protected"
-						},
-						"imageAssetFile": {
-							"id": "e8e5c9de-9a81-5735-8a05-fc79cfdd1a4e",
-							"altText": "Domain protected long",
-							"title": "Domain protected long",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Gx7aqxMQUwwtYkL5CBF2Y/a1fa91730722b29b7a1b5abac218b6e5/registar-domain-protection-spot-illustration.svg"
-								},
-								"description": "Domain Protected"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "1bweUMaeP8kcaMwA0iSY04",
-						"contentTypeId": "bladeKeyFeatures",
-						"backgroundColor": "light-blue",
-						"title": "Key Features",
-						"keyFeature": [
-							"Support for <a href='https://www.cloudflare.com/tld-policies/'>hundreds</a> of TLDs",
-							"Two-factor authentication",
-							"Multi-user support",
-							"WHOIS management",
-							"Automatic domain renewal",
-							"Registrar Locking",
-							"DNSSEC (free)",
-							"Bulk Domain Transfers",
-							"Developer-friendly API"
-						],
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"titleColor": null,
-						"variant": null,
-						"description": null,
-						"featuresTextStyle": null,
-						"htmlId": null
-					},
-					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "5cac9unxWAGxhLNjbPlBOs",
-						"title": "Transfer your domain to Cloudflare Registrar today",
-						"titleSize": null,
+						"contentfulId": "31tEc7m7a9QAtMKn72EecQ",
+						"title": "Transfer your domain to Cloudflare Registrar",
+						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
@@ -430,11 +1034,253 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "612In1rp1muns220leNkGw",
-							"elementName": "Transfer now dash/domains",
+							"contentfulId": "2F3Ng14S9apTNrGj44l2dX",
+							"elementName": "Get started",
 							"standardText": null,
-							"text": "Transfer now",
-							"url": "https://dash.cloudflare.com/?to=/:account/domains/transfer",
+							"text": "Get started",
+							"url": "https://dash.cloudflare.com/?to=/:account/domains/transfer&_gl=1*1p6z8y1*_gcl_au*NTc0ODY3ODE1LjE3MTgxMjM1OTk.*_ga*MTJiMGYzZWEtMDA0Ni00ZDUzLWE0YmEtZmRmOGJiYzJlMTVl*_ga_SQCRB0TXZW*MTcyMzIzMzEyOS4yOTIuMS4xNzIzMjM0NjQ1LjAuMC4w",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "1EBxWkWF66gJu5iX7dUpDv",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "CLOUDFLARE REGISTRAR PRODUCTS",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Two Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5G8fFA0ueFGqtP8YDIFi8u",
+								"title": "Get custom domain protection",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Safeguard high-profile domains with advanced security features like registry lock, customizable authorization, and out-of-band authentication.",
+								"learnMoreUrl": "/products/registrar/custom-domain-protection/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "774fed19-c3c8-5b1a-996e-e5217c014f4e",
+									"altText": "Pages shield blue",
+									"title": "Pages shield blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ygGtWlEN0N5inPgmxPucE/ac30e4bd2a63904fa66bb28ddc24ac3b/page-shield.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2PB5Kha0wTMSV5zlkEPjAh",
+								"title": "Activate one-click DNSSEC for your domains",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare offers free, universal DNSSEC for all domains, helping secure your site against on-path attacks.",
+								"learnMoreUrl": "https://developers.cloudflare.com/dns/dnssec/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6bb3285c-bf75-5bac-82dd-58c220479c42",
+									"altText": "Reliability dns orange",
+									"title": "Reliability dns orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IEgns2aHgVGiOuTOHIzv2/9eff990dd5e65ad51f5847a7612953d5/reliability-dns.svg"
+										},
+										"description": "DNS analytics icon\n"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentfulId": "2nbydYxbrHj6F5HFsA8Nze",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1hnOeoOk88dZuoe24hxpM3",
+								"title": "A step-by-step guide to transferring domains to Cloudflare",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how to quickly transfer your existing domain to Cloudflare with our Domain Transfer Checklist.",
+								"learnMoreUrl": "https://blog.cloudflare.com/a-step-by-step-guide-to-transferring-domains-to-cloudflare",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6dKqJl8BaHoPrLK2LcIjOO",
+								"title": "Cloudflare Registrar FAQ",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Get support for common questions related to domain transfers, registrations, billing, and more.\n",
+								"learnMoreUrl": "https://developers.cloudflare.com/registrar/faq/",
+								"learnMoreText": "Read the FAQ",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4r6pTc2OQQd3liAmHsrYPo",
+								"title": "Cloudflare Registrar abuse process",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Facing domain hijacking, trademark issues, or other registrar-specific concerns? File a report with Cloudflare.",
+								"learnMoreUrl": "https://www.cloudflare.com/products/registrar/abuse/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "V9YLI30y8FneI3kPItHB7",
+						"title": "Get Custom Domain Protection for your domain",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2synwklApfakoF0ooHqoVb",
+							"elementName": "Learn more",
+							"standardText": null,
+							"text": "Learn more",
+							"url": "https://www.cloudflare.com/products/registrar/custom-domain-protection/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -443,12 +1289,6 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
-					},
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "136FJB5kSlXHStUOTvds0r",
-						"htmlContent": "<div class=\"pt4 pb4\">\n<div class=\"container\">\n<div class=\"row\">\n<div class=\"col-lg-12\">\n\n<p class=\"gray1 f2 fw4 lh-6 mb3 mt0\">Policies and data access requests</p>\n\n<p class=\"gray1 f2 fw4 lh-6 mb3 mt0\">Cloudflare Registrar offers secure domain name registration and management services. To report abuse of a domain name or <u><a class=\"gray1 f2 fw4\" href=\"https://www.cloudflare.com/products/registrar/abuse/\">other concerns</a></u> about our registrar services, please select one of the 'Registrar -' options on Cloudflare's <u><a class=\"gray1 f2 fw4\" href=\"https://www.cloudflare.com/abuse/form\">abuse form</a></u>.</p>\n\n<p class=\"gray1 f2 fw4 lh-6 mt0\">If you believe you have a legitimate interest to access the registration data for a domain registered with Cloudflare Registrar, send an email to whoisrequest@cloudflare.com, including your name, the entity you represent, the domain name(s) for which access is requested and an explanation of need for access.</p>\n</div>\n</div>\n</div>\n</div>\n",
-						"htmlId": null
 					}
 				],
 				"noindex": false,

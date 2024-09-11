@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-04-11T01:47:43.797Z",
-					"updatedAt": "2023-11-15T07:22:40.425Z"
+					"updatedAt": "2024-09-11T02:12:13.437Z"
 				},
 				"contentfulId": "7yOV8d2cPQ6OAqFT3Fk8pr",
 				"contentTypeId": "page",
@@ -68,16 +68,16 @@
 					{
 						"contentfulId": "7HVASv0UiLVJbHnYkLXskP",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Speed + Security for Minecraft",
+						"title": "Cloudflare Spectrum for Minecraft",
 						"titleSize": null,
-						"subtitle": "Cloudflare Spectrum – now available on the Pro and Business plans",
+						"subtitle": "Increase security and improve performance for Minecraft servers",
 						"subtitleSize": null,
-						"copy": "__Slow Minecraft server? Are your players experiencing lag?__ \n\nDelivering immersive and secure gaming experiences to your Minecraft players around the world is a massive challenge — network latency and DDoS attacks contribute to the 'lag' and downtime of your Minecraft server.\n\n__Solve this challenge with Cloudflare Spectrum – which helps power fast and reliable online gaming experiences.__",
+						"copy": "Located in more than %{DataCenterCount} cities across more than %{CountryCount} countries, the Cloudflare network serves your Minecraft game traffic from the nearest location to players, eliminating lag.\n",
 						"buttonColor": "blue",
 						"buttonColor2": null,
 						"buttonText1": "Sign up",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl1": "https://dash.cloudflare.com/75dc25450c0df538a370922812d388a6/ehpacha.com/spectrum",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
 						"buttonText2": null,
@@ -99,28 +99,158 @@
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": null,
+						"imageSize": "Medium",
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "<p class=\"text--extra-small text--purple\">Already on the Pro/Business plan? <a href=\"https://dash.cloudflare.com/spectrum\">Try Spectrum now</a></p>",
+						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "show",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LLsiOiZDJ6tngKybubgu9/049cef3c7dd4b46ce09f3329efb52d07/GamingIndustries-Carousel.png"
+						"image": null,
+						"imageAssetFile": {
+							"id": "a41967f4-04e9-5023-b1d1-85961c4259bb",
+							"altText": "Spectrum for Minecraft",
+							"title": "Spectrum for Minecraft",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gMpuNkAmdRqZuiu85pc0C/d823b132bac17a87704f46e6c4d930d7/Cloudflare_Spectrum_for_Minecraft.png"
+								},
+								"description": "Spectrum for Minecraft"
 							},
-							"description": "Illustration of a Minecraft server being protected by Cloudflare"
-						},
-						"imageAssetFile": null
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"contentfulId": "381wTjWJqgTt4Wveg4DE2",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE SPECTRUM FOR MINECRAFT",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4XFUEwnKrZI2vLZMtEyKk4",
+								"title": "Lower ping times, less 'lag'",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Serve gamers anywhere in the world by establishing sessions between the players and their closest Cloudflare data center.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "da7be7ce-7adf-5a42-89c2-02ec388c838d",
+									"altText": "Time blue",
+									"title": "Time ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/62tme9kTrisdGyf3VkBsvv/4096a715634cf9a3807e0a59c9d5dab4/time.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4U0qI6nLJNyAG6iSNOoCZf",
+								"title": "Block DDoS attacks",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Proxy traffic to your Minecraft server behind Cloudflare's %{NetworkCapacity} network and protect your server from DDoS attacks of any kind and size.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0e7afbfb-6bd8-53f7-862d-96d8bdc1c635",
+									"altText": "Ddos attack blue",
+									"title": "Ddos attack blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fCtDJiVXAmgSWmlKenFBR/d25c631065e2c37cc74e991740434118/ddos-attack.svg"
+										},
+										"description": "DDoS attack icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "I1fqBBbquibkSncCXbQLo",
+								"title": "No plug-ins required",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Configure Cloudflare Spectrum with a few clicks right from the Cloudflare dashboard.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "dc0ee946-9622-540c-8a6d-c314b6490868",
+									"altText": "Cloudflare spectrum ",
+									"title": "Cloudflare spectrum ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2T3J8PnA7cR4xTHFkPxUU9/461bac855603fa5ae05e5300feb30082/cloudflare-spectrum.svg"
+										},
+										"description": "Shield icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
 					},
 					{
 						"contentfulId": "3YWrEjInFhJAfhYE1wMRIM",
-						"title": "Lower ping times. Faster responses.",
-						"copy": "Players are likely to be globally distributed, and your game server geographically distant from players. This leads to high ping times and suboptimal player experience — in other words, \"lag.\"\n\n__Cloudflare Spectrum vastly cuts down on lag.__ \n\n- By establishing sessions from the players to their closest Cloudflare data center, which proxies your game server, connections are way faster.\n\n- Additionally, traffic over the Cloudflare network is routed faster than the \"best-effort\" Internet. Much like modern navigation apps, Cloudflare learns from the traffic to millions of Internet properties to route traffic using the fastest and most efficient routes in real time. \n\n__Deliver faster player experiences with Cloudflare Spectrum — no matter where they are, or what device they use__.",
+						"title": "Cloudflare Spectrum secures and accelerates your Minecraft server",
+						"copy": "Cloudflare Spectrum is a reverse layer 4 proxy running on the entire Cloudflare global network.\n\nIt extends Cloudflare DDoS mitigation and traffic acceleration to any server connected to the Internet — without any additional hardware or software configurations on your side.\n",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -139,384 +269,667 @@
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3apj6yJSjWQ9DMVqvje89a/377e78c8fd2c6c8d879afb56663f08fc/illustration_cloudflare-for-teams_fast-connections_svg.svg"
+						"image": null,
+						"imageAssetFile": {
+							"id": "5d6120be-8e87-509a-9cd2-c67f8428afc3",
+							"altText": "Cloudflare Spectrum – Minecraft – How it works - illustration",
+							"title": "Cloudflare Spectrum – Minecraft – HOW IT WORKS - illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bK9zMRStZ7F5echTRoguI/ecdb9728f1389c0d8a5a6c6d540ae2b2/How_it_works_Diagram_for_Cloudflare_Spectrum_for_SSH.png"
+								},
+								"description": null
 							},
-							"description": "A series of arrows depicting low lag and fast responses"
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
 						},
-						"imageAssetFile": null,
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "1UDZol0HyRD7KCQnW3AgmA",
-						"title": "Game servers are often targets of DDoS attacks",
-						"copy": "The gaming industry is the most DDoSed industry in the world. Exposing your server's IP address to the Internet leaves you vulnerable to online attacks and can bring your server down. \n\n__Proxy traffic to your Minecraft server behind Cloudflare's %{NetworkCapacity} network and protect your server from DDoS attacks of any kind and size__. ",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": "Protect your server with a best-in-class security solution",
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wdIvZWPDn5dwYqJmpVDfP/c77d9078825e165456affedd0a96ce29/cf_sheild_blue_2x.png"
-							},
-							"description": "Cloudflare logo on a shield"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
+						"imagePosition": true,
+						"imageSize": "large",
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "4ovspPZOH8mPk5SsDLBbzd",
-						"title": "No hardware or software plug-ins necessary",
-						"copy": "We make complex problems easy to solve. You can configure Spectrum with a few clicks right from the dashboard or API. There is no hardware to rack and stack and no software to install. Best yet, the only thing your users experience is faster performance. \n\n__Onboard with Cloudflare Spectrum within minutes and start accelerating and protecting your server right away__.\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rXyFNRk1V4qpNQsDoGBMM/d70cbbe61858476c8203011e2b7ab4f1/illustration_no-network-hardware.svg"
-							},
-							"description": "Illustration of hardware disappearing"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"contentfulId": "rrDckJWSu0z0J86vtUDaM",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "See the latest DDoS trends observed by Cloudflare",
+						"variant": "inline",
 						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1MMaNSdvQfwIFwyEH3JYHI",
+							"elementName": "Cloudflare Spectrum – Minecraft – ADDITIONAL OFFER BLADE - CTA",
+							"standardText": null,
+							"text": "Read the report",
+							"url": "https://blog.cloudflare.com/ddos-threat-report-for-2024-q2",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "2mF3yihFlaLMpOGAnjfjkI",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "tXIE6bvOZ9Cr1vGfGNJgS",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"We wanted to ensure we have a high-quality Cloudflare level of protection to protect our critical communication protocol, and Cloudflare helped us really boost the performance and resiliency of our custom TCP protocols. With other providers, it takes more than 30 seconds to a minute before scrubbing or mitigation takes place. Using Cloudflare, it's much faster.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "CIO, Turtle Entertainment",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "e2ec94e1-5198-59de-ba36-d94e64d7299e",
+								"altText": "8x8",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nG9l7TAuZE0aHfxPGh1rd/0f1fa6e6aad0a54d231f753983caf0db/logo_8x8_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "320b153b-94ff-5d2f-8a97-af10d692025f",
+								"altText": "Applied Systems",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ccFypTv38XuGPWyX4t3mJ/152157e5f3544e7e6ff283a1ed408857/logo_applied-sciences_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f598f8df-db52-5bf1-b683-c9b55d79ffea",
+								"altText": "Canva",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xV3mJg17PDJd4s2gOmd0R/24268d39f36e83d00fbfd1d3bf05d74f/logo_canva_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "237cb76e-9942-5889-be23-901eece16b9a",
+								"altText": "DeliveryHero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1A7PvpqMbRgf25bIFlMRP8/5103cc54c23d69d716fef69fd02b6c3e/logo_delivery-hero_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ca260af0-8f63-5508-90b2-f8a6ba8b10bd",
+								"altText": "EQT",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2X4bbrSiy4xEnXAEqgf1WY/3f6d57ecd670d5adbfe0d067f61ef398/logo_EQT_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ee5ae45e-790a-5349-9e33-f5842aaf5210",
+								"altText": "Indeed",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vIlSpn8aLMYdbNLf2QAVk/606bbdcf8faabd23ee7e2db7b63c9ba3/logo_indeed_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "cd2d3f62-209f-5dad-a75a-cda7831b4fc5",
+								"altText": "Japan Airlines",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/L3DrbVVMwAkPCbHiTb5fN/3cd12946c2d3b5f8106d6dec92a08ed8/featured_logo_japan_airlines_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "18382700-5ac8-5805-b724-95e94acbd883",
+								"altText": "JetBlue Travel Products",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/27YorMcFFA3hbQ88Fgsv50/7a10904f6bfc1802ef8d203a5c8abdc6/logo_jetblue-travel-products_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f1a833c0-bb06-5d58-9fe4-051a30350e74",
+								"altText": "Knauf",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33wforxIaRsKYbxl1fnBpc/9a649de7c9f96154cbb747ddd6ecbf20/logo_knauf_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d15cb740-d67e-5443-b5d1-baac636002ec",
+								"altText": "Mindbody",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dDd4cLdsE3hBx6EZTBimX/a2f71a2356e787c3c0ee3edebd746c25/logo_mindbody_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "91342339-2914-572a-ae7a-3102347b7bdf",
+								"altText": "Werner Enterprises",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AWBiH3Kfe6OT7esKWR9I4/f804cd5bd32d31f7ecc51c47b33cd47d/logo_werner_enterprises_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "1fa3eb14-5ca6-5892-8a0d-6397cefdfc5a",
+								"altText": "Ziff Media",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h4ORr4AcL2kOW0Va6Q6dh/c253afc9b0bf1587ca8fa8698e6cdad5/logo_ziff-davis_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "4Y0CYe9YcRFXRWLEqxKbyh",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": " Cloudflare Spectrum secures and accelerates Minecraft servers to ensure they stay online and that players have the best possible experience",
+						"eyebrowHeading": "Top Cloudflare Spectrum for Minecraft use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Two Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4F7pvc5RmrDkUsoSADyi7b",
+								"title": "Stop chronic DDoS attacks",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Gaming is a heavily DDoSed industry, but Cloudflare can mitigate even the largest DDoS attacks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
+									"altText": "Security shield ddos protection blue",
+									"title": "Security shield ddos protection blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
+										},
+										"description": "Shield icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1CHcgDkT8XTISP7eRyh4J5",
+								"title": "Decrease lag",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Deliver content via the Cloudflare global network to serve players anywhere in the world.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
+									"altText": "Internet globe orange",
+									"title": "Internet globe orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "3Pmc1595blOLWGcJNNz8OU",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://www.cloudflare.com/gaming/\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/gaming/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "4yzQV1p3edmjkJkZJkOrEX",
+						"title": "Helping organizations worldwide protect their TCP/UDP apps",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "3fP4rjuOjXs3NjayopOnOY",
+							"elementName": "Cloudflare Spectrum – Minecraft – LINK TO CASE STUDIES - CTA",
+							"standardText": null,
+							"text": "View case studies",
+							"url": "https://www.cloudflare.com/case-studies/?product=Spectrum",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "4XgZ2MmpR7hacMVVTWFRlg",
-						"htmlContent": "  <div class=\"overflow-x-scroll\">\n  <section id=\"pricing-details\" class=\"pv5 minw-700px\">\n    <h2 class=\"fw7 f5 f6-l tc mt5 mb6\">Cloudflare Spectrum – Availability by plan</h2>\n    <div class=\"js-plans-detail-nav w-100 mw9 ph2 center\">\n      <div class=\"flex flex-row mw9 center items-end bg-white bl br b--transparent\">\n        <div class=\"w-third w-third-m w-third-l\">\n          <h3 class=\"fw7 f4 lh-title ls5 brandGray5\">Protocol</h3>\n        </div>\n        <div class=\"w-two-thirds flex flex-row\">\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <!--\n                NOTE: With the pricing commented out, this looks\n                weird aligned left, so I added `tc` to align center.\n                If you un-comment the pricing, remove `tc` as well\n              -->\n              <h3 class=\"fw7 f5 f6-l mv0 brandGray5 tc\">Pro</h3>\n              <!--<p class=\"fw7 f5 lh-title ls4 mt3 mb0\">\n                $20/mo\n              </p>-->\n            </div>\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l br1 br--top js-plans-detail-nav-item\">\n              <!--\n                NOTE: With the pricing commented out, this looks\n                weird aligned left, so I added `tc` to align center.\n                If you un-comment the pricing, remove `tc` as well\n              -->\n              <h3 class=\"fw7 f5 f6-l mv0 brandGray5 tc\">Business</h3>\n              <!--<p class=\"fw7 f5 lh-title ls4 mt3 mb0\">\n                $20/mo\n              </p>-->\n            </div>\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <!--\n                NOTE: With the pricing commented out, this looks\n                weird aligned left, so I added `tc` to align center.\n                If you un-comment the pricing, remove `tc` as well\n              -->\n              <h3 class=\"fw7 f5 f6-l mv0 brandGray5 tc\">Enterprise</h3>\n              <!--<p class=\"fw7 f5 lh-title ls4 mt3 mb0\">\n                $20/mo\n              </p>-->\n            </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/ssh/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">SSH</a>\n          </div>\n        </div>\n\n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">5GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">10GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                    <img src=\"/img/icons/green/check.svg\">\n              </div>\n        </div>\n      </div>    \n    </div>\n\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/rdp/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">RDP</a>\n          </div>\n        </div>\n\n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">10GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                    <img src=\"/img/icons/green/check.svg\">\n              </div>\n        </div>\n      </div>    \n    </div>\n\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/minecraft/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">Minecraft</a>\n          </div>\n        </div>\n\n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">5GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">10GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                    <img src=\"/img/icons/green/check.svg\">\n              </div>\n        </div>\n      </div>    \n    </div>\n\n        <div class=\"ph2 flex-row mw9 center items-center\">\n          <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n            <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n              <div class=\"w-two-thirds\">\n                <a href=\"https://www.cloudflare.com/application-services/products/cloudflare-spectrum/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">All other TCP/UDP protocols</a>\n              </div>\n            </div>\n\n            <div class=\"w-two-thirds flex flex-row tc\">\n                  <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                  </div>\n                  <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex\">\n                  </div>\n                  <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                        <img src=\"/img/icons/green/check.svg\">\n                  </div>\n            </div>\n          </div>    \n        </div>\n\n    <div class=\"js-plans-detail-nav w-100 mw9 ph2 center\">\n      <div class=\"flex flex-row mw9 center items-end bg-white bl br b--transparent\">\n        <div class=\"w-third w-third-m w-third-l\">\n        </div>\n        <div class=\"w-two-thirds flex flex-row\">\n            <div class=\"w-third-l w-100 pa3 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <a href=\"https://dash.cloudflare.com/sign-up?pt=p\" class=\"button-framework-sm mw-100 mw-100-l bg-orange white db center fw4 center db\" data-tracking-category=\"pro-Get Started Btn\" data-tracking-action=\"click\" data-tracking-label=\"Get Started-https://dash.cloudflare.com/sign-up?pt=p\">Get Started</a>\n            </div>\n            <div class=\"w-third-l w-100 pa3 db-l br1 br--top js-plans-detail-nav-item\">\n              <a href=\"https://dash.cloudflare.com/sign-up?pt=b\" class=\"button-framework-sm mw-100 mw-100-l bg-orange white db center fw4 center db\" data-tracking-category=\"business-Get Started Btn\" data-tracking-action=\"click\" data-tracking-label=\"Get Started-https://dash.cloudflare.com/sign-up?pt=b\">Get Started</a>\n            </div>\n            <div class=\"w-third-l w-100 pa3 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <a href=\"/plans/enterprise/demo/\" class=\"button-framework-sm mw-100 mw-100-l bg-orange white db center fw4 center\" data-tracking-category=\"enterprise-Request Demo Btn\" data-tracking-action=\"click\" data-tracking-label=\"Request Demo-/plans/enterprise/demo/\">Request Demo</a>\n            </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n<br>\n\n<hr></hr>",
+						"htmlContent": "  <div class=\"overflow-x-scroll\">\n  <section id=\"pricing-details\" class=\"pv5 minw-700px\">\n    <h2 class=\"fw7 f5 f6-l tc mt5 mb6\">Cloudflare Spectrum – Availability by plan</h2>\n    <div class=\"js-plans-detail-nav w-100 mw9 ph2 center\">\n      <div class=\"flex flex-row mw9 center items-end bg-white bl br b--transparent\">\n        <div class=\"w-third w-third-m w-third-l\">\n          <h3 class=\"fw7 f4 lh-title ls5 brandGray5\">Protocol</h3>\n        </div>\n        <div class=\"w-two-thirds flex flex-row\">\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <!--\n                NOTE: With the pricing commented out, this looks\n                weird aligned left, so I added `tc` to align center.\n                If you un-comment the pricing, remove `tc` as well\n              -->\n              <h3 class=\"fw7 f5 f6-l mv0 brandGray5 tc\">Pro</h3>\n              <!--<p class=\"fw7 f5 lh-title ls4 mt3 mb0\">\n                $20/mo\n              </p>-->\n            </div>\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l br1 br--top js-plans-detail-nav-item\">\n              <!--\n                NOTE: With the pricing commented out, this looks\n                weird aligned left, so I added `tc` to align center.\n                If you un-comment the pricing, remove `tc` as well\n              -->\n              <h3 class=\"fw7 f5 f6-l mv0 brandGray5 tc\">Business</h3>\n              <!--<p class=\"fw7 f5 lh-title ls4 mt3 mb0\">\n                $20/mo\n              </p>-->\n            </div>\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <!--\n                NOTE: With the pricing commented out, this looks\n                weird aligned left, so I added `tc` to align center.\n                If you un-comment the pricing, remove `tc` as well\n              -->\n              <h3 class=\"fw7 f5 f6-l mv0 brandGray5 tc\">Enterprise</h3>\n              <!--<p class=\"fw7 f5 lh-title ls4 mt3 mb0\">\n                $20/mo\n              </p>-->\n            </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/ssh/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">SSH</a>\n          </div>\n        </div>\n\n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">5GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">10GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                    <img src=\"/img/icons/green/check.svg\">\n              </div>\n        </div>\n      </div>    \n    </div>\n\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/rdp/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">RDP</a>\n          </div>\n        </div>\n\n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">10GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                    <img src=\"/img/icons/green/check.svg\">\n              </div>\n        </div>\n      </div>    \n    </div>\n\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/minecraft/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">Minecraft</a>\n          </div>\n        </div>\n\n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">5GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">10GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                    <img src=\"/img/icons/green/check.svg\">\n              </div>\n        </div>\n      </div>    \n    </div>\n\n        <div class=\"ph2 flex-row mw9 center items-center\">\n          <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n            <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n              <div class=\"w-two-thirds\">\n                <a href=\"https://www.cloudflare.com/application-services/products/cloudflare-spectrum/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">All other TCP/UDP protocols</a>\n              </div>\n            </div>\n\n            <div class=\"w-two-thirds flex flex-row tc\">\n                  <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                  </div>\n                  <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex\">\n                  </div>\n                  <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                        <img src=\"/img/icons/green/check.svg\">\n                  </div>\n            </div>\n          </div>    \n        </div>\n\n    <div class=\"js-plans-detail-nav w-100 mw9 ph2 center\">\n      <div class=\"flex flex-row mw9 center items-end bg-white bl br b--transparent\">\n        <div class=\"w-third w-third-m w-third-l\">\n        </div>\n        <div class=\"w-two-thirds flex flex-row\">\n            <div class=\"w-third-l w-100 pa3 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <a href=\"https://dash.cloudflare.com/sign-up?pt=p\" class=\"button-framework-sm mw-100 mw-100-l bg-orange white db center fw4 center db\" data-tracking-category=\"pro-Get Started Btn\" data-tracking-action=\"click\" data-tracking-label=\"Get Started-https://dash.cloudflare.com/sign-up?pt=p\">Get Started</a>\n            </div>\n            <div class=\"w-third-l w-100 pa3 db-l br1 br--top js-plans-detail-nav-item\">\n              <a href=\"https://dash.cloudflare.com/sign-up?pt=b\" class=\"button-framework-sm mw-100 mw-100-l bg-orange white db center fw4 center db\" data-tracking-category=\"business-Get Started Btn\" data-tracking-action=\"click\" data-tracking-label=\"Get Started-https://dash.cloudflare.com/sign-up?pt=b\">Get Started</a>\n            </div>\n            <div class=\"w-third-l w-100 pa3 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <a href=\"/plans/enterprise/demo/\" class=\"button-framework-sm mw-100 mw-100-l bg-orange white db center fw4 center\" data-tracking-category=\"enterprise-Request Demo Btn\" data-tracking-action=\"click\" data-tracking-label=\"Request Demo-/plans/enterprise/demo/\">Request Demo</a>\n            </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n<br>\n",
 						"htmlId": null
 					},
 					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "https://www.cloudflare.com/case-studies/",
-						"sectionPadding": null,
+						"contentfulId": "7msedyhMnn53xrBL98TSf4",
 						"backgroundColor": "white",
-						"title": "Trusted by millions of Internet properties",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
 						"copy": null,
-						"logoList": [
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ovo10a1mEsAZ7ZwFKfFl/d0d561ddb71ecdb723357bb2f79bc979/logo_mars_gray_32px-wrapper.svg"
+								"contentTypeId": "feature",
+								"contentfulId": "4F0DaJwGznVmTLzJFMph08",
+								"title": " Cloudflare for Gaming",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "With Cloudflare, your gamers benefit from fast, global network and application performance with low latency. Learn how Cloudflare helps game developers and organizations of all sizes.",
+								"learnMoreUrl": "https://cfl.re/4cYAiW4",
+								"learnMoreText": "Get solution brief",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "Mars logo"
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/75Iu2nwjYyY5rckEPqO9hr/57b676a2cf5fe6c1e2b3663d7131fda5/logo_loreal_gray_32px-wrapper.svg"
+								"contentTypeId": "feature",
+								"contentfulId": "4dg8ZiEBxLXUp7fnyRGKI",
+								"title": "How Cloudflare Spectrum works",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how Spectrum integrates with Cloudflare's security suite to protect and accelerate TCP and UDP applications.",
+								"learnMoreUrl": "https://blog.cloudflare.com/spectrum/  ",
+								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "L'Oreal logo"
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Gps1TUuUvlobFOEXbnJlI/df914dce0414a8cfccb70c090f271304/logo_doordash_gray_32px-wrapper.svg"
+								"contentTypeId": "feature",
+								"contentfulId": "7NMnYdZ8h7NmcWPYwbm9X",
+								"title": "Securing gaming and gambling",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Read our guide to securing against DDoS attacks to learn how botnets are changing the DDoS game, how DDoS attacks can threaten your revenue and reputation, and what you can do to prevent DDoS attacks from impacting player experiences.",
+								"learnMoreUrl": "/lp/ddos-defense-for-gaming-and-gambling-wp/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "Doordash logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67NI5PUHwR6yUSWHGPL1rM/1a2179da46b2df3eb6d8c4435bafeaa4/logo_garmin_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mAzLb3ofkkG38jtcP2Ys8/094958a88df30575d79254ee6615a82f/logo_ibm_gray_32px-wrapper.svg"
-								},
-								"description": "IBM logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
-								},
-								"description": "Shopify logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
-								},
-								"description": "LabCorp logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26kszL2y2X7zTR2edZPDUY/1a9d00bc8c441346e6dd06bd82204972/logo_ncr_gray_32px-wrapper.svg"
-								},
-								"description": "NCR logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-								},
-								"description": "Thomson Reuters logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YRPa33UFrfL2zoZd2AXTq/658995f16c7ee4818875c254c18573d3/logo_zendesk_gray_32px-wrapper.svg"
-								},
-								"description": null
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
-						],
-						"logoListAssetFile": [
-							{
-								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
-								"altText": "Logo mars trusted by gray",
-								"title": "Logo mars trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xar1H4WcFHHkHRDzMypMh/1f8989ae11cb464cc640c7121d0be9a6/logo_mars_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
-								"altText": "Logo loreal trusted by gray",
-								"title": "Logo loreal trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xn47h0gWiUSwJ0PU3Ysvk/683779108bfd6eeb62fbac5135780fe6/logo_loreal_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
-								"altText": "Logo doordash trusted by gray",
-								"title": "Logo doordash trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fy2mc73AF9xqD18C5760R/f46ab68d38c9adb30a639f69589d8af0/doordash_134.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
-								"altText": "Logo garmin trusted by gray",
-								"title": "Logo garmin trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VUhUMEcvn3L3j88LttHzC/b2cf2b702aad874db9cb61b0028e9c40/logo_garmin_trusted-by_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
-								"altText": "Logo ibm trusted by gray",
-								"title": "Logo ibm trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OMwO1Fr8BxHVum0iBbatc/979c1807f5810edc903d4b07c18e0cb0/logo_ibm_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
-								"altText": "Logo 23andme trusted by gray",
-								"title": "Logo 23andme trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
-								"altText": "Logo shopify trusted by gray",
-								"title": "Logo shopify trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
-								"altText": "Logo lending tree trusted by gray",
-								"title": "Logo lending tree trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
-								"altText": "Logo labcorp trusted by gray",
-								"title": "Logo labcorp trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "d20283f3-6fa3-50d0-91a1-715d8d303897",
-								"altText": "Logo ncr trusted by gray",
-								"title": "Logo ncr trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26kszL2y2X7zTR2edZPDUY/1a9d00bc8c441346e6dd06bd82204972/logo_ncr_gray_32px-wrapper.svg"
-									},
-									"description": "NCR logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
-								"altText": "Logo thomson reuters trusted by gray",
-								"title": "Logo thomson reuters trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-									},
-									"description": "Thomson Reuters logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7b63d2ac-0e8f-5b5b-aeab-27b7128928e8",
-								"altText": "Logo zendesk trusted by gray",
-								"title": "Logo zendesk trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YRPa33UFrfL2zoZd2AXTq/658995f16c7ee4818875c254c18573d3/logo_zendesk_gray_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							}
-						],
-						"logoUrlList": null
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "3CcXKdTYMuxrID0JBgEkQG",
+						"title": "Get Cloudflare Spectrum for your Minecraft server",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "6TbmTS6otG9PXXKyameBke",
+							"elementName": "Cloudflare Spectrum – Minecraft – ENABLEMENT BLADE - CTA",
+							"standardText": null,
+							"text": "Sign up",
+							"url": "https://dash.cloudflare.com/sign-up",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
