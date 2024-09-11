@@ -1,10 +1,17 @@
 # @cloudflare/component-code-block
 
+## 5.0.36
+
+### Patch Changes
+
+- d2c5a9626f: chore: no-op bump & publish due to broken publishing
+
 ## 5.0.35
 
 ### Patch Changes
 
-- @cloudflare/component-button@8.5.3
+- 67aef7c51d: feat: add `style` & `darkMode` props to CodeBlock to allow control over styling.
+  - @cloudflare/component-button@8.5.3
 
 ## 5.0.34
 
