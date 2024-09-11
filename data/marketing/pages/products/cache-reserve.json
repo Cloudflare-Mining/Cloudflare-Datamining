@@ -121,6 +121,127 @@
 						"imageAssetFile": null
 					},
 					{
+						"contentfulId": "39ZVIjZ57DjRCnj051Gmz3",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": " BENEFITS OF CLOUDFLARE CACHE RESERVE",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6RIS6jiumkuPwuPqIxjUF5",
+								"title": "Increased cache hits",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Improve your cache hit ratios by storing long tail content from the [Cloudflare CDN](https://www.cloudflare.com/application-services/products/cdn/).",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
+									"altText": "internet globe",
+									"title": "internet globe",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
+										},
+										"description": "Orange icon of a globe"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7i7cEjDlwRH8HCph4051LD",
+								"title": "Faster performance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Shield your origin servers from unnecessary, voluminous requests to ensure faster performance and a smoother user experience.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+										},
+										"description": "Performance acceleration rocket orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3DLfJTlQPfpzq05l3n15tm",
+								"title": "Affordable, consistent pricing",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Maximize your savings by limiting unnecessary cache data evictions and eliminating associated egress costs.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
+									"altText": "Price",
+									"title": "Price",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
 						"contentfulId": "6VOlhBYXqSDQXuc08MSFCC",
 						"title": "Serve static content faster from our global CDN",
 						"copy": "Cloudflare Cache Reserve is a large, persistent data store built on [R2](https://www.cloudflare.com/developer-platform/r2/) — our global, S3-compatible object storage service.\n\nBy serving static content from the edge of our global network, Cache Reserve helps increase cache hit ratios, speed up load times for end users, and minimize unnecessary egress fees.\n",
