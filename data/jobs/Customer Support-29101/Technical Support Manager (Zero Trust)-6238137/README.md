@@ -5,60 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin or Remote US<strong><br><br>About The Role</strong></p>
-<p>We announced Cloudflare Workers in 2017&nbsp; — since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support.</p>
-<p>Workers has grown from a simple functions-as-a-service option into a complete full-stack platform — and with this comes the need to support a broader set of <a href="https://developers.cloudflare.com/workers/runtime-apis/">Runtime APIs</a>. This spans a wide range, from TC39 standards, to Node.js APIs, to web standards. We played a key role in forming <a href="https://wintercg.org/">WinterCG</a>, and there’s still much work to do to grow a shared base of APIs across runtimes — to push forward the ecosystem and ease the burden on open-source maintainers of supporting multiple runtimes.</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Available Locations:</strong> Lisbon or Remote Portugal, London or Remote UK</p>
+<p>&nbsp;</p>
+<p><strong>About the Department</strong></p>
+<p>The Cloudflare Customer Support team solves complicated problems and answers technical inquiries via phone, email, chat and social media. Whether it is a blogger using our free services or a global 2000 large enterprise business with petabytes of web traffic, our team is always eager to assist. At Cloudflare our Global Customer Support organization works directly with customers to ensure a world-class level of technical support for all our products and services. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world cases back to the rest of the company - to help build better services and future product development.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>What you'll do</strong></p>
+<p>As a Technical Support Manager at Cloudflare overseeing one of our Premium Support specialist skills teams you will be expected to provide best in class support to our customers and partners. This will involve building, developing and leading a team of Technical Support Engineers, specializing in our Zero Trust solutions from Cloudflare. You would also be part of the EMEA regional support management team helping drive business change and customer service improvements.</p>
+<p>Your responsibilities will include:</p>
 <ul>
-	<li>Drive the strategy and roadmap for JavaScript APIs in the Cloudflare Workers Runtime</li>
-	<li>Lead new APIs from ideation through launch, and continuing through ongoing maintenance and support</li>
-	<li>Guide teams both internal and external on developing new JavaScript APIs in Workers, including first-party Cloudflare products and external libraries seeking to increase compatibility</li>
-	<li>Develop and nurture key external relationships with open-source maintainers, and ensure their needs are heard and acted on</li>
-	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
-	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
-	<li>Represent the company externally as needed, including meetings with customers, speaking at external events, participating in WinterCG and more.</li>
-	<li>&nbsp;</li>
+	<li>coach and develop a team of support engineers to excel at their jobs</li>
+	<li>consistently achieve operational performance KPI's &amp; quality levels</li>
+	<li>participate in global and regional continuous improvement projects</li>
+	<li>plan staffing and scheduling to ensure full service coverage&nbsp;</li>
+	<li>source and hire outstanding technical talent&nbsp;</li>
+	<li>help build individual career plans for engineers</li>
+	<li>act as a effective point of escalation for complex customer issues</li>
+	<li>collaborate closely with internal colleagues across departments</li>
+	<li>perform duty manager shifts including occasional weekends</li>
 </ul>
-<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
-<p>The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment.&nbsp;</p>
-<p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
+<p>Examples of desirable skills, knowledge and experience</p>
 <ul>
-	<li>Proven track record of shipping developer-facing products from ideation to launch, 3+ years of professional experience working on technology products</li>
-	<li>Strong knowledge of JavaScript, the NPM ecosystem, and web standards. You have built things in JavaScript and enjoy immersing yourself in the JavaScript community, engaging with new standards, libraries, and frameworks</li>
-	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
-	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
-	<li>A desire to sweat the details and ship great developer experiences</li>
-	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
+	<li>proven experience working in a high performance team environment</li>
+	<li>strong technical background or support related work advantageous</li>
+	<li>interest and aptitude for leading a team of specialist support engineers</li>
+	<li>excellent communication skills &amp; ability to inspire &amp; motivate others</li>
+	<li>experience in hiring and coaching support engineers</li>
+	<li>ability to meet and exceed operational goals</li>
+	<li>ability to thrive in a fast-paced, dynamic environment</li>
+	<li>natural desire to help build the best support team in the industry!</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
