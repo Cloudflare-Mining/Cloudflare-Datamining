@@ -3035,6 +3035,8 @@
 		"egressTunnelName": "GRE, IPSec or CNIec Egress Tunnel name for Magic WAN and Magic Transit traffic",
 		"ingressTunnelID": "GRE, IPSec or CNI Ingress Tunnel ID for Magic WAN and Magic Transit traffic",
 		"ingressTunnelName": "GRE, IPSec or CNI Ingress Tunnel name for Magic WAN and Magic Transit traffic",
+		"offRamp": "Offramp method for Magic WAN and Magic Transit traffic - GRE, IPSec, CNI, Warp, Cloudflared",
+		"onRamp": "Onramp method for Magic WAN and Magic Transit traffic - GRE, IPSec, CNI, Warp, Cloudflared",
 		"tunnelName": "Tunnel device name"
 	},
 	"AccountMagicTransitTunnelTrafficAdaptiveGroupsFilter_InputObject": {
@@ -4113,7 +4115,11 @@
 	},
 	"AccountTurnstileAdaptiveGroupsDimensions": {
 		"__description": "",
-		"action": "The action tag of the challenge event",
+		"action": "The action tag tied to that challenge event",
+		"asn": "ASN tied to that Turnstile event",
+		"browserMajor": "Major version of the browser tied to that Turnstile event",
+		"browserName": "Browser name tied to that Turnstile event",
+		"countryCode": "2 character country code tied to that Turnstile event",
 		"date": "The date the challenge event was emitted",
 		"datetime": "The date and time the challenge event was emitted",
 		"datetimeDay": "The date and time the challenge event was emitted truncated to the day",
@@ -4123,7 +4129,13 @@
 		"datetimeHour": "The date and time the challenge event was emitted truncated to the hour",
 		"datetimeMinute": "The date and time the challenge event was emitted truncated to the minute",
 		"eventType": "The type of the Cloudflare Turnstile event",
-		"siteKey": "The sitekey of the widget associated with the event"
+		"hostname": "Hostname tied to that Turnstile event",
+		"ipv4": "IPv4 tied to that Turnstile event",
+		"ipv6": "IPv6 tied to that Turnstile event",
+		"osMajor": "Major version of the OS tied to that Turnstile event",
+		"osName": "OS name tied to that Turnstile event",
+		"siteKey": "The sitekey of the widget associated with the event",
+		"userAgent": "User agent tied to that Turnstile event"
 	},
 	"AccountTurnstileAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -5241,7 +5253,7 @@
 		"ipCount": "Number of distinct IPs"
 	},
 	"ZoneDnsAnalyticsAdaptive": {
-		"__description": "Analytics data for DNS queries (currently, only Foundation DNS zones are supported)",
+		"__description": "Analytics data for DNS queries",
 		"coloName": "IATA airport code of the data center that processed the query",
 		"date": "Date on which the query was received",
 		"datetime": "Time at which the query was received",
@@ -5263,7 +5275,7 @@
 		"__description": ""
 	},
 	"ZoneDnsAnalyticsAdaptiveGroups": {
-		"__description": "Analytics data for DNS queries (currently, only Foundation DNS zones are supported)",
+		"__description": "Analytics data for DNS queries",
 		"avg": "Average of a metric per dimension",
 		"count": "Number of queries per dimension",
 		"dimensions": "List of dimensions to group by",
@@ -7259,8 +7271,8 @@
 		"cacheReserveStorageAdaptiveGroups": "Beta. Cache Reserve storage with adaptive sampling",
 		"dmarcReportsAdaptive": "Dmarc report records with adaptive sampling",
 		"dmarcReportsSourcesAdaptiveGroups": "Aggregated dmarc reports by sources logs with adaptive sampling",
-		"dnsAnalyticsAdaptive": "Analytics data for DNS queries (currently, only Foundation DNS zones are supported)",
-		"dnsAnalyticsAdaptiveGroups": "Analytics data for DNS queries (currently, only Foundation DNS zones are supported)",
+		"dnsAnalyticsAdaptive": "Analytics data for DNS queries",
+		"dnsAnalyticsAdaptiveGroups": "Analytics data for DNS queries",
 		"emailRoutingAdaptive": "Beta. Raw email routing logs with adaptive sampling",
 		"emailRoutingAdaptiveGroups": "Beta. Aggregated email routing logs with adaptive sampling",
 		"firewallEventsAdaptive": "Raw Firewall events with adaptive sampling",
