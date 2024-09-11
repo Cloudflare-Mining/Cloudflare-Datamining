@@ -1,0 +1,40 @@
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QchhuiBpH2stv3DfpsRFe/21a63a2f2f425da1091356ab78ff1952/image4.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Today, we’re excited to expand <a href="https://blog.cloudflare.com/unified-risk-posture"><u>our recent Unified Risk Posture announcement</u></a> with more information on our latest integrations with <a href="https://www.crowdstrike.com"><u>CrowdStrike</u></a>. We <a href="https://blog.cloudflare.com/unified-risk-posture"><u>previously shared</u></a> that our CrowdStrike Falcon Next-Gen SIEM integration allows for deeper analysis and further investigations by unifying first- and third-party data, native threat intelligence, AI, and workflow automation to allow your security teams to focus on work that matters.</p>
+	<p>This post explains how Falcon Next-Gen SIEM allows customers to identify and investigate risky user behavior and analyze data combined with other log sources to uncover hidden threats. By combining Cloudflare and CrowdStrike, organizations are better equipped to manage risk and decisively take action to stop cyberattacks.</p>
+	<p>By leveraging the combined capabilities of Cloudflare and CrowdStrike, organizations combine Cloudflare’s email security and zero trust logging capabilities with CrowdStrike’s dashboards and custom workflows to get better visibility into their environments and remediate potential threats. Happy Cog, a full-service digital agency, currently leverages the integration. Co-Founder and President Matthew Weinberg said: 'The integration of Cloudflare’s robust Zero Trust capabilities with CrowdStrike Falcon Next-Gen SIEM enables organizations to gain a more comprehensive view of the threat landscape and take action to mitigate both internal and external risks posed by today’s security challenges.'</p>
+	<h3>Cloudflare Email Security with Falcon Next-Gen SIEM</h3>
+	<p>With <a href="https://developers.cloudflare.com/email-security"><u>Cloudflare Email Security’s</u></a> configurable policies, organizations can now push indicators of compromise (IoC) alerts to Falcon Next-Gen SIEM, notifying analysts about suspicious activity, such as a user engaging with a phishing email. By proactively alerting analysts when suspicious activity is detected, Cloudflare and CrowdStrike can provide early detection of account compromises or insider threats.</p>
+	<h3>Cloudflare Zero Trust Logs with Falcon Next-Gen SIEM</h3>
+	<p>We are also integrating <a href="https://developers.cloudflare.com/cloudflare-one"><u>Cloudflare’s Zero Trust</u></a> platform with Falcon Next-Gen SIEM. This allows our mutual customers to push Cloudflare Zero Trust logs from Cloudflare Access and Cloudflare Gateway to Falcon Next-Gen SIEM for better visualization, analysis, and remediation. This integration allows Cloudflare logs to be used to customize and enhance Falcon Next-Gen SIEM detections and trigger CrowdStrike workflows to automatically configure a response action. An example workflow: based on a new detection of a user’s access request being deemed fraudulent, or if a user is engaging with risky websites, the Falcon platform can trigger Cloudflare to move users to affected user groups and apply adaptive access control policies, such as access isolating or quarantining the user.</p>
+	<h3>How To Get Started</h3>
+	<p>To connect Cloudflare Zero Trust logs, start with the Falcon Next-Gen SIEM module. Navigate to the Data Connectors tab of your Falcon Next-Gen SIEM dashboard and select the Cloudflare Data Connector.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68WBQjl9Y4v8FFZQ8GD7gd/3398db8df35df7d01cdb7a5e1c777380/image3.png" alt="" class="kg-image" width="1999" height="818" loading="lazy">
+	</figure>
+	<p>Give the connector a name and select “Save”, and you will receive two pieces of information: an API key and an API URL. Be sure to make note of the key, as it will only be shown once.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VqTqVgB9mf3CHeYomnfkP/0418a892000285ba9e4f75525dc72347/image1.png" alt="" class="kg-image" width="1698" height="636" loading="lazy">
+	</figure>
+	<p>Next, in Cloudflare, create an <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/http"><u>HTTP logpush job via API</u></a>, and format the "destination_conf" field as follows:</p>
+	<p><code>"destination_conf": "&lt;API URL&gt;?header_Authorization=Bearer%20&lt;API KEY&gt;&amp;tags=&lt;ZONE&gt;,dataset:&lt;DATASET&gt;"</code></p>
+	<p>Note:&nbsp;</p>
+	<ul>
+		<li>
+			<p>&lt;ZONE&gt; is optional for account-level logpush jobs&nbsp;</p>
+		</li>
+		<li>
+			<p>&lt;DATASET&gt; follows a dot delimited syntax, so <code>http_requests</code>&nbsp;becomes <code>http.requests</code></p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hWaxWcelja9tY4q6ZSRwT/745e69856b5116e35df791a42d997244/image2.png" alt="" class="kg-image" width="1999" height="716" loading="lazy">
+	</figure>
+	<p>Once the job is created and active, you will start to see events populating in the My Connectors section of your Falcon dashboard. Once Cloudflare data is populated in Falcon Next-Gen SIEM, you can now search events and create Falcon Fusion SOAR automation workflows and correlation rules, all based on Cloudflare log events.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7g7PFWfKkHyT8gtKjROCbB/b443b6d26714b3c3451386b61ecd4478/image5.png" alt="" class="kg-image" width="1999" height="898" loading="lazy">
+	</figure>
+	<h3>In Summary</h3>
+	<p>Together, CrowdStrike and Cloudflare’s shared telemetry will further decrease the mean time to containment and expedite any organization’s ability to decisively respond to risks within their environment. The two platforms work together as one, allowing organizations to block suspicious activity and deliver high-fidelity alerts to security analysts for further investigation.</p>
+	<p>To learn more about these integrations, feel free to <a href="https://www.cloudflare.com/zero-trust/trial"><u>reach out to us</u></a> to get started with a consultation. We can discuss your existing environment and ensure that you are best equipped to achieve better visibility and remediation in the face of emerging threats.</p>
+</div>
