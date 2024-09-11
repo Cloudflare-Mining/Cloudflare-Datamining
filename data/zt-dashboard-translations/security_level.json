@@ -1,5 +1,0 @@
-{
-	"description": "Adjust your website's Security Level to determine which visitors will receive a challenge page.",
-	"help": "#### What Security Level should I select?\nThe Security Level you choose will determine which visitors will be presented with a challenge page. We recommend starting out at Medium.\n\n- **Essentially off:** Challenges only the most grievous offenders\n- **Low:** Challenges only the most threatening visitors\n- **Medium:** Challenges both moderate threat visitors and the most threatening visitors\n- **High:** Challenges all visitors that have exhibited threatening behavior within the last 14 days\n- **I'm Under Attack!:**  Should only be used if your website is under a DDoS attack\n  - Visitors will receive an interstitial page while we analyze their traffic and behavior to make sure they are a legitimate human visitor trying to access your website\n\n**Note:** I'm Under Attack! may affect some actions on your domain. For example, it may block access to your API. You can set a custom security level for any part of your domain using Page Rules.",
-	"title": "Security Level"
-}
