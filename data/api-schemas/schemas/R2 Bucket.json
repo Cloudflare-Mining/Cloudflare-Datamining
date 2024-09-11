@@ -1973,8 +1973,7 @@
 					"schema": {
 						"example": {
 							"domain": "prefix.example-domain.com",
-							"zoneId": "36ca64a6d92827b8a6b90be344bb1bfd",
-							"zoneName": "example-domain.com"
+							"zoneId": "36ca64a6d92827b8a6b90be344bb1bfd"
 						},
 						"properties": {
 							"domain": {
@@ -1984,6 +1983,16 @@
 							"enabled": {
 								"description": "Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.",
 								"type": "boolean"
+							},
+							"minTLS": {
+								"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.",
+								"enum": [
+									"1.0",
+									"1.1",
+									"1.2",
+									"1.3"
+								],
+								"type": "string"
 							},
 							"zoneId": {
 								"description": "Zone ID of the custom domain",
@@ -2444,12 +2453,23 @@
 				"application/json": {
 					"schema": {
 						"example": {
-							"enabled": true
+							"enabled": true,
+							"minTLS": "1.2"
 						},
 						"properties": {
 							"enabled": {
 								"description": "Whether to enable public bucket access at the specified custom domain",
 								"type": "boolean"
+							},
+							"minTLS": {
+								"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to previous value.",
+								"enum": [
+									"1.0",
+									"1.1",
+									"1.2",
+									"1.3"
+								],
+								"type": "string"
 							}
 						},
 						"type": "object"
