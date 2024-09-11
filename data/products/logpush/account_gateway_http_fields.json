@@ -24,6 +24,8 @@
 	"IsIsolated": "bool; If the requested was isolated with Cloudflare Browser Isolation or not.",
 	"PolicyID": "string; The gateway policy UUID applied to the request, if any.",
 	"PolicyName": "string; The name of the gateway policy applied to the request, if any.",
+	"PrivateAppAUD": "string; The private app AUD, if any.",
+	"Quarantined": "bool; If the request content was quarantined.",
 	"Referer": "string; Contents of the referer header in the HTTP request.",
 	"RequestID": "string; Cloudflare request ID. This might be empty on bypass action.",
 	"SessionID": "string; Network session ID.",
