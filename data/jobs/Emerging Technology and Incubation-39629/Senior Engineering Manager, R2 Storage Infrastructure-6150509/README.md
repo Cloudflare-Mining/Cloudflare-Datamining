@@ -5,8 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3>Position Locations: Austin, TX | San Francisco, CA | Washington DC</h3>
-<h3>About R2 Storage</h3>
+<h3>Position Locations: Austin, TX | New York, NY | Remote US</h3>
+<h3><span style="font-size: 14px;">About R2 Storage</span></h3>
 <p>Cloudflare R2 Storage allows developers to store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services. Our customers–both internal and external–bring a wide variety of workloads that we enable. We're looking for an Engineering Manager to help us continue achieving those goals.</p>
 <h3 id="SeniorEngineeringManagerR2StorageInfrastructureAustin,TX/RemoteUS-Whatyou'lldo"><strong>What you'll do</strong></h3>
 <p>You will lead a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
