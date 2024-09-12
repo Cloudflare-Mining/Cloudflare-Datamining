@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: D => (0, e.z1)(_.Mr)(D) && (0, R.z7)(D) && !!(0, R.z$)(D).length
+		hasPermission: D => (0, e.z1)(_.Mr)(D) && (0, j.z7)(D) && !!(0, j.z$)(D).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -179,7 +179,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: B.T
+		hasPermission: R.T
 	}, {
 		title: "account.home",
 		url: "/",
@@ -546,7 +546,7 @@ const navigation = {
 			title: "navigation.account.audit_log",
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
-			hasPermission: D => (0, h.b)(D) ? (0, a.iY)(D) : (0, r.Yj)(D)("auditlogs").read
+			hasPermission: D => (0, C.b)(D) ? (0, a.iY)(D) : (0, r.Yj)(D)("auditlogs").read
 		}, {
 			title: "navigation.account.billing",
 			url: "/billing",
@@ -655,7 +655,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: D => !!(0, te.V)(D)
+			hasPermission: D => !!(0, ne.V)(D)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -685,7 +685,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: D => {
 				const S = (0, f.nA)(D),
-					K = (S == null ? void 0 : S.type) === oe.K.PARTIAL;
+					K = (S == null ? void 0 : S.type) === le.K.PARTIAL;
 				return !!(0, e.z1)("foundation-dns-enabled")(D) && !K && ((0, s.$f)(D, "foundation_dns.advanced_nameservers_allowed") || (0, s.du)(D, "foundation_dns.advanced_nameservers_allowed"))
 			}
 		}, {
@@ -704,7 +704,7 @@ const navigation = {
 			title: "navigation.zone.email.routing",
 			navigationType: "global-settings",
 			url: "/email/routing",
-			tabs: C.hg,
+			tabs: h.hg,
 			hasPermission: D => (0, a.iY)(D) && !(0, s.yD)(D) && (0, a.$n)(D, "dns_records", "dns-record")
 		}, {
 			title: "navigation.zone.email.dmarc-reports",
@@ -809,7 +809,7 @@ const navigation = {
 			url: "/security/api-shield",
 			labels: ["new"],
 			navigationType: "version",
-			hasPermission: D => (0, ue.R0)(D),
+			hasPermission: D => (0, oe.R0)(D),
 			tabs: d.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
@@ -845,7 +845,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: H.x
+			tabs: G.x
 		}]
 	}, {
 		title: "navigation.zone.caching",
