@@ -5,29 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Sydney, Australia, <span class="collapsed-field-text">Remote Australia, or Singapore</span></strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>As an engineer on one of our Infrastructure Engineering teams, you'll be building the network infrastructure that makes Cloudflare work. Our mission is to provide a reliable and flexible platform to help product teams release new services efficiently and safely.</p>
-<p><strong>About the role:</strong></p>
-<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 300 cities spread across all regions and we plan to continue our expansion at a rapid pace. This position will be responsible for the technical operations, engineering and architecture of the Cloudflare network, including the planning, installation and management of the hardware and software as well as the day to day operations of the network. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</p>
-<p><strong>Requirements</strong>:</p>
+<h3>Location: Remote, UK | Remote, Portugal</h3>
+<h4>About the department</h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.&nbsp;&nbsp;</p>
+<h4>What you'll do</h4>
+<p><span style="font-weight: 400;">The Technical Account Manager (TAM) will own the post-contract end-to-end support experience for Cloudflare’s most strategic customers, to unblock post-go-live technical support challenges.</span> <span style="font-weight: 400;">They are a dedicated technical primary point of contact for our top-tier Premium customers. TAM’s responsibilities are to manage and monitor support interactions, serve as an internal advocate for customers, respond to customer escalations, and proactively escalate issues as needed. TAMs meet regularly with the relevant customer and provide proactive recommendations that support customers’ requirements, roadmap, and ongoing technical needs,</span><span style="font-weight: 400;"> partnering with the Customer Success and Account Team members.</span></p>
+<p><span style="font-weight: 400;">To be successful in this role, you must possess strong customer service and leadership skills, be a self-starter, be committed to ongoing self-education, be able to collaborate across organizations and have excellent technical problem-solving skills.</span></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Experience working in large scale network engineering environments</li>
-	<li>Experience working with automation frameworks such as SaltStack and/or Ansible</li>
-	<li>Experience solving problems through automation</li>
-	<li>Experience with BGP and anycast routing</li>
-	<li>Understanding of MPLS and Segment Routing&nbsp;</li>
-	<li>Optimize end user experience by architecting the network to lower latency, packet loss, and jitter while increasing scale</li>
-	<li>Proficient in multiple vendor operating systems</li>
-	<li>Experience writing network configuration and design documentation</li>
-	<li>Ability to prioritize when faced with high pressure scenarios</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Serve as primary technical support contact.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with the Account Team, as well as Engineering and Product, to help ensure high customer satisfaction by providing world-class dedicated support throughout the entire life of the customer partnership.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide product and engineering teams with customer feedback to help identify Support challenges and opportunities.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Have a holistic and dynamic view of customer’s environment and use of Cloudflare products, including the customer deployment topology, expert resolution for all support issues, and proactive advice for long-term improvements.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Create and deliver Quarterly Support Reviews including SLA adherence, top ticket drivers, ticket deep dives, and incident reviews.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to travel up to 25% of the time.&nbsp;</span></li>
+	<li style="font-weight: bold;"><strong>Ability to work one weekend every quarter.&nbsp;</strong></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proactively engage with the account team during strategic deal closure and throughout the lifecycle of the customer.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Point of escalation during business hours, and backup point of escalation for Cloudflare TAMs in other regions during their off hours.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand client sentiment, own internal and customer facing escalations, and provide product support.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure support tickets solved in a timely manner.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain and expand working technical knowledge of Cloudflare products.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Single threaded owner of technical support issues, working with backend teams as needed.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with global TAM’s to ensure coverage on critical issues.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure rapid Incident response.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist with preparing and communicating CSRs and formal documentation for incidents and major issues.</span></li>
 </ul>
-<p><strong>Bonus Points but not required:</strong></p>
-<ul>
-	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
-	<li>Professional level network certification(s) (JNCIP , CCNP , etc) or higher</li>
-	<li>Linux system administration</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
