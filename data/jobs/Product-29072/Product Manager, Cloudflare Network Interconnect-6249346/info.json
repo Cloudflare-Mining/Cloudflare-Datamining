@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6242586?gh_jid=6242586",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6249346?gh_jid=6249346",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,9 +9,9 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2958712,
+	"internal_job_id": 2960813,
 	"location": {
-		"name": "Hybrid"
+		"name": "Hybrid or Remote"
 	},
 	"metadata": [
 		{
@@ -31,17 +31,19 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
-				"Lisbon, Portugal",
-				"London, UK",
-				"San Francisco, US"
+				"Champaign, US",
+				"New York, US",
+				"San Francisco, US",
+				"Seattle, US",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 6242586,
-	"updated_at": "2024-09-12T14:46:02-04:00",
+	"id": 6249346,
+	"updated_at": "2024-09-12T14:52:27-04:00",
 	"requisition_id": null,
-	"title": "Senior Director, Product Management - Threat Intelligence",
+	"title": "Product Manager, Cloudflare Network Interconnect",
 	"departments": [
 		{
 			"id": 29072,
@@ -59,11 +61,18 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 19988,
-			"name": "London, United Kingdom",
-			"location": "London, United Kingdom",
+			"id": 19986,
+			"name": "Champaign, IL",
+			"location": "Champaign, IL, United States",
 			"child_ids": [],
-			"parent_id": 74843
+			"parent_id": 48752
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
 		},
 		{
 			"id": 19991,
@@ -73,11 +82,18 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 63782,
-			"name": "Lisbon, Portugal",
-			"location": "Lisboa, Lisboa, Portugal",
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
 			"child_ids": [],
-			"parent_id": 74843
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
 		}
 	]
 }
