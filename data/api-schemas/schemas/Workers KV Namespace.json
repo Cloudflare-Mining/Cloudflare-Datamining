@@ -3004,6 +3004,13 @@
 		],
 		"requestBody": {
 			"content": {
+				"*/*": {
+					"schema": {
+						"description": "A byte sequence to be stored, up to 25 MiB in length.",
+						"example": "Some Value",
+						"type": "string"
+					}
+				},
 				"multipart/form-data": {
 					"schema": {
 						"properties": {
