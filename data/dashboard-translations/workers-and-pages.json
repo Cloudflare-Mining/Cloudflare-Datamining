@@ -1,4 +1,6 @@
 {
+	"workers_and_pages.common.available_on_workers_paid": "Available on Workers Paid plan",
+	"workers_and_pages.common.back_to_settings": "Back to Settings",
 	"workers_and_pages.dev_week_2024.welcome_banner": "Welcome to Developer Week 2024 - Unveiling new features and enhancements!",
 	"workers_and_pages.overview.title": "Workers & Pages",
 	"workers_and_pages.overview.title.functions": "Workers & Pages functions",
@@ -471,5 +473,24 @@
 	"workers_and_pages.assets.errors.route_has_path": "Update the route to replace \"%{pathname}\" with \"/*\".",
 	"workers_and_pages.assets.errors.route_bare_domain": "Update the route to end with \"/*\".",
 	"workers_and_pages.assets.disabled_warning": "The latest version of this Worker only has static assets. Metrics, Logs, Integrations, and most Settings require a Worker script and are therefore unavailable.",
-	"workers_and_pages.assets.edit_code_disabled": "Editing Workers which have static assets is not currently supported. <0>Learn more.</0>"
+	"workers_and_pages.assets.edit_code_disabled": "Editing Workers which have static assets is not currently supported. <0>Learn more.</0>",
+	"workers_and_pages.observability": "Observability",
+	"workers_and_pages.observability.logpush": "Logpush",
+	"workers_and_pages.observability.logpush.description": "Send Workers logs to an object storage destination or analytics platform of your choice.",
+	"workers_and_pages.observability.logpush.configure": "Configure Logpush jobs",
+	"workers_and_pages.observability.logpush.updated": "Update your **wrangler.toml** file with the change below to keep your local development environment in sync.",
+	"workers_and_pages.observability.logpush.updated_toml_experiment": "Logpush has been updated",
+	"workers_and_pages.observability.logpush.disabled.tooltip.free": "Send Workers Trace Event Logs to a supported destination. Worker's Trace Events Logpush includes metadata about requests and responses, unstructured console.log() messages and any uncaught exceptions.",
+	"workers_and_pages.observability.logpush.disabled.tooltip.no_jobs": "Please <0>create a Logpush job</0> to enable. <1>Learn more</1>",
+	"workers_and_pages.observability.tail_worker": "Tail Worker",
+	"workers_and_pages.observability.tail_worker.description": "Gain visibility on this Worker's executions by connecting a Tail Worker to capture metadata.",
+	"workers_and_pages.observability.tail_worker.no_consumers": "No Tail Workers connected",
+	"workers_and_pages.observability.tail_worker.x_consumers": "+ %{amount} more",
+	"workers_and_pages.observability.tail_worker.disabled.tooltip.free": "Send Workers Trace Event Logs to a supported destination. Worker's Trace Events Logpush includes metadata about requests and responses, unstructured console.log() messages and any uncaught exceptions.",
+	"workers_and_pages.observability.tail_worker.drawer.title": "Connect Tail Workers",
+	"workers_and_pages.observability.tail_worker.drawer.description": "Gain visibility on this Worker's executions by connecting a Tail Worker to capture metadata.",
+	"workers_and_pages.observability.new_ui.obs_section.title": "New Observability ",
+	"workers_and_pages.observability.new_ui.obs_section.description": "Logpush and Tail Workers are now under Settings.",
+	"workers_and_pages.observability.new_ui.cron_events.title": "View Cron events",
+	"workers_and_pages.observability.new_ui.cron_events.description": "Access Cron events from by clicking on View events under Details."
 }

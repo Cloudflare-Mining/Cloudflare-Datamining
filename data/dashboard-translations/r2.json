@@ -36,7 +36,7 @@
 	"r2.storage_classes.standard.description": "Recommended for objects that will be accessed at least once a month.",
 	"r2.storage_classes.infrequent_access.description": "Recommended for objects that will be accessed less than once a month.",
 	"r2.storage_classes.transition.warning": "Objects cannot be moved from Infrequent Access to Standard storage class via object lifecycle policies.",
-	"r2.storage_classes.create_bucket.warning": "Objects stored in Infrequent Access cannot be moved to Standard Access via object lifecycle policies later. Each storage class has different pricing levels. Visit our <0>pricing documentation</0> to learn more.",
+	"r2.storage_classes.create_bucket.warning": "The <0>free tier</0> does not apply to usage of Infrequent Access storage. Each storage class has different pricing levels. Visit our <1>pricing</1> and <2>storage classes</2> documentation to learn more.",
 	"r2.storage_classes.docs": "Storage Classes",
 	"r2.bucket.metrics.public_url_access": "Public URL Access",
 	"r2.bucket.metrics.bucket_size": "Bucket Size",
