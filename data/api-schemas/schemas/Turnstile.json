@@ -873,6 +873,10 @@
 		"summary": "Turnstile Widget Details",
 		"tags": [
 			"Turnstile"
+		],
+		"x-api-token-group": [
+			"Turnstile Sites Read",
+			"Account Settings Read"
 		]
 	},
 	"POST /accounts/{account_id}/challenges/widgets": {

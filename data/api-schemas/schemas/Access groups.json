@@ -219,6 +219,9 @@
 		"summary": "Delete an Access group",
 		"tags": [
 			"Access groups"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/groups": {
@@ -4454,6 +4457,10 @@
 		"summary": "Get an Access group",
 		"tags": [
 			"Access groups"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/groups": {
@@ -11506,6 +11513,9 @@
 		"summary": "Update an Access group",
 		"tags": [
 			"Access groups"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	}
 }

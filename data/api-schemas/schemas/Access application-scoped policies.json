@@ -232,6 +232,9 @@
 		"summary": "Delete an Access application policy",
 		"tags": [
 			"Access application-scoped policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/apps/{app_id}/policies": {
@@ -2001,6 +2004,10 @@
 		"summary": "List Access application policies",
 		"tags": [
 			"Access application-scoped policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}": {
@@ -3750,6 +3757,10 @@
 		"summary": "Get an Access application policy",
 		"tags": [
 			"Access application-scoped policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/apps/{app_id}/policies": {
@@ -7010,6 +7021,9 @@
 		"summary": "Create an Access application policy",
 		"tags": [
 			"Access application-scoped policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}": {
@@ -10282,6 +10296,9 @@
 		"summary": "Update an Access application policy",
 		"tags": [
 			"Access application-scoped policies"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	}
 }

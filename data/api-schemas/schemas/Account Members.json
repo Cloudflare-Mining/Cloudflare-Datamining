@@ -229,6 +229,9 @@
 		"tags": [
 			"Account Members"
 		],
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#organization:edit"
@@ -1309,6 +1312,10 @@
 		"summary": "Member Details",
 		"tags": [
 			"Account Members"
+		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2854,6 +2861,9 @@
 		"summary": "Update Member",
 		"tags": [
 			"Account Members"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

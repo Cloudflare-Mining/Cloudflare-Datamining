@@ -214,6 +214,9 @@
 		"summary": "Delete an mTLS certificate",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Certificates Write"
 		]
 	},
 	"GET /zones/{zone_id}/access/certificates": {
@@ -745,6 +748,10 @@
 		"summary": "Get an mTLS certificate",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Certificates Write",
+			"Access: Certificates Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/certificates/settings": {
@@ -1568,6 +1575,9 @@
 		"summary": "Update an mTLS certificate",
 		"tags": [
 			"Zone-Level Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Certificates Write"
 		]
 	},
 	"PUT /zones/{zone_id}/access/certificates/settings": {

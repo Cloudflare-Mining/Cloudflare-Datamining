@@ -360,6 +360,9 @@
 		"tags": [
 			"Vectorize"
 		],
+		"x-api-token-group": [
+			"Vectorize Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.delete"
@@ -1170,6 +1173,10 @@
 		"tags": [
 			"Vectorize"
 		],
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.read"
@@ -1562,6 +1569,10 @@
 		"summary": "Get Vectorize Index Info",
 		"tags": [
 			"Vectorize"
+		],
+		"x-api-token-group": [
+			"Vectorize Write",
+			"Vectorize Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2860,6 +2871,9 @@
 		"tags": [
 			"Vectorize"
 		],
+		"x-api-token-group": [
+			"Vectorize Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.delete"
@@ -4107,6 +4121,9 @@
 		"tags": [
 			"Vectorize"
 		],
+		"x-api-token-group": [
+			"Vectorize Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.create"
@@ -4499,6 +4516,9 @@
 		"summary": "Delete Metadata Index",
 		"tags": [
 			"Vectorize"
+		],
+		"x-api-token-group": [
+			"Vectorize Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

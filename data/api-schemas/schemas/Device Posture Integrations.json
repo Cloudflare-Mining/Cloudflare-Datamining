@@ -358,6 +358,9 @@
 		"summary": "Delete a device posture integration",
 		"tags": [
 			"Device Posture Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/posture/integration": {
@@ -1379,6 +1382,10 @@
 		"summary": "Get device posture integration details",
 		"tags": [
 			"Device Posture Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/posture/integration/{integration_id}": {
@@ -2138,6 +2145,9 @@
 		"summary": "Update a device posture integration",
 		"tags": [
 			"Device Posture Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/posture/integration": {

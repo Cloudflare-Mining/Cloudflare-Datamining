@@ -641,6 +641,9 @@
 		"summary": "Read Configuration",
 		"tags": [
 			"R2 Event Notification"
+		],
+		"x-api-token-group": [
+			"Workers R2 Storage Read"
 		]
 	},
 	"PUT /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}": {

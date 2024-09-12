@@ -362,6 +362,9 @@
 		"summary": "Delete image",
 		"tags": [
 			"Cloudflare Images"
+		],
+		"x-api-token-group": [
+			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1": {
@@ -1352,6 +1355,10 @@
 		"summary": "Image details",
 		"tags": [
 			"Cloudflare Images"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/{image_id}/blob": {
@@ -1514,6 +1521,10 @@
 		"summary": "Base image",
 		"tags": [
 			"Cloudflare Images"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/stats": {
@@ -2967,6 +2978,9 @@
 		"summary": "Update image",
 		"tags": [
 			"Cloudflare Images"
+		],
+		"x-api-token-group": [
+			"Images Write"
 		]
 	},
 	"POST /accounts/{account_id}/images/v1": {

@@ -1847,6 +1847,10 @@
 		"summary": "Get device details",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/{device_id}/override_codes": {
@@ -2290,6 +2294,10 @@
 		"summary": "Get an admin override code for a device",
 		"tags": [
 			"Devices"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policies": {

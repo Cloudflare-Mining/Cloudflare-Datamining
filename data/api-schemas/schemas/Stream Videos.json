@@ -56,6 +56,9 @@
 		"summary": "Delete video",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"GET /accounts/{account_id}/stream": {
@@ -609,6 +612,10 @@
 		"summary": "List videos",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}": {
@@ -1076,6 +1083,10 @@
 		"summary": "Retrieve video details",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/embed": {
@@ -1541,6 +1552,9 @@
 		"summary": "Initiate video uploads using TUS",
 		"tags": [
 			"Stream Videos"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"POST /accounts/{account_id}/stream/{identifier}": {

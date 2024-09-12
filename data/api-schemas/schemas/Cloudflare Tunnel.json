@@ -899,6 +899,11 @@
 		"summary": "Delete a Cloudflare Tunnel",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One cloudflared Connectors Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
@@ -2155,6 +2160,10 @@
 		"summary": "Delete a Warp Connector Tunnel",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Warp Connectors Write"
 		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel": {
@@ -4127,6 +4136,14 @@
 		"summary": "Get a Cloudflare Tunnel",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Connectors Read",
+			"Cloudflare One cloudflared Connectors Write",
+			"Cloudflare One cloudflared Connectors Read",
+			"Argo Tunnel Write",
+			"Argo Tunnel Read"
 		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
@@ -8661,6 +8678,12 @@
 		"summary": "Get a Warp Connector Tunnel",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Connectors Read",
+			"Cloudflare One Warp Connectors Write",
+			"Cloudflare One Warp Connectors Read"
 		]
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/token": {
@@ -9901,6 +9924,11 @@
 		"summary": "Update a Cloudflare Tunnel",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One cloudflared Connectors Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/warp_connector/{tunnel_id}": {
@@ -10815,6 +10843,10 @@
 		"summary": "Update a Warp Connector Tunnel",
 		"tags": [
 			"Cloudflare Tunnel"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Warp Connectors Write"
 		]
 	},
 	"POST /accounts/{account_id}/cfd_tunnel": {

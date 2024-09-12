@@ -498,6 +498,9 @@
 		"summary": "Delete Device DEX test",
 		"tags": [
 			"Device DEX Tests"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/dex_tests": {
@@ -1507,6 +1510,12 @@
 		"summary": "Get Device DEX test",
 		"tags": [
 			"Device DEX Tests"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Teams Report",
+			"Teams Read"
 		]
 	},
 	"POST /accounts/{account_id}/devices/dex_tests": {
@@ -2693,6 +2702,9 @@
 		"summary": "Update Device DEX test",
 		"tags": [
 			"Device DEX Tests"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write"
 		]
 	}
 }

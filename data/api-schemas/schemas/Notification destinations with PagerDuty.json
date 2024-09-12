@@ -1013,6 +1013,10 @@
 		"summary": "Connect PagerDuty",
 		"tags": [
 			"Notification destinations with PagerDuty"
+		],
+		"x-api-token-group": [
+			"Notifications Write",
+			"Account Settings Write"
 		]
 	},
 	"POST /accounts/{account_id}/alerting/v3/destinations/pagerduty/connect": {

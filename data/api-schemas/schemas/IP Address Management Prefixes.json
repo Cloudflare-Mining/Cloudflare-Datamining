@@ -333,6 +333,9 @@
 		"summary": "Delete Prefix",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Prefix Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/loa_documents/{loa_document_id}/download": {
@@ -481,6 +484,10 @@
 		"summary": "Download LOA Document",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Prefix Read",
+			"Magic Transit Prefix Write"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes": {
@@ -1434,6 +1441,14 @@
 		"summary": "Prefix Details",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Prefix Read",
+			"Magic Transit Prefix Write",
+			"IP Prefixes: Write",
+			"IP Prefixes: Read",
+			"IP Prefixes: BGP On Demand Write",
+			"IP Prefixes: BGP On Demand Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
@@ -1900,6 +1915,10 @@
 		"summary": "Update Prefix Description",
 		"tags": [
 			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Prefix Write",
+			"IP Prefixes: Write"
 		]
 	},
 	"POST /accounts/{account_id}/addressing/loa_documents": {

@@ -343,6 +343,9 @@
 		"summary": "Delete Pool",
 		"tags": [
 			"Account Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"GET /accounts/{account_id}/load_balancers/pools": {
@@ -2090,6 +2093,10 @@
 		"summary": "Pool Details",
 		"tags": [
 			"Account Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"GET /accounts/{account_id}/load_balancers/pools/{pool_id}/health": {
@@ -4989,6 +4996,9 @@
 		"summary": "Patch Pool",
 		"tags": [
 			"Account Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"POST /accounts/{account_id}/load_balancers/pools": {
@@ -7652,6 +7662,9 @@
 		"summary": "Update Pool",
 		"tags": [
 			"Account Load Balancer Pools"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
 		]
 	}
 }

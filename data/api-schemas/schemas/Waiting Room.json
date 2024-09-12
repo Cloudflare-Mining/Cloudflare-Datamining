@@ -237,6 +237,9 @@
 		"tags": [
 			"Waiting Room"
 		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2421,6 +2424,10 @@
 		"summary": "Waiting room details",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Read",
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -5635,6 +5642,9 @@
 		"summary": "Patch waiting room",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -9911,6 +9921,9 @@
 		"summary": "Update waiting room",
 		"tags": [
 			"Waiting Room"
+		],
+		"x-api-token-group": [
+			"Waiting Rooms Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

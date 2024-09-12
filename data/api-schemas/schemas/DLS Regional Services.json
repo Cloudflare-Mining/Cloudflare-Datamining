@@ -1008,6 +1008,9 @@
 		"summary": "Fetch Regional Hostname",
 		"tags": [
 			"DLS Regional Services"
+		],
+		"x-api-token-group": [
+			"DNS Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/addressing/regional_hostnames/{hostname}": {

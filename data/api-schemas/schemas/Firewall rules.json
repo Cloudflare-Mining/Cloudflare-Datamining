@@ -1389,6 +1389,9 @@
 		"tags": [
 			"Firewall rules"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2834,6 +2837,10 @@
 		"summary": "Get a firewall rule",
 		"tags": [
 			"Firewall rules"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write",
+			"Firewall Services Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -4281,6 +4288,9 @@
 		"summary": "Update priority of a firewall rule",
 		"tags": [
 			"Firewall rules"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -6584,6 +6594,9 @@
 		"summary": "Update a firewall rule",
 		"tags": [
 			"Firewall rules"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

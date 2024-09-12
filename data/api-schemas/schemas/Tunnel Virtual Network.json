@@ -413,6 +413,10 @@
 		"summary": "Delete a virtual network",
 		"tags": [
 			"Tunnel Virtual Network"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks": {
@@ -1816,6 +1820,10 @@
 		"summary": "Update a virtual network",
 		"tags": [
 			"Tunnel Virtual Network"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"POST /accounts/{account_id}/teamnet/virtual_networks": {

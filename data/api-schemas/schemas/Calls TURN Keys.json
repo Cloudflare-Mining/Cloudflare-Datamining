@@ -130,6 +130,9 @@
 		"summary": "Delete TURN key",
 		"tags": [
 			"Calls TURN Keys"
+		],
+		"x-api-token-group": [
+			"Calls Write"
 		]
 	},
 	"GET /accounts/{account_id}/calls/turn_keys": {
@@ -556,6 +559,10 @@
 		"summary": "Retrieve TURN key details",
 		"tags": [
 			"Calls TURN Keys"
+		],
+		"x-api-token-group": [
+			"Calls Write",
+			"Calls Read"
 		]
 	},
 	"POST /accounts/{account_id}/calls/turn_keys": {
@@ -885,6 +892,9 @@
 		"summary": "Edit TURN key details",
 		"tags": [
 			"Calls TURN Keys"
+		],
+		"x-api-token-group": [
+			"Calls Write"
 		]
 	}
 }

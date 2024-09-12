@@ -410,6 +410,10 @@
 		"summary": "Delete a tunnel route",
 		"tags": [
 			"Tunnel Routing"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
@@ -860,6 +864,10 @@
 		"summary": "Delete a tunnel route (CIDR Endpoint)",
 		"tags": [
 			"Tunnel Routing"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs.",
@@ -2848,6 +2856,10 @@
 		"summary": "Update a tunnel route",
 		"tags": [
 			"Tunnel Routing"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
@@ -3260,6 +3272,10 @@
 		"summary": "Update a tunnel route (CIDR Endpoint)",
 		"tags": [
 			"Tunnel Routing"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs.",
@@ -4157,6 +4173,10 @@
 		"summary": "Create a tunnel route (CIDR Endpoint)",
 		"tags": [
 			"Tunnel Routing"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Networks Write",
+			"Argo Tunnel Write"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs.",

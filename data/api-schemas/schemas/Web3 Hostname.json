@@ -347,6 +347,9 @@
 		"tags": [
 			"Web3 Hostname"
 		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1717,6 +1720,10 @@
 		"summary": "Web3 Hostname Details",
 		"tags": [
 			"Web3 Hostname"
+		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write",
+			"Web3 Hostnames Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3572,6 +3579,9 @@
 		"summary": "Edit Web3 Hostname",
 		"tags": [
 			"Web3 Hostname"
+		],
+		"x-api-token-group": [
+			"Web3 Hostnames Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

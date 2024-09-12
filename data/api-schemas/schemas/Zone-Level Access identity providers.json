@@ -219,6 +219,9 @@
 		"summary": "Delete an Access identity provider",
 		"tags": [
 			"Zone-Level Access identity providers"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"GET /zones/{zone_id}/access/identity_providers": {
@@ -3710,6 +3713,10 @@
 		"summary": "Get an Access identity provider",
 		"tags": [
 			"Zone-Level Access identity providers"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"POST /zones/{zone_id}/access/identity_providers": {
@@ -10042,6 +10049,9 @@
 		"summary": "Update an Access identity provider",
 		"tags": [
 			"Zone-Level Access identity providers"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	}
 }

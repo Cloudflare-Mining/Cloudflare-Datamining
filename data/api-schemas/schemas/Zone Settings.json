@@ -9024,68 +9024,6 @@
 												"id": {
 													"description": "ID of the zone setting.",
 													"enum": [
-														"image_resizing"
-													],
-													"example": "image_resizing"
-												},
-												"value": {
-													"default": "off",
-													"description": "Whether the feature is enabled, disabled, or enabled in `open proxy` mode.",
-													"enum": [
-														"on",
-														"off",
-														"open"
-													],
-													"type": "string"
-												}
-											}
-										}
-									],
-									"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/) for more information.",
-									"title": "Image Resizing"
-								},
-								{
-									"allOf": [
-										{
-											"properties": {
-												"editable": {
-													"default": true,
-													"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
-													"enum": [
-														true,
-														false
-													],
-													"readOnly": true,
-													"type": "boolean"
-												},
-												"id": {
-													"description": "Identifier of the zone setting.",
-													"example": "development_mode",
-													"type": "string"
-												},
-												"modified_on": {
-													"description": "last time this setting was modified.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"nullable": true,
-													"readOnly": true,
-													"type": "string"
-												},
-												"value": {
-													"description": "Current value of the zone setting.",
-													"example": "on"
-												}
-											},
-											"required": [
-												"id",
-												"value"
-											]
-										},
-										{
-											"properties": {
-												"id": {
-													"description": "ID of the zone setting.",
-													"enum": [
 														"ip_geolocation"
 													],
 													"example": "ip_geolocation"

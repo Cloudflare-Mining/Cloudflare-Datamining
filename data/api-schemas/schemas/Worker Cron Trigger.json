@@ -329,6 +329,10 @@
 		"tags": [
 			"Worker Cron Trigger"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.cron.trigger.read"
@@ -691,6 +695,9 @@
 		"summary": "Update Cron Triggers",
 		"tags": [
 			"Worker Cron Trigger"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

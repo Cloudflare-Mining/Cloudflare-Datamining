@@ -218,6 +218,9 @@
 		"summary": "Delete a tag",
 		"tags": [
 			"Access tags"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/tags": {
@@ -725,6 +728,10 @@
 		"summary": "Get a tag",
 		"tags": [
 			"Access tags"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/tags": {
@@ -1239,6 +1246,9 @@
 		"summary": "Update a tag",
 		"tags": [
 			"Access tags"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	}
 }

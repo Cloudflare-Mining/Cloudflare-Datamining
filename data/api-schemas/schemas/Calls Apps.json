@@ -153,6 +153,9 @@
 		"summary": "Delete app",
 		"tags": [
 			"Calls Apps"
+		],
+		"x-api-token-group": [
+			"Calls Write"
 		]
 	},
 	"GET /accounts/{account_id}/calls/apps": {
@@ -602,6 +605,10 @@
 		"summary": "Retrieve app details",
 		"tags": [
 			"Calls Apps"
+		],
+		"x-api-token-group": [
+			"Calls Write",
+			"Calls Read"
 		]
 	},
 	"POST /accounts/{account_id}/calls/apps": {
@@ -1027,6 +1034,9 @@
 		"summary": "Edit app details",
 		"tags": [
 			"Calls Apps"
+		],
+		"x-api-token-group": [
+			"Calls Write"
 		]
 	}
 }

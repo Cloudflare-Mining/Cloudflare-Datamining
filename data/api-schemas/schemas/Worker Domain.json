@@ -57,6 +57,9 @@
 		"tags": [
 			"Worker Domain"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.domain.delete"
@@ -813,6 +816,10 @@
 		"summary": "Get a Domain",
 		"tags": [
 			"Worker Domain"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

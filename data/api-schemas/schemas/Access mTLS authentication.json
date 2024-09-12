@@ -214,6 +214,9 @@
 		"summary": "Delete an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Certificates Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/certificates": {
@@ -747,6 +750,10 @@
 		"summary": "Get an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Certificates Write",
+			"Access: Certificates Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/certificates/settings": {
@@ -1572,6 +1579,9 @@
 		"summary": "Update an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
+		],
+		"x-api-token-group": [
+			"Access: Certificates Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/certificates/settings": {

@@ -224,6 +224,9 @@
 		"tags": [
 			"Logpush jobs for an account"
 		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:edit"
@@ -461,6 +464,10 @@
 		"summary": "List fields",
 		"tags": [
 			"Logpush jobs for an account"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -938,6 +945,10 @@
 		"summary": "List Logpush jobs for a dataset",
 		"tags": [
 			"Logpush jobs for an account"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1878,6 +1889,10 @@
 		"summary": "Get Logpush job details",
 		"tags": [
 			"Logpush jobs for an account"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -4260,6 +4275,9 @@
 		"summary": "Update Logpush job",
 		"tags": [
 			"Logpush jobs for an account"
+		],
+		"x-api-token-group": [
+			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

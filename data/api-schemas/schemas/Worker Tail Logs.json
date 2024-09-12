@@ -279,6 +279,10 @@
 		"tags": [
 			"Worker Tail Logs"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.read",
@@ -599,6 +603,10 @@
 		"summary": "List Tails",
 		"tags": [
 			"Worker Tail Logs"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -925,6 +933,10 @@
 		"summary": "Start Tail",
 		"tags": [
 			"Worker Tail Logs"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

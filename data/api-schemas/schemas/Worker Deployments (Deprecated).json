@@ -461,6 +461,11 @@
 		"tags": [
 			"Worker Deployments (Deprecated)"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts/{account_id}/workers/scripts/{script_name}/versions` equivalent APIs.",
 			"display": true,
@@ -852,6 +857,11 @@
 		"summary": "Get Deployment Detail",
 		"tags": [
 			"Worker Deployments (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts/{account_id}/workers/scripts/{script_name}/versions` equivalent APIs.",

@@ -180,6 +180,9 @@
 		"tags": [
 			"Zone Lockdown"
 		],
+		"x-api-token-group": [
+			"Firewall Services Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1603,6 +1606,10 @@
 		"summary": "Get a Zone Lockdown rule",
 		"tags": [
 			"Zone Lockdown"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write",
+			"Firewall Services Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3058,6 +3065,9 @@
 		"summary": "Update a Zone Lockdown rule",
 		"tags": [
 			"Zone Lockdown"
+		],
+		"x-api-token-group": [
+			"Firewall Services Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
