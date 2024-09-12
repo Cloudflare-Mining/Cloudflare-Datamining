@@ -14,29 +14,28 @@
 <p>&nbsp;</p>
 <p><strong>About the role:</strong></p>
 <p>&nbsp;</p>
-<p>We are seeking an <strong>IT Product Manager, GTM Systems</strong> to lead a variety of strategic systems initiatives within Cloudflare. The IT Product Manager will serve as a “trusted advisor,” the strategic interface between a variety of GTM business areas such as Sales, Marketing, Partners/Alliances, and Post-Sales and the Enterprise Applications team with the focus on business technology strategy development, requirements discovery, risk and service management. The IT Product Manager will be the main technology functional expert for all GTM internal business systems, having a holistic view of the end-to-end process from a systems point of view. This means that while the role will primarily be a partner to the GTM teams, it would also have to partner with other functions, like People/Payroll, Finance, Security, and Legal to ensure the overall GTM process operates effectively and cohesively.&nbsp; The PDM will proactively share knowledge of technology risks and opportunities to build competitive advantage and improve efficiency and effectiveness of business units. The candidate will partner with business leadership and other key stakeholders to define opportunities and identify and prioritize projects based on predefined criteria.&nbsp;&nbsp;</p>
+<p>We are seeking an <strong>IT Product Manager, GTM/Partner Systems</strong> to lead a variety of strategic systems initiatives within Cloudflare. The IT Product Manager will serve as a “trusted advisor,” the strategic interface between a variety of GTM/Partner business areas such as Sales, Marketing, Partners/Alliances, and Post-Sales and the Enterprise Applications team with the focus on business technology strategy development, requirements discovery, risk and service management. The IT Product Manager will be the main technology functional expert for all GTM/Partner internal business systems, having a holistic view of the end-to-end process from a systems point of view. This means that while the role will primarily be a partner to the GTM/Partner teams, it would also have to partner with other functions, like People/Payroll, Finance, Security, and Legal to ensure the overall GTM/Partner process operates effectively and cohesively.&nbsp; The Product Manager will proactively share knowledge of technology risks and opportunities to build competitive advantage and improve efficiency and effectiveness of business units. The candidate will partner with business leadership and other key stakeholders to define opportunities and identify and prioritize projects based on predefined criteria.&nbsp;&nbsp;</p>
 <p><br><br></p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Operates as the main point of contact and partner to both the business and the IT Enterprise Application (delivery) team.</li>
-	<li>Gathers and documents business requirements and user stories through in depth stakeholder interviews and subject matter expert (SME) deep dives.&nbsp; Obtains the necessary stakeholder sign-off before and technology reviews prior to transferring projects to delivery teams for execution.</li>
-	<li>Drives and heavily influences the overall GTM business system roadmap ensuring the focus is on business performance and scalability while limiting IT risk.&nbsp;</li>
-	<li>Provides knowledge transfers to technical teams and technical program managers (TPMs) ensuring clean and clear requirements are understood by those responsible for project management of implementation through go-live.</li>
-	<li>Contributes value to the GTM portfolio and plots roadmap deliverables using a blend of business priority, end-to-end product strategy, and a holistic consideration of Cloudflare’s techstack.</li>
+	<li>Operates as the main point of contact and partner to both the business (specifically GTM/Partners) and the IT Enterprise Applications (delivery) team.</li>
+	<li>Partners with the business to help gather and document business requirements, objectives, and business outcomes and end-users needs to connect people, process and systems.</li>
+	<li>Leads the vision and strategy for product scrum team and __ with product owners to help develop vision and roadmap.</li>
+	<li>Drives and heavily influences the overall GTM/Partner IT roadmap ensuring the focus is on business performance and scalability while limiting IT risk.&nbsp;</li>
+	<li>Provides knowledge transfers and vision to technical teams and technical program managers (TPMs) ensuring clean and clear requirements are understood by those responsible for project management of implementation through go-live.</li>
 	<li>Maintains routine communication with business stakeholders and the IT delivery leads ensuring constant alignment on system roadmap placement and timelines.</li>
-	<li>Track the technology market discovering and staying attuned to newly released GTM applications and/or new product capabilities that align with existing technology in Cloudflare’s techstack.</li>
-	<li>Lead and nurture platform vendor relationships including influencing and understanding vendors’ upcoming roadmap deliverables and sharing with the business to match with the overall business vision and goals.</li>
-	<li>Partner with the TPMs to maintain constant alignment of GTM projects’ health including leading any discussions regarding roadblock removals, risks, and overall keeping momentum on the deliverables.</li>
-	<li>Partners with the Procurement team and helps lead the vendor selection process for onboarding new tech.&nbsp; This includes vendor research, scoring, participating on demos, and presenting recommendations to leadership.</li>
-	<li>Adheres to and instills the IT Planning and Governance structure including running monthly GTM steering committee meetings, meeting with functional leaders on a routine basis, and providing routine alignment between the GTM business and IT teams.</li>
+	<li>Track the technology market discovering and staying attuned to newly released GTM/Partner applications and/or new product capabilities that align with existing technology in Cloudflare’s techstack.</li>
+	<li>Leads and nurtures platform vendor relationships including influencing and understanding vendors’ upcoming roadmap deliverables and sharing with the business to match with the overall business vision and goals.</li>
+	<li>Partners with the Procurement team and helps lead the vendor selection process for onboarding new technology.&nbsp; This includes vendor research, evaluation scoring, participating on demos, and presenting recommendations to leadership.</li>
+	<li>Adheres to and instills the IT Planning and Governance structure including running monthly GTM steering committee meetings, meeting with functional leaders on a routine basis, and providing routine alignment between the GTM/Partner business and IT teams.</li>
 	<li>Leads weekly roadmap meetings with delivery leads to collaborate on business priorities and roadmap placement and works with the appropriate teams to manage risks and capacity related issues.&nbsp;</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
 <ul>
 	<li>BA/BS in Business Administration or Computer Science, or an equivalent combination of education and experience.</li>
-	<li>Minimum of 7 years experience with GTM system experience including complex knowledge and deep understanding of sales operations.&nbsp; GTM experience is a plus.</li>
-	<li>Experience with GTM systems such as Salesforce Sales Cloud, CPQ, and other sales technologies are required.&nbsp;</li>
-	<li>Business knowledge of GTM sales functions and cycles.</li>
+	<li>Minimum of 7 years experience with GTM/Partner system experience including complex knowledge and deep understanding of sales operations - specifically partner sales.&nbsp;&nbsp;</li>
+	<li>Experience with GTM/Partners systems such as Salesforce Experience Cloud (PRM), Zift (campaign management), and other sales/partner technologies are required.&nbsp;</li>
+	<li>Business knowledge of GTM/Partner sales functions and cycles.</li>
 	<li>Strong sense of urgency, ability to manage priorities and tight deadlines in a fast-paced and ambiguous environment.</li>
 	<li>Strong ability to communicate with executive leadership, think on a strategic level, and communicate the strategy across the various product teams.</li>
 	<li>Highly organized and able to juggle many tasks without losing sight of the highest priority items.</li>
