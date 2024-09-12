@@ -352,6 +352,21 @@
 			"filter_options": []
 		}
 	],
+	"Security Insights": [
+		{
+			"display_name": "Security Insights Alert",
+			"type": "security_insights_alert",
+			"description": "Get alerts for new Security Insights",
+			"filter_options": [
+				{
+					"Key": "insight_class",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
+		}
+	],
 	"SSL/TLS": [
 		{
 			"display_name": "Access mTLS Certificate Expiration Alert",
