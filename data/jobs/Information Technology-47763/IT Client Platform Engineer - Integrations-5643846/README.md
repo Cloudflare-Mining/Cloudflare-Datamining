@@ -7,17 +7,17 @@
 </div>
 <p><strong>Available Locations: </strong>Lisbon, Portugal</p>
 <p><strong>About the Role</strong></p>
-<p>We’re looking for an IT Client Platform Engineer focusing on platform integrations to enable enterprise level service integrations for our corporate teams.&nbsp; You will solve complex system integration issues and streamline workflows between critical systems, bridging the gap between IT Operations, Enterprise Security and IT Client Platform Engineering teams.&nbsp; This role will provide critical integration, development, and automation capabilities to our Client Platform deployment.&nbsp; This role reports to the Manager of IT Client Platform Engineering.</p>
+<p>We’re looking for an IT Client Platform Engineer to join our Client Platform Engineering team!&nbsp; You will solve complex endpoint management problems and drive security and end user experience for our End User Computing platform, bridging the gap between IT Operations, Enterprise Security and corporate users across the globe.&nbsp; In this role, you’ll assist our Windows and macOS teams delivering software at a global scale and support our IT Operations teams troubleshooting complex user issues.&nbsp; This role reports to the Manager of IT Client Platform Engineering.</p>
 <p><strong>About the Team</strong></p>
 <p>You will join a team of Client Platform Engineers that provide enterprise level Client Platform services, development, support, and client enablement for end users around the globe.&nbsp; We strive to provide highly resilient and observable services to our teams, and reduce manual toil wherever possible.&nbsp; We’re focused on providing a positive customer service and user experience.</p>
 <p><strong>What You'll Do</strong></p>
 <ul>
-	<li>Solve complex integration problems</li>
-	<li>Provide design, implementation and operational support for built integrations</li>
+	<li>Solve endpoint management problems at a global scale</li>
+	<li>Proactively solve end user computing problems across a diverse fleet of devices</li>
 	<li>Seek guidance from the team when needed</li>
 	<li>Be flexible and available for after hours support</li>
 	<li>Assist the team with macOS, Windows, and Linux platform management</li>
-	<li>Provide thoughtful feedback on asks and requirements for new integrations</li>
+	<li>Provide thoughtful feedback on asks and requirements for new projects</li>
 	<li>Work collaboratively across geographical and team boundaries to solve problems</li>
 	<li>Work in a team environment</li>
 	<li>Create and update technical documentation</li>
@@ -25,14 +25,12 @@
 </ul>
 <p><strong>What You'll Bring</strong></p>
 <ul>
-	<li>2+ years of proven work experience in a systems administration role</li>
-	<li>2+ years of proven work experience in a systems integration role</li>
+	<li>1+ years of proven work experience in a systems administration role</li>
 	<li>Hands-on experience with Windows/Linux/Mac OS management platforms</li>
-	<li>Hands-on experience with scripting languages such as Python, Golang, and/or Rust</li>
+	<li>Hands-on experience with scripting languages such as Bash, Powershell, Python, Golang, and/or Rust</li>
 	<li>Good understanding of computer systems, mobile devices management platforms and software development best practices</li>
-	<li>Ability to perform root cause analysis on integration failures and implement solutions</li>
-	<li>Familiarity serverless application development, observation, and deployment methods</li>
-	<li>Familiarity with Continuous Integration/Continuous Deployment, DevOps, and Agile methodologies</li>
+	<li>Ability to perform root cause analysis on issues and document and implement solutions</li>
+	<li>Familiarity with multiple environment deployments</li>
 	<li>Excellent problem-solving and communication skills</li>
 	<li>Ability to provide step-by-step technical guidance, both written and verbal</li>
 	<li>BS degree in Information Technology, Computer Science or relevant field or equivalent experience</li>
