@@ -391,19 +391,10 @@
 																"type": "string"
 															},
 															"custom_metadata": {
-																"anyOf": [
-																	{
-																		"properties": {
-																			"key": {
-																				"description": "Unique metadata for this hostname.",
-																				"example": "value",
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	}
-																],
-																"description": "These are per-hostname (customer) settings.",
+																"additionalProperties": {
+																	"type": "string"
+																},
+																"description": "Unique key/value metadata for this hostname. These are per-hostname (customer) settings.",
 																"type": "object"
 															},
 															"custom_origin_server": {
@@ -653,8 +644,7 @@
 																				"enum": [
 																					"dv"
 																				],
-																				"example": "dv",
-																				"readOnly": true
+																				"example": "dv"
 																			},
 																			"uploaded_on": {
 																				"description": "The time the custom certificate was uploaded.",
@@ -951,8 +941,7 @@
 																		"enum": [
 																			"dv"
 																		],
-																		"example": "dv",
-																		"readOnly": true
+																		"example": "dv"
 																	},
 																	"uploaded_on": {
 																		"description": "The time the custom certificate was uploaded.",
@@ -1158,19 +1147,10 @@
 																		"type": "string"
 																	},
 																	"custom_metadata": {
-																		"anyOf": [
-																			{
-																				"properties": {
-																					"key": {
-																						"description": "Unique metadata for this hostname.",
-																						"example": "value",
-																						"type": "string"
-																					}
-																				},
-																				"type": "object"
-																			}
-																		],
-																		"description": "These are per-hostname (customer) settings.",
+																		"additionalProperties": {
+																			"type": "string"
+																		},
+																		"description": "Unique key/value metadata for this hostname. These are per-hostname (customer) settings.",
 																		"type": "object"
 																	},
 																	"custom_origin_server": {
@@ -1420,8 +1400,7 @@
 																						"enum": [
 																							"dv"
 																						],
-																						"example": "dv",
-																						"readOnly": true
+																						"example": "dv"
 																					},
 																					"uploaded_on": {
 																						"description": "The time the custom certificate was uploaded.",
@@ -1718,8 +1697,7 @@
 																				"enum": [
 																					"dv"
 																				],
-																				"example": "dv",
-																				"readOnly": true
+																				"example": "dv"
 																			},
 																			"uploaded_on": {
 																				"description": "The time the custom certificate was uploaded.",
@@ -2035,19 +2013,10 @@
 																	"type": "string"
 																},
 																"custom_metadata": {
-																	"anyOf": [
-																		{
-																			"properties": {
-																				"key": {
-																					"description": "Unique metadata for this hostname.",
-																					"example": "value",
-																					"type": "string"
-																				}
-																			},
-																			"type": "object"
-																		}
-																	],
-																	"description": "These are per-hostname (customer) settings.",
+																	"additionalProperties": {
+																		"type": "string"
+																	},
+																	"description": "Unique key/value metadata for this hostname. These are per-hostname (customer) settings.",
 																	"type": "object"
 																},
 																"custom_origin_server": {
@@ -2297,8 +2266,7 @@
 																					"enum": [
 																						"dv"
 																					],
-																					"example": "dv",
-																					"readOnly": true
+																					"example": "dv"
 																				},
 																				"uploaded_on": {
 																					"description": "The time the custom certificate was uploaded.",
@@ -2595,8 +2563,7 @@
 																			"enum": [
 																				"dv"
 																			],
-																			"example": "dv",
-																			"readOnly": true
+																			"example": "dv"
 																		},
 																		"uploaded_on": {
 																			"description": "The time the custom certificate was uploaded.",
@@ -2775,19 +2742,10 @@
 																			"type": "string"
 																		},
 																		"custom_metadata": {
-																			"anyOf": [
-																				{
-																					"properties": {
-																						"key": {
-																							"description": "Unique metadata for this hostname.",
-																							"example": "value",
-																							"type": "string"
-																						}
-																					},
-																					"type": "object"
-																				}
-																			],
-																			"description": "These are per-hostname (customer) settings.",
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"description": "Unique key/value metadata for this hostname. These are per-hostname (customer) settings.",
 																			"type": "object"
 																		},
 																		"custom_origin_server": {
@@ -3037,8 +2995,7 @@
 																							"enum": [
 																								"dv"
 																							],
-																							"example": "dv",
-																							"readOnly": true
+																							"example": "dv"
 																						},
 																						"uploaded_on": {
 																							"description": "The time the custom certificate was uploaded.",
@@ -3335,8 +3292,7 @@
 																					"enum": [
 																						"dv"
 																					],
-																					"example": "dv",
-																					"readOnly": true
+																					"example": "dv"
 																				},
 																				"uploaded_on": {
 																					"description": "The time the custom certificate was uploaded.",
@@ -3574,19 +3530,10 @@
 					"schema": {
 						"properties": {
 							"custom_metadata": {
-								"anyOf": [
-									{
-										"properties": {
-											"key": {
-												"description": "Unique metadata for this hostname.",
-												"example": "value",
-												"type": "string"
-											}
-										},
-										"type": "object"
-									}
-								],
-								"description": "These are per-hostname (customer) settings.",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"description": "Unique key/value metadata for this hostname. These are per-hostname (customer) settings.",
 								"type": "object"
 							},
 							"custom_origin_server": {
@@ -3808,19 +3755,10 @@
 																	"type": "string"
 																},
 																"custom_metadata": {
-																	"anyOf": [
-																		{
-																			"properties": {
-																				"key": {
-																					"description": "Unique metadata for this hostname.",
-																					"example": "value",
-																					"type": "string"
-																				}
-																			},
-																			"type": "object"
-																		}
-																	],
-																	"description": "These are per-hostname (customer) settings.",
+																	"additionalProperties": {
+																		"type": "string"
+																	},
+																	"description": "Unique key/value metadata for this hostname. These are per-hostname (customer) settings.",
 																	"type": "object"
 																},
 																"custom_origin_server": {
@@ -4070,8 +4008,7 @@
 																					"enum": [
 																						"dv"
 																					],
-																					"example": "dv",
-																					"readOnly": true
+																					"example": "dv"
 																				},
 																				"uploaded_on": {
 																					"description": "The time the custom certificate was uploaded.",
@@ -4368,8 +4305,7 @@
 																			"enum": [
 																				"dv"
 																			],
-																			"example": "dv",
-																			"readOnly": true
+																			"example": "dv"
 																		},
 																		"uploaded_on": {
 																			"description": "The time the custom certificate was uploaded.",
@@ -4548,19 +4484,10 @@
 																			"type": "string"
 																		},
 																		"custom_metadata": {
-																			"anyOf": [
-																				{
-																					"properties": {
-																						"key": {
-																							"description": "Unique metadata for this hostname.",
-																							"example": "value",
-																							"type": "string"
-																						}
-																					},
-																					"type": "object"
-																				}
-																			],
-																			"description": "These are per-hostname (customer) settings.",
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"description": "Unique key/value metadata for this hostname. These are per-hostname (customer) settings.",
 																			"type": "object"
 																		},
 																		"custom_origin_server": {
@@ -4810,8 +4737,7 @@
 																							"enum": [
 																								"dv"
 																							],
-																							"example": "dv",
-																							"readOnly": true
+																							"example": "dv"
 																						},
 																						"uploaded_on": {
 																							"description": "The time the custom certificate was uploaded.",
@@ -5108,8 +5034,7 @@
 																					"enum": [
 																						"dv"
 																					],
-																					"example": "dv",
-																					"readOnly": true
+																					"example": "dv"
 																				},
 																				"uploaded_on": {
 																					"description": "The time the custom certificate was uploaded.",
@@ -5335,19 +5260,10 @@
 					"schema": {
 						"properties": {
 							"custom_metadata": {
-								"anyOf": [
-									{
-										"properties": {
-											"key": {
-												"description": "Unique metadata for this hostname.",
-												"example": "value",
-												"type": "string"
-											}
-										},
-										"type": "object"
-									}
-								],
-								"description": "These are per-hostname (customer) settings.",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"description": "Unique key/value metadata for this hostname. These are per-hostname (customer) settings.",
 								"type": "object"
 							},
 							"hostname": {
@@ -5569,19 +5485,10 @@
 																	"type": "string"
 																},
 																"custom_metadata": {
-																	"anyOf": [
-																		{
-																			"properties": {
-																				"key": {
-																					"description": "Unique metadata for this hostname.",
-																					"example": "value",
-																					"type": "string"
-																				}
-																			},
-																			"type": "object"
-																		}
-																	],
-																	"description": "These are per-hostname (customer) settings.",
+																	"additionalProperties": {
+																		"type": "string"
+																	},
+																	"description": "Unique key/value metadata for this hostname. These are per-hostname (customer) settings.",
 																	"type": "object"
 																},
 																"custom_origin_server": {
@@ -5831,8 +5738,7 @@
 																					"enum": [
 																						"dv"
 																					],
-																					"example": "dv",
-																					"readOnly": true
+																					"example": "dv"
 																				},
 																				"uploaded_on": {
 																					"description": "The time the custom certificate was uploaded.",
@@ -6129,8 +6035,7 @@
 																			"enum": [
 																				"dv"
 																			],
-																			"example": "dv",
-																			"readOnly": true
+																			"example": "dv"
 																		},
 																		"uploaded_on": {
 																			"description": "The time the custom certificate was uploaded.",
@@ -6309,19 +6214,10 @@
 																			"type": "string"
 																		},
 																		"custom_metadata": {
-																			"anyOf": [
-																				{
-																					"properties": {
-																						"key": {
-																							"description": "Unique metadata for this hostname.",
-																							"example": "value",
-																							"type": "string"
-																						}
-																					},
-																					"type": "object"
-																				}
-																			],
-																			"description": "These are per-hostname (customer) settings.",
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"description": "Unique key/value metadata for this hostname. These are per-hostname (customer) settings.",
 																			"type": "object"
 																		},
 																		"custom_origin_server": {
@@ -6571,8 +6467,7 @@
 																							"enum": [
 																								"dv"
 																							],
-																							"example": "dv",
-																							"readOnly": true
+																							"example": "dv"
 																						},
 																						"uploaded_on": {
 																							"description": "The time the custom certificate was uploaded.",
@@ -6869,8 +6764,7 @@
 																					"enum": [
 																						"dv"
 																					],
-																					"example": "dv",
-																					"readOnly": true
+																					"example": "dv"
 																				},
 																				"uploaded_on": {
 																					"description": "The time the custom certificate was uploaded.",
