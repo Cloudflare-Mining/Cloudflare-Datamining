@@ -5,58 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Work Locations: San Francisco, Austin, TX and or New York.&nbsp;</strong></p>
-<p>The Principal Internal Event Manager will lead the end-to-end planning, coordination, and execution of key internal events, including, but not limited to, Sales Kick Off and President’s Club. This role demands exceptional project management abilities, attention to detail, and the capacity to collaborate effectively across multiple departments, ensuring that all events not only meet but exceed the company’s objectives and Cloudflare standards.</p>
-<p><strong>Key Responsibilities:&nbsp;</strong></p>
-<p><strong>Internal Event Strategy:</strong></p>
+<p><strong>About this&nbsp; job</strong>&nbsp;</p>
+<p>We are looking for an exceptionally talented, energetic, and friendly attorney to join our legal team based in San Francisco, CA, Austin, TX, or Washington D.C..&nbsp; As a senior member of the commercial legal team, you will be the primary legal counsel to our partners team.&nbsp; This is a mid-senior to senior level legal position that is perfect for a highly qualified lawyer looking for an opportunity in a rapidly scaling company and who is open to growth.&nbsp; A typical day in this role involves working closely with our partnership, finance, privacy, security, and sales operations teams to counsel our partner and channel teams on potential alliances and partner relationships, review contracts, draft new template language, and advise on policies across all of Cloudflare’s sales theaters. The ideal candidate is a strong negotiator who is equally versed in day-to-day legal matters and strategic business thinking. &nbsp; This position will report to the Head of Commercial Legal.</p>
+<p>A strong candidate will feel confident doing the following:</p>
 <ul>
-	<li>Partner with GTM leadership to align event objectives with the broader company goals.</li>
-	<li>Craft and implement strategic plans for Sales Kick-Off and President’s Club</li>
-	<li>Develop detailed schedules, budgets, and action plans to guide event execution.</li>
+	<li>Provide high level counseling to the partner team regarding Cloudflare’s global partner programs, advising on the various legal risks (including anti-competition), and other issues related to the structure and execution of our partner programs.</li>
+	<li>Draft and negotiate complex channel related agreements including distribution, reseller, professional services, referral, MSP, technology partner, OEM, strategic alliance and other types of partner agreements.</li>
+	<li>Partner with channel leadership including channel operations to create and implement a scalable legal support structure and processes which map to channel leadership’s strategic growth plans.</li>
+	<li>Provide direct support to channel sales and leadership, both domestically and internationally .</li>
+	<li>Create, update and manage global partner agreements and all related channel templates.</li>
+	<li>Partner with revenue recognition, security, sales operations, technology operations, and other stakeholder teams to ensure agreements are consistent with internal Cloudflare policies and processes.</li>
 </ul>
-<p><strong>Logistical Project Management:</strong></p>
+<p></p>
+<h4><strong>Available: San Francisco, CA, Austin, TX, or Washington D.C.</strong></h4>
+<p></p>
+<p><strong>Requirements: &nbsp; &nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <ul>
-	<li>Handle all logistical aspects of events, including selecting venues, managing vendors, event production, registration, travel management, and overseeing on-site activities.</li>
-	<li>Work closely with internal teams to ensure flawless integration and smooth execution of events.</li>
-	<li>Work closing with design on the creation of event collateral.</li>
-</ul>
-<p><strong>Vendor &amp; Stakeholder Management:</strong></p>
-<ul>
-	<li>Identify, negotiate, and manage relationships with external vendors to secure high-quality and cost-effective services.</li>
-	<li>Act as the main point of contact for all event stakeholders, ensuring clear communication and expectations throughout the process.</li>
-</ul>
-<p><strong>On-Site Event Management:</strong></p>
-<ul>
-	<li>Direct the on-site execution of events, ensuring all elements proceed smoothly and troubleshooting any issues that arise.</li>
-	<li>Lead event staff and vendors, providing guidance and support as needed.</li>
-</ul>
-<p><strong>Post-Event Analysis:</strong></p>
-<ul>
-	<li>Conduct thorough post-event reviews to assess success against established goals</li>
-	<li>Collect and analyze feedback from attendees and stakeholders to continuously improve future events</li>
-	<li>Compile reports on event outcomes, including ROI and attendee satisfaction metrics</li>
-</ul>
-<p><strong>Budget Oversight:</strong></p>
-<ul>
-	<li>Create and manage budgets for each event, ensuring all activities are delivered within financial constraints</li>
-	<li>Monitor and report on expenditures, identifying opportunities for cost savings without compromising quality</li>
-</ul>
-<h3><strong>Qualifications:</strong></h3>
-<ul>
-	<li>BS/BA degree and 8 years of experience in event management, with a focus on internal events (experience with tech companies a plus)</li>
-	<li>At least Demonstrated experience in managing large-scale events with multiple stakeholders.</li>
-	<li>Exceptional project management skills, with the ability to oversee multiple events concurrently.</li>
-	<li>Excellent communication and interpersonal skills, capable of working effectively with cross-functional teams.</li>
-	<li>Proficiency in event management software, budgeting tools, and the Microsoft Office Suite.</li>
-	<li>Ability to excel in a fast-paced environment and adapt to changing conditions.</li>
-	<li>Strong problem-solving abilities and a customer-centric approach.</li>
-</ul>
-<p><strong>About you:&nbsp;</strong></p>
-<ul>
-	<li>You have a passion for delivering high caliber conferences and experience with growing them from the ground up</li>
-	<li>Exceptional project management/organizational skills with ability to successfully manage multiple initiatives simultaneously. Attention to detail and accuracy is a must.&nbsp;</li>
-	<li>Excellent communication and interpersonal skills to coordinate with and influence internal stakeholders, including executives, product marketing leaders, and the sales team. Able to advocate persuasively for program strategy and results.&nbsp;</li>
-	<li>Self motivated and able to work autonomously. Able to manage competing priorities and adapt quickly to rapidly changing environments. You can marry high-level creativity and out-of-the-box-thinking with a very detail oriented, hands-on project management style.</li>
+	<li>JD degree with strong academic credentials.</li>
+	<li>Admitted to practice law and in good standing or otherwise authorized to practice law in the state in which the position is located.</li>
+	<li>10+ years relevant experience.</li>
+	<li>Experience with drafting, reviewing, and negotiating agreements with channel partners including resellers, distributors, OEMs, MSPs, GSIs.</li>
+	<li>In depth experience counseling Partner organizations on strategic program initiatives, including advising on antitrust and other program level issues</li>
+	<li>Good strategic, business sense, and demonstrated negotiation skills with respect to legal issues.&nbsp;</li>
+	<li>Detail oriented and technically-adept, preferably with experience at a SaaS or Cloud company.</li>
+	<li>Excellent organizational skills, with the ability to manage multiple matters.</li>
+	<li>The ability to work in a team, with lawyers and non-lawyers, to establish effective solutions efficiently and in an amenable manner.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
