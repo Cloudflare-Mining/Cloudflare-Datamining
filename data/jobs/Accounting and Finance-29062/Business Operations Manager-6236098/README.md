@@ -10,11 +10,11 @@
 <p>&nbsp;</p>
 <p><strong>What you'll do</strong></p>
 <ul>
-	<li>Drive projects through the end-to-end cycle from scoping, analytics to solution design, testing and to operationalization and enablement</li>
-	<li>Work closely with Business Intelligence Team to develop visibility and insights into new initiatives and flag areas with potential for improvement or efficiency&nbsp;</li>
-	<li>Work cross-functionally to keep the project moving forward while keeping key stakeholders informed</li>
+	<li>Work on complex strategic problems: identify root causes of the challenge and/or underlying business drivers, execute in-depth analyses to translate data into meaningful insights</li>
 	<li>Synthesize audience relevant findings from the data to achieve alignments and support strategic decision making&nbsp;</li>
-	<li>Assess financial impact of the initiatives and recommend approaches to risk mitigation&nbsp;</li>
+	<li>Assess financial impact of new initiatives, identify approaches to risk mitigation, create forecast model on new metrics as needed&nbsp;</li>
+	<li>Work closely with Business Intelligence Team to track core KPIs, create visibility on new initiatives and its impact, and to streamline reporting processes as the projects mature out of MVP stage&nbsp;</li>
+	<li>Lead projects through the full cycle: from initial scoping, analytics to solution design, testing and to operationalization and enablement</li>
 	<li>Provide ad-hoc analytical support to Finance &amp; Executive Leadership</li>
 </ul>
 <p>This role would be remote and would be based in Mexico. The role might involve travel to the US on a bi-annual basis.</p>

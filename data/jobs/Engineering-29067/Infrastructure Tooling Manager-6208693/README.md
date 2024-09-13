@@ -8,25 +8,18 @@
 <h3><strong>Infrastructure Tooling Manager - Zero Trust Connectivity<br></strong></h3>
 <h4><strong><br>Location: Austin, San Francisco, NYC, Champaign IL, Seattle, Atlanta, Washington DC or Remote US<br><br></strong></h4>
 <p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
-<h3><strong>What you'll do</strong></h3>
-<p>As Cloudflare continues to scale it is critical that we are looking holistically across our infrastructure and business processes to ensure that we are propelling Cloudflare forward as we expand across our 1000+ data centers world wide.&nbsp; To that end we are in the process of developing a holistic view of our infrastructure that integrates directly into our billing, procurement and other systems.&nbsp; &nbsp; As the architect you will be working across all infrastructure teams including capacity, asset management, hardware, network and infrastructure operations, with the initial focus being on integration to a comprehensive ERP. &nbsp; You will collaborate with these teams as well as architects across other areas of the business to create and build an architecture that will carry us forward to $5B.&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h4><strong>What you'll do</strong></h4>
+<p>We are looking for an Engineering Manager to join Cloudflare, responsible for infrastructure lifecycle tooling. You will lead a team of junior, passionate and talented engineers that develop the systems that allow us to manage our infrastructure at scale. &nbsp; You will be responsible for a diverse set of projects, for example implementing a firmware upgrade service, and providing capacity dashboarding. You will play an active part in shaping the future of the infrastructure that propels Cloudflare scale.</p>
+<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment. You build great relationships with your customers and deeply understand their needs.&nbsp; Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>10+ years of experience working with distributed systems.</li>
-	<li>Experience with process and data modeling for large systems</li>
-	<li>Experience in designing and maintaining broadly cross functional systems.</li>
-	<li>Excellent collaboration skills</li>
-	<li>Proven ability to convey ideas effectively through verbal and written communication</li>
-	<li>Ability to translate business needs into requirements, design documents and technical solutions</li>
-	<li>Knowledge of API design standards, patterns and best practices</li>
-	<li>Proven ability to use data to drive business outcomes</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Ability to do quick turn-around prototyping to prove or disprove architectural approaches</li>
-	<li>Experience with Core Financial ERP tools such as SAP/Oracle and/or architecting data center infrastructure asset management software</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>Experience debugging, measuring, optimizing and identifying failure modes in a large-scale distributed system.</li>
+	<li>At least two years of management experience</li>
+	<li>At least 5 years of hands on software development experience on meaningfully complex systems</li>
+	<li>Comfortable leading and hiring a team that builds the backend bits and frontend widgets</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>Comfortable managing teams/projections with tight deadlines and short release cycles</li>
 </ul>
 <p><strong>&nbsp;</strong></p>
 <p><strong>Compensation</strong></p>
