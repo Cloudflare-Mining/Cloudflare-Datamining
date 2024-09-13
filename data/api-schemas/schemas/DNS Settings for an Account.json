@@ -92,6 +92,11 @@
 											"properties": {
 												"zone_defaults": {
 													"properties": {
+														"flatten_all_cnames": {
+															"description": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
+															"example": false,
+															"type": "boolean"
+														},
 														"foundation_dns": {
 															"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 															"example": false,
@@ -108,7 +113,11 @@
 																"type": {
 																	"description": "Nameserver type",
 																	"enum": [
-																		"cloudflare.standard"
+																		"cloudflare.standard",
+																		"cloudflare.standard.random",
+																		"custom.account",
+																		"custom.tenant",
+																		"custom.zone"
 																	],
 																	"example": "cloudflare.standard",
 																	"type": "string"
@@ -294,6 +303,11 @@
 													"properties": {
 														"zone_defaults": {
 															"properties": {
+																"flatten_all_cnames": {
+																	"description": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
+																	"example": false,
+																	"type": "boolean"
+																},
 																"foundation_dns": {
 																	"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 																	"example": false,
@@ -310,7 +324,11 @@
 																		"type": {
 																			"description": "Nameserver type",
 																			"enum": [
-																				"cloudflare.standard"
+																				"cloudflare.standard",
+																				"cloudflare.standard.random",
+																				"custom.account",
+																				"custom.tenant",
+																				"custom.zone"
 																			],
 																			"example": "cloudflare.standard",
 																			"type": "string"
@@ -550,6 +568,11 @@
 						"properties": {
 							"zone_defaults": {
 								"properties": {
+									"flatten_all_cnames": {
+										"description": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
+										"example": false,
+										"type": "boolean"
+									},
 									"foundation_dns": {
 										"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 										"example": false,
@@ -566,7 +589,11 @@
 											"type": {
 												"description": "Nameserver type",
 												"enum": [
-													"cloudflare.standard"
+													"cloudflare.standard",
+													"cloudflare.standard.random",
+													"custom.account",
+													"custom.tenant",
+													"custom.zone"
 												],
 												"example": "cloudflare.standard",
 												"type": "string"
@@ -746,6 +773,11 @@
 											"properties": {
 												"zone_defaults": {
 													"properties": {
+														"flatten_all_cnames": {
+															"description": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
+															"example": false,
+															"type": "boolean"
+														},
 														"foundation_dns": {
 															"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 															"example": false,
@@ -762,7 +794,11 @@
 																"type": {
 																	"description": "Nameserver type",
 																	"enum": [
-																		"cloudflare.standard"
+																		"cloudflare.standard",
+																		"cloudflare.standard.random",
+																		"custom.account",
+																		"custom.tenant",
+																		"custom.zone"
 																	],
 																	"example": "cloudflare.standard",
 																	"type": "string"
@@ -948,6 +984,11 @@
 													"properties": {
 														"zone_defaults": {
 															"properties": {
+																"flatten_all_cnames": {
+																	"description": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
+																	"example": false,
+																	"type": "boolean"
+																},
 																"foundation_dns": {
 																	"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
 																	"example": false,
@@ -964,7 +1005,11 @@
 																		"type": {
 																			"description": "Nameserver type",
 																			"enum": [
-																				"cloudflare.standard"
+																				"cloudflare.standard",
+																				"cloudflare.standard.random",
+																				"custom.account",
+																				"custom.tenant",
+																				"custom.zone"
 																			],
 																			"example": "cloudflare.standard",
 																			"type": "string"
