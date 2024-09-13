@@ -168,6 +168,7 @@
 	"managed_header_modifications.group.add_client_certificate_headers": "Add TLS client auth headers",
 	"managed_header_modifications.group.remove_x-powered-by_headers": "Remove &quot;X-Powered-By&quot; headers",
 	"managed_header_modifications.group.add_true_client_ip_headers": "Add &quot;True-Client-IP&quot; header",
+	"managed_header_modifications.group.add_waf_credential_check_status_header": "Add Leaked Credentials Checks Header",
 	"managed_header_modifications.group.add_bot_protection_headers.description": "Adds HTTP request headers with bot-related values: bot score, verified bot, threat score, JA3 and JA4 fingerprints.",
 	"managed_header_modifications.group.add_client_certificate_headers.description": "Adds HTTP request headers with <0>Mutual TLS (mTLS) client authentication values</0>.",
 	"managed_header_modifications.group.add_visitor_location_headers.description": "Adds HTTP request headers with location information for the visitor's IP address, including city, country, continent, longitude, and latitude.",
@@ -176,6 +177,7 @@
 	"managed_header_modifications.group.remove_x-powered-by_headers.description": "Removes the &quot;X-Powered-By&quot; HTTP response header that provides information about the application at the origin server that handled the request.",
 	"managed_header_modifications.group.add_security_headers.description": "Adds several security-related HTTP response headers providing cross-site scripting (XSS) protection.",
 	"managed_header_modifications.group.add_true_client_ip_headers.description": "Adds a &quot;True-Client-IP&quot; request header with the visitor's IP address. Unavailable when &quot;Remove visitor IP headers&quot; is enabled.",
+	"managed_header_modifications.group.add_waf_credential_check_status_header.description": "Adds a header 'Exposed-Credential-Check' that provides values on fields which have been found to be leaked. <0>Learn more about Leaked Credential Checks</0>.",
 	"origin_rules.title": "Origin Rules",
 	"origin_rules.page.documentation": "Origin Rules documentation",
 	"origin_rules.page.description": "Customize where matching traffic will go and with which parameters. Allows host header, SNI, DNS record, and destination port overrides.",
@@ -578,6 +580,5 @@
 	"snippets.tabs.http": "HTTP",
 	"snippets.tabs.preview": "Preview",
 	"snippets.delete.title": "Delete Snippet",
-	"snippets.delete.description": "Are you sure you want to delete this snippet?",
-	"snippets.error.description": "**%{smart_count}** error found in your Snippet code. Correct the issue on the <0>Update Snippet Code page</0> and try again. |||| **%{smart_count}** found in your Snippet code. Correct the issue on the <0>Update Snippet Code page</0> and try again."
+	"snippets.delete.description": "Are you sure you want to delete this snippet?"
 }
