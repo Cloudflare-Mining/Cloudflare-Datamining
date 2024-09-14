@@ -812,7 +812,20 @@
 									"openInNewTab": false,
 									"locale": "en-US"
 								},
-								"callToAction": null
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "4rHLtXy296ik2cpAYeMpC9",
+									"elementName": "AddOn-Load Balancing-Activate-Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
 							},
 							{
 								"locale": "en-US",
@@ -958,6 +971,81 @@
 									"standardText": null,
 									"text": "Activate",
 									"url": "https://dash.cloudflare.com/traffic",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "AddOns-Workers",
+								"contentfulId": "2hiZeeVrUgTu5KrCMq8fbO",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
+									"altText": "Cloudflare workers ",
+									"title": "Cloudflare workers ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Workers",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Workers lets developers deploy serverless code written in JavaScript, Rust, C, and C++ to Cloudflare's edge, closer to the end user.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Serverless",
+								"pricingText": "Try for free",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "ygNXZZAF1sDx37AAepHxi",
+									"elementName": "Explore SASE",
+									"standardText": null,
+									"text": "Explore SASE / SSE",
+									"url": "/zero-trust",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "3yibLzUww1YcAMJT7TE7WV",
+									"elementName": "AddOns-Workers-Activate-Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/login?redirect_uri=https%3A%2F%2Fdash.cloudflare.com%2F%3Faccount%3Dworkers",
 									"loggedInUrl": null,
 									"buttonModal": null,
 									"openInNewTab": false,
