@@ -1,6 +1,7 @@
 {
 	"GET /zones/{zone_id}/custom_ns": {
-		"description": "Get metadata for account-level custom nameservers on a zone.\n",
+		"deprecated": true,
+		"description": "Get metadata for account-level custom nameservers on a zone.\n\nDeprecated in favor of [Show DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-a-zone-list-dns-settings).\n",
 		"operationId": "account-level-custom-nameservers-usage-for-a-zone-get-account-custom-nameserver-related-zone-metadata",
 		"parameters": [
 			{
@@ -85,11 +86,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -215,11 +211,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -384,7 +375,8 @@
 		}
 	},
 	"PUT /zones/{zone_id}/custom_ns": {
-		"description": "Set metadata for account-level custom nameservers on a zone.\n\nIf you would like new zones in the account to use account custom nameservers by default, use PUT /accounts/:identifier to set the account setting use_account_custom_ns_by_default to true.\n",
+		"deprecated": true,
+		"description": "Set metadata for account-level custom nameservers on a zone.\n\nIf you would like new zones in the account to use account custom nameservers by default, use PUT /accounts/:identifier to set the account setting use_account_custom_ns_by_default to true.\n\nDeprecated in favor of [Update DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-a-zone-update-dns-settings).\n",
 		"operationId": "account-level-custom-nameservers-usage-for-a-zone-set-account-custom-nameserver-related-zone-metadata",
 		"parameters": [
 			{
@@ -494,11 +486,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -619,11 +606,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
