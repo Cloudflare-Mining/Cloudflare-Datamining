@@ -17,6 +17,7 @@
 	"vectorize.wrangler_tutorial.bind_to_worker.paragraph": "To bind your index to a Worker so that you can start querying it, copy the following binding into the wrangler.toml file of your Workers project:",
 	"vectorize.wrangler_tutorial.insert_vectors.heading": "Insert vectors and query your index",
 	"vectorize.wrangler_tutorial.insert_vectors.paragraph": "To insert vectors into an index and to query for similar vectors, use the <0>Workers Client API</0>:",
+	"vectorize.indexes_table.monthly_usage": "Monthly usage",
 	"vectorize.indexes_table.column_index_name": "Index Name",
 	"vectorize.indexes_table.column_description": "Description",
 	"vectorize.indexes_table.column_dimension": "Dimensions",
@@ -39,5 +40,8 @@
 	"vectorize.metrics.query_latency.latency": "Average Query Latency",
 	"vectorize.metrics.query_latency.description": "Average query latency across all successful queries",
 	"vectorize.metrics.vectors_count.count": "# of Vectors",
-	"vectorize.metrics.vectors_count.description": "The number of vectors stored in this vector index"
+	"vectorize.metrics.vectors_count.description": "The number of vectors stored in this vector index",
+	"vectorize.plans.enterprise.title": "Enterprise",
+	"vectorize.plans.unbound.title": "Paid",
+	"vectorize.plans.free": "Free"
 }

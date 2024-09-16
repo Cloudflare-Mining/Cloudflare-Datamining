@@ -454,7 +454,6 @@ const navigation = {
 		}, {
 			title: "navigation.account.workers.ai.vectorize",
 			url: "/ai/vectorize",
-			labels: ["beta"],
 			testId: "sidenav-ai-vectorize-link",
 			hasPermission: D => (0, r.RO)(D) && !!(0, l.BF)(D, "vector_db.enabled")
 		}, {
@@ -480,6 +479,10 @@ const navigation = {
 			title: "navigation.common.analytics",
 			url: "/stream/analytics",
 			hasPermission: D => (0, a.hv)(D)
+		}, {
+			title: "navigation.account.stream.plans",
+			url: "/stream/plans",
+			hasPermission: D => !(0, a.hv)(D)
 		}]
 	}, {
 		title: "navigation.account.images",

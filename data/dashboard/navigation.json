@@ -595,9 +595,6 @@
 				{
 					"title": "navigation.account.workers.ai.vectorize",
 					"url": "/ai/vectorize",
-					"labels": [
-						"beta"
-					],
 					"testId": "sidenav-ai-vectorize-link",
 					"hasPermission": null
 				},
@@ -628,6 +625,11 @@
 				{
 					"title": "navigation.common.analytics",
 					"url": "/stream/analytics",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.stream.plans",
+					"url": "/stream/plans",
 					"hasPermission": null
 				}
 			]
