@@ -2573,9 +2573,9 @@
 			]
 		}
 	},
-	"GET /accounts/{account_id}/dex/tests": {
-		"description": "List DEX tests",
-		"operationId": "dex-endpoints-list-tests",
+	"GET /accounts/{account_id}/dex/tests/overview": {
+		"description": "List DEX tests with overview metrics",
+		"operationId": "dex-endpoints-list-tests-overview",
 		"parameters": [
 			{
 				"description": "unique identifier linked to an account in the API request path.",
@@ -3318,7 +3318,7 @@
 						}
 					}
 				},
-				"description": "DEX tests list response"
+				"description": "success response"
 			},
 			"4XX": {
 				"content": {
@@ -3409,7 +3409,7 @@
 						}
 					}
 				},
-				"description": "List DEX tests failure response"
+				"description": "failure response"
 			}
 		},
 		"security": [
