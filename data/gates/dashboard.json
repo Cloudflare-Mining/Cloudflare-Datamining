@@ -364,7 +364,7 @@
 		]
 	},
 	"dashon-18-reduced-add-button-on-mobile": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
@@ -851,6 +851,13 @@
 	},
 	"prg-chat-widget-upsell": {
 		"enabled": true
+	},
+	"prg-deep-link-prompt-optimization": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
 	},
 	"prg-dynamic-dash-banners": {
 		"enabled": true
