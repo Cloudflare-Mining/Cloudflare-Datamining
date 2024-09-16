@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2019-06-03T19:34:25.534Z",
-					"updatedAt": "2024-06-11T18:09:06.853Z"
+					"updatedAt": "2024-09-16T21:25:23.340Z"
 				},
 				"contentfulId": "5hsFdLy1S27xzNuevNywfi",
 				"contentTypeId": "page",
@@ -2627,14 +2627,14 @@
 							"backgroundColor": "white",
 							"bladeBorder": "none",
 							"sectionPadding": "tile--no-top-padding",
-							"columnLayout": "Left Sidebar",
+							"columnLayout": "One Third & Two Thirds",
 							"columns": [
 								{
 									"contentTypeId": "elementRichText",
-									"contentfulId": "4S6MHjlRU9Ty8megUGiPIC",
+									"contentfulId": "1NLoW22DO7nwgZTS0vcJ7s",
 									"title": null,
 									"htmlId": null,
-									"elementPosition": null,
+									"elementPosition": "sticky",
 									"column": {
 										"nodeType": "document",
 										"content": [
@@ -2660,7 +2660,7 @@
 												]
 											},
 											{
-												"nodeType": "heading-2",
+												"nodeType": "heading-4",
 												"data": {
 													"target": null,
 													"uri": null
@@ -2674,7 +2674,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Legal",
+														"value": "Privacy Policy",
 														"marks": [],
 														"content": null
 													}
@@ -2724,7 +2724,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://www.cloudflare.com/website-terms"
+															"uri": "#cloudflare-privacy-policy"
 														},
 														"value": null,
 														"marks": null,
@@ -2735,7 +2735,100 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Website Terms of Use",
+																"value": "Overview",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\n\n",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "#1-policy-application"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "Policy application",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\n\n",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "#2-information-we-collect-categories-of-data-subjects"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "Information we collect",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\n\n",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "#3-how-we-use-information-we-collect"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "How we use information we collect",
 																"marks": [],
 																"content": null
 															}
@@ -2776,7 +2869,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://www.cloudflare.com/terms"
+															"uri": "#4-data-aggregation"
 														},
 														"value": null,
 														"marks": null,
@@ -2787,7 +2880,7 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Self-Serve Subscription Agreement",
+																"value": "Data aggregation",
 																"marks": [],
 																"content": null
 															}
@@ -2828,7 +2921,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://www.cloudflare.com/service-specific-terms-overview/"
+															"uri": "#5-information-sharing"
 														},
 														"value": null,
 														"marks": null,
@@ -2839,7 +2932,7 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Service-Specific Terms",
+																"value": "Information sharing",
 																"marks": [],
 																"content": null
 															}
@@ -2880,7 +2973,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://www.cloudflare.com/privacypolicy"
+															"uri": "#6-notice-to-eu-uk-and-swiss-residents"
 														},
 														"value": null,
 														"marks": null,
@@ -2891,7 +2984,7 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Privacy Policy",
+																"value": "Notice to UK and EU residents",
 																"marks": [],
 																"content": null
 															}
@@ -2932,7 +3025,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://www.cloudflare.com/cookie-policy"
+															"uri": "#7-international-information-transfers"
 														},
 														"value": null,
 														"marks": null,
@@ -2943,7 +3036,7 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Cookie Policy",
+																"value": "International information transfers",
 																"marks": [],
 																"content": null
 															}
@@ -2984,7 +3077,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://www.cloudflare.com/abuse"
+															"uri": "#8-data-subject-rights-and-choices"
 														},
 														"value": null,
 														"marks": null,
@@ -2995,7 +3088,7 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Trust & Safety",
+																"value": "Data subject rights and choices",
 																"marks": [],
 																"content": null
 															}
@@ -3036,7 +3129,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://www.cloudflare.com/transparency"
+															"uri": "#9-communication-preferences"
 														},
 														"value": null,
 														"marks": null,
@@ -3047,7 +3140,7 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Transparency Report",
+																"value": "Communication preferences",
 																"marks": [],
 																"content": null
 															}
@@ -3088,7 +3181,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://www.cloudflare.com/domain-registration-agreement"
+															"uri": "#10-data-security-data-integrity-and-access"
 														},
 														"value": null,
 														"marks": null,
@@ -3099,7 +3192,7 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Domain Registration Agreement",
+																"value": "Data security, data integrity and access",
 																"marks": [],
 																"content": null
 															}
@@ -3140,7 +3233,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://www.cloudflare.com/modern-slavery-act-statement"
+															"uri": "#11-data-retention"
 														},
 														"value": null,
 														"marks": null,
@@ -3151,88 +3244,7 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Modern Slavery Act Statement",
-																"marks": [],
-																"content": null
-															}
-														]
-													},
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "",
-														"marks": [],
-														"content": null
-													}
-												]
-											},
-											{
-												"nodeType": "paragraph",
-												"data": {
-													"target": null,
-													"uri": null
-												},
-												"value": null,
-												"marks": null,
-												"content": [
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "",
-														"marks": [],
-														"content": null
-													},
-													{
-														"nodeType": "asset-hyperlink",
-														"data": {
-															"target": {
-																"sys": {
-																	"id": "284hiWkCYNc49GQpAeBvGN",
-																	"type": "Link",
-																	"linkType": "Asset"
-																},
-																"related_asset": [
-																	{
-																		"contentfulId": "284hiWkCYNc49GQpAeBvGN",
-																		"locale": "en-US",
-																		"title": "Third Party Code of Conduct",
-																		"file": {
-																			"name": "Third Party Code of Conduct.pdf",
-																			"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/284hiWkCYNc49GQpAeBvGN/e137cdac96d1c4cd403c6b525831d284/Third_Party_Code_of_Conduct.pdf",
-																			"internal": {
-																				"mediaType": "application/pdf"
-																			}
-																		}
-																	}
-																],
-																"entry_elementMarkdown": [],
-																"entry_assetFile": [],
-																"entry_button": [],
-																"entry_elementLink": [],
-																"entry_page": [],
-																"entry_elementIcon": [],
-																"entry_bladeTable": [],
-																"entry_bladeThreeFeatures": [],
-																"entry_bladeFourFeatures": []
-															},
-															"uri": null
-														},
-														"value": null,
-														"marks": null,
-														"content": [
-															{
-																"nodeType": "text",
-																"data": {
-																	"target": null,
-																	"uri": null
-																},
-																"value": "Third Party Code of Conduct",
+																"value": "Data retention",
 																"marks": [],
 																"content": null
 															}
@@ -3273,7 +3285,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://www.cloudflare.com/candidate-privacy-notice/"
+															"uri": "#12-notification-of-changes"
 														},
 														"value": null,
 														"marks": null,
@@ -3284,7 +3296,319 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Candidate Privacy Policy",
+																"value": "Notification of changes",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "#13-business-transactions"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "Business transactions",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "#14-english-language-controls"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "English language controls",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "#15-dispute-resolution"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "Dispute resolution",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "#16-notice-to-california-residents"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "Notice to California residents",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "#17-contact-information"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "Contact information",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "#legal-links"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "Legal questions",
 																"marks": [],
 																"content": null
 															}
