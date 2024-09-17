@@ -143,12 +143,36 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string"
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"name",
 												"default_sampling",
-												"router_ips"
+												"router_ips",
+												"warp_devices"
 											],
 											"type": "object"
 										}
@@ -286,12 +310,36 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
 														}
 													},
 													"required": [
 														"name",
 														"default_sampling",
-														"router_ips"
+														"router_ips",
+														"warp_devices"
 													],
 													"type": "object"
 												}
@@ -406,7 +454,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/mnm/config": {
-		"description": "Lists default sampling and router IPs for account.",
+		"description": "Lists default sampling, router IPs and warp devices for account.",
 		"operationId": "magic-network-monitoring-configuration-list-account-configuration",
 		"parameters": [
 			{
@@ -543,12 +591,36 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string"
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"name",
 												"default_sampling",
-												"router_ips"
+												"router_ips",
+												"warp_devices"
 											],
 											"type": "object"
 										}
@@ -686,12 +758,36 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
 														}
 													},
 													"required": [
 														"name",
 														"default_sampling",
-														"router_ips"
+														"router_ips",
+														"warp_devices"
 													],
 													"type": "object"
 												}
@@ -808,7 +904,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/mnm/config/full": {
-		"description": "Lists default sampling, router IPs, and rules for account.",
+		"description": "Lists default sampling, router IPs, warp devices, and rules for account.",
 		"operationId": "magic-network-monitoring-configuration-list-rules-and-account-configuration",
 		"parameters": [
 			{
@@ -945,12 +1041,36 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string"
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"name",
 												"default_sampling",
-												"router_ips"
+												"router_ips",
+												"warp_devices"
 											],
 											"type": "object"
 										}
@@ -1088,12 +1208,36 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
 														}
 													},
 													"required": [
 														"name",
 														"default_sampling",
-														"router_ips"
+														"router_ips",
+														"warp_devices"
 													],
 													"type": "object"
 												}
@@ -1225,7 +1369,55 @@
 		],
 		"requestBody": {
 			"content": {
-				"application/json": {}
+				"application/json": {
+					"schema": {
+						"properties": {
+							"default_sampling": {
+								"default": 1,
+								"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+								"minimum": 1,
+								"type": "number"
+							},
+							"name": {
+								"description": "The account name.",
+								"example": "cloudflare user's account",
+								"type": "string"
+							},
+							"router_ips": {
+								"items": {
+									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+									"example": "203.0.113.1/32",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"warp_devices": {
+								"items": {
+									"description": "Object representing a warp device with an ID and name.",
+									"properties": {
+										"id": {
+											"description": "Unique identifier for the warp device.",
+											"example": "5360368d-b351-4791-abe1-93550dabd351",
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the warp device.",
+											"example": "My warp device",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
 			},
 			"required": true
 		},
@@ -1353,12 +1545,36 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string"
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"name",
 												"default_sampling",
-												"router_ips"
+												"router_ips",
+												"warp_devices"
 											],
 											"type": "object"
 										}
@@ -1496,12 +1712,36 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
 														}
 													},
 													"required": [
 														"name",
 														"default_sampling",
-														"router_ips"
+														"router_ips",
+														"warp_devices"
 													],
 													"type": "object"
 												}
@@ -1632,7 +1872,59 @@
 		],
 		"requestBody": {
 			"content": {
-				"application/json": {}
+				"application/json": {
+					"schema": {
+						"properties": {
+							"default_sampling": {
+								"default": 1,
+								"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+								"minimum": 1,
+								"type": "number"
+							},
+							"name": {
+								"description": "The account name.",
+								"example": "cloudflare user's account",
+								"type": "string"
+							},
+							"router_ips": {
+								"items": {
+									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+									"example": "203.0.113.1/32",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"warp_devices": {
+								"items": {
+									"description": "Object representing a warp device with an ID and name.",
+									"properties": {
+										"id": {
+											"description": "Unique identifier for the warp device.",
+											"example": "5360368d-b351-4791-abe1-93550dabd351",
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the warp device.",
+											"example": "My warp device",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"default_sampling"
+						],
+						"type": "object"
+					}
+				}
 			},
 			"required": true
 		},
@@ -1760,12 +2052,36 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string"
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"name",
 												"default_sampling",
-												"router_ips"
+												"router_ips",
+												"warp_devices"
 											],
 											"type": "object"
 										}
@@ -1903,12 +2219,36 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
 														}
 													},
 													"required": [
 														"name",
 														"default_sampling",
-														"router_ips"
+														"router_ips",
+														"warp_devices"
 													],
 													"type": "object"
 												}
@@ -2038,7 +2378,59 @@
 		],
 		"requestBody": {
 			"content": {
-				"application/json": {}
+				"application/json": {
+					"schema": {
+						"properties": {
+							"default_sampling": {
+								"default": 1,
+								"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+								"minimum": 1,
+								"type": "number"
+							},
+							"name": {
+								"description": "The account name.",
+								"example": "cloudflare user's account",
+								"type": "string"
+							},
+							"router_ips": {
+								"items": {
+									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+									"example": "203.0.113.1/32",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"warp_devices": {
+								"items": {
+									"description": "Object representing a warp device with an ID and name.",
+									"properties": {
+										"id": {
+											"description": "Unique identifier for the warp device.",
+											"example": "5360368d-b351-4791-abe1-93550dabd351",
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the warp device.",
+											"example": "My warp device",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"default_sampling"
+						],
+						"type": "object"
+					}
+				}
 			},
 			"required": true
 		},
@@ -2166,12 +2558,36 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string"
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
 												"name",
 												"default_sampling",
-												"router_ips"
+												"router_ips",
+												"warp_devices"
 											],
 											"type": "object"
 										}
@@ -2309,12 +2725,36 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
 														}
 													},
 													"required": [
 														"name",
 														"default_sampling",
-														"router_ips"
+														"router_ips",
+														"warp_devices"
 													],
 													"type": "object"
 												}

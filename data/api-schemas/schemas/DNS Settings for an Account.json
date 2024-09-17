@@ -172,7 +172,7 @@
 																"retry": {
 																	"description": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.",
 																	"example": 2400,
-																	"maximum": 3600,
+																	"maximum": 86400,
 																	"minimum": 600,
 																	"type": "number"
 																},
@@ -184,8 +184,8 @@
 																"ttl": {
 																	"description": "The time to live (TTL) of the SOA record itself.",
 																	"example": 3600,
-																	"maximum": 3600,
-																	"minimum": 1800,
+																	"maximum": 86400,
+																	"minimum": 300,
 																	"type": "number"
 																}
 															},
@@ -383,7 +383,7 @@
 																		"retry": {
 																			"description": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.",
 																			"example": 2400,
-																			"maximum": 3600,
+																			"maximum": 86400,
 																			"minimum": 600,
 																			"type": "number"
 																		},
@@ -395,8 +395,8 @@
 																		"ttl": {
 																			"description": "The time to live (TTL) of the SOA record itself.",
 																			"example": 3600,
-																			"maximum": 3600,
-																			"minimum": 1800,
+																			"maximum": 86400,
+																			"minimum": 300,
 																			"type": "number"
 																		}
 																	},
@@ -648,7 +648,7 @@
 											"retry": {
 												"description": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.",
 												"example": 2400,
-												"maximum": 3600,
+												"maximum": 86400,
 												"minimum": 600,
 												"type": "number"
 											},
@@ -660,8 +660,8 @@
 											"ttl": {
 												"description": "The time to live (TTL) of the SOA record itself.",
 												"example": 3600,
-												"maximum": 3600,
-												"minimum": 1800,
+												"maximum": 86400,
+												"minimum": 300,
 												"type": "number"
 											}
 										},
@@ -853,7 +853,7 @@
 																"retry": {
 																	"description": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.",
 																	"example": 2400,
-																	"maximum": 3600,
+																	"maximum": 86400,
 																	"minimum": 600,
 																	"type": "number"
 																},
@@ -865,8 +865,8 @@
 																"ttl": {
 																	"description": "The time to live (TTL) of the SOA record itself.",
 																	"example": 3600,
-																	"maximum": 3600,
-																	"minimum": 1800,
+																	"maximum": 86400,
+																	"minimum": 300,
 																	"type": "number"
 																}
 															},
@@ -1064,7 +1064,7 @@
 																		"retry": {
 																			"description": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.",
 																			"example": 2400,
-																			"maximum": 3600,
+																			"maximum": 86400,
 																			"minimum": 600,
 																			"type": "number"
 																		},
@@ -1076,8 +1076,8 @@
 																		"ttl": {
 																			"description": "The time to live (TTL) of the SOA record itself.",
 																			"example": 3600,
-																			"maximum": 3600,
-																			"minimum": 1800,
+																			"maximum": 86400,
+																			"minimum": 300,
 																			"type": "number"
 																		}
 																	},
