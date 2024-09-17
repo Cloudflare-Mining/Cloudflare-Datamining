@@ -5,40 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Singapore</p>
-<p><strong>What You’ll Do</strong></p>
-<p>Cloudflare’s business requires a world class legal team to help the company deal with complex matters by anticipating complications and distractions and guiding the company around those obstacles. We’re looking for a new team member who can help foster our unique corporate philosophy and approach, in which the security and privacy of our customers are paramount. This role is ideal for someone who is a proactive self-starter and strategic thinker, who has a thirst for knowledge and continued growth, all while working as part of a great team.</p>
-<p>&nbsp;</p>
-<p>We are looking for an exceptionally talented, energetic, and friendly program manager to join our legal team as a Regional Program Manager, Legal Compliance (APJC) based in Singapore. You will play a key role executing the day-to-day nuts and bolts of our legal compliance within the APJC region, including company compliance with new laws and regulations, establishing corporate presence in new countries, internal investigations, conflicts of interest disclosures, gifts and entertainment requests, training and communications, as well as project management of other cross-functional compliance initiatives. The perfect candidate is passionate about compliance and can channel that passion into solving complex problems and novel legal issues in a fast-paced environment. As part of the job, you will:&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>Responsibilities:</strong></p>
+<h4><strong>Description</strong></h4>
+<p>We are looking for a leader with prior experience in Technical Account Management and value-added support services. The ideal candidate will lead a team of Technical Account Managers, who are responsible for managing the service delivery experience of our Premium customers.&nbsp;Partnering with the Head of TAM Services to drive the development and execution of a Global TAM strategy, ensuring an exceptional service experience that is metrics-driven and solution-oriented. You will be responsible for managing, mentoring, and coaching team members, while also overseeing career development planning and guidance. Additionally, you will play a pivotal role in hiring, onboarding, and training new team members. Your role will require effective cross-team communication between Support, Product/Engineering, and Sales, fostering collaboration among Support managers and teams. Furthermore, you will closely collaborate with Account Management Teams, such as Solution Consulting, Account Executives, Professional Services, and Partners, to guarantee a seamless customer experience.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Manage Cloudflare’s <strong>company compliance with new laws and regulations in the APJC region</strong>, working closely with our public policy, legal compliance and regional legal teams;&nbsp;</li>
-	<li>Manage compliance initiatives associated with setting up <strong>corporate presence in new countries</strong> within the APJC region;</li>
-	<li>Support Cloudflare’s <strong>internal investigations program</strong>, including management of investigation case files, conducting witness interviews, collecting supporting documentation, and drafting final reports;</li>
-	<li>Assist with the administration of Cloudflare’s <strong>compliance training and education program</strong>, including the design of regional compliance training content, target audience identification, and effectiveness measurement;</li>
-	<li>Assist with Cloudflare’s <strong>conflict of interest disclosure process</strong>, including review and approval of potential employee conflicts and gift and entertainment requests,<strong> </strong>as well as policy training;&nbsp;</li>
-	<li>Assist with execution of a regular integrity and <strong>compliance communications strategy within the region</strong>; and</li>
-	<li>Project manage a variety of other <strong>cross-functional compliance initiatives</strong>.</li>
+	<li>Collaborate with the Head of TAM Services to develop and execute the Global TAM strategy.</li>
+	<li>&nbsp;Maintain a metrics-driven and solution-oriented approach to deliver a world-class service experience.</li>
+	<li>Lead, mentor, and coach team members to achieve their full potential.</li>
+	<li>Provide guidance for career development within the team.</li>
+	<li>Handle the recruitment, onboarding, and training of new team members.</li>
+	<li>Foster cross-team communication between Support, Product/Engineering, and Sales.</li>
+	<li>Promote team collaboration with other Support managers and teams.</li>
+	<li>Partner closely with Account Management Teams to ensure a seamless customer experience.</li>
+	<li>Facilitate the implementation of new processes to enhance customer support.</li>
+	<li>Cultivate and strengthen the collaborative culture within Cloudflare Support.</li>
+	<li>Address critical customer escalations and manage stakeholder expectations, providing senior management with resolution plans.</li>
+	<li>Collect and analyze support metrics to drive continuous improvements.</li>
+	<li>Ensure proactive and high-quality ticket and incident management.</li>
+	<li>Responsible for weekly reporting, including team metrics, customer trends, issues, and requests.</li>
+	<li>Contact customers proactively to ensure the highest level of service satisfaction and develop and implement a corrective action plan, to avoid potential churn</li>
+</ul>
+<h4><strong>Requirements</strong></h4>
+<ul>
+	<li>5 to 8 years of technical leadership experience, preferably in SaaS or Network/General Cyber Security.</li>
+	<li>Previous experience leading a regionally distributed team connected to a 24/7 Follow-the-sun service delivery model.</li>
+	<li>Experience in scaling and operationalizing new/existing TAM offerings for large enterprise customers.</li>
+	<li>Prior experience with paid support services, including observability (Security/Network Operations Center).</li>
+	<li>Direct experience in the hiring process, including candidate review, interviewing, and collaborative decision-making.</li>
+	<li>Strong written and oral communication skills.</li>
+	<li>Excellent problem-solving abilities.</li>
+	<li>Enthusiasm for working directly with customers.</li>
+	<li>A proven track record of building and leading world-class Technical Support teams, ideally in an infrastructure, platform, or SaaS business.</li>
+	<li>Passion for creating and promoting best support practices.</li>
+	<li>Willingness to be available during weekends and holidays as needed.</li>
 </ul>
 <p>&nbsp;</p>
-<p>The above list is representative and additional responsibilities may be assigned, as required by the need for the compliance program to support Cloudflare’s Legal team with agility in a dynamic environment.</p>
-<p>&nbsp;</p>
-<p><strong>Requirements:</strong></p>
-<ul>
-	<li>Minimum 6 years of program or project management experience</li>
-	<li>Experience with an in-house legal department preferred; experience at a tech company, especially as part of a compliance team, is a huge plus</li>
-	<li>Experience conducting and participating in complex investigations and witness interviews highly desirable</li>
-	<li>Detail-oriented, well-organized, and technically-adept</li>
-	<li>Excellent written and oral communication skills</li>
-	<li>Strong interpersonal skills and experience in working cross-functionally with a variety of teams, with lawyers and non-lawyers, including engineering teams, sales teams, and product teams, to establish effective solutions efficiently and in an amenable manner.&nbsp;</li>
-	<li>Experience with the following software tools helpful not not required: Google Suite, Navex (EthicsPoint, Disclosure Management), Certa, Moodys RDC, Workday LMS, Marketo</li>
-	<li>The ability to manage multiple matters / projects for multiple teams.</li>
-	<li>Self-starter with the ability to learn in a fast-paced environment with minimal supervision</li>
-	<li>An ambitious mindset that enables you to successfully work independently with little guidance, but also to use good judgment and call out issues when needed.</li>
-	<li>Experience delivering in-person and/or virtual trainings and workshops</li>
-</ul>
-<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
