@@ -296,6 +296,9 @@
 	"cloud-connector-enabled": {
 		"enabled": true
 	},
+	"cloud-connector-r2": {
+		"enabled": false
+	},
 	"cloudflare-calls": {
 		"enabled": false
 	},
@@ -912,7 +915,7 @@
 		]
 	},
 	"prg-signup-next-steps-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
