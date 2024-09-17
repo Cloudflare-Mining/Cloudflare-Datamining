@@ -251,6 +251,30 @@
 																},
 																"type": "array"
 															},
+															"delivery_mode": {
+																"allOf": [
+																	{
+																		"enum": [
+																			"DIRECT",
+																			"BCC",
+																			"JOURNAL",
+																			"REVIEW_SUBMISSION",
+																			"DMARC_UNVERIFIED",
+																			"DMARC_FAILURE_REPORT",
+																			"DMARC_AGGREGATE_REPORT",
+																			"THREAT_INTEL_SUBMISSION",
+																			"SIMULATION_SUBMISSION",
+																			"API",
+																			"RETRO_SCAN"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"nullable": true,
+																		"type": "string"
+																	}
+																]
+															},
 															"detection_reasons": {
 																"items": {
 																	"type": "string"
@@ -441,6 +465,7 @@
 													"client_recipients": [
 														"email@example.com"
 													],
+													"delivery_mode": "DIRECT",
 													"detection_reasons": [
 														"Selector is a source of spam/uce : Smtp-Helo-Server-Ip=<b>127.0.0[dot]186</b>"
 													],
@@ -721,6 +746,30 @@
 															},
 															"type": "array"
 														},
+														"delivery_mode": {
+															"allOf": [
+																{
+																	"enum": [
+																		"DIRECT",
+																		"BCC",
+																		"JOURNAL",
+																		"REVIEW_SUBMISSION",
+																		"DMARC_UNVERIFIED",
+																		"DMARC_FAILURE_REPORT",
+																		"DMARC_AGGREGATE_REPORT",
+																		"THREAT_INTEL_SUBMISSION",
+																		"SIMULATION_SUBMISSION",
+																		"API",
+																		"RETRO_SCAN"
+																	],
+																	"type": "string"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														},
 														"detection_reasons": {
 															"items": {
 																"type": "string"
@@ -911,6 +960,7 @@
 												"client_recipients": [
 													"email@example.com"
 												],
+												"delivery_mode": "DIRECT",
 												"detection_reasons": [
 													"Selector is a source of spam/uce : Smtp-Helo-Server-Ip=<b>127.0.0[dot]186</b>"
 												],
