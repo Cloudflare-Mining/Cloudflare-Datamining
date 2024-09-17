@@ -1,0 +1,180 @@
+{
+	"alias": "neon-for-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "basic-template",
+			"build": "./src/templates/basic",
+			"files": [
+				"index.js",
+				"renderHtml.js",
+				"package.json"
+			]
+		}
+	],
+	"category": "workers-databases",
+	"description": "Fully managed serverless PostgreSQL with modern developer features.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/neon",
+	"flags": [],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/c3700e43-a54a-4020-e701-2c3247cc0500/public",
+	"install_target": "worker",
+	"name": "Neon",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed for adding secrets to your Worker."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to Neon",
+			"type": "oauth",
+			"provider": "neon",
+			"client_id": "cloudflare",
+			"authorize_url": "https://oauth2.neon.tech/oauth2/auth",
+			"grant_type": "authorization_code",
+			"pkce": true,
+			"scope": "openid offline offline_access urn:neoncloud:projects:read",
+			"submit_action": "submit-neon-oauth"
+		},
+		{
+			"title": "Select a project",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "projectId",
+					"label": "Projects",
+					"description": "Projects linked to your Neon account are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-neon-projects"
+					}
+				}
+			],
+			"submit_action": "submit-neon-project"
+		},
+		{
+			"title": "Select a branch",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "branchId",
+					"label": "Branches",
+					"description": "Your Neon branches are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-neon-branches"
+					}
+				}
+			],
+			"submit_action": "submit-neon-branch"
+		},
+		{
+			"title": "Select a database",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "databaseName",
+					"label": "Databases",
+					"description": "Databases for the selected branch are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-neon-databases"
+					}
+				},
+				{
+					"type": "select_input",
+					"name": "endpointId",
+					"label": "Endpoints",
+					"description": "Cloudflare will use the selected endpoint to connect to your database.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-neon-endpoints"
+					}
+				},
+				{
+					"type": "select_input",
+					"name": "roleName",
+					"label": "Roles",
+					"description": "Cloudflare will use the selected role to connect to your database.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-neon-roles"
+					}
+				}
+			],
+			"submit_action": "submit-neon-database"
+		},
+		{
+			"title": "Configure secrets",
+			"type": "form",
+			"components": [
+				{
+					"type": "mapping_input",
+					"name": "secretsMap",
+					"label": "Secrets",
+					"description": "These Secrets will be added to the existing Environment Variables of this Worker.",
+					"required": true,
+					"left_label": "Secret Name",
+					"right_label": "Value",
+					"rows": {
+						"type": "static",
+						"content": [
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "databaseConnectionStringSecretName",
+									"required": true,
+									"default_value": "DATABASE_URL"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "databaseConnectionStringDisplay"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-secrets-map"
+		}
+	],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "Worker + Neon Database",
+			"products": [
+				"Workers",
+				"Neon"
+			],
+			"categories": [
+				"storage"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/c3700e43-a54a-4020-e701-2c3247cc0500/public",
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_action": "deploy-basic-template",
+			"preview_action": "preview-basic-template"
+		}
+	],
+	"uninstall_action": "uninstall",
+	"version": "1.1.0"
+}

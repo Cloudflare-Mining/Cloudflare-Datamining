@@ -1,0 +1,157 @@
+{
+	"alias": "supabase-for-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "basic-template",
+			"build": "./src/templates/basic",
+			"files": [
+				"index.js",
+				"renderHtml.js",
+				"package.json"
+			]
+		}
+	],
+	"category": "workers-databases",
+	"description": "The open source Firebase alternative. Full Postgres database, Authentication, Storage, Realtime, and more.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/supabase",
+	"flags": [],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/281012e9-2fdd-4039-69f8-bef12da84400/public",
+	"install_target": "worker",
+	"name": "Supabase",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed for adding secrets to your Worker."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to Supabase",
+			"type": "oauth",
+			"provider": "supabase",
+			"client_id": "3183208c-1502-4be7-84b2-ec3bd6b5c134",
+			"authorize_url": "https://api.supabase.io/v1/oauth/authorize",
+			"grant_type": "authorization_code",
+			"pkce": true,
+			"scope": "all",
+			"submit_action": "submit-supabase-oauth"
+		},
+		{
+			"title": "Select a project",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "projectId",
+					"label": "Projects",
+					"description": "Projects linked to your Supabase account are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-supabase-projects"
+					}
+				},
+				{
+					"type": "select_input",
+					"name": "keyType",
+					"label": "Key",
+					"description": "Select the key to use to access Supabase from your Worker.",
+					"required": true,
+					"options": {
+						"type": "static",
+						"static": [
+							{
+								"label": "Anon",
+								"value": "anon"
+							},
+							{
+								"label": "Service Role",
+								"value": "service_role"
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-supabase-project"
+		},
+		{
+			"title": "Configure secrets",
+			"type": "form",
+			"components": [
+				{
+					"type": "mapping_input",
+					"name": "secretsMap",
+					"label": "Secrets",
+					"description": "These Secrets will be added to the existing Environment Variables of this Worker.",
+					"required": true,
+					"left_label": "Secret Name",
+					"right_label": "Database Credential",
+					"rows": {
+						"type": "static",
+						"content": [
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "supabaseURLSecretName",
+									"required": true,
+									"default_value": "SUPABASE_URL"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "supabaseURL"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "supabaseKeySecretName",
+									"required": true,
+									"default_value": "SUPABASE_KEY"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "static",
+										"static": "xxxxxxxxxxxx"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-secrets-map"
+		}
+	],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "Worker + Supabase Database",
+			"products": [
+				"Workers",
+				"Supabase"
+			],
+			"categories": [
+				"storage"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/281012e9-2fdd-4039-69f8-bef12da84400/public",
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_action": "deploy-basic-template",
+			"preview_action": "preview-basic-template"
+		}
+	],
+	"uninstall_action": "uninstall",
+	"version": "1.1.0"
+}
