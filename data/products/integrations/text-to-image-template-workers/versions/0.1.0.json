@@ -1,0 +1,77 @@
+{
+	"alias": "text-to-image-template-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "text-to-image-template-workers",
+			"build": "./src/template",
+			"files": [
+				"index.js"
+			],
+			"replacements": {
+				"worker-name-placeholder": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "workers-databases",
+	"description": "Generate image based on text prompt.",
+	"docs_url": null,
+	"flags": [
+		"exclude_permissions_step",
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Text to Image",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "Text to Image App",
+			"products": [
+				"Workers",
+				"AI"
+			],
+			"categories": [
+				"ai"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_resources": [
+				{
+					"name": "text-to-image-template-worker",
+					"type": "worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"body": {
+							"$ref": "assets://text-to-image-template-workers/bundle.js"
+						},
+						"bindings": [
+							{
+								"type": "ai",
+								"name": "AI"
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": "index.js",
+					"content": {
+						"$ref": "assets://text-to-image-template-workers/files/index.js"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "0.1.0"
+}

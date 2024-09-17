@@ -1,0 +1,70 @@
+{
+	"alias": "a-b-test-template-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "a-b-test-template-workers",
+			"build": "./src/template",
+			"files": [
+				"index.js"
+			],
+			"replacements": {
+				"worker-name-placeholder": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "workers-databases",
+	"description": "Try different variations of your website across your visitors.",
+	"docs_url": null,
+	"flags": [
+		"exclude_permissions_step",
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "A/B Test",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "A/B Test",
+			"products": [
+				"Workers"
+			],
+			"categories": [
+				"starter"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_resources": [
+				{
+					"name": "a-b-test-template-worker",
+					"type": "worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"body": {
+							"$ref": "assets://a-b-test-template-workers/bundle.js"
+						}
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": "index.js",
+					"content": {
+						"$ref": "assets://a-b-test-template-workers/files/index.js"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "1.1.0"
+}

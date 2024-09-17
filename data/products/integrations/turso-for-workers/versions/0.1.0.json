@@ -1,0 +1,175 @@
+{
+	"alias": "turso-for-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "basic-template",
+			"build": "./src/templates/basic",
+			"files": [
+				"index.js",
+				"renderHtml.js",
+				"package.json"
+			]
+		}
+	],
+	"category": "workers-databases",
+	"description": "Turso is an Edge database that is built on SQLite and runs fast from anywhere in the world.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/turso",
+	"flags": [],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/d6359ceb-3e46-42dc-20fa-d574fd012400/public",
+	"install_target": "worker",
+	"name": "Turso",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed for adding secrets to your Worker."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to Turso",
+			"type": "oauth",
+			"provider": "turso",
+			"client_id": "cloudflare",
+			"authorize_url": "https://turso.tech/integrations/authorize",
+			"grant_type": "authorization_code",
+			"pkce": true,
+			"scope": "all",
+			"submit_action": "submit-turso-oauth"
+		},
+		{
+			"title": "Select an organization",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "organizationSlug",
+					"label": "Organization",
+					"description": "Organizations linked to your Turso account are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-turso-organizations"
+					}
+				}
+			],
+			"submit_action": "submit-turso-organization"
+		},
+		{
+			"title": "Select a database",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "databaseName",
+					"label": "Database",
+					"description": "Your Turso databases are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-turso-databases"
+					}
+				},
+				{
+					"type": "select_input",
+					"name": "accessLevel",
+					"label": "Access level",
+					"description": "Cloudflare will create a token with this access level for the selected database.",
+					"required": true,
+					"options": {
+						"type": "static",
+						"static": [
+							{
+								"label": "Read Only",
+								"value": "read-only"
+							},
+							{
+								"label": "Full Access",
+								"value": "full-access"
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-turso-database"
+		},
+		{
+			"title": "Configure secrets",
+			"type": "form",
+			"components": [
+				{
+					"type": "mapping_input",
+					"name": "secretsMap",
+					"label": "Secrets",
+					"description": "These Secrets will be added to the existing Environment Variables of this Worker.",
+					"required": true,
+					"left_label": "Secret Name",
+					"right_label": "Database Credential",
+					"rows": {
+						"type": "static",
+						"content": [
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "tursoURLSecretName",
+									"required": true,
+									"default_value": "TURSO_URL"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "tursoURL"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "tursoAuthTokenSecretName",
+									"required": true,
+									"default_value": "TURSO_AUTH_TOKEN"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "static",
+										"static": "xxxxxxxxxxxx"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-secrets-map"
+		}
+	],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "Worker + Turso Database",
+			"products": [
+				"Workers",
+				"Turso"
+			],
+			"categories": [
+				"storage"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/d6359ceb-3e46-42dc-20fa-d574fd012400/public",
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_action": "deploy-basic-template",
+			"preview_action": "preview-basic-template"
+		}
+	],
+	"uninstall_action": "uninstall",
+	"version": "0.1.0"
+}

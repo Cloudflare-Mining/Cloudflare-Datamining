@@ -1,0 +1,77 @@
+{
+	"alias": "translation-template-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "translation-template-workers",
+			"build": "./src/template",
+			"files": [
+				"index.js"
+			],
+			"replacements": {
+				"worker-name-placeholder": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "workers-databases",
+	"description": "Translate text from one language to another.",
+	"docs_url": null,
+	"flags": [
+		"exclude_permissions_step",
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Translation",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "Translation App",
+			"products": [
+				"Workers",
+				"AI"
+			],
+			"categories": [
+				"ai"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_resources": [
+				{
+					"name": "translation-template-worker",
+					"type": "worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"body": {
+							"$ref": "assets://translation-template-workers/bundle.js"
+						},
+						"bindings": [
+							{
+								"type": "ai",
+								"name": "AI"
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": "index.js",
+					"content": {
+						"$ref": "assets://translation-template-workers/files/index.js"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "0.1.0"
+}

@@ -1,0 +1,215 @@
+{
+	"alias": "planetscale-for-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "basic-template",
+			"build": "./src/templates/basic",
+			"files": [
+				"index.js",
+				"renderHtml.js",
+				"package.json"
+			]
+		}
+	],
+	"category": "workers-databases",
+	"description": "MySQL-compatible platform that makes databases infinitely scalable, easier and safer to manage.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/planetscale",
+	"flags": [],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/2347143d-3c0a-4428-cdd2-d2b3f3e99a00/public",
+	"install_target": "worker",
+	"name": "PlanetScale",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed for adding secrets to your Worker."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to PlanetScale",
+			"type": "oauth",
+			"provider": "planetscale",
+			"client_id": "pscale_app_d1e2fb6faf16932e930077bb80ba0d21",
+			"authorize_url": "https://app.planetscale.com/oauth/authorize",
+			"grant_type": "authorization_code",
+			"pkce": true,
+			"submit_action": "submit-planetscale-oauth"
+		},
+		{
+			"title": "Select an organization",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "organizationName",
+					"label": "Organization",
+					"description": "Organizations linked to your PlanetScale account are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-planetscale-organizations"
+					}
+				}
+			],
+			"submit_action": "submit-planetscale-organization"
+		},
+		{
+			"title": "Select a database",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "databaseName",
+					"label": "Database",
+					"description": "Your PlanetScale databases are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-planetscale-databases"
+					}
+				},
+				{
+					"type": "select_input",
+					"name": "userRole",
+					"label": "User role",
+					"description": "Cloudflare will create a user with this role to access the selected database.",
+					"required": true,
+					"options": {
+						"type": "static",
+						"static": [
+							{
+								"label": "Reader",
+								"value": "reader"
+							},
+							{
+								"label": "Writer",
+								"value": "writer"
+							},
+							{
+								"label": "Administrator",
+								"value": "admin"
+							},
+							{
+								"label": "Read-Writer",
+								"value": "readwriter"
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-planetscale-database"
+		},
+		{
+			"title": "Select a branch",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "branchName",
+					"label": "Branches",
+					"description": "Branches for the selected database are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-planetscale-branches"
+					}
+				}
+			],
+			"submit_action": "submit-planetscale-branch"
+		},
+		{
+			"title": "Configure Secrets",
+			"type": "form",
+			"components": [
+				{
+					"type": "mapping_input",
+					"name": "secretsMap",
+					"label": "Secrets",
+					"description": "These Secrets will be added to the existing Environment Variables of this Worker.",
+					"required": true,
+					"left_label": "Secret Name",
+					"right_label": "Value",
+					"rows": {
+						"type": "static",
+						"content": [
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "databaseHostSecretName",
+									"required": true,
+									"default_value": "DATABASE_HOST"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "databaseHost"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "databaseUsernameSecretName",
+									"required": true,
+									"default_value": "DATABASE_USERNAME"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "databaseUsername"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "databasePasswordSecretName",
+									"required": true,
+									"default_value": "DATABASE_PASSWORD"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "static",
+										"static": "xxxxxxxxxxxx"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-secrets-map"
+		}
+	],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "Worker + PlanetScale Database",
+			"products": [
+				"Workers",
+				"PlanetScale"
+			],
+			"categories": [
+				"storage"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/2347143d-3c0a-4428-cdd2-d2b3f3e99a00/public",
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_action": "deploy-basic-template",
+			"preview_action": "preview-basic-template"
+		}
+	],
+	"uninstall_action": "uninstall",
+	"version": "1.1.0"
+}

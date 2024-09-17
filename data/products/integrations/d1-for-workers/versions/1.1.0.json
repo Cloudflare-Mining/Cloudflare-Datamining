@@ -1,0 +1,165 @@
+{
+	"alias": "d1-for-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "d1-unpopulated-worker",
+			"build": "./src/templates/unpopulated-worker",
+			"files": [
+				"src/index.js",
+				"src/renderHtml.js"
+			]
+		},
+		{
+			"type": "worker",
+			"name": "d1-populated-worker",
+			"build": "./src/templates/populated-worker",
+			"files": [
+				"src/index.js",
+				"src/renderHtml.js"
+			]
+		}
+	],
+	"category": "workers-databases",
+	"description": "Cloudflare's native serverless SQL database.",
+	"docs_url": "https://developers.cloudflare.com/d1/",
+	"flags": [
+		"exclude_permissions_step",
+		"template_only"
+	],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/c6fc5da3-1e0a-4608-b2f1-9628577ec800/public",
+	"install_target": "worker",
+	"name": "D1",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed for adding secrets to your Worker."
+				},
+				{
+					"group": "D1 Write",
+					"reason": "Needed for creating your D1 database."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Create a D1 database",
+			"type": "form",
+			"components": [
+				{
+					"type": "text_input",
+					"name": "databaseName",
+					"label": "Name your database",
+					"required": true
+				},
+				{
+					"type": "select_input",
+					"name": "databaseLocation",
+					"label": "Database location hint",
+					"required": true,
+					"default_value": "automatic",
+					"options": {
+						"type": "static",
+						"static": [
+							{
+								"label": "Automatic: D1 auto-assigns your database to the nearest available region.",
+								"value": "automatic"
+							},
+							{
+								"label": "Western North America",
+								"value": "WNAM"
+							},
+							{
+								"label": "Eastern North America",
+								"value": "ENAM"
+							},
+							{
+								"label": "Western Europe",
+								"value": "WEUR"
+							},
+							{
+								"label": "Eastern Europe",
+								"value": "EEUR"
+							},
+							{
+								"label": "Asia-Pacific",
+								"value": "APAC"
+							}
+						]
+					}
+				},
+				{
+					"type": "checkbox_input",
+					"name": "populateSampleData",
+					"label": "Fill in your D1 database with sample data",
+					"description": "",
+					"required": false,
+					"default_value": true
+				}
+			],
+			"submit_action": "create-d1-database"
+		},
+		{
+			"title": "Configure D1 binding",
+			"type": "form",
+			"components": [
+				{
+					"type": "mapping_input",
+					"name": "secretsMap",
+					"label": " ",
+					"description": "This integration requires you to set up a binding to D1:",
+					"required": true,
+					"left_label": "Variable name",
+					"right_label": "D1 Database",
+					"rows": {
+						"type": "static",
+						"content": [
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "databaseVariableName",
+									"required": true,
+									"default_value": "DATABASE"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "databaseName"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-d1-binding"
+		}
+	],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "Worker + D1 Database",
+			"products": [
+				"Workers",
+				"D1"
+			],
+			"categories": [
+				"storage"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/c6fc5da3-1e0a-4608-b2f1-9628577ec800/public",
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_action": "deploy-d1",
+			"preview_action": "preview-d1"
+		}
+	],
+	"uninstall_action": "no-op",
+	"version": "1.1.0"
+}

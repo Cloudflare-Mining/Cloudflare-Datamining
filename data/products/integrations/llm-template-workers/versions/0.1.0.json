@@ -1,0 +1,77 @@
+{
+	"alias": "llm-template-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "llm-template-workers",
+			"build": "./src/template",
+			"files": [
+				"index.js"
+			],
+			"replacements": {
+				"worker-name-placeholder": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "workers-databases",
+	"description": "Perform natural language processing tasks using a Large Language Model (LLM) with Workers.",
+	"docs_url": null,
+	"flags": [
+		"exclude_permissions_step",
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "LLM",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "LLM App",
+			"products": [
+				"Workers",
+				"AI"
+			],
+			"categories": [
+				"ai"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_resources": [
+				{
+					"name": "llm-template-worker",
+					"type": "worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"body": {
+							"$ref": "assets://llm-template-workers/bundle.js"
+						},
+						"bindings": [
+							{
+								"type": "ai",
+								"name": "AI"
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": "index.js",
+					"content": {
+						"$ref": "assets://llm-template-workers/files/index.js"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "0.1.0"
+}
