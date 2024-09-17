@@ -56,8 +56,8 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - $167,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $162,000 - $198,000.</span></li>
+	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $187,000 - $206,000.</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $196,000 - $240,000.</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

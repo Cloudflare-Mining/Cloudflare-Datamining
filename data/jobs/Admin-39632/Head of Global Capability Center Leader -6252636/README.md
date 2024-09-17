@@ -5,79 +5,52 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas, San Francisco, USA, DC, USA, London, UK, Lisbon, Portugal</strong></p>
-<p><strong>About the role&nbsp;</strong></p>
-<p>As an Enterprise Security Architect you will play a key role in effectively designing defensible network architectures, defensible builds &amp; configurations, security platforms and automation, assisting in secure tool and product development, and will help establish security standards and guidelines across the enterprise. This role will lead security project work with technology peers for successful delivery and coach technology staff on appropriate security standards, processes, protocols and needs as they implement new technology into the organization.</p>
-<p><strong>What You’ll Do</strong></p>
+<p>We are expanding our footprint with a new global capability center in Hyderabad/Bangalore, India, aimed at driving operational excellence, technological innovation, and strategic growth.<br><strong><br>Position Overview:</strong> <br>We are seeking a dynamic and experienced Senior Leader&nbsp; to lead our new global capability center in Hyderabad/Bangalore. This leader will play a critical role in overseeing the center's operations, guiding our largest technical team, liaising with the Indian government, and&nbsp; growing important partner and network relationships.</p>
+<h3><strong>Key Responsibilities:</strong></h3>
+<p><strong>Operational Leadership:</strong></p>
 <ul>
-	<li>Works out and designs complex security solutions.</li>
-	<li>Leads projects to implement secure enterprise systems and identifies issues that could compromise data integrity or security.</li>
-	<li>Develops security policies, procedures, and guidelines and recommends necessary changes to a given project team to ensure the company’s systems are fully compliant with all applicable regulatory requirements and privacy laws.</li>
-	<li>Creating and implementing enterprise security architecture models</li>
-	<li>Utilizes open communication and managerial courage to ensure the standards, expectations and goals of the organization are respected and upheld.</li>
-	<li>Serving as an advisor to engineering and development teams in security best practices and design.</li>
-	<li>Leads security-related projects from inception to successful completion and is capable of effectively coaching technology staff on appropriate security protocols and needs as they implement new technology into the organization.</li>
-	<li>Works on complex issues where analysis of situations or data requires an in-depth evaluation of variable factors.&nbsp;</li>
-	<li>Determines methods and procedures on new assignments and may coordinate activities of other personnel.</li>
-	<li>Having wide-ranging experience, uses professional concepts and company objectives to resolve complex issues in creative and effective ways</li>
-	<li>Exercises judgment in selecting methods, techniques and evaluation criteria for obtaining results.</li>
-	<li>Ensures an organization's security strategy is aligned with companies business goals.</li>
+	<li>Oversee and manage the day-to-day operations of the Hyderabad/Bangalore capability center, ensuring alignment with corporate goals and standards.</li>
+	<li>Implement and maintain efficient operational processes and systems to drive productivity and quality.</li>
+	<li>Develop and manage the center’s budget, ensuring financial objectives are met.</li>
+	<li>Foster a culture of continuous improvement, innovation, and excellence within the center.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><strong>Technical Team Leadership:</strong></p>
 <ul>
-	<li>10+ years of experience in an IT/Security related field, 5 of which as a security architect.</li>
-	<li>In-depth understanding of security concepts.</li>
-	<li>Understand how business, engineering, IT, and security processes align, and how to research, test, and implement solutions to complex objectives.</li>
-	<li>Able to anticipate challenges and steer the company towards growth.</li>
-	<li>In depth knowledge of the following:</li>
-	<ul>
-		<li>Database security concepts and practices</li>
-		<li>Securing data in transit, at rest and access</li>
-		<li>Cyber attacks (i.e. SQL/NoSQL injections, buffer overflow, etc.),&nbsp;</li>
-		<li>Data types and what and how they need to be protected</li>
-		<li>Defining data flows</li>
-		<li>Applicable regulatory compliance requirements</li>
-		<li>Discovering and classifying data and databases</li>
-		<li>Designing, creating, and maintaining data storage systems</li>
-		<li>Developing application programming interfaces (APIs)&nbsp;</li>
-		<li>Structured query language (SQL) and the like</li>
-		<li>Data structures, modeling, integration, security, optimization, etc</li>
-		<li>Data warehouse / lakes</li>
-		<li>NIST Frameworks</li>
-	</ul>
+	<li>Lead the largest technical team within the center, such as Engineering, Product, or R&amp;D.</li>
+	<li>Drive the strategic direction and execution of technical projects, ensuring they meet quality, timeline, and budgetary requirements.</li>
+	<li>Promote a collaborative and innovative environment, encouraging the team to push the boundaries of technology and product development.</li>
+	<li>Mentor and develop technical leaders and high-potential employees within the team.</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Government Engagement:</strong></p>
 <ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $187,000 - $206,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $196,000 - $240,000.</span></li>
+	<li>Act as a senior liaison with Indian government officials and agencies, representing the company’s interests.</li>
+	<li>Develop and maintain strong relationships with key government stakeholders to support strategic initiatives.</li>
+	<li>Oversee the company’s efforts to&nbsp; ensure the company’s operations adhere to local laws and regulations.</li>
+	<li>Advocate for policies and initiatives that benefit the company’s growth and operational objectives in India.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Executive Support:</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Leverage personal influence and professional network to support&nbsp; growing networks and partnerships.</li>
+	<li>Participate in high-level meetings and presentations to showcase the company’s capabilities and value proposition.</li>
+	<li>Collaborate with the teams to develop strategic plans for key opportunities.</li>
+	<li>Provide insights and support based on technical expertise and market knowledge to drive company success.</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<p><strong>Remote Team Collaboration:</strong></p>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
+	<li>Work effectively with remote teams in the US / EMEA / APJC, demonstrating flexibility in time zones and availability.</li>
+	<li>Facilitate seamless communication and collaboration between the Hyderabad/Bangalore center and other hub offices.</li>
+	<li>Travel as needed for meetings, strategic planning, and team integration.</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3><strong>Qualifications:</strong></h3>
 <ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Education: Bachelor’s degree in Business, Engineering, or a related field; MBA or advanced degree preferred.</li>
+	<li>Experience: Minimum of 15 years of experience in a senior leadership role, with a proven track record of managing large operations and technical teams.</li>
+	<li>Industry Knowledge: Deep understanding of Cybersecurity and experience working with government and regulatory bodies in India.</li>
+	<li>Leadership Skills: Strong leadership, strategic thinking, and decision-making abilities; excellent interpersonal and communication skills.</li>
+	<li>Technical Expertise: In-depth knowledge of engineering, product development, or R&amp;D processes and best practices.</li>
+	<li>Sales Acumen: Experience in supporting sales teams and engaging with large enterprise customers.</li>
+	<li>Cultural Competence: Ability to navigate and bridge cultural differences effectively.</li>
+	<li>Remote Collaboration: Proven ability to work with remote teams across different time zones and willingness to travel as necessary.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
