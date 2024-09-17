@@ -4,18 +4,18 @@
 	"description": "Rules maintained by bots team that can run for all plans",
 	"source": "firewall_managed",
 	"kind": "managed",
-	"version": "3",
+	"version": "4",
 	"rules": [
 		{
 			"id": "7bd01eeccb6b420fa0be30264603a5cb",
-			"version": "3",
+			"version": "4",
 			"action": "block",
 			"description": "Manage AI bots",
-			"last_updated": "2024-08-06T16:31:01.609Z",
+			"last_updated": "2024-09-17T18:12:49.194384Z",
 			"ref": "ai-bots-block",
 			"enabled": false
 		}
 	],
-	"last_updated": "2024-08-06T16:31:01.609Z",
+	"last_updated": "2024-09-17T18:12:49.194384Z",
 	"phase": "http_request_sbfm"
 }

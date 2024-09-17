@@ -19,16 +19,6 @@
 		"phase": "http_request_sanitize"
 	},
 	{
-		"id": "3e677e63d4e9479382576f3fa66279e7",
-		"name": "Cloudflare Bot Management rules for all plans",
-		"description": "Rules maintained by bots team that can run for all plans",
-		"source": "firewall_managed",
-		"kind": "managed",
-		"version": "3",
-		"last_updated": "2024-08-06T16:31:01.609Z",
-		"phase": "http_request_sbfm"
-	},
-	{
 		"id": "4d21379b4f9f4bb088e0729962c8b3cf",
 		"name": "DDoS L7 ruleset",
 		"description": "Automatic mitigation of HTTP-based DDoS attacks. Cloudflare routinely adds signatures to address new attack vectors. Additional configuration allows you to customize the sensitivity of each rule and the performed mitigation action.",
@@ -36,5 +26,15 @@
 		"version": "2449",
 		"last_updated": "2024-09-17T17:11:02.51687Z",
 		"phase": "ddos_l7"
+	},
+	{
+		"id": "3e677e63d4e9479382576f3fa66279e7",
+		"name": "Cloudflare Bot Management rules for all plans",
+		"description": "Rules maintained by bots team that can run for all plans",
+		"source": "firewall_managed",
+		"kind": "managed",
+		"version": "4",
+		"last_updated": "2024-09-17T18:12:49.194384Z",
+		"phase": "http_request_sbfm"
 	}
 ]
