@@ -1142,6 +1142,16 @@
 																"description": "Whether this bucket is publicly accessible at the specified custom domain",
 																"type": "boolean"
 															},
+															"minTLS": {
+																"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.",
+																"enum": [
+																	"1.0",
+																	"1.1",
+																	"1.2",
+																	"1.3"
+																],
+																"type": "string"
+															},
 															"status": {
 																"properties": {
 																	"ownership": {
@@ -2077,6 +2087,16 @@
 												"enabled": {
 													"description": "Whether this bucket is publicly accessible at the specified custom domain",
 													"type": "boolean"
+												},
+												"minTLS": {
+													"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.",
+													"enum": [
+														"1.0",
+														"1.1",
+														"1.2",
+														"1.3"
+													],
+													"type": "string"
 												}
 											},
 											"required": [
@@ -2548,6 +2568,16 @@
 														"enabled": {
 															"description": "Whether this bucket is publicly accessible at the specified custom domain",
 															"type": "boolean"
+														},
+														"minTLS": {
+															"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.",
+															"enum": [
+																"1.0",
+																"1.1",
+																"1.2",
+																"1.3"
+															],
+															"type": "string"
 														}
 													},
 													"required": [
