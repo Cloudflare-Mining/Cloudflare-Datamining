@@ -542,47 +542,6 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "65VUQ2WrXIwRvsbnX23i9R",
-								"title": "Global CDN",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "The customizable Cloudflare CDN increases performance and enhances agility by giving you granular control over content caching and purging. Decide exactly when to fetch data, purge by tag, and set customizable cache expiration periods (TTL).",
-								"learnMoreUrl": "https://www.cloudflare.com/application-services/products/cdn/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5H4T6ndYBoJmUEN0AsA1CI/98fc06d928bb2986b683e94c63a603f6/icon-global-blue.png"
-									},
-									"description": "icon global blue"
-								},
-								"iconAssetFile": {
-									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
-									"altText": "Internet globe orange",
-									"title": "Internet globe orange",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "3q2b7eHAPz2l7aELzsAcJv",
 								"title": "Argo Smart Routing",
 								"makeTitleLink": null,
@@ -693,7 +652,21 @@
 							},
 							"description": "SaaS   Serverless"
 						},
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "53bb4534-9d12-5567-b9d7-b811ed38f9c7",
+							"altText": "SaaS - Serverless image",
+							"title": "SaaS - Serverless image",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5TtcLTpF5teKoSXXRhlhHf/2b32bf75da2c3f7c421fd10e8112967e/BDES-4908_-_cloudflare-workers-use-cases-1.svg"
+								},
+								"description": "SaaS   Serverless"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
