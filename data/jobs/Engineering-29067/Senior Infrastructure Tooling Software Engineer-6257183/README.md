@@ -6,34 +6,26 @@
 	</div>
 </div>
 <h4>About the department</h4>
-<p>Cloudflare’s Production Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month, representing over 20% of global Internet traffic. Production Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
+<p>Cloudflare’s Resiliency Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Resiliency Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
+<p><br>The Infrastructure Tooling Team within the Resiliency Engineering organization is responsible for defining, building and supporting the tools that can be leveraged by the rest of the Infrastructure Engineering team to manage our infrastructure at scale.</p>
 <p><br>The Release Manager Team within the Production Engineering organization is responsible for&nbsp; ensuring that we can deliver new features to production in a manner that supports both rapid innovation and safe change at scale to provide the speed and reliability that Cloudflare is known for.</p>
 <h4>What you'll do</h4>
-<p>In this role you’ll help us build the deployment mechanisms that allow speed of innovation and safety through health meditation.&nbsp; You will be joining a<a href="https://blog.cloudflare.com/cloudflares-first-year-in-lisbon/"> global team</a> of bright, hard-working, and supportive engineers who really care about their craft and will be accelerating innovation across all products that Cloudflare offers.<br><br>Technologies we use:</p>
-<ul>
-	<li>Salt</li>
-	<li>Go</li>
-	<li>Postgres</li>
-	<li>Temporal</li>
-	<li>Kubernetes</li>
-	<li>For service monitoring we use Prometheus, Grafana and Sentry.</li>
-</ul>
-<p>Because you’ll be<a href="https://blog.cloudflare.com/gateway-swg/"> solving problems of massive scale and significance</a>, and<a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"> shaping the future of the Internet</a>, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
+<p>In this role you’ll have an opportunity to work on a number of different projects over the course of a year.&nbsp; &nbsp; These projects are critical to Cloudflare’s success and will often be developed in incubation mode with a focus on agile and iterative delivery to prove and build value over time.&nbsp; A sampling of the areas you may get a chance to work on are a service to automate firmware updates, tools to manage our IP addresses and adding complex capacity dashboard functionality.&nbsp;&nbsp;</p>
+<p>Because you’ll be solving problems of great significance, and <a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/">shaping the future of the Internet</a>, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
+<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <p>As an ideal candidate for this position, you are curious, hard-working, and passionate.</p>
 <p>A rough list of the skills we would love to see you bring:</p>
 <ul>
-	<li>A degree in Computer Science, Engineering, Mathematics, Statistics or related field; OR have relevant background/experience to the field.</li>
-	<li>Programming experience in Go, or similar languages</li>
-	<li>Experience in designing and implementing secure and highly-available distributed systems</li>
+	<li>Programming experience in Go, Python or similar languages</li>
 	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
-	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
-	<li>Experience with continuous delivery and deployment of a k8s hosted application</li>
-	<li>​​Understanding of security issues and responsibilities</li>
-	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
-	<li>Fluent in analyses of data sets such as logs</li>
-	<li>Strong English language oral and written communications skills</li>
 	<li>Designing and building APIs</li>
+	<li>Great oral and written communications skills</li>
+	<li>Desire to learn and improve</li>
+	<li>Willing and eager to share knowledge, and mentor</li>
+	<li>At least 8 years software development experience</li>
+	<li>Experience building and operating high complexity and volume production systems</li>
+	<li>​​Understanding of security issues and responsibilities</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
