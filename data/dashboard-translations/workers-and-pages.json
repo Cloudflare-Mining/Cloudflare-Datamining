@@ -197,6 +197,8 @@
 	"workers_and_pages.custom_domain.info.add_new_domain": "Cloudflare will add the following DNS record to <0>%{zone}</0> and provision a new certificate to enable HTTPS.",
 	"workers_and_pages.route.description": "Map a URL pattern to your Worker.",
 	"workers_and_pages.route.pattern_help": "Use an asterisk (*) character to create dynamic patterns that match multiple URLs.",
+	"workers_and_pages.route.route_conflict_error": "This route is already in use.",
+	"workers_and_pages.route.route_generic_error": "This route could not be added. Please try again later.",
 	"workers_and_pages.failure_mode": "Failure mode",
 	"workers_and_pages.failure_mode.info": "On the Free plan, you are limited to a total of 100,000 Worker requests per day. When that limit is exceeded, requests to your routes will fail unless the failure mode is set to \"fail open\". <0>Upgrade your plan</0> to enable pay-per-use billing.",
 	"workers_and_pages.failure_mode.open": "Fail open (proceed)",
@@ -493,8 +495,8 @@
 	"workers_and_pages.observability.tail_worker.drawer.description": "Gain visibility on this Worker's executions by connecting a Tail Worker to capture metadata.",
 	"workers_and_pages.observability.tail_worker.drawer.info": "Select Worker with a tail() event handler",
 	"workers_and_pages.observability.tail_worker.empty_state.assets_only": "Tail Workers cannot be added to a Worker that has static assets. <0>Learn more</0>",
-	"workers_and_pages.observability.new_ui.obs_section.title": "New Observability ",
-	"workers_and_pages.observability.new_ui.obs_section.description": "Logpush and Tail Workers are now under Settings.",
+	"workers_and_pages.observability.new_ui.obs_section.title": "Observability",
+	"workers_and_pages.observability.new_ui.obs_section.description": "Logpush and Tail Workers are now under Observability.",
 	"workers_and_pages.observability.new_ui.cron_events.title": "View Cron events",
 	"workers_and_pages.observability.new_ui.cron_events.description": "Access Cron events from by clicking on View events under Details."
 }

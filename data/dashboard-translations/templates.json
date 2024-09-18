@@ -158,5 +158,8 @@
 	"templates.rule.compression": "Compression Rules",
 	"templates.rule.compression.description": "Control how Cloudflare compresses responses delivered to end users.",
 	"templates.rule.cloud_connector": "Cloud Connector",
-	"templates.rule.cloud_connector.description": "Redirect traffic from your website or application to a defined storage bucket."
+	"templates.rule.cloud_connector.description": "Redirect traffic from your website or application to a defined storage bucket.",
+	"templates.template.leaked_credentials.title": "Rewrite Path for Leaked Credentials",
+	"templates.template.leaked_credentials.description": "Rewrite path if a leaked credential is detected.",
+	"templates.template.leaked_credentials.helper": "Please update the URI and rewrite path to the ones you wish to remove before deploying this code."
 }
