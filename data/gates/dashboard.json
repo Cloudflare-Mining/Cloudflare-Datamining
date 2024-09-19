@@ -33,6 +33,9 @@
 	"advanced-authz": {
 		"enabled": false
 	},
+	"ai-audit": {
+		"enabled": true
+	},
 	"ai-editor": {
 		"enabled": false
 	},
@@ -52,13 +55,13 @@
 		"enabled": true
 	},
 	"allow-ssl-com-acm": {
-		"enabled": false
+		"enabled": true
 	},
 	"allow-ssl-com-ssl-for-saas": {
 		"enabled": false
 	},
 	"allow-ssl-com-total-tls": {
-		"enabled": false
+		"enabled": true
 	},
 	"allow-ssl-com-universal": {
 		"enabled": false
@@ -493,7 +496,7 @@
 		]
 	},
 	"dx-footer-simplify": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"

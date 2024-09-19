@@ -26,6 +26,12 @@
 	"allow-google-ssl-for-saas": {
 		"true": 100
 	},
+	"allow-ssl-com-acm": {
+		"false": 100
+	},
+	"allow-ssl-com-total-tls": {
+		"false": 100
+	},
 	"api-access": {
 		"false": 100
 	},
@@ -232,6 +238,10 @@
 	},
 	"dx-discover-page-flipper": {
 		"true": 100
+	},
+	"dx-footer-simplify": {
+		"baseline": 76,
+		"experiment": 24
 	},
 	"dx-full-zone-nameserver-instructions": {
 		"experiment": 100
