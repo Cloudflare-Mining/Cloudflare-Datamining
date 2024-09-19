@@ -533,7 +533,7 @@
 	}
 	var Rt = function(e, r) {
 			var a = Et(r.params, !1),
-				o = "h/".concat("g", "/"),
+				o = "h/".concat("b", "/"),
 				c, l, g = "".concat(a, "/cdn-cgi/challenge-platform/").concat(o, "feedback-reports/").concat(qe(e), "/").concat(r.displayLanguage, "/").concat((c = r.params.theme) !== null && c !== void 0 ? c : r.theme);
 			r.wrapper.parentNode || m("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
 			var f = document.createElement("div");
@@ -947,7 +947,7 @@
 						u = t.shadow.querySelector("#".concat(d));
 					(!d || !u) && m("Widget ".concat(i, " to reset was not found."), 3330), t.params.appearance === X.INTERACTION_ONLY && yr(u), t.params.sitekey === null && m("Unexpected Error: Sitekey is null", 3347);
 					var h;
-					u.src = xt(i, t.params.sitekey, t.params, (h = t.rcV) !== null && h !== void 0 ? h : Y, !1, "g", gt(t)), Ot(d), t.retryTimeout && window.clearTimeout(t.retryTimeout)
+					u.src = xt(i, t.params.sitekey, t.params, (h = t.rcV) !== null && h !== void 0 ? h : Y, !1, "b", gt(t)), Ot(d), t.retryTimeout && window.clearTimeout(t.retryTimeout)
 				} else m("Widget ".concat(i, " to reset was not found."), 3331)
 			},
 			x = function(n) {
@@ -1083,7 +1083,7 @@
 							isOverrunning: !1
 						})), St(y);
 						var Qe = y.widgetMap.get(Re);
-						Qe || m("Turnstile Initialization Error ", 3606), j.style.display = "none", j.style.border = "none", j.style.overflow = "hidden", j.setAttribute("src", xt(Re, B, v, Y, !1, "g", gt(Qe))), j.onerror = function() {
+						Qe || m("Turnstile Initialization Error ", 3606), j.style.display = "none", j.style.border = "none", j.style.overflow = "hidden", j.setAttribute("src", xt(Re, B, v, Y, !1, "b", gt(Qe))), j.onerror = function() {
 							if (G) {
 								G == null || G(String(zt.code));
 								return
@@ -1144,7 +1144,7 @@
 					switch (D.label) {
 						case 0:
 							if (d = _.params.sitekey, u = _r(), !u) return b("Cannot determine Turnstile's embedded location, aborting clearance redemption."), a(_, n, !1), [2];
-							h = "h/".concat("g", "/"), E = new URL(u), w = "https", A = "", S = "".concat(w, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(h, "rc/").concat(t).concat(A), D.label = 1;
+							h = "h/".concat("b", "/"), E = new URL(u), w = "https", A = "", S = "".concat(w, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(h, "rc/").concat(t).concat(A), D.label = 1;
 						case 1:
 							return D.trys.push([1, 6, , 7]), [4, fetch(S, {
 								method: "POST",
@@ -1360,7 +1360,7 @@
 								cData: t.cData,
 								chlPageData: t.chlPageData,
 								rcV: t.rcV,
-								ch: "ec4b873d446c",
+								ch: "388c99dd0998",
 								url: _r(),
 								retry: t.params.retry,
 								"expiry-interval": t.params["expiry-interval"],
