@@ -21,6 +21,9 @@
 	"account-owned-api-tokens": {
 		"enabled": true
 	},
+	"account-security-center-blocked-content-enabled": {
+		"enabled": false
+	},
 	"account-traffic-analytics": {
 		"enabled": false
 	},
@@ -389,6 +392,9 @@
 	"ddos-advanced-ddos-protection": {
 		"enabled": true
 	},
+	"ddos-rulesets-l7-override-all-allowed": {
+		"enabled": false
+	},
 	"deployment-rollbacks": {
 		"enabled": true
 	},
@@ -402,7 +408,7 @@
 		"enabled": true
 	},
 	"dns-gql-analytics-for-all": {
-		"enabled": false
+		"enabled": true
 	},
 	"dns-records-experience-survey": {
 		"enabled": false
