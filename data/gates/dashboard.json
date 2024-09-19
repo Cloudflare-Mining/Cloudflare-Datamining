@@ -333,9 +333,6 @@
 	"control-plane-large-orgs-account-mgmt": {
 		"enabled": true
 	},
-	"control-plane-large-orgs-federation": {
-		"enabled": false
-	},
 	"control-plane-large-orgs-v1": {
 		"enabled": false
 	},
@@ -1142,6 +1139,9 @@
 	},
 	"self-serve-plan-turnstile": {
 		"enabled": false
+	},
+	"shared-account-waf": {
+		"enabled": true
 	},
 	"shared-config-tab": {
 		"enabled": false
