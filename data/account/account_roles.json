@@ -707,11 +707,11 @@
 		"name": "Network Services (Magic)",
 		"description": "Grants write access to network configurations for Magic services.",
 		"permissions": {
-			"magic": {
+			"waf": {
 				"read": true,
 				"edit": true
 			},
-			"waf": {
+			"magic": {
 				"read": true,
 				"edit": true
 			},
@@ -730,11 +730,11 @@
 		"name": "Network Services (Magic, Read-Only)",
 		"description": "Grants read access to network configurations for Magic services.",
 		"permissions": {
-			"magic": {
+			"waf": {
 				"read": true,
 				"edit": false
 			},
-			"waf": {
+			"magic": {
 				"read": true,
 				"edit": false
 			},
@@ -1076,7 +1076,11 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
-			"abuse_actions": {
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"blocks": {
 				"read": true,
 				"edit": true
 			},
@@ -1115,10 +1119,6 @@
 				"trace": true
 			},
 			"magic": {
-				"read": true,
-				"edit": true
-			},
-			"waf": {
 				"read": true,
 				"edit": true
 			},
@@ -1201,10 +1201,6 @@
 				"edit": true
 			},
 			"http_applications": {
-				"read": true,
-				"edit": true
-			},
-			"blocks": {
 				"read": true,
 				"edit": true
 			},
@@ -1696,7 +1692,11 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
-			"abuse_actions": {
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"blocks": {
 				"read": true,
 				"edit": false
 			},
@@ -1726,10 +1726,6 @@
 				"edit": false
 			},
 			"magic": {
-				"read": true,
-				"edit": false
-			},
-			"waf": {
 				"read": true,
 				"edit": false
 			},
@@ -1812,10 +1808,6 @@
 				"read": true,
 				"edit": false
 			},
-			"blocks": {
-				"read": true,
-				"edit": false
-			},
 			"api_gateway": {
 				"read": true,
 				"edit": false
@@ -1875,7 +1867,11 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
-			"abuse_actions": {
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"blocks": {
 				"read": true,
 				"edit": true
 			},
@@ -1913,10 +1909,6 @@
 				"trace": true
 			},
 			"magic": {
-				"read": true,
-				"edit": true
-			},
-			"waf": {
 				"read": true,
 				"edit": true
 			},
@@ -1999,10 +1991,6 @@
 				"edit": true
 			},
 			"http_applications": {
-				"read": true,
-				"edit": true
-			},
-			"blocks": {
 				"read": true,
 				"edit": true
 			},
