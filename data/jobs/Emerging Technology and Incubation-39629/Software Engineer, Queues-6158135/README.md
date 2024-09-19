@@ -5,8 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX | San Francisco, CA | Washington DC</strong></h3>
-<h3 id="FrontendEngineerPlatformStorageRemote(America/Europe)-AbouttheDepartment"><strong>About Queues</strong></h3>
+<h3><strong>Locations: Austin, TX | New York, NY</strong></h3>
+<h3><strong style="font-size: 14px;">About Queues</strong></h3>
 <p>Cloudflare's&nbsp;<a class="external-link" href="https://blog.cloudflare.com/introducing-cloudflare-queues/">Queues</a> is a global message queuing service that allows applications to reliably send and receive messages. In this role, you'll work with a top-notch engineering team to drive these products forward by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
 <h3 id="SoftwareEngineerQueuesAustin,TX-AbouttheDepartment"><strong>About the Department</strong></h3>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>

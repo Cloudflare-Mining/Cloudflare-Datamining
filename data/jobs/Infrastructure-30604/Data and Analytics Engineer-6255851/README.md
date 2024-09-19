@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<h4><strong>Available Locations: Lisbon, Portugal; Mexico City</strong></h4>
 <h4><strong>About the team</strong></h4>
 <p>You will be part of the Network Strategy team within Cloudflare’s Infrastructure Engineering department. The Network Strategy team focuses on building both external and internal relationships that allow for Cloudflare to scale and reach user populations around the world. Our group takes a long term and technical approach to forging mutually beneficial and sustainable relationships with all of our network partners.&nbsp;</p>
 <h4><strong>About the role</strong></h4>
@@ -19,7 +20,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Excellent Python and SQL</li>
+	<li>Excellent Python and SQL (one of the interviews will be a live coding exercise)</li>
 	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields, or equivalent experience</li>
 	<li>Minimum 3 years of industry experience in software engineering, data engineering, data science or related field with a track record of extracting, transforming and loading large datasets&nbsp;</li>
 	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
