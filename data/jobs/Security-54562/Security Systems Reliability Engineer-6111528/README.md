@@ -5,36 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal or Austin, Texas&nbsp;</strong></p>
+<p><strong>Available Locations: Austin, Texas&nbsp;</strong></p>
 <p><strong>About the role&nbsp;</strong></p>
-<p>As a Security Engineer, you will play a key role in designing, implementing, and managing security technologies and the supporting infrastructure.&nbsp; You will&nbsp; be responsible for ensuring systems are secure, highly available, fault tolerant, and scale to meet business needs.&nbsp;&nbsp;</p>
-<p>Work may include documenting new standard operating procedures, ensuring vendor recommended security baseline configurations are implemented, designing repeatable deployment patterns, performing disaster recovery testing, configuring new integrations, implementing a new technology, patching applications and operating systems, performing upgrades and other maintenance tasks, documenting the as-built architecture, and participate in investigations and service restorations.&nbsp;</p>
+<p>As a Security Systems Reliability Engineer, you will play a key role in designing, implementing, managing, and supporting infrastructure and security technologies.&nbsp; You will be responsible for ensuring systems are secure, highly available, fault tolerant, and scale to meet business needs.&nbsp;&nbsp;</p>
+<p>Work may include documenting new standard operating procedures, ensuring vendor recommended security baseline configurations are implemented, designing repeatable deployment patterns, performing disaster recovery testing, performing chaos testing, configuring new integrations, implementing new technologies, patching applications and operating systems, performing upgrades and other maintenance tasks, establishing integrations, documenting the as-built architecture, establishing monitoring and logging, and participating in investigations and service restorations.&nbsp;</p>
 <p><strong>What You’ll Do</strong></p>
 <ul>
 	<li>Design, implement, and maintain secure infrastructure across various environments (non-production and production).</li>
 	<li>Ensure resilient and secure designs are implemented and maintained.</li>
 	<li>Drive continuous improvement while maintaining multiple environments.</li>
-	<li>Engage in proactive risk management and incident response planning.</li>
-	<li>Develop or utilize automation to streamline repeatable tasks.Contribute to the creation and dissemination of knowledge about the designs within the company.</li>
+	<li>Ensure systems meet performance expectations.Engage in proactive risk management and incident response planning.</li>
+	<li>Develop or utilize automation to streamline repeatable tasks.</li>
+	<li>Contribute to the creation and dissemination of knowledge about the designs within the company.</li>
 </ul>
 <p><strong>Qualifications</strong></p>
 <ul>
-	<li>Experience with deploying and administering Kubernetes in an enterprise environment.&nbsp;</li>
-	<li>Experience with deploying and administering Linux systems in an enterprise environment.&nbsp;</li>
-	<li>Experience with deploying and administering Cloudflare products (access, tunnels, waf) Experience implementing, intergrading, and&nbsp; supporting identity and access management (IAM) technologies.&nbsp;</li>
-	<li>Experience deploying and administering enterprise solutions in GCP, Azure, and AWS.Experience implementing, integrating, and supporting application security tools within a CICD pipeline environment.</li>
-	<li>Experience with all aspects of network infrastructure. Experience in all aspects of Site Reliability Engineering (SRE).</li>
-	<li>Solid understanding of reliability engineering principles and a commitment to continuous improvement.Experience writing scripts, leveraging automation, and creating infrastructure as code to streamline processes.</li>
+	<li>Experience performing the functions of a Site Reliability Engineer (SRE).</li>
+	<li>Extensive experience with deploying and administering Kubernetes in an enterprise environment.</li>
+	<li>Extensive experience developing and utilizing Terraform to deploy and update environments through infrastructure as code (IaC).</li>
+	<li>Extensive experience with deploying and administering Linux systems in an enterprise environment.</li>
+	<li>Extensive experience deploying and administering enterprise solutions in GCP.&nbsp;</li>
+	<li>Experience deploying and administering enterprise solutions in AWS and Azure.</li>
+	<li>Experience implementing, intergrading, and&nbsp; supporting identity and access management (IAM) technologies.</li>
+	<li>Experience implementing, integrating, and supporting application security tools within a CI/CD pipeline environment.</li>
+	<li>Experience with all aspects of network infrastructure.</li>
+	<li>Experience with deploying and administering Cloudflare products (access, tunnels, waf)</li>
+	<li>Solid understanding of reliability engineering principles and a commitment to continuous improvement.</li>
+	<li>Experience writing scripts, leveraging automation, and creating infrastructure as code to streamline processes.</li>
 	<li>Strong analytical skills focused on service availability with curiosity and thoroughness in problem-solving.</li>
 	<li>Ability to navigate ambiguity, bring clarity to complex situations, and collaborate effectively with various stakeholders.</li>
 </ul>
 <p><strong>Desired Skills</strong></p>
 <ul>
+	<li>Proficient in writing and using Terraform to manage infrastructure from code.&nbsp;</li>
+	<li>Proficient in deploying and managing infrastructure on Kubernetes.</li>
+	<li>Proficient in deploying and managing infrastructure on GCP.</li>
 	<li>Proficient in managing IAM related technologies like SailPoint, Saviynt, OneLogin, Ping, Okta, Azure Active Directory, Cyberark, Dilenea, or Beyond Trust in diverse environments.</li>
-	<li>Proficient in managing Application Security related technologies like Veracode, Checkmarx, SonarQube, Snyk, Semgrep, Fortify, or Coverity integrated into CI/CD pipelines.&nbsp;</li>
-	<li>Strong background in deploying and supporting infrastructure and security technologies.</li>
-	<li>Knowledge of scripting and automation tools (e.g., Python, Terraform, Ansible).</li>
-	<li>Excellent communication and collaboration skills.<br><br></li>
+	<li>Proficient in managing Application Security related technologies like Veracode, Checkmarx, SonarQube, Snyk, Semgrep, Fortify, or Coverity integrated into CI/CD pipelines.</li>
+	<li>Strong background in deploying and supporting infrastructure and security technologies.Knowledge of scripting and automation tools (e.g., Python, Terraform, Ansible).</li>
+	<li>Excellent communication and collaboration skills.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
