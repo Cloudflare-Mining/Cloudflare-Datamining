@@ -5,69 +5,26 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Hybrid from Austin, TX, Washington D.C., San Francisco, CA</p>
-<p><strong>About the Department</strong><strong><br></strong>The Identity and Access Management (IAM) team is dedicated to ensuring the secure and efficient management of user identities, access privileges, and authentication mechanisms across internal systems, applications, and data. Our mission is to safeguard the organization against unauthorized access, protect sensitive information, and enable seamless user experiences while adhering to industry best practices and compliance standards.</p>
-<h4><strong>About the Role</strong></h4>
-<p>As an Identity and Access Management (IAM) Security Engineer, you will play a crucial role in designing, implementing, and scaling identity and access management solutions for Cloudflare’s internal workforce and workloads. You will be responsible for safeguarding our systems, applications, and data by ensuring secure user access, authentication, and authorization mechanisms.</p>
-<p>&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare’s Billing Engineering team builds and maintains all the internal/external billing services related to customer onboarding, subscription management, payments, provisioning, usage processing/analytics and back office integrations with financial systems. This is a vital team central to every product launch, campaign or initiative Cloudflare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
+<p>The Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.&nbsp;</p>
+<p><strong>What you'll do </strong><br><br>We are looking for an engineer to join our Billing Team; an energetic team focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
+<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
+<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka, Kubernetes, Temporal and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>Desirable skills and knowledge</strong></p>
 <ul>
-	<li>Design, build, test, and deploy IAM solutions across authentication, authorization, and accounting&nbsp;</li>
-	<li>Leverage Cloudflare products to secure our identities</li>
-	<li>Build SSO integrations leveraging SAML, OIDC, OAuth, and SCIM</li>
-	<li>Build and manage the Identity Governance and Administration platform</li>
-	<li>Develop automated roles leveraging RBAC and ABAC</li>
-	<li>Build and manage an access certification platform&nbsp;</li>
-	<li>Build and manage a Privileged Access Management (PAM) platform</li>
-	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
+	<li>BS+ in Computer Science or equivalent experience</li>
+	<li>5+ years professional experience as a developer/engineer</li>
+	<li>Knowledge of Golang or desire to learn it</li>
+	<li>Solid understanding of RESTful APIs and service security</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
+	<li>Experience with modern Unix/Linux development and runtime environment</li>
+	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
+	<li>Familiarity with event driven architecture</li>
+	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
+	<li>Strong interpersonal and communication skills with a bias towards action</li>
 </ul>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
-<p>Security engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
-<ul>
-	<li>Strong understanding of identity federation (SAML, OAuth, OpenID Connect, etc.)</li>
-	<li>Experience implementing Identity Governance and Administration (IGA) solutions including lifecycle management, SCIM, birthright access (RBAC, ABAC), and access certifications</li>
-	<li>Experience with secure configuration of containerized application platforms (e.g. Kubernetes)</li>
-	<li>Advanced scripting experience (Python, TypeScript, Bash, etc.)</li>
-	<li>Experience implementing Zero Trust controls</li>
-	<li>Experience integrating with applications and SaaS solutions&nbsp;</li>
-	<li>Experience with Identity and Access Management policy application and enforcement</li>
-	<li>Experience working with Identity Threat Detection &amp; Response (ITDR)</li>
-	<li>Experience working with infrastructure as code and configuration management tools like Terraform, Ansible, etc.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $137,000 - $167,000.</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $154,000 - $188,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $162,000 - $198,000.</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p><strong>Available Locations</strong>: Lisbon or Remote Portugal</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

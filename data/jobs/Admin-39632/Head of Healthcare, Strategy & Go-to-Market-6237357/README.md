@@ -5,68 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Hybrid from Austin, TX, Washington D.C., San Francisco, CA</p>
-<p><strong>About the Department</strong><strong><br></strong>The Identity and Access Management (IAM) team is dedicated to ensuring the secure and efficient management of user identities, access privileges, and authentication mechanisms across internal systems, applications, and data. Our mission is to safeguard the organization against unauthorized access, protect sensitive information, and enable seamless user experiences while adhering to industry best practices and compliance standards.</p>
-<h4><strong>About the Role</strong></h4>
-<p>As an Identity and Access Management (IAM) Security Engineer, you will play a crucial role in designing, implementing, and scaling identity and access management solutions for Cloudflare’s internal workforce and workloads. You will be responsible for safeguarding our systems, applications, and data by ensuring secure user access, authentication, and authorization mechanisms.</p>
-<p>&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Preferred locations:</strong> San Francisco, CA, Austin, TX, New York City, NY or Washington DC</p>
+<p>We are seeking to hire our first-ever Head of Healthcare, GTM Strategy.&nbsp;&nbsp;</p>
+<p><strong>Head of Healthcare (Strategy and Go-to-Market) will be responsible for:</strong></p>
 <ul>
-	<li>Design, build, test, and deploy IAM solutions across authentication, authorization, and accounting&nbsp;</li>
-	<li>Leverage Cloudflare products to secure our identities</li>
-	<li>Build SSO integrations leveraging SAML, OIDC, OAuth, and SCIM</li>
-	<li>Build and manage the Identity Governance and Administration platform</li>
-	<li>Develop automated roles leveraging RBAC and ABAC</li>
-	<li>Build and manage an access certification platform&nbsp;</li>
-	<li>Build and manage a Privileged Access Management (PAM) platform</li>
-	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
+	<li>Scale, build, and lead a world-class, cross-functional healthcare team that sustains efficient and high long-term growth and serves as a repeatable structure for other industries</li>
+	<li>Understand the market, develop partnerships, and be seen as an industry leader at the intersection of technology and healthcare.</li>
+	<li>Create and drive new strategic go-to-market plans in coordination with the sales and product organizations to meet company growth and market share goals.</li>
+	<li>Assess the current sales methodologies and team structure to propose/implement necessary adjustments in order to optimize performance and build the infrastructure and incentives to facilitate further aggressive growth.</li>
+	<li>Maintain strong reporting and accountability against numbers, driving to exceed quotas, while developing and managing motivating incentive tools.</li>
+	<li>Act as a strategic thought leader and advisor to the President, Revenue and broader Executive Team; a true business leader and general manager.</li>
+	<li>Develop short and long-term market strategy and forecasts through market analysis and interpretation of data and communicate sales activities of execution and sales productivity with the senior management teams.</li>
+	<li>Build and leverage strong industry and customer relationships, consistently collecting and providing feedback on customer needs, market trends, and opportunities for continuous process, product, and solution improvement.&nbsp;</li>
+	<li>Build massive sales capacity and coverage, and develop a data-driven, metrics-centric sales operations function.</li>
+	<li>Work closely with functions and other executives across the organization to establish and develop a strong and collaborative partnership to ensure continued success.</li>
+	<li>Recruit, inspire, lead, mentor, motivate and instill operational rigor into the sales organization, to capitalize on the market opportunity for Cloudflare.</li>
+	<li>Create loyalty and followership among the current team. Help drive the mission/vision of Cloudflare to the sales force and broader organization.</li>
 </ul>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
-<p>Security engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
+<p><strong>To be effective in this role, the Head of Healthcare will specifically have the following key pivotal experiences and expertise:</strong></p>
 <ul>
-	<li>Strong understanding of identity federation (SAML, OAuth, OpenID Connect, etc.)</li>
-	<li>Experience implementing Identity Governance and Administration (IGA) solutions including lifecycle management, SCIM, birthright access (RBAC, ABAC), and access certifications</li>
-	<li>Experience with secure configuration of containerized application platforms (e.g. Kubernetes)</li>
-	<li>Advanced scripting experience (Python, TypeScript, Bash, etc.)</li>
-	<li>Experience implementing Zero Trust controls</li>
-	<li>Experience integrating with applications and SaaS solutions&nbsp;</li>
-	<li>Experience with Identity and Access Management policy application and enforcement</li>
-	<li>Experience working with Identity Threat Detection &amp; Response (ITDR)</li>
-	<li>Experience working with infrastructure as code and configuration management tools like Terraform, Ansible, etc.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $137,000 - $167,000.</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $154,000 - $188,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $162,000 - $198,000.</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li><strong>High Growth at Scale – </strong>Track record of leading an organization through rapid growth from $1B to $5B and beyond. Develops processes and strategies that enable the organization to scale with the business.</li>
+	<li><strong>Go-to-Market Complexity &amp; healthcare services Depth –</strong> Responsibility for a complex, platform/multi-product sales motion across field, inside and channel sales selling into a multi-segment (SMB to Enterprise) customer base.</li>
+	<li><strong>Infrastructure SaaS – </strong>Experience within a cloud-native, highly technical infrastructure SaaS business, and track record of managing a predictable and repeatable recurring revenue business model.</li>
+	<li><strong>Operational Rigor – </strong>Experience implementing complex strategy and operational improvements. Takes a data driven and efficiency-oriented approach to sales operations. Measurable success in improving sales enablement, hiring practices, productivity, sales strategy and programs.</li>
+	<li><strong>Impact-Oriented Strategic Builder</strong> <strong>–</strong> Execution-focused, team player, and a leader. To be effective in this role, the Head of healthcareServices (Go-to-Market) will have the personal drive and enthusiasm to successfully navigate a growing company in an evolving marketplace.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
