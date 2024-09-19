@@ -1,0 +1,1531 @@
+{
+	"DELETE /accounts/{account_id}/infrastructure/targets/{target_id}": {
+		"operationId": "infra-targets-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"title": "account_id",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "target_id",
+				"required": true,
+				"schema": {
+					"description": "Target identifier",
+					"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+					"format": "uuid",
+					"maxLength": 36,
+					"title": "target_id",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successfully deleted the target"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to delete the target"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete target",
+		"tags": [
+			"Infrastructure Access Targets"
+		]
+	},
+	"GET /accounts/{account_id}/infrastructure/targets": {
+		"operationId": "infra-targets-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"title": "account_id",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Hostname of a target",
+				"in": "query",
+				"name": "hostname",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Partial match to the hostname of a target",
+				"in": "query",
+				"name": "hostname_contains",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Private virtual network identifier of the target",
+				"in": "query",
+				"name": "virtual_network_id",
+				"schema": {
+					"format": "uuid",
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "IPv4 address of the target",
+				"in": "query",
+				"name": "ip_v4",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "IPv6 address of the target",
+				"in": "query",
+				"name": "ip_v6",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Date and time at which the target was created",
+				"in": "query",
+				"name": "created_after",
+				"schema": {
+					"format": "date-time",
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Date and time at which the target was modified",
+				"in": "query",
+				"name": "modified_after",
+				"schema": {
+					"format": "date-time",
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Current page in the response",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"format": "int32",
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Max amount of entries returned per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 1000,
+					"format": "int32",
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"description": "Date and time at which the target was created",
+														"example": "2019-08-24T14:15:22Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"hostname": {
+														"description": "A non-unique field that refers to a target",
+														"example": "infra-access-target",
+														"type": "string"
+													},
+													"id": {
+														"description": "Target identifier",
+														"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+														"format": "uuid",
+														"maxLength": 36,
+														"title": "target_id",
+														"type": "string"
+													},
+													"ip": {
+														"description": "The IPv4/IPv6 address that identifies where to reach a target",
+														"properties": {
+															"ipv4": {
+																"description": "The target's IPv4 address",
+																"properties": {
+																	"ip_addr": {
+																		"description": "IP address of the target",
+																		"example": "187.26.29.249",
+																		"type": "string"
+																	},
+																	"virtual_network_id": {
+																		"description": "Private virtual network identifier for the target",
+																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"ipv6": {
+																"description": "The target's IPv6 address",
+																"properties": {
+																	"ip_addr": {
+																		"description": "IP address of the target",
+																		"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+																		"type": "string"
+																	},
+																	"virtual_network_id": {
+																		"description": "Private virtual network identifier for the target",
+																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"modified_at": {
+														"description": "Date and time at which the target was modified",
+														"example": "2019-08-24T14:15:22Z",
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"hostname",
+													"ip",
+													"created_at",
+													"modified_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully retrieved all targets in the account"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to retrieve all targets in the account"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List all targets",
+		"tags": [
+			"Infrastructure Access Targets"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
+		]
+	},
+	"GET /accounts/{account_id}/infrastructure/targets/{target_id}": {
+		"operationId": "infra-targets-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"title": "account_id",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "target_id",
+				"required": true,
+				"schema": {
+					"description": "Target identifier",
+					"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+					"format": "uuid",
+					"maxLength": 36,
+					"title": "target_id",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"description": "Date and time at which the target was created",
+													"example": "2019-08-24T14:15:22Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"hostname": {
+													"description": "A non-unique field that refers to a target",
+													"example": "infra-access-target",
+													"type": "string"
+												},
+												"id": {
+													"description": "Target identifier",
+													"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+													"format": "uuid",
+													"maxLength": 36,
+													"title": "target_id",
+													"type": "string"
+												},
+												"ip": {
+													"description": "The IPv4/IPv6 address that identifies where to reach a target",
+													"properties": {
+														"ipv4": {
+															"description": "The target's IPv4 address",
+															"properties": {
+																"ip_addr": {
+																	"description": "IP address of the target",
+																	"example": "187.26.29.249",
+																	"type": "string"
+																},
+																"virtual_network_id": {
+																	"description": "Private virtual network identifier for the target",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"ipv6": {
+															"description": "The target's IPv6 address",
+															"properties": {
+																"ip_addr": {
+																	"description": "IP address of the target",
+																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+																	"type": "string"
+																},
+																"virtual_network_id": {
+																	"description": "Private virtual network identifier for the target",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"modified_at": {
+													"description": "Date and time at which the target was modified",
+													"example": "2019-08-24T14:15:22Z",
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"hostname",
+												"ip",
+												"created_at",
+												"modified_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully retrieved the target"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to retrieve the target"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get target",
+		"tags": [
+			"Infrastructure Access Targets"
+		]
+	},
+	"POST /accounts/{account_id}/infrastructure/targets": {
+		"operationId": "infra-targets-post",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"hostname": {
+								"description": "A non-unique field that refers to a target. Case insensitive, maximum\nlength of 255 characters, supports the use of special characters dash\nand period, does not support spaces, and must start and end with an\nalphanumeric character.",
+								"example": "infra-access-target",
+								"type": "string"
+							},
+							"ip": {
+								"description": "The IPv4/IPv6 address that identifies where to reach a target",
+								"properties": {
+									"ipv4": {
+										"description": "The target's IPv4 address",
+										"properties": {
+											"ip_addr": {
+												"description": "IP address of the target",
+												"example": "187.26.29.249",
+												"type": "string"
+											},
+											"virtual_network_id": {
+												"description": "Private virtual network identifier for the target",
+												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"ipv6": {
+										"description": "The target's IPv6 address",
+										"properties": {
+											"ip_addr": {
+												"description": "IP address of the target",
+												"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+												"type": "string"
+											},
+											"virtual_network_id": {
+												"description": "Private virtual network identifier for the target",
+												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"hostname",
+							"ip"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"description": "Date and time at which the target was created",
+													"example": "2019-08-24T14:15:22Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"hostname": {
+													"description": "A non-unique field that refers to a target",
+													"example": "infra-access-target",
+													"type": "string"
+												},
+												"id": {
+													"description": "Target identifier",
+													"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+													"format": "uuid",
+													"maxLength": 36,
+													"title": "target_id",
+													"type": "string"
+												},
+												"ip": {
+													"description": "The IPv4/IPv6 address that identifies where to reach a target",
+													"properties": {
+														"ipv4": {
+															"description": "The target's IPv4 address",
+															"properties": {
+																"ip_addr": {
+																	"description": "IP address of the target",
+																	"example": "187.26.29.249",
+																	"type": "string"
+																},
+																"virtual_network_id": {
+																	"description": "Private virtual network identifier for the target",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"ipv6": {
+															"description": "The target's IPv6 address",
+															"properties": {
+																"ip_addr": {
+																	"description": "IP address of the target",
+																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+																	"type": "string"
+																},
+																"virtual_network_id": {
+																	"description": "Private virtual network identifier for the target",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"modified_at": {
+													"description": "Date and time at which the target was modified",
+													"example": "2019-08-24T14:15:22Z",
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"hostname",
+												"ip",
+												"created_at",
+												"modified_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully created the target"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to create the target"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create new target",
+		"tags": [
+			"Infrastructure Access Targets"
+		],
+		"x-api-token-group": [
+			"Teams Write"
+		]
+	},
+	"PUT /accounts/{account_id}/infrastructure/targets/{target_id}": {
+		"operationId": "infra-targets-put",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"title": "account_id",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "target_id",
+				"required": true,
+				"schema": {
+					"description": "Target identifier",
+					"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+					"format": "uuid",
+					"maxLength": 36,
+					"title": "target_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"hostname": {
+								"description": "A non-unique field that refers to a target. Case insensitive, maximum\nlength of 255 characters, supports the use of special characters dash\nand period, does not support spaces, and must start and end with an\nalphanumeric character.",
+								"example": "infra-access-target",
+								"type": "string"
+							},
+							"ip": {
+								"description": "The IPv4/IPv6 address that identifies where to reach a target",
+								"properties": {
+									"ipv4": {
+										"description": "The target's IPv4 address",
+										"properties": {
+											"ip_addr": {
+												"description": "IP address of the target",
+												"example": "187.26.29.249",
+												"type": "string"
+											},
+											"virtual_network_id": {
+												"description": "Private virtual network identifier for the target",
+												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"ipv6": {
+										"description": "The target's IPv6 address",
+										"properties": {
+											"ip_addr": {
+												"description": "IP address of the target",
+												"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+												"type": "string"
+											},
+											"virtual_network_id": {
+												"description": "Private virtual network identifier for the target",
+												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"hostname",
+							"ip"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"description": "Date and time at which the target was created",
+													"example": "2019-08-24T14:15:22Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"hostname": {
+													"description": "A non-unique field that refers to a target",
+													"example": "infra-access-target",
+													"type": "string"
+												},
+												"id": {
+													"description": "Target identifier",
+													"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+													"format": "uuid",
+													"maxLength": 36,
+													"title": "target_id",
+													"type": "string"
+												},
+												"ip": {
+													"description": "The IPv4/IPv6 address that identifies where to reach a target",
+													"properties": {
+														"ipv4": {
+															"description": "The target's IPv4 address",
+															"properties": {
+																"ip_addr": {
+																	"description": "IP address of the target",
+																	"example": "187.26.29.249",
+																	"type": "string"
+																},
+																"virtual_network_id": {
+																	"description": "Private virtual network identifier for the target",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"ipv6": {
+															"description": "The target's IPv6 address",
+															"properties": {
+																"ip_addr": {
+																	"description": "IP address of the target",
+																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+																	"type": "string"
+																},
+																"virtual_network_id": {
+																	"description": "Private virtual network identifier for the target",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"modified_at": {
+													"description": "Date and time at which the target was modified",
+													"example": "2019-08-24T14:15:22Z",
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"hostname",
+												"ip",
+												"created_at",
+												"modified_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully updated the target"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to update the target"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update target",
+		"tags": [
+			"Infrastructure Access Targets"
+		]
+	}
+}
