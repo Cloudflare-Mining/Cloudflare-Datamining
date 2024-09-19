@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "f9887660-3319-523d-8128-0ff7e10fc35c")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "afb2edf1-8443-5d0e-95da-bd84a19255b5")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -909,10 +909,10 @@
 					n.g.build = mn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "7d45575758874bd792f5349206de687e2a57689a",
-						dashVersion: "27323256",
+						commit: "ff508bb08291ade4ff9507e624e5d424645dc813",
+						dashVersion: "27324115",
 						env: "production",
-						builtAt: 1726763223894,
+						builtAt: 1726764032187,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -10369,7 +10369,7 @@
 				}
 			});
 			const e = "api.pages.cloudflare.com",
-				o = "cloudflare-pages",
+				o = "cloudflare-workers-and-pages",
 				c = {
 					dns: "https://cloudflare.com/dns",
 					access: "https://www.cloudflare.com/teams-access/",
@@ -14252,4 +14252,4 @@
 	}
 ]);
 
-//# debugId=f9887660-3319-523d-8128-0ff7e10fc35c
+//# debugId=afb2edf1-8443-5d0e-95da-bd84a19255b5
