@@ -1546,7 +1546,11 @@ export declare abstract class Body {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response)
  */
 export declare class Response extends Body {
-  constructor(body?: BodyInit | null, init?: ResponseInit);
+  constructor(
+    body?: BodyInit | null,
+    init?: ResponseInit,
+    webSocket?: WebSocket,
+  );
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirect_static) */
   static redirect(url: string, status?: number): Response;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/json_static) */
@@ -1573,7 +1577,7 @@ export interface ResponseInit {
   statusText?: string;
   headers?: HeadersInit;
   cf?: any;
-  webSocket?: WebSocket | null;
+  webSocket?: WebSocket;
   encodeBody?: "automatic" | "manual";
 }
 export type RequestInfo<
@@ -2282,15 +2286,15 @@ export declare class TransformStream<I = any, O = any> {
 }
 export declare class FixedLengthStream extends IdentityTransformStream {
   constructor(
-    param1: number | bigint,
-    param2?: IdentityTransformStreamQueuingStrategy,
+    expectedLength: number | bigint,
+    queuingStrategy?: IdentityTransformStreamQueuingStrategy,
   );
 }
 export declare class IdentityTransformStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
-  constructor(param1?: IdentityTransformStreamQueuingStrategy);
+  constructor(queuingStrategy?: IdentityTransformStreamQueuingStrategy);
 }
 export interface IdentityTransformStreamQueuingStrategy {
   highWaterMark?: number | bigint;
@@ -2771,21 +2775,24 @@ export declare const WebSocketPair: {
   };
 };
 export interface SqlStorage {
-  exec(query: string, ...bindings: any[]): SqlStorageCursor;
-  prepare(query: string): SqlStorageStatement;
+  exec<T extends Record<string, SqlStorageValue>>(
+    query: string,
+    ...bindings: any[]
+  ): SqlStorageCursor<T>;
   get databaseSize(): number;
   Cursor: typeof SqlStorageCursor;
   Statement: typeof SqlStorageStatement;
 }
 export declare abstract class SqlStorageStatement {}
-export declare abstract class SqlStorageCursor {
-  raw(): IterableIterator<((ArrayBuffer | string | number) | null)[]>;
+export type SqlStorageValue = ArrayBuffer | string | number | null;
+export declare abstract class SqlStorageCursor<
+  T extends Record<string, SqlStorageValue>,
+> {
+  raw<U extends SqlStorageValue[]>(): IterableIterator<U>;
   get columnNames(): string[];
   get rowsRead(): number;
   get rowsWritten(): number;
-  [Symbol.iterator](): IterableIterator<
-    Record<string, (ArrayBuffer | string | number) | null>
-  >;
+  [Symbol.iterator](): IterableIterator<T>;
 }
 export interface Socket {
   get readable(): ReadableStream;
@@ -3324,7 +3331,7 @@ export interface GPUOrigin3DDict {
   z?: number;
 }
 /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventSource) */
-export declare class EventSource {
+export declare class EventSource extends EventTarget {
   constructor(url: string, init?: EventSourceEventSourceInit);
   /**
    * Aborts any instances of the fetch algorithm started for this EventSource object, and sets the readyState attribute to CLOSED.
@@ -5494,13 +5501,57 @@ export interface DispatchNamespace {
     options?: DynamicDispatchOptions,
   ): Fetcher;
 }
-/**
- * NonRetryableError allows for a Workflow to throw a "fatal" error as in,
- * an error that makes the instance fail immediately without triggering a retry.
- */
-export declare class NonRetryableError extends Error {
-  // __brand has been explicity omitted because it's a internal brand used for
-  // the Workflows' engine and user's shouldn't be able to override it
-  // (at least, in a direct way)
-  public constructor(message: string, name?: string);
+export declare abstract class Workflow {
+  /**
+   * Get a handle to an existing instance of the Workflow.
+   * @param id Id for the instance of this Workflow
+   * @returns A promise that resolves with a handle for the Instance
+   */
+  public get(id: string): Promise<Instance>;
+  /**
+   * Create a new instance and return a handle to it. If a provided id exists, an error will be thrown.
+   * @param id Id to create the instance of this Workflow with
+   * @param params The payload to send over to this instance
+   * @returns A promise that resolves with a handle for the Instance
+   */
+  public create(id: string, params: object): Promise<Instance>;
+}
+export type InstanceStatus = {
+  status:
+    | "queued"
+    | "running"
+    | "paused"
+    | "errored"
+    | "terminated"
+    | "complete"
+    | "unknown";
+  error?: string;
+  output?: object;
+};
+export interface WorkflowError {
+  code?: number;
+  message: string;
+}
+export declare abstract class Instance {
+  public id: string;
+  /**
+   * Pause the instance.
+   */
+  public pause(): Promise<void>;
+  /**
+   * Resume the instance. If it is already running, an error will be thrown.
+   */
+  public resume(): Promise<void>;
+  /**
+   * Abort the instance. If it is errored, terminated or complete, an error will be thrown.
+   */
+  public abort(): Promise<void>;
+  /**
+   * Restart the instance.
+   */
+  public restart(): Promise<void>;
+  /**
+   * Returns the current status of the instance.
+   */
+  public status(): Promise<InstanceStatus>;
 }

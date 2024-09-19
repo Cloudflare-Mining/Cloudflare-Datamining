@@ -1553,7 +1553,11 @@ declare abstract class Body {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response)
  */
 declare class Response extends Body {
-  constructor(body?: BodyInit | null, init?: ResponseInit);
+  constructor(
+    body?: BodyInit | null,
+    init?: ResponseInit,
+    webSocket?: WebSocket,
+  );
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirect_static) */
   static redirect(url: string, status?: number): Response;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/json_static) */
@@ -1580,7 +1584,7 @@ interface ResponseInit {
   statusText?: string;
   headers?: HeadersInit;
   cf?: any;
-  webSocket?: WebSocket | null;
+  webSocket?: WebSocket;
   encodeBody?: "automatic" | "manual";
 }
 type RequestInfo<CfHostMetadata = unknown, Cf = CfProperties<CfHostMetadata>> =
@@ -2337,15 +2341,15 @@ declare class TransformStream<I = any, O = any> {
 }
 declare class FixedLengthStream extends IdentityTransformStream {
   constructor(
-    param1: number | bigint,
-    param2?: IdentityTransformStreamQueuingStrategy,
+    expectedLength: number | bigint,
+    queuingStrategy?: IdentityTransformStreamQueuingStrategy,
   );
 }
 declare class IdentityTransformStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
-  constructor(param1?: IdentityTransformStreamQueuingStrategy);
+  constructor(queuingStrategy?: IdentityTransformStreamQueuingStrategy);
 }
 interface IdentityTransformStreamQueuingStrategy {
   highWaterMark?: number | bigint;
@@ -2823,7 +2827,10 @@ declare const WebSocketPair: {
   };
 };
 interface SqlStorage {
-  exec(query: string, ...bindings: any[]): SqlStorageCursor;
+  exec<T extends Record<string, SqlStorageValue>>(
+    query: string,
+    ...bindings: any[]
+  ): SqlStorageCursor<T>;
   prepare(query: string): SqlStorageStatement;
   ingest(query: string): SqlStorageIngestResult;
   get databaseSize(): number;
@@ -2831,14 +2838,15 @@ interface SqlStorage {
   Statement: typeof SqlStorageStatement;
 }
 declare abstract class SqlStorageStatement {}
-declare abstract class SqlStorageCursor {
-  raw(): IterableIterator<((ArrayBuffer | string | number) | null)[]>;
+type SqlStorageValue = ArrayBuffer | string | number | null;
+declare abstract class SqlStorageCursor<
+  T extends Record<string, SqlStorageValue>,
+> {
+  raw<U extends SqlStorageValue[]>(): IterableIterator<U>;
   get columnNames(): string[];
   get rowsRead(): number;
   get rowsWritten(): number;
-  [Symbol.iterator](): IterableIterator<
-    Record<string, (ArrayBuffer | string | number) | null>
-  >;
+  [Symbol.iterator](): IterableIterator<T>;
 }
 interface SqlStorageIngestResult {
   remainder: string;
@@ -3383,7 +3391,7 @@ interface GPUOrigin3DDict {
   z?: number;
 }
 /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventSource) */
-declare class EventSource {
+declare class EventSource extends EventTarget {
   constructor(url: string, init?: EventSourceEventSourceInit);
   /**
    * Aborts any instances of the fetch algorithm started for this EventSource object, and sets the readyState attribute to CLOSED.
@@ -5648,12 +5656,69 @@ interface DispatchNamespace {
   ): Fetcher;
 }
 /**
- * NonRetryableError allows for a Workflow to throw a "fatal" error as in,
- * an error that makes the instance fail immediately without triggering a retry.
+ * NonRetryableError allows for a user to throw a fatal error
+ * that makes a Workflow instance fail immediately without triggering a retry
  */
-declare class NonRetryableError extends Error {
-  // __brand has been explicity omitted because it's a internal brand used for
-  // the Workflows' engine and user's shouldn't be able to override it
-  // (at least, in a direct way)
-  public constructor(message: string, name?: string);
+declare module "cloudflare:workflows" {
+  export abstract class NonRetryableError extends Error {
+    /**
+     * `__brand` is used to differentiate between `NonRetryableError` and `Error`
+     * and is omitted from the constructor because users should not set it
+     */
+    public constructor(message: string, name?: string);
+  }
+}
+declare abstract class Workflow {
+  /**
+   * Get a handle to an existing instance of the Workflow.
+   * @param id Id for the instance of this Workflow
+   * @returns A promise that resolves with a handle for the Instance
+   */
+  public get(id: string): Promise<Instance>;
+  /**
+   * Create a new instance and return a handle to it. If a provided id exists, an error will be thrown.
+   * @param id Id to create the instance of this Workflow with
+   * @param params The payload to send over to this instance
+   * @returns A promise that resolves with a handle for the Instance
+   */
+  public create(id: string, params: object): Promise<Instance>;
+}
+type InstanceStatus = {
+  status:
+    | "queued"
+    | "running"
+    | "paused"
+    | "errored"
+    | "terminated"
+    | "complete"
+    | "unknown";
+  error?: string;
+  output?: object;
+};
+interface WorkflowError {
+  code?: number;
+  message: string;
+}
+declare abstract class Instance {
+  public id: string;
+  /**
+   * Pause the instance.
+   */
+  public pause(): Promise<void>;
+  /**
+   * Resume the instance. If it is already running, an error will be thrown.
+   */
+  public resume(): Promise<void>;
+  /**
+   * Abort the instance. If it is errored, terminated or complete, an error will be thrown.
+   */
+  public abort(): Promise<void>;
+  /**
+   * Restart the instance.
+   */
+  public restart(): Promise<void>;
+  /**
+   * Returns the current status of the instance.
+   */
+  public status(): Promise<InstanceStatus>;
 }
