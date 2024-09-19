@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: O => (0, e.z1)(C.Mr)(O) && (0, j.z7)(O) && !!(0, j.z$)(O).length
+		hasPermission: O => (0, e.z1)(C.Mr)(O) && (0, z.z7)(O) && !!(0, z.z$)(O).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -396,7 +396,7 @@ const navigation = {
 		url: "/workers-for-platforms",
 		iconType: "workers-for-platforms",
 		testId: "workers-for-platforms",
-		hasPermission: O => (0, a.iY)(O) && (0, q.k)(O)
+		hasPermission: O => (0, a.iY)(O) && (0, V.k)(O)
 	}, {
 		title: "navigation.account.storage_and_databases",
 		url: "/workers/kv/namespaces",
@@ -565,7 +565,7 @@ const navigation = {
 			url: "/shared-configurations",
 			testId: "shared-config-link",
 			labels: ["alpha"],
-			hasPermission: O => (0, se.K)(O, "account")
+			hasPermission: O => (0, ie.K)(O, "account")
 		}, {
 			title: "navigation.account.mcn",
 			url: "/mcn",
@@ -658,7 +658,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: O => !!(0, ee.V)(O)
+			hasPermission: O => !!(0, J.V)(O)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -688,7 +688,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: O => {
 				const x = (0, f.nA)(O),
-					K = (x == null ? void 0 : x.type) === ie.K.PARTIAL;
+					K = (x == null ? void 0 : x.type) === re.K.PARTIAL;
 				return (!!(0, l.k4)(O) || !!(0, e.z1)("dns-gql-analytics-for-all")(O)) && !K
 			}
 		}, {
@@ -730,9 +730,9 @@ const navigation = {
 			const x = (0, f.nA)(O);
 			if ((0, l.yD)(O) || !(0, a.wB)(O, "zone_settings", "spectrum.app") || !x) return !1;
 			const K = !!((0, m.l8)(O) || (0, f.DQ)(O)),
-				Q = !!(0, f.ZB)(O, "spectrum", "enabled"),
-				z = !!(0, f.Ns)(x);
-			return Q || K || !z
+				Z = !!(0, f.ZB)(O, "spectrum", "enabled"),
+				N = !!(0, f.Ns)(x);
+			return Z || K || !N
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -812,7 +812,7 @@ const navigation = {
 			url: "/security/api-shield",
 			labels: ["new"],
 			navigationType: "version",
-			hasPermission: O => (0, oe.R0)(O),
+			hasPermission: O => (0, ae.R0)(O),
 			tabs: u.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
@@ -861,7 +861,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: k
+			tabs: j
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -1053,7 +1053,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.plans",
 			navigationType: "global-settings",
 			url: "/zaraz/plans",
-			hasPermission: O => !!(0, ne.GM)(O) && !!(0, e.z1)("zaraz-plans-page-access")(O)
+			hasPermission: O => !!(0, te.GM)(O) && !!(0, e.z1)("zaraz-plans-page-access")(O)
 		}]
 	}, {
 		title: "navigation.zone.web3.title",
