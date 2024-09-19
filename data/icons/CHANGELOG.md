@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.17.0
+
+### Minor Changes
+
+- 64c8cb0695: Add warning icon to component-icon package
+
 ## 12.16.0
 
 ### Minor Changes

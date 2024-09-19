@@ -161,6 +161,7 @@ declare const _default: {
     vectorize: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     version: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'waiting-room': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    warning: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     warp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'web-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     web3: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
