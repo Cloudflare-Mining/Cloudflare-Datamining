@@ -710,6 +710,7 @@
 		"avg": "The average value for a metric per dimension",
 		"count": "Number of D1 queries processed",
 		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountD1QueriesAdaptiveGroupsAvg": {
@@ -735,6 +736,12 @@
 	},
 	"AccountD1QueriesAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountD1QueriesAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"queryDurationMsP50": "50th percentile Query Duration (milliseconds)",
+		"queryDurationMsP95": "95th percentile Query Duration (milliseconds)",
+		"queryDurationMsP99": "99th percentile Query Duration (milliseconds)"
 	},
 	"AccountD1QueriesAdaptiveGroupsSum": {
 		"__description": "",
@@ -3140,6 +3147,7 @@
 		"destinationAS": "Autonomous System to which the data is directed. Corresponds to DstAS field in the packet",
 		"destinationAddress": "IP to which the data was sent",
 		"destinationPort": "Value of the Destination Port header field in the packet",
+		"deviceID": "Device ID of the warp client exporting MNM flows",
 		"ethertype": "Value of the Ethertype header field in the Ethernet packet (2048 for IPv4; 34525 for IPv6)",
 		"protocol": "Layer 4 protocol",
 		"protocolString": "Human-readable string representation of the protocol",
@@ -3858,6 +3866,8 @@
 		"workersOverviewDataAdaptiveGroups": "",
 		"workersOverviewRequestsAdaptiveGroups": "",
 		"workersSubrequestsAdaptiveGroups": "",
+		"workflowsAdaptive": "",
+		"workflowsAdaptiveGroups": "",
 		"zarazTrackAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": "",
 		"zeroTrustPrivateNetworkDiscoveryGroups": ""
@@ -4244,7 +4254,7 @@
 	},
 	"AccountVectorizeV2QueriesAdaptiveGroupsSum": {
 		"__description": "",
-		"queriedVectorDimensions": "The number of queried vector dimensions in Vectorize over the queried time period.",
+		"queriedVectorDimensions": "The number of queried vector dimensions in Vectorize over the queried time period. This metric must always be fetched along with the 'indexName' and 'datetime' dimensions, as well as a 'requestStatus:2xx' filter to estimate billable usage.",
 		"requestDurationMs": "Total latency (in milliseconds) of serving Vectorize queries over the queried time period",
 		"servedVectorCount": "The number of vectors served in Vectorize queries over the queried time period."
 	},
@@ -4677,6 +4687,54 @@
 		"__description": "",
 		"requestBodySizeUncached": "Workers fetch request body size in bytes where the request was not cached",
 		"subrequests": "Number of subrequests"
+	},
+	"AccountWorkflowsAdaptive": {
+		"__description": "Workflows analytics",
+		"datetime": "The date when trigger was triggered",
+		"endTimestamp": "Instance end timestamp(seconds)",
+		"eventType": "Event type",
+		"instanceId": "Instance Id",
+		"sampleInterval": "ABR sample interval",
+		"startTimestamp": "Instance start timestamp(seconds)",
+		"stepCount": "Step number",
+		"stepName": "Step name",
+		"wallTime": "Wall time in seconds",
+		"workflowName": "Workflow name"
+	},
+	"AccountWorkflowsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkflowsAdaptiveGroups": {
+		"__description": "Workflows analytics",
+		"count": "Number of events(workflow invocations) per dimension",
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
+	},
+	"AccountWorkflowsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date when trigger was triggered",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"eventType": "Event type",
+		"instanceId": "Instance Id",
+		"stepCount": "Step number",
+		"stepName": "Step name",
+		"workflowName": "Workflow name"
+	},
+	"AccountWorkflowsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkflowsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkflowsAdaptiveGroupsSum": {
+		"__description": "",
+		"wallTime": "Total wall time per dimension"
+	},
+	"AccountWorkflowsAdaptiveOrderBy": {
+		"__description": ""
 	},
 	"AccountZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
@@ -7203,6 +7261,8 @@
 		"workersOverviewDataAdaptiveGroups": "Beta. Workers account overview invocation data with adaptive sampling",
 		"workersOverviewRequestsAdaptiveGroups": "Beta. Workers account overview invocation count with adaptive sampling",
 		"workersSubrequestsAdaptiveGroups": "Beta. Workers subrequests with adaptive sampling",
+		"workflowsAdaptive": "Workflows analytics",
+		"workflowsAdaptiveGroups": "Workflows analytics",
 		"zarazTrackAdaptiveGroups": "Zaraz Track Analytics - counts zaraz.track calls",
 		"zarazTriggersAdaptiveGroups": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"zeroTrustPrivateNetworkDiscoveryGroups": "Beta - Unique origins, applications, and users discovered for Zero Trust private networks",
