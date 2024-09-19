@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-shared",
 	"dist-tags": {
-		"latest": "0.11.59"
+		"latest": "0.11.60"
 	},
 	"versions": {
 		"0.0.1": {
@@ -2799,6 +2799,36 @@
 				"miniflare": "3.20240909.3"
 			},
 			"devDependencies": {
+				"glob": "^10.3.3",
+				"concurrently": "^8.2.2",
+				"@miniflare/core": "^2.14.2",
+				"@miniflare/cache": "^2.14.2",
+				"@miniflare/html-rewriter": "^2.14.2",
+				"@cloudflare/workers-types": "^4.20240909.0",
+				"@miniflare/storage-memory": "^2.14.2",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "795d88df78d6a3a6b933ede37cd4ccfbbc8767fb",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.11.59.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-SP0JId66JeJ9D6Xb3wIGiLlN9lgrH8l6iOV3k+Wu0D0NvJ9pqBo1C/rn2ajfcJPV7xbFXNiDrnWMeZowOzHYhA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCnggpdCB523CJbkNAGZpZjCmsCsiEVIZ64ZuT3L0ZIjgIhAKJChDD//t++td4LNKWvT0Z3mxgpAvRe0Vs1gXIlGbPC",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 55260
+			}
+		},
+		"0.11.60": {
+			"name": "@cloudflare/pages-shared",
+			"version": "0.11.60",
+			"dependencies": {
+				"miniflare": "3.20240909.4"
+			},
+			"devDependencies": {
 				"@cloudflare/workers-types": "^4.20240909.0",
 				"@miniflare/cache": "^2.14.2",
 				"@miniflare/core": "^2.14.2",
@@ -2809,15 +2839,15 @@
 				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-SP0JId66JeJ9D6Xb3wIGiLlN9lgrH8l6iOV3k+Wu0D0NvJ9pqBo1C/rn2ajfcJPV7xbFXNiDrnWMeZowOzHYhA==",
-				"shasum": "795d88df78d6a3a6b933ede37cd4ccfbbc8767fb",
-				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.11.59.tgz",
+				"integrity": "sha512-yl5AtwfPH9Hvs28i/pOLMhH5clflhBpHM5A4JqAlfPfScAQbW+7e6PWViHrp1KWvSD6R+11Pv68Jvpu10JFS2g==",
+				"shasum": "6234dddd0370c64c79451583085e3829675918b4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.11.60.tgz",
 				"fileCount": 17,
 				"unpackedSize": 55260,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCnggpdCB523CJbkNAGZpZjCmsCsiEVIZ64ZuT3L0ZIjgIhAKJChDD//t++td4LNKWvT0Z3mxgpAvRe0Vs1gXIlGbPC"
+						"sig": "MEQCIA41VIJSCWMjfiLBL+rEWUJoFwY9wNFFUBceunUIb2oXAiA1mSquz7oZSMFWIXlT3mYaOsup9zSTyQz92OTOtloP8g=="
 					}
 				]
 			}
