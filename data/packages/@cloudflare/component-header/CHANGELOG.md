@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.57
+
+### Patch Changes
+
+- Updated dependencies [6fcdba8b39]
+  - @cloudflare/component-icon@12.19.0
+  - @cloudflare/util-responsive@3.0.17
+
 ## 6.0.56
 
 ### Patch Changes

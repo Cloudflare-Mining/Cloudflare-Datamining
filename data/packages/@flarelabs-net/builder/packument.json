@@ -8,28 +8,28 @@
 			"name": "@flarelabs-net/builder",
 			"version": "0.0.1",
 			"devDependencies": {
-				"@types/node": "^22.2.0",
-				"esbuild": "^0.23.0",
 				"glob": "^11.0.0",
 				"next": "14.2.5",
 				"tsup": "^8.2.4",
-				"typescript": "^5.5.4"
+				"esbuild": "^0.23.0",
+				"typescript": "^5.5.4",
+				"@types/node": "^22.2.0"
 			},
 			"bin": {
 				"builder": "dist/index.mjs"
 			},
 			"dist": {
-				"integrity": "sha512-nsjwk9WMFXsu+y18U07aSAub/EnVtXpdu/UK+u9a/hXillj4kiY/PQKp5LvmRFDEzPHWZIK0xDaELnK+a9J8Kg==",
 				"shasum": "75319f5196bf7239bb0100241e19481f269d214e",
 				"tarball": "https://registry.npmjs.org/@flarelabs-net/builder/-/builder-0.0.1.tgz",
 				"fileCount": 9,
-				"unpackedSize": 224963,
+				"integrity": "sha512-nsjwk9WMFXsu+y18U07aSAub/EnVtXpdu/UK+u9a/hXillj4kiY/PQKp5LvmRFDEzPHWZIK0xDaELnK+a9J8Kg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCnmr+47hRDBpglyygJrHu0FxmzZGP+/f0lCnQzsSATfwIgWZHB+MmMW5rE4B0MNZaTAQ93nIIyrqmZUwoP+mV+LFE="
+						"sig": "MEUCIQCnmr+47hRDBpglyygJrHu0FxmzZGP+/f0lCnQzsSATfwIgWZHB+MmMW5rE4B0MNZaTAQ93nIIyrqmZUwoP+mV+LFE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 224963
 			}
 		}
 	}
