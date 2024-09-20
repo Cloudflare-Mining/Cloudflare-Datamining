@@ -1,0 +1,768 @@
+{
+	"DELETE /zones/{zone_id}/security-center/securitytxt": {
+		"operationId": "delete-security-txt",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete security.txt",
+		"tags": [
+			"security.txt"
+		]
+	},
+	"GET /zones/{zone_id}/security-center/securitytxt": {
+		"operationId": "get-security-txt",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"properties": {
+														"acknowledgments": {
+															"example": [
+																"https://example.com/hall-of-fame.html"
+															],
+															"items": {
+																"format": "uri",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"canonical": {
+															"example": [
+																"https://www.example.com/.well-known/security.txt"
+															],
+															"items": {
+																"format": "uri",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"contact": {
+															"example": [
+																"mailto:security@example.com",
+																"tel:+1-201-555-0123",
+																"https://example.com/security-contact.html"
+															],
+															"items": {
+																"format": "uri",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"enabled": {
+															"example": true,
+															"type": "boolean"
+														},
+														"encryption": {
+															"example": [
+																"https://example.com/pgp-key.txt",
+																"dns:5d2d37ab76d47d36._openpgpkey.example.com?type=OPENPGPKEY",
+																"openpgp4fpr:5f2de5521c63a801ab59ccb603d49de44b29100f"
+															],
+															"items": {
+																"format": "uri",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"expires": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"hiring": {
+															"example": [
+																"https://example.com/jobs.html"
+															],
+															"items": {
+																"format": "uri",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"policy": {
+															"example": [
+																"https://example.com/disclosure-policy.html"
+															],
+															"items": {
+																"format": "uri",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"preferredLanguages": {
+															"example": "en, es, fr",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get security.txt",
+		"tags": [
+			"security.txt"
+		]
+	},
+	"PUT /zones/{zone_id}/security-center/securitytxt": {
+		"operationId": "update-security-txt",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"acknowledgments": {
+								"example": [
+									"https://example.com/hall-of-fame.html"
+								],
+								"items": {
+									"format": "uri",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"canonical": {
+								"example": [
+									"https://www.example.com/.well-known/security.txt"
+								],
+								"items": {
+									"format": "uri",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"contact": {
+								"example": [
+									"mailto:security@example.com",
+									"tel:+1-201-555-0123",
+									"https://example.com/security-contact.html"
+								],
+								"items": {
+									"format": "uri",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"enabled": {
+								"example": true,
+								"type": "boolean"
+							},
+							"encryption": {
+								"example": [
+									"https://example.com/pgp-key.txt",
+									"dns:5d2d37ab76d47d36._openpgpkey.example.com?type=OPENPGPKEY",
+									"openpgp4fpr:5f2de5521c63a801ab59ccb603d49de44b29100f"
+								],
+								"items": {
+									"format": "uri",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"expires": {
+								"format": "date-time",
+								"type": "string"
+							},
+							"hiring": {
+								"example": [
+									"https://example.com/jobs.html"
+								],
+								"items": {
+									"format": "uri",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"policy": {
+								"example": [
+									"https://example.com/disclosure-policy.html"
+								],
+								"items": {
+									"format": "uri",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"preferredLanguages": {
+								"example": "en, es, fr",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update security.txt",
+		"tags": [
+			"security.txt"
+		]
+	}
+}
