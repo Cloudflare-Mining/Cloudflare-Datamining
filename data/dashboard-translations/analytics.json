@@ -78,7 +78,7 @@
 	"analytics.dns.top_nxdomain_title": "Top DNS Records Returning NXDOMAIN",
 	"analytics.dns.top_total_title": "Top Queried DNS Records",
 	"analytics.dns.total_title": "Queries by Record Type",
-	"analytics.dns_analytics.cname_setup": "This zone is on a partial (CNAME) setup, which means it is not using Cloudflare as an authoritative DNS provider. DNS analytics are not available in this case. Refer to this <0>guide on how to convert to a full setup</0> and start using Cloudflare authoritative DNS.",
+	"analytics.dns_analytics.cname_setup": "DNS analytics are not available in a partial (CNAME) setup because Cloudflare is not your authoritative DNS provider. Get access by <0>converting to a full setup</0>.",
 	"analytics.dns_analytics.zone_pending": "To see DNS analytics, complete zone activation by updating the nameservers for your zone. If you have already updated your nameservers, data will start showing when traffic begins to flow through Cloudflare.",
 	"analytics.dns.upsell_card.title": "DNS Query Analytics",
 	"analytics.dns.upsell_card.description.variant_a": "Get insights on where your DNS, NOERROR, and NXDOMAIN traffic is coming from and a visual view of the past 24 hours of queries by response code.",
