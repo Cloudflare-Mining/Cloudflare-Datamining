@@ -5,39 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Trust &amp; Safety Investigator - Critical Escalations</strong></p>
-<p>Location: Austin</p>
-<p>People need to Trust Cloudflare. Our team is responsible for trust in everything that Cloudflare does. Trust &amp; Safety responds to claims of abuse and legal requests for private customer data&nbsp; for a vast and diverse customer base while maintaining Cloudflare’s core principles of transparency, consistency, and due process. We navigate the complex web of country-specific law enforcement demands and content-related regulations on a global scale.&nbsp;</p>
-<p>We are looking for a thoughtful, detail-oriented Investigator on Cloudflare’s Trust and Safety Critical Escalations team. In this role, you will assist with triaging sensitive, high profile, and escalated Trust &amp; Safety requests. Not only will you address requests that affect our customers, but you will assist the team that proactively identifies and mitigates high risk situations with a significant potential for broad impact. You have experience in dynamic and fast pasted environments.&nbsp;</p>
-<p><strong>Responsibilities</strong>:</p>
+<h3><strong>About the Department</strong></h3>
+<p>Media Platform is part of the Emerging Technologies &amp; Incubation (ETI) organization, where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization. Media Platform is focused on images, video and Cloudflare TV.</p>
+<h3><strong>What you'll do</strong></h3>
+<p>We are looking for an Engineering Manager to join our team. You will lead a team of passionate, talented engineers that are building innovative products for the next generation of media products, such as images and video. You will be shipping products that reduce developer agony and help developers bring their ideas to market faster. You will play an active part in shaping the product and team that will build core infrastructure. You will make sure our company hits our ambitious engineering goals.&nbsp; You will change the way people build applications.</p>
+<p>You bring a passion for meeting business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience delivering scalable distributed systems. Most importantly, you will have a track record of having past teams respect you as both a technical leader and manager.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Be part of a world class globally-distributed team.</li>
-	<li>Assist with the prioritization and processing of&nbsp; abuse complaints regarding DMCA, Trademark, Phishing, CSAM, and escalated issues.</li>
-	<li>Become a technical resource that earns the trust of customer stakeholders.</li>
-	<li>Excellent written and verbal communication and comfortable interacting with variety of senior stakeholders across various disciplines.</li>
-	<li>Ensure quality work in all aspects of Escalation Management in support tickets, customer-facing Root Cause Analysis (RCA) documents, senior executive readouts as applicable, etc.</li>
-	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining high levels of stakeholder satisfaction.</li>
-	<li>Partner with other teams in the company, including Policy, Legal, and the Product teams to ensure our processes are carried out in a scalable fashion.</li>
-	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
-	<li>You may be part of the rotating weekend, off-hour and public holidays coverage responsibilities.</li>
+	<li>Experience leading a team.</li>
+	<li>Comfortable managing backend and frontend teams.</li>
+	<li>Solid foundation in computer science and software engineering with strong competencies in software design, and building distributed systems.</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability.</li>
+	<li>Demonstrate a track record of managing a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”.</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages.</li>
+	<li>Comfortable managing teams/projects with tight deadlines and short release cycles.</li>
 </ul>
-<p><strong>Requirements:</strong></p>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>You have 3-5 years of anti-abuse or support escalations experience at an Internet Service Provider, hosting provider, or similar type of role.</li>
-	<li>Demonstrate working knowledge of DNS and how the Internet works</li>
-	<li>Working knowledge of the domain name registration / registrar space</li>
-	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor</li>
-	<li>You have a strong anti-abuse and/or support escalation background</li>
-	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks</li>
+	<li>Experience with media handling at scale – images and video.</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
+	<li>Expertise in data analysis and troubleshooting large-scale distributed systems.</li>
+	<li>Managing contributions to open-source projects.</li>
 </ul>
-<p><strong>Bonus Points:</strong></p>
-<ul>
-	<li>Experience with the legal considerations related to hosted material (notice &amp; takedown).</li>
-	<li>You’ve worked with lawyers, and legal teams.</li>
-	<li>Familiarity with DMCA (Digital Millennium Copyright Act), copyright, and trademark issues.</li>
-</ul>
+<h3><strong>Available Locations:&nbsp;</strong>Lisbon or Remote Portugal, London or Remote UK, Amsterdam or Remote Netherlands, Paris or Remote France</h3>
 <p>&nbsp;</p>
-<p>Please note: This job description is intended to provide a general overview of the role and may be modified as necessary to align with the company's evolving needs.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
