@@ -15,6 +15,11 @@ var withStyleProvider = Story => /*#__PURE__*/React.createElement(StyleProvider,
   renderer: renderer
 }, /*#__PURE__*/React.createElement(Story, null));
 
+export var AIAudit = () => /*#__PURE__*/React.createElement(Icon, {
+  type: "ai-audit",
+  size: 36
+});
+AIAudit.decorators = [withStyleProvider];
 export var CloudflareEmailSecurity = () => /*#__PURE__*/React.createElement(Icon, {
   type: "cloudflare-email-security",
   size: 36

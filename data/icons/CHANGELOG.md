@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.18.0
+
+### Minor Changes
+
+- 34a6291261: Add AI Audit icon
+
 ## 12.17.0
 
 ### Minor Changes

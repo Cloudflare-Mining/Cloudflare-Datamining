@@ -1,9 +1,11 @@
 /// <reference types="react" />
 declare const _default: {
     dlp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'account-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'add-member': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     add: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'ai-audit': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'analytics-data': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'api-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     api: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -147,7 +149,6 @@ declare const _default: {
     'thumbs-up-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'thumbs-up-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     trace: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -161,7 +162,6 @@ declare const _default: {
     vectorize: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     version: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'waiting-room': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    warning: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     warp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'web-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     web3: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

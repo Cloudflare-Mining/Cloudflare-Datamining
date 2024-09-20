@@ -1,7 +1,9 @@
 import Dlp from './Dlp';
+import Timer from './Timer';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
+import AiAudit from './AiAudit';
 import AnalyticsData from './AnalyticsData';
 import ApiSecurity from './ApiSecurity';
 import Api from './Api';
@@ -145,7 +147,6 @@ import ThumbsDownSolid from './ThumbsDownSolid';
 import ThumbsUpOutline from './ThumbsUpOutline';
 import ThumbsUpSolid from './ThumbsUpSolid';
 import Time from './Time';
-import Timer from './Timer';
 import Trace from './Trace';
 import TrafficAttackBrowser from './TrafficAttackBrowser';
 import Turnstile from './Turnstile';
@@ -159,7 +160,6 @@ import User from './User';
 import Vectorize from './Vectorize';
 import Version from './Version';
 import WaitingRoom from './WaitingRoom';
-import Warning from './Warning';
 import Warp from './Warp';
 import WebAnalyticsLogo from './WebAnalyticsLogo';
 import Web3 from './Web3';
@@ -179,9 +179,11 @@ import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
 export default {
   dlp: Dlp,
+  timer: Timer,
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
   add: Add,
+  'ai-audit': AiAudit,
   'analytics-data': AnalyticsData,
   'api-security': ApiSecurity,
   api: Api,
@@ -325,7 +327,6 @@ export default {
   'thumbs-up-outline': ThumbsUpOutline,
   'thumbs-up-solid': ThumbsUpSolid,
   time: Time,
-  timer: Timer,
   trace: Trace,
   'traffic-attack-browser': TrafficAttackBrowser,
   turnstile: Turnstile,
@@ -339,7 +340,6 @@ export default {
   vectorize: Vectorize,
   version: Version,
   'waiting-room': WaitingRoom,
-  warning: Warning,
   warp: Warp,
   'web-analytics-logo': WebAnalyticsLogo,
   web3: Web3,
