@@ -107,9 +107,11 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
 													]
@@ -137,7 +139,7 @@
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-														"example": "203.0.113.1/32",
+														"example": "203.0.113.1",
 														"type": "string"
 													},
 													"type": "array"
@@ -155,11 +157,17 @@
 																"description": "Name of the warp device.",
 																"example": "My warp device",
 																"type": "string"
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string"
 															}
 														},
 														"required": [
 															"id",
-															"name"
+															"name",
+															"router_ip"
 														],
 														"type": "object"
 													},
@@ -272,9 +280,11 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
 															]
@@ -302,7 +312,7 @@
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-																"example": "203.0.113.1/32",
+																"example": "203.0.113.1",
 																"type": "string"
 															},
 															"type": "array"
@@ -320,11 +330,17 @@
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
 																		"type": "string"
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string"
 																	}
 																},
 																"required": [
 																	"id",
-																	"name"
+																	"name",
+																	"router_ip"
 																],
 																"type": "object"
 															},
@@ -551,9 +567,11 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
 													]
@@ -581,7 +599,7 @@
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-														"example": "203.0.113.1/32",
+														"example": "203.0.113.1",
 														"type": "string"
 													},
 													"type": "array"
@@ -599,11 +617,17 @@
 																"description": "Name of the warp device.",
 																"example": "My warp device",
 																"type": "string"
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string"
 															}
 														},
 														"required": [
 															"id",
-															"name"
+															"name",
+															"router_ip"
 														],
 														"type": "object"
 													},
@@ -716,9 +740,11 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
 															]
@@ -746,7 +772,7 @@
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-																"example": "203.0.113.1/32",
+																"example": "203.0.113.1",
 																"type": "string"
 															},
 															"type": "array"
@@ -764,11 +790,17 @@
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
 																		"type": "string"
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string"
 																	}
 																},
 																"required": [
 																	"id",
-																	"name"
+																	"name",
+																	"router_ip"
 																],
 																"type": "object"
 															},
@@ -997,9 +1029,11 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
 													]
@@ -1027,7 +1061,7 @@
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-														"example": "203.0.113.1/32",
+														"example": "203.0.113.1",
 														"type": "string"
 													},
 													"type": "array"
@@ -1045,11 +1079,17 @@
 																"description": "Name of the warp device.",
 																"example": "My warp device",
 																"type": "string"
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string"
 															}
 														},
 														"required": [
 															"id",
-															"name"
+															"name",
+															"router_ip"
 														],
 														"type": "object"
 													},
@@ -1162,9 +1202,11 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
 															]
@@ -1192,7 +1234,7 @@
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-																"example": "203.0.113.1/32",
+																"example": "203.0.113.1",
 																"type": "string"
 															},
 															"type": "array"
@@ -1210,11 +1252,17 @@
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
 																		"type": "string"
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string"
 																	}
 																},
 																"required": [
 																	"id",
-																	"name"
+																	"name",
+																	"router_ip"
 																],
 																"type": "object"
 															},
@@ -1374,7 +1422,7 @@
 							"router_ips": {
 								"items": {
 									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-									"example": "203.0.113.1/32",
+									"example": "203.0.113.1",
 									"type": "string"
 								},
 								"type": "array"
@@ -1392,11 +1440,17 @@
 											"description": "Name of the warp device.",
 											"example": "My warp device",
 											"type": "string"
+										},
+										"router_ip": {
+											"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+											"example": "203.0.113.1",
+											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"name"
+										"name",
+										"router_ip"
 									],
 									"type": "object"
 								},
@@ -1497,9 +1551,11 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
 													]
@@ -1527,7 +1583,7 @@
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-														"example": "203.0.113.1/32",
+														"example": "203.0.113.1",
 														"type": "string"
 													},
 													"type": "array"
@@ -1545,11 +1601,17 @@
 																"description": "Name of the warp device.",
 																"example": "My warp device",
 																"type": "string"
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string"
 															}
 														},
 														"required": [
 															"id",
-															"name"
+															"name",
+															"router_ip"
 														],
 														"type": "object"
 													},
@@ -1662,9 +1724,11 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
 															]
@@ -1692,7 +1756,7 @@
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-																"example": "203.0.113.1/32",
+																"example": "203.0.113.1",
 																"type": "string"
 															},
 															"type": "array"
@@ -1710,11 +1774,17 @@
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
 																		"type": "string"
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string"
 																	}
 																},
 																"required": [
 																	"id",
-																	"name"
+																	"name",
+																	"router_ip"
 																],
 																"type": "object"
 															},
@@ -1873,7 +1943,7 @@
 							"router_ips": {
 								"items": {
 									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-									"example": "203.0.113.1/32",
+									"example": "203.0.113.1",
 									"type": "string"
 								},
 								"type": "array"
@@ -1891,11 +1961,17 @@
 											"description": "Name of the warp device.",
 											"example": "My warp device",
 											"type": "string"
+										},
+										"router_ip": {
+											"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+											"example": "203.0.113.1",
+											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"name"
+										"name",
+										"router_ip"
 									],
 									"type": "object"
 								},
@@ -2000,9 +2076,11 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
 													]
@@ -2030,7 +2108,7 @@
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-														"example": "203.0.113.1/32",
+														"example": "203.0.113.1",
 														"type": "string"
 													},
 													"type": "array"
@@ -2048,11 +2126,17 @@
 																"description": "Name of the warp device.",
 																"example": "My warp device",
 																"type": "string"
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string"
 															}
 														},
 														"required": [
 															"id",
-															"name"
+															"name",
+															"router_ip"
 														],
 														"type": "object"
 													},
@@ -2165,9 +2249,11 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
 															]
@@ -2195,7 +2281,7 @@
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-																"example": "203.0.113.1/32",
+																"example": "203.0.113.1",
 																"type": "string"
 															},
 															"type": "array"
@@ -2213,11 +2299,17 @@
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
 																		"type": "string"
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string"
 																	}
 																},
 																"required": [
 																	"id",
-																	"name"
+																	"name",
+																	"router_ip"
 																],
 																"type": "object"
 															},
@@ -2375,7 +2467,7 @@
 							"router_ips": {
 								"items": {
 									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-									"example": "203.0.113.1/32",
+									"example": "203.0.113.1",
 									"type": "string"
 								},
 								"type": "array"
@@ -2393,11 +2485,17 @@
 											"description": "Name of the warp device.",
 											"example": "My warp device",
 											"type": "string"
+										},
+										"router_ip": {
+											"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+											"example": "203.0.113.1",
+											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"name"
+										"name",
+										"router_ip"
 									],
 									"type": "object"
 								},
@@ -2502,9 +2600,11 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
 													]
@@ -2532,7 +2632,7 @@
 												"router_ips": {
 													"items": {
 														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-														"example": "203.0.113.1/32",
+														"example": "203.0.113.1",
 														"type": "string"
 													},
 													"type": "array"
@@ -2550,11 +2650,17 @@
 																"description": "Name of the warp device.",
 																"example": "My warp device",
 																"type": "string"
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string"
 															}
 														},
 														"required": [
 															"id",
-															"name"
+															"name",
+															"router_ip"
 														],
 														"type": "object"
 													},
@@ -2667,9 +2773,11 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
 															]
@@ -2697,7 +2805,7 @@
 														"router_ips": {
 															"items": {
 																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
-																"example": "203.0.113.1/32",
+																"example": "203.0.113.1",
 																"type": "string"
 															},
 															"type": "array"
@@ -2715,11 +2823,17 @@
 																		"description": "Name of the warp device.",
 																		"example": "My warp device",
 																		"type": "string"
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string"
 																	}
 																},
 																"required": [
 																	"id",
-																	"name"
+																	"name",
+																	"router_ip"
 																],
 																"type": "object"
 															},
