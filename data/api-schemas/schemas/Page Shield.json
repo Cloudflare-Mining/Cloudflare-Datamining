@@ -2762,6 +2762,13 @@
 														"format": "date-time",
 														"type": "string"
 													},
+													"cryptomining_score": {
+														"description": "The cryptomining score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
+													},
 													"dataflow_score": {
 														"description": "The dataflow score of the JavaScript content.",
 														"maximum": 99,
@@ -2817,6 +2824,13 @@
 														"format": "date-time",
 														"type": "string"
 													},
+													"magecart_score": {
+														"description": "The magecart score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
+													},
 													"malicious_domain_categories": {
 														"example": [
 															"Malware"
@@ -2834,6 +2848,13 @@
 															"type": "string"
 														},
 														"type": "array"
+													},
+													"malware_score": {
+														"description": "The malware score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
 													},
 													"obfuscation_score": {
 														"description": "The obfuscation score of the JavaScript content.",
@@ -3103,6 +3124,13 @@
 															"format": "date-time",
 															"type": "string"
 														},
+														"cryptomining_score": {
+															"description": "The cryptomining score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
 														"dataflow_score": {
 															"description": "The dataflow score of the JavaScript content.",
 															"maximum": 99,
@@ -3158,6 +3186,13 @@
 															"format": "date-time",
 															"type": "string"
 														},
+														"magecart_score": {
+															"description": "The magecart score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
 														"malicious_domain_categories": {
 															"example": [
 																"Malware"
@@ -3175,6 +3210,13 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"malware_score": {
+															"description": "The malware score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
 														},
 														"obfuscation_score": {
 															"description": "The obfuscation score of the JavaScript content.",
@@ -3221,16 +3263,26 @@
 														"versions": {
 															"example": [
 																{
+																	"cryptomining_score": 20,
 																	"dataflow_score": 2,
 																	"fetched_at": "2021-08-18T10:51:08Z",
 																	"hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b423",
 																	"js_integrity_score": 2,
+																	"magecart_score": 10,
+																	"malware_score": 5,
 																	"obfuscation_score": 10
 																}
 															],
 															"items": {
 																"description": "The version of the analyzed script.",
 																"properties": {
+																	"cryptomining_score": {
+																		"description": "The cryptomining score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
 																	"dataflow_score": {
 																		"description": "The dataflow score of the JavaScript content.",
 																		"maximum": 99,
@@ -3252,6 +3304,20 @@
 																	},
 																	"js_integrity_score": {
 																		"description": "The integrity score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"magecart_score": {
+																		"description": "The magecart score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"malware_score": {
+																		"description": "The malware score of the JavaScript content.",
 																		"maximum": 99,
 																		"minimum": 1,
 																		"nullable": true,
