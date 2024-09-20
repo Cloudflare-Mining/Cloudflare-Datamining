@@ -160,6 +160,7 @@ import User from './User';
 import Vectorize from './Vectorize';
 import Version from './Version';
 import WaitingRoom from './WaitingRoom';
+import Warning from './Warning';
 import Warp from './Warp';
 import WebAnalyticsLogo from './WebAnalyticsLogo';
 import Web3 from './Web3';
@@ -340,6 +341,7 @@ export default {
   vectorize: Vectorize,
   version: Version,
   'waiting-room': WaitingRoom,
+  warning: Warning,
   warp: Warp,
   'web-analytics-logo': WebAnalyticsLogo,
   web3: Web3,

@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.19.0
+
+### Minor Changes
+
+- 6fcdba8b39: fix: add back warning icon
+
 ## 12.18.0
 
 ### Minor Changes
