@@ -1,0 +1,181 @@
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2K9scP2CD4s0uLhMtsJycp/3ec18bbeedf46611adac6a0270296650/BLOG-2554_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Infrastructure planning for a network serving more than 81 million requests at peak and which is globally distributed across <a href="https://www.cloudflare.com/network"><u>more than 330 cities in 120+ countries</u></a> is complex. The capacity planning team at Cloudflare ensures there is enough capacity in place all over the world so that our customers have one less thing to worry about - our infrastructure, which should just work. Through our processes, the team puts careful consideration into “what-ifs”. What if something unexpected happens and <a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage"><u>one of our data centers fails</u></a>? What if one of our largest customers triples, or quadruples their request count?&nbsp; Across a gamut of scenarios like these, the team works to understand where traffic will be served from and how the Cloudflare customer experience may change.</p>
+	<p>This blog post gives a look behind the curtain of how these scenarios are modeled at Cloudflare, and why it's so critical for our customers.</p>
+	<h2>Scenario planning and our customers</h2>
+	<p>Cloudflare customers rely on the data centers that Cloudflare has deployed all over the world, placing us within 50 ms of approximately 95% of the Internet-connected population globally. But round-trip time to our end users means little if those data centers don’t have the capacity to serve requests. Cloudflare has invested deeply into systems that are working around the clock to optimize the requests flowing through our network because we know that failures happen all the time: the Internet can be a volatile place. See <a href="https://blog.cloudflare.com/backbone2024"><u>our blog post from August 2024</u></a> on how we handle this volatility in real time on our backbone, and our <a href="https://blog.cloudflare.com/meet-traffic-manager"><u>blog post from late 2023</u></a> about how another system, Traffic Manager, actively works in and between data centers, moving traffic to optimize the customer experience around constraints in our data centers. Both of these systems do a fantastic job in real time, but there is still a gap — what about over the long term?&nbsp;&nbsp;</p>
+	<p>Most of the volatility that the above systems are built to manage is resolved within shorter time scales than which we build plans for. (There are, of course, some failures that are <a href="https://itweb.africa/content/O2rQGMAEyPGMd1ea"><u>exceptions</u></a>.) Most scenarios we model still need to take into account the state of our data centers in the future, as well as what actions systems like Traffic Manager will take during those periods.&nbsp; But before getting into those constraints, it’s important to note how capacity planning measures things: in units of CPU Time, defined as the time that each request takes in the CPU.&nbsp; This is done for the same reasons that <a href="https://blog.cloudflare.com/meet-traffic-manager"><u>Traffic Manager</u></a> uses CPU Time, in that it enables the team to 1) use a common unit across different types of customer workloads and 2) speak a common language with other teams and systems (like Traffic Manager). The same reasoning the Traffic Manager team cited <a href="https://blog.cloudflare.com/meet-traffic-manager"><u>in their own blog post</u></a> is equally applicable for capacity planning:&nbsp;</p>
+	<blockquote>
+		<p><i>…using requests per second as a metric isn’t accurate enough when actually moving traffic. The reason for this is that different customers have different resource costs to our service; a website served mainly from cache with the WAF deactivated is much cheaper CPU wise than a site with all WAF rules enabled and caching disabled. So we record the time that each request takes in the CPU. We can then aggregate the CPU time across each plan to find the CPU time usage per plan. We record the CPU time in ms, and take a per second value, resulting in a unit of milliseconds per second.</i></p>
+	</blockquote>
+	<p>This is important for customers for the same reason that the Traffic Manager team cited in their blog post as well: we can correlate CPU time to performance, specifically latency.</p>
+	<p>Now that we know our unit of measurement is CPU time, we need to set up our models with the new constraints associated with the change that we’re trying to model.&nbsp; Specifically, there are a subset of constraints that we are particularly interested in because we know that they have the ability to impact our customers by impacting the availability of CPU in a data center.&nbsp; These are split into two main inputs in our models: Supply and Demand.&nbsp; We can think of these as “what-if” questions, such as the following examples:</p>
+	<h3>Demand what-ifs</h3>
+	<ul>
+		<li>
+			<p>What if a new customer onboards to Cloudflare with a significant volume of requests and/or bytes?&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p>What if an existing customer increased its volume of requests and/or bytes by some multiplier (i.e. 2x, 3x, nx), at peak, for the next three months?</p>
+		</li>
+		<li>
+			<p>What if the growth rate, in number of requests and bytes, of all of our data centers worldwide increased from X to Y two months from now, indefinitely?</p>
+		</li>
+		<li>
+			<p>What if the growth rate, in number of requests and bytes, of data center facility A increased from X to Y one month from now?</p>
+		</li>
+		<li>
+			<p>What if traffic egressing from Cloudflare to a last-mile network shifted from one location (such as Boston) to another (such as New York City) next week?</p>
+		</li>
+	</ul>
+	<h3>Supply what-ifs</h3>
+	<ul>
+		<li>
+			<p>What if data center facility A lost some or all of its available servers two months from now?</p>
+		</li>
+		<li>
+			<p>What if we added X servers to data center facility A today?</p>
+		</li>
+		<li>
+			<p>What if some or all of our connectivity to other ASNs (<a href="https://www.cloudflare.com/network"><u>12,500 Networks/nearly 300 Tbps</u></a>) failed now?</p>
+		</li>
+	</ul>
+	<h3>Output</h3>
+	<p>For any one of these, or a combination of them, in our model’s output, we aim to provide answers to the following:&nbsp;</p>
+	<ul>
+		<li>
+			<p>What will the overall capacity picture look like over time?&nbsp;</p>
+		</li>
+		<li>
+			<p>Where will the traffic go?&nbsp;</p>
+		</li>
+		<li>
+			<p>How will this impact our costs?</p>
+		</li>
+		<li>
+			<p>Will we need to deploy additional servers to handle the increased load?</p>
+		</li>
+	</ul>
+	<p>Given these sets of questions and outputs, manually creating a model to answer each of these questions, or a combination of these questions, quickly becomes an operational burden for any team.&nbsp; This is what led us to launch “Scenario Planner”.</p>
+	<h2>Scenario Planner</h2>
+	<p>In August 2024, the infrastructure team finished building “Scenario Planner”, a system that enables anyone at Cloudflare to simulate “what-ifs”. This provides our team the opportunity to quickly model hypothetical changes to our demand and supply metrics across time and in any of Cloudflare’s data centers. The core functionality of the system has to do with the same questions we need to answer in the manual models discussed above.&nbsp; After we enter the changes we want to model, Scenario Planner converts from units that are commonly associated with each question to our common unit of measurement: CPU Time. These inputs are then used to model the updated capacity across all of our data centers, including how demand may be distributed in cases where capacity constraints may start impacting performance in a particular location.&nbsp; As we know, if that happens then it triggers Traffic Manager to serve some portion of those requests from a nearby location to minimize impact on customers and user experience.</p>
+	<h3>Updated demand questions with inputs</h3>
+	<ul>
+		<li>
+			<p><b>Question:</b> What if a new customer onboards to Cloudflare with a significant volume of requests?&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Input:</b> The new customer’s expected volume, geographic distribution, and timeframe of requests, converted to a count of virtual CPUs</p>
+		</li>
+		<li>
+			<p><b>Calculation(s)</b>: Scenario Planner converts from server count to CPU Time, and distributes the new demand across the regions selected according to the aggregate distribution of all customer usage.&nbsp;&nbsp;</p>
+		</li>
+	</ul>
+	<p>
+		<br>
+	</p>
+	<ul>
+		<li>
+			<p><b>Question:</b> What if an existing customer increased its volume of requests and/or bytes by some multiplier (i.e. 2x, 3x, nx), at peak, for the next three months?</p>
+		</li>
+		<li>
+			<p><b>Input</b>: Select the customer name, the multiplier, and the timeframe</p>
+		</li>
+		<li>
+			<p><b>Calculation(s)</b>: Scenario Planner already has how the selected customer’s traffic is distributed across all data centers globally, so this involves simply multiplying that value by the multiplier selected by the user</p>
+		</li>
+	</ul>
+	<p>
+		<br>
+	</p>
+	<ul>
+		<li>
+			<p><b>Question:</b> What if the growth rate, in number of requests and bytes, of all of our data centers worldwide increased from X to Y two months from now, indefinitely?</p>
+		</li>
+		<li>
+			<p><b>Input:</b> Enter a new global growth rate and timeframe</p>
+		</li>
+		<li>
+			<p><b>Calculation(s)</b>: Scenario Planner distributes this growth across all data centers globally according to their current growth rate.&nbsp; In other words, the global growth is an aggregation of all individual data center’s growth rates, and to apply a new “Global” growth rate, the system scales up each of the individual data center’s growth rates commensurate with the current distribution of growth.</p>
+		</li>
+	</ul>
+	<p>
+		<br>
+	</p>
+	<ul>
+		<li>
+			<p><b>Question:</b> What if the growth rate, in number of requests and bytes, of data center facility A increased from X to Y one month from now?</p>
+		</li>
+		<li>
+			<p><b>Input:</b> Select a data center facility, enter a new growth rate for that data center and the timeframe to apply that change across.</p>
+		</li>
+		<li>
+			<p><b>Calculation(s)</b>: Scenario Planner passes the new growth rate for the data center to the backend simulator, across the timeline specified by the user</p>
+		</li>
+	</ul>
+	<p>
+		<br>
+	</p>
+	<h3>Updated supply questions with inputs</h3>
+	<ul>
+		<li>
+			<p><b>Question:</b> What if data center facility A lost some or all of its available servers two months from now?</p>
+		</li>
+		<li>
+			<p><b>Input</b>: Select a data center, and enter the number of servers to remove, or select to remove all servers in that location, as well as the timeframe for when those servers will not be available</p>
+		</li>
+		<li>
+			<p><b>Calculation(s)</b>: Scenario Planner converts the server count entered (including all servers in a given location) to CPU Time before passing to the backend</p>
+		</li>
+	</ul>
+	<p>
+		<br>
+	</p>
+	<ul>
+		<li>
+			<p><b>Question:</b> What if we added X servers to data center facility A today?</p>
+		</li>
+		<li>
+			<p><b>Input</b>: Select a data center, and enter the number of servers to add, as well as the timeline for when those servers will first go live</p>
+		</li>
+		<li>
+			<p><b>Calculation(s)</b>: Scenario Planner converts the server count entered (including all servers in a given location) to CPU Time before passing to the backend</p>
+		</li>
+	</ul>
+	<p>
+		<br>
+	</p>
+	<p>We made it simple for internal users to understand the impact of those changes because Scenario Planner outputs the same views that everyone who has seen our heatmaps and visual representations of our capacity status is familiar with. There are two main outputs the system provides: a heatmap and an “Expected Failovers” view. Below, we explore what these are, with some examples.</p>
+	<h3>Heatmap</h3>
+	<p>Capacity planning evaluates its success on its ability to predict demand: we generally produce a weekly, monthly, and quarterly forecast of 12 months to three years worth of demand, and nearly all of our infrastructure decisions are based on the output of this forecast.&nbsp; Scenario Planner provides a view of the results of those forecasts that are implemented via a heatmap: it shows our current state, as well as future planned server additions that are scheduled based on the forecast.&nbsp;&nbsp;</p>
+	<p>Here is an example of our heatmap, showing some of our largest data centers in Eastern North America (ENAM). Ashburn is showing as yellow, briefly, because our capacity planning threshold for adding more server capacity to our data centers is 65% utilization (based on CPU time supply and demand): this gives the Cloudflare teams time to procure additional servers, ship them, install them, and bring them live <i>before</i> customers will be impacted and systems like Traffic Manager would begin triggering.&nbsp; The little cloud icons indicate planned upgrades of varying sizes to get ahead of forecasted future demand well ahead of time to avoid customer performance degradation.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/PXIr1mpsrWPLmWpP9RCPg/96467e0532ca5ab9b45deb8b552c30c4/BLOG-2554_2.png" alt="An excerpt of a heatmap, with five sites in Eastern North America, showing utilization values.&nbsp; The heatmap is mostly green." class="kg-image" width="1690" height="402" loading="lazy">
+	</figure>
+	<p><b></b></p>
+	<p>The question Scenario Planner answers then is how this view changes with a hypothetical scenario: What if our Ashburn, Miami, and Atlanta facilities shut down completely?&nbsp; This is unlikely to happen, but we would expect to see enormous impact on the remaining largest facilities in ENAM. We’ll simulate all three of these failing at the same time, taking them offline indefinitely:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3apNpQAHPs9uY1QTAxOQ6d/5143fa2e091b0ffd4acfde8353d1ce44/BLOG-2554_3.png" alt="Screenshots showing the UI of Scenario Planner, with three colos selected in IAD, ATL and MIA, and a checkbox checked next to “Shut Down Colo”" class="kg-image" width="1216" height="328" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vfWrww4uT8VWtLa0vcDAM/b0d2fe56cc62ae0ada9424885ed37715/BLOG-2554_4.png" alt="BLOG-2554 4" class="kg-image" width="1228" height="328" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7amWSND6PZ95oVJA5oO0Qc/8782c44e4e155ac2d466c972a2b008c8/BLOG-2554_5.png" alt="BLOG-2554 5" class="kg-image" width="1240" height="334" loading="lazy">
+	</figure>
+	<p><b></b></p>
+	<p>This results in a view of our capacity through the rest of the year in the remaining large data centers in ENAM — capacity is clearly constrained: Traffic Manager will be working hard to mitigate any impact to customer performance if this were to happen. Our capacity view in the heatmap is capped at 75%: this is because Traffic Manager typically engages around this level of CPU utilization. Beyond 75%, Cloudflare customers may begin to experience increased latency, though this is dependent on the product and workload, and is in reality much more dynamic. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Tse9FexuemDHzExPYnY0i/e5838489ab0030ede90f44ce81870bd7/BLOG-2554_6.png" alt="An excerpt of a heatmap, with three sites in Eastern North America, showing utilization values.&nbsp; The heatmap is mostly red." class="kg-image" width="1518" height="270" loading="lazy">
+	</figure>
+	<p><b></b></p>
+	<p>This outcome in the heatmap is not unexpected.&nbsp; But now we typically get a follow-up question: clearly this traffic won’t fit in just Newark, Chicago, and Toronto, so where do all these requests get served from?&nbsp; Enter the failover simulator: Capacity Planning has been simulating how Traffic Manager may work in the long term for quite a while, and for Scenario Planner, it was simple to extend this functionality to answer exactly this question.</p>
+	<p>There is currently no traffic being moved by Traffic Manager from these data centers, but our simulation shows a significant portion of the Atlanta CPU time being served from our DFW/Dallas data center as well as Newark (bottom pink), and Chicago (orange) through the rest of the year, during this hypothetical failure. With Scenario Planner, Capacity Planning can take this information and simulate multiple failures all over the world to understand the impact to customers, taking action to ensure that customers trusting Cloudflare with their web properties can expect high performance even in instances of major data center failures.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iv8nxYdIXOJ626UHpUadI/c80eb38e5d05e85d14ae5b6bcf3e5325/Screenshot_2024-09-18_at_10.27.50_PM.png" alt="A bar chart with four months through December 2024, showing different colors representing locations where CPU time is redirected to.&nbsp; One is highlighted, showing 8588 CPU seconds being redirected to DFW (Dallas) in August 2024" class="kg-image" width="1414" height="854" loading="lazy">
+	</figure>
+	<p><b></b></p>
+	<h2>Planning with uncertainty</h2>
+	<p>Capacity planning a large global network comes with plenty of uncertainties. Scenario Planner is one example of the work the Capacity Planning team is doing to ensure that the millions of web properties our customers entrust to Cloudflare can expect consistent, top tier performance all over the world.</p>
+	<p>The Capacity Planning team is hiring — check out the <a href="https://www.cloudflare.com/careers"><u>Cloudflare careers page</u></a> and <a href="https://www.cloudflare.com/careers/jobs/?title=capacity"><u>search for open roles on the Capacity Planning team</u></a>.</p>
+</div>
