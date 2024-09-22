@@ -29,7 +29,50 @@
 	<p>Our Control Plane consists of hundreds of internal services, and the expectation is that when we lose one of the three critical data centers in Portland, these services continue to operate normally in the remaining two facilities, and we continue to operate primarily in Portland. We have the capability to fail over to our European data centers in case our Portland centers are completely unavailable. However, that is a secondary option, and not something we pursue immediately.</p>
 	<p>On March 26, 2024, at 14:58 UTC, PDX01 lost power and our systems began to react. By 15:05 UTC, our APIs and Dashboards were operating normally, all without human intervention. Our primary focus over the past few months has been to make sure that our customers would still be able to configure and operate their Cloudflare services in case of a similar outage. There were a few specific services that required human intervention and therefore took a bit longer to recover, however the primary interface mechanism was operating as expected.</p>
 	<p>To put a finer point on this, during the November 2, 2023, incident the following services had at least six hours of control plane downtime, with several of them functionally degraded for days.</p>
-	<p>API and DashboardZero TrustMagic TransitSSLSSL for SaaSWorkersKVWaiting RoomLoad BalancingZero Trust GatewayAccessPagesStreamImages</p>
+	<ul>
+		<li>
+			<p>API and Dashboard</p>
+		</li>
+		<li>
+			<p>Zero Trust</p>
+		</li>
+		<li>
+			<p>Magic Transit</p>
+		</li>
+		<li>
+			<p>SSL</p>
+		</li>
+		<li>
+			<p>SSL for SaaS</p>
+		</li>
+		<li>
+			<p>Workers</p>
+		</li>
+		<li>
+			<p>KV</p>
+		</li>
+		<li>
+			<p>Waiting Room</p>
+		</li>
+		<li>
+			<p>Load Balancing</p>
+		</li>
+		<li>
+			<p>Zero Trust Gateway</p>
+		</li>
+		<li>
+			<p>Access</p>
+		</li>
+		<li>
+			<p>Pages</p>
+		</li>
+		<li>
+			<p>Stream</p>
+		</li>
+		<li>
+			<p>Images</p>
+		</li>
+	</ul>
 	<p>During the March 26, 2024, incident, all of these services were up and running within minutes of the power failure, and many of them did not experience any impact at all during the failover.</p>
 	<p>The data plane, which handles the traffic that Cloudflare customers pass through our data centers in over 300 cities worldwide, was not impacted.</p>
 	<p>Our Analytics platform, which provides a view into customer traffic, was impacted and wasn’t fully restored until later that day. This was expected behavior as the Analytics platform is reliant on the PDX01 data center. Just like the Control Plane work, we began building new Analytics capacity immediately after the November 2, 2023, incident. However, the scale of the work requires that it will take a bit more time to complete. We have been working as fast as we can to remove this dependency, and we expect to complete this work in the near future.</p>
