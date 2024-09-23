@@ -1,4 +1,195 @@
 {
+	"DELETE /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}": {
+		"description": "Delete an event notification rule. **If no body is provided, all rules for specified queue will be deleted**.",
+		"operationId": "r2-event-notification-delete-config",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "Queue ID",
+					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"ruleIds": {
+								"description": "Array of rule ids to delete",
+								"items": {
+									"description": "rule ids to be deleted",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Configuration failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete Event Notification Rules",
+		"tags": [
+			"R2 Bucket"
+		]
+	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"description": "Deletes an existing R2 bucket.",
 		"operationId": "r2-delete-bucket",
@@ -529,6 +720,329 @@
 				"com.cloudflare.edge.r2.bucket.delete"
 			]
 		}
+	},
+	"GET /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration": {
+		"description": "List all event notification rules for a bucket.",
+		"operationId": "r2-get-event-notification-configs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"bucketName": {
+													"description": "Name of the bucket.",
+													"type": "string"
+												},
+												"queues": {
+													"description": "List of queues associated with the bucket.",
+													"items": {
+														"properties": {
+															"queueId": {
+																"description": "Queue ID",
+																"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
+																"type": "string"
+															},
+															"queueName": {
+																"description": "Name of the queue",
+																"example": "first-queue",
+																"type": "string"
+															},
+															"rules": {
+																"items": {
+																	"allOf": [
+																		{
+																			"properties": {
+																				"actions": {
+																					"description": "Array of R2 object actions that will trigger notifications",
+																					"example": [
+																						"PutObject",
+																						"CopyObject"
+																					],
+																					"items": {
+																						"enum": [
+																							"PutObject",
+																							"CopyObject",
+																							"DeleteObject",
+																							"CompleteMultipartUpload",
+																							"LifecycleDeletion"
+																						],
+																						"type": "string"
+																					},
+																					"type": "array",
+																					"uniqueItems": true
+																				},
+																				"prefix": {
+																					"description": "Notifications will be sent only for objects with this prefix",
+																					"example": "img/",
+																					"type": "string"
+																				},
+																				"suffix": {
+																					"description": "Notifications will be sent only for objects with this suffix",
+																					"example": ".jpeg",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"actions"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"createdAt": {
+																					"description": "Timestamp when the rule was created",
+																					"example": "2024-09-19T21:54:48.405Z",
+																					"type": "string"
+																				},
+																				"ruleId": {
+																					"description": "Rule ID",
+																					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	]
+																},
+																"type": "array"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Read Configuration response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 11015,
+									"message": "workers.api.error.no_configs_found_for_bucket"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "No Configuration Found response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Read Configuration failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List Event Notification Rules",
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-api-token-group": [
+			"Workers R2 Storage Read"
+		]
 	},
 	"GET /accounts/{account_id}/r2/buckets": {
 		"description": "Lists all R2 buckets on your account",
@@ -2425,6 +2939,231 @@
 			}
 		],
 		"summary": "Create Temporary Access Credentials",
+		"tags": [
+			"R2 Bucket"
+		]
+	},
+	"PUT /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}": {
+		"description": "Create event notification rule.",
+		"operationId": "r2-put-event-notification-config",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "Queue ID",
+					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"rules": {
+								"description": "Array of rules to drive notifications",
+								"items": {
+									"properties": {
+										"actions": {
+											"description": "Array of R2 object actions that will trigger notifications",
+											"example": [
+												"PutObject",
+												"CopyObject"
+											],
+											"items": {
+												"enum": [
+													"PutObject",
+													"CopyObject",
+													"DeleteObject",
+													"CompleteMultipartUpload",
+													"LifecycleDeletion"
+												],
+												"type": "string"
+											},
+											"type": "array",
+											"uniqueItems": true
+										},
+										"prefix": {
+											"description": "Notifications will be sent only for objects with this prefix",
+											"example": "img/",
+											"type": "string"
+										},
+										"suffix": {
+											"description": "Notifications will be sent only for objects with this suffix",
+											"example": ".jpeg",
+											"type": "string"
+										}
+									},
+									"required": [
+										"actions"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create Configuration failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create Event Notification Rule",
 		"tags": [
 			"R2 Bucket"
 		]
