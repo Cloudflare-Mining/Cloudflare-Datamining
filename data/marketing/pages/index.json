@@ -62,7 +62,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-12-11T05:26:24.364Z",
-					"updatedAt": "2024-09-11T21:03:18.090Z"
+					"updatedAt": "2024-09-23T13:02:14.681Z"
 				},
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
@@ -2630,6 +2630,12 @@
 					"name": "Homepage - Lightning Strike version - 09/11/2024",
 					"relatedBlades": [
 						{
+							"contentTypeId": "bladeHtml",
+							"contentfulId": "3guUOFyOZJolnu2xvvh3DN",
+							"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Welcome to Birthday Week! </span>\n\n        <a class=\"link-helper\" href=\"https://www.cloudflare.com/birthday-week/\">\n           <strong>Follow our latest innovations ></strong>\n        </a>\n    </div>\n</section>\n",
+							"htmlId": null
+						},
+						{
 							"contentTypeId": "bladeFullWidthHero",
 							"contentfulId": "5HhOuf941Gua9D7Ffj89MH",
 							"promotionalBanner": null,
@@ -2779,7 +2785,7 @@
 									"contentTypeId": "elementResourceCard",
 									"contentfulId": "6OdEce9HF0wjK3dNuWVpIR",
 									"heading": "Blog",
-									"description": "This week Cloudflare will celebrate the fourteenth anniversary of our launch. We think of it as our birthday.",
+									"description": "Read our 2024 Founder's Letter. Cloudflare turns 14 today and celebrates by giving back to the Internet.",
 									"category": "None",
 									"link": {
 										"contentTypeId": "elementLink",
