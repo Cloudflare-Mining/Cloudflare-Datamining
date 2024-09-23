@@ -1,0 +1,655 @@
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7N1J9zFI9ab89A5h1Ea3iG/01b8debe45c49760641844a304e415bd/BLOG-2495_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Customers that use Cloudflare to manage their DNS often need to create a whole batch of records, enable <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records"><u>proxying</u></a> on many records, update many records to point to a new target at the same time, or even delete all of their records. Historically, customers had to resort to bespoke scripts to make these changes, which came with their own set of issues. In response to customer demand, we are excited to announce support for batched API calls to the <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records"><u>DNS records API</u></a> starting today. This lets customers make large changes to their zones much more efficiently than before. Whether sending a POST, PUT, PATCH or DELETE, users can now execute these four different <a href="https://en.wikipedia.org/wiki/HTTP#Request_methods"><u>HTTP methods</u></a>, and multiple HTTP requests all at the same time.</p>
+	<h2>Efficient zone management matters</h2>
+	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records"><u>DNS records</u></a> are an essential part of most web applications and websites, and they serve many different purposes. The most common use case for a DNS record is to have a hostname point to an <a href="https://en.wikipedia.org/wiki/IPv4"><u>IPv4</u></a> address, this is called an <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-a-record"><u>A record</u></a>:</p>
+	<p><b>example.com</b> 59 IN A <b>198.51.100.0</b></p>
+	<p><b>blog.example.com</b> 59 IN A <b>198.51.100.1</b></p>
+	<p><b>ask.example.com</b> 59 IN A <b>198.51.100.2</b></p>
+	<p>In its most simple form, this enables Internet users to connect to websites without needing to memorize their IP address.&nbsp;</p>
+	<p>Often, our customers need to be able to do things like create a whole batch of records, or enable <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records"><u>proxying</u></a> on many records, or update many records to point to a new target at the same time, or even delete all of their records. Unfortunately, for most of these cases, we were asking customers to write their own custom scripts or programs to do these tasks for them, a number of which are open sourced and whose content has not been checked by us. These scripts are often used to avoid needing to repeatedly make the same API calls manually. This takes time, not only for the development of the scripts, but also to simply execute all the API calls, not to mention it can leave the zone in a bad state if some changes fail while others succeed.</p>
+	<h2>Introducing /batch</h2>
+	<p>Starting today, everyone with a <a href="https://developers.cloudflare.com/dns/zone-setups"><u>Cloudflare zone</u></a> will have access to this endpoint, with free tier customers getting access to 200 changes in one batch, and paid plans getting access to 3,500 changes in one batch. We have successfully tested up to 100,000 changes in one call. The API is simple, expecting a POST request to be made to the <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-batch-dns-records"><u>new API endpoint</u></a> /dns_records/batch, which passes in a JSON object in the body in the format:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">{
+    deletes:[]Record
+    patches:[]Record
+    puts:[]Record
+    posts:[]Record
+}
+</code></pre>
+	<p>Each list of records []Record will follow the same requirements as the regular API, except that the record ID on deletes, patches, and puts will be required within the Record object itself. Here is a simple example:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">{
+    "deletes": [
+        {
+            "id": "143004ef463b464a504bde5a5be9f94a"
+        },
+        {
+            "id": "165e9ef6f325460c9ca0eca6170a7a23"
+        }
+    ],
+    "patches": [
+        {
+            "id": "16ac0161141a4e62a79c50e0341de5c6",
+            "content": "192.0.2.45"
+        },
+        {
+            "id": "6c929ea329514731bcd8384dd05e3a55",
+            "name": "update.example.com",
+            "proxied": true
+        }
+    ],
+    "puts": [
+        {
+            "id": "ee93eec55e9e45f4ae3cb6941ffd6064",
+            "content": "192.0.2.50",
+            "name": "no-change.example.com",
+            "proxied": false,
+            "ttl:": 1
+        },
+        {
+            "id": "eab237b5a67e41319159660bc6cfd80b",
+            "content": "192.0.2.45",
+            "name": "no-change.example.com",
+            "proxied": false,
+            "ttl:": 3000
+        }
+    ],
+    "posts": [
+        {
+            "name": "@",
+            "type": "A",
+            "content": "192.0.2.45",
+            "proxied": false,
+            "ttl": 3000
+        },
+        {
+            "name": "a.example.com",
+            "type": "A",
+            "content": "192.0.2.45",
+            "proxied": true
+        }
+    ]
+}</code></pre>
+	<p>Our API will then parse this and execute these calls in the following order:&nbsp;</p>
+	<ol>
+		<li>
+			<p>deletes</p>
+		</li>
+		<li>
+			<p>patches</p>
+		</li>
+		<li>
+			<p>puts</p>
+		</li>
+		<li>
+			<p>posts</p>
+		</li>
+	</ol>
+	<p>Each of these respective lists will be executed in the order given. This ordering system is important because it removes the need for our clients to worry about conflicts, such as if they need to create a CNAME on the same hostname as a to-be-deleted A record, which is not allowed in <a href="https://datatracker.ietf.org/doc/html/rfc1912#section-2.4"><u>RFC 1912</u></a>. In the event that any of these individual actions fail, the entire API call will fail and return the first error it sees. The batch request will also be executed inside a single database <a href="https://en.wikipedia.org/wiki/Database_transaction"><u>transaction</u></a>, which will roll back in the event of failure.</p>
+	<p>After the batch request has been successfully executed in our database, we then propagate the changes to our edge via <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>Quicksilver</u></a>, our distributed KV store. Each of the individual record changes inside the batch request is treated as a single key-value pair, and database transactions are not supported. As such, <b>we cannot guarantee that the propagation to our edge servers will be atomic</b>. For example, if replacing a <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare"><u>delegation</u></a> with an A record, some resolvers may see the <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-ns-record"><u>NS</u></a> record removed before the A record is added.&nbsp;</p>
+	<p>The response will follow the same format as the request. Patches and puts that result in no changes will be placed at the end of their respective lists.</p>
+	<p>We are also introducing some new changes to the Cloudflare dashboard, allowing users to select multiple records and subsequently:</p>
+	<ol>
+		<li>
+			<p>Delete all selected records</p>
+		</li>
+		<li>
+			<p>Change the proxy status of all selected records</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZU7nvMlcH2L51IqJrS1zC/72332a5620e251e23d0a8c1991960405/BLOG-2495_2.png" alt="BLOG-2495 2" class="kg-image" width="1999" height="1241" loading="lazy">
+	</figure>
+	<p>We plan to continue improving the dashboard to support more batch actions based on your feedback.</p>
+	<h2>The journey</h2>
+	<p>Although at the surface, this batch endpoint may seem like a fairly simple change, behind the scenes it is the culmination of a multi-year, multi-team effort. Over the past several years, we have been working hard to improve the DNS pipeline that takes our customers' records and pushes them to <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>Quicksilver</u></a>, our distributed database. As part of this effort, we have been improving our <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-list-dns-records"><u>DNS Records API</u></a> to reduce the overall latency. The DNS Records API is Cloudflare's most used API externally, serving twice as many requests as any other API at peak. In addition, the DNS Records API supports over 20 internal services, many of which touch very important areas such as DNSSEC, TLS, Email, Tunnels, Workers, Spectrum, and R2 storage. Therefore, it was important to build something that scales.&nbsp;</p>
+	<p>To improve API performance, we first needed to understand the complexities of the entire stack. At Cloudflare, we use <a href="https://www.jaegertracing.io"><u>Jaeger tracing</u></a> to debug our systems. It gives us granular insights into a sample of requests that are coming into our APIs. When looking at API request latency, the <a href="https://www.jaegertracing.io/docs/1.23/architecture/#span"><u>span</u></a> that stood out was the time spent on each individual database lookup. The latency here can vary anywhere from ~1ms to ~5ms.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61f3sKGUs9oWMPT9P4au6R/962f7655b1dd2052e568e8c0e27b352a/BLOG-2495_3.png" alt="BLOG-2495 3" class="kg-image" width="1074" height="104" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3L3OaTb9cTKKKcIjCm1RLq/9b0cba24d96acba48a85d078f4c67c60/BLOG-2495_4.png" alt="BLOG-2495 4" class="kg-image" width="1090" height="108" loading="lazy">
+	</figure>
+	<p><sub><i>Jaeger trace showing variable database latency</i></sub></p>
+	<p>Given this variability in database query latency, we wanted to understand exactly what was going on within each DNS Records API request. When we first started on this journey, the breakdown of database lookups for each action was as follows:</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Action</b></p>
+				</th>
+				<th>
+					<p><b>Database Queries</b></p>
+				</th>
+				<th>
+					<p><b>Reason</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>POST</p>
+				</td>
+				<td>
+					<p>2&nbsp;</p>
+				</td>
+				<td>
+					<p>One to write and one to read the new record.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PUT</p>
+				</td>
+				<td>
+					<p>3</p>
+				</td>
+				<td>
+					<p>One to collect, one to write, and one to read back the new record.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PATCH</p>
+				</td>
+				<td>
+					<p>3</p>
+				</td>
+				<td>
+					<p>One to collect, one to write, and one to read back the new record.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>DELETE</p>
+				</td>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>One to read and one to delete.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>The reason we needed to read the newly created records on POST, PUT, and PATCH was because the record contains information filled in by the database which we cannot infer in the API.&nbsp;</p>
+	<p>Let’s imagine that a customer needed to edit 1,000 records. If each database lookup took 3ms to complete, that was 3ms * 3 lookups * 1,000 records = 9 seconds spent on database queries alone, not taking into account the round trip time to and from our API or any other processing latency. It’s clear that we needed to reduce the number of overall queries and ideally minimize per query latency variation. Let’s tackle the variation in latency first.</p>
+	<p>Each of these calls is not a simple INSERT, UPDATE, or DELETE, because we have functions wrapping these database calls for sanitization purposes. In order to understand the variable latency, we enlisted the help of <a href="https://www.postgresql.org/docs/current/auto-explain.html"><u>PostgreSQL’s “auto_explain”</u></a>. This module gives a breakdown of execution times for each statement without needing to EXPLAIN each one by hand. We used the following settings:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2myvmIREh2Q9yl30HbRus/26c788cf15ae805720ac7a77d113586d/BLOG-2495_5.png" alt="BLOG-2495 5" class="kg-image" width="660" height="412" loading="lazy">
+	</figure>
+	<p>A handful of queries showed durations like the one below, which took an order of magnitude longer than other queries.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/557xg66x8OiHM6pcAG4svk/924913fc152d297f1835016b27366da4/BLOG-2495_6.png" alt="BLOG-2495 6" class="kg-image" width="1908" height="104" loading="lazy">
+	</figure>
+	<p>We noticed that in several locations we were doing queries like:</p>
+	<p><code>IF (EXISTS (SELECT id FROM table WHERE row_hash = __new_row_hash))</code></p>
+	<p>If you are trying to insert into very large zones, such queries could mean even longer database query times, potentially explaining the discrepancy between 1ms and 5ms in our tracing images above. Upon further investigation, we already had a unique index on that exact hash. <a href="https://www.postgresql.org/docs/current/indexes-unique.html"><u>Unique indexes</u></a> in PostgreSQL enforce the uniqueness of one or more column values, which means we can safely remove those existence checks without risk of inserting duplicate rows.</p>
+	<p>The next task was to introduce database batching into our DNS Records API. In any API, external calls such as SQL queries are going to add substantial latency to the request. Database batching allows the DNS Records API to execute multiple SQL queries within one single network call, subsequently lowering the number of database round trips our system needs to make.&nbsp;</p>
+	<p>According to the table above, each database write also corresponded to a read after it had completed the query. This was needed to collect information like creation/modification timestamps and new IDs. To improve this, we tweaked our database functions to now return the newly created DNS record itself, removing a full round trip to the database. Here is the updated table:</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Action</b></p>
+				</th>
+				<th>
+					<p><b>Database Queries</b></p>
+				</th>
+				<th>
+					<p><b>Reason</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>POST</p>
+				</td>
+				<td>
+					<p>1&nbsp;</p>
+				</td>
+				<td>
+					<p>One to write</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PUT</p>
+				</td>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>One to read, one to write.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PATCH</p>
+				</td>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>One to read, one to write.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>DELETE</p>
+				</td>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>One to read, one to delete.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>We have room for improvement here, however we cannot easily reduce this further due to some restrictions around auditing and other sanitization logic.</p>
+	<p><b>Results:</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Action</b></p>
+				</th>
+				<th>
+					<p><b>Average database time before</b></p>
+				</th>
+				<th>
+					<p><b>Average database time after</b></p>
+				</th>
+				<th>
+					<p><b>Percentage Decrease</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>POST</p>
+				</td>
+				<td>
+					<p>3.38ms</p>
+				</td>
+				<td>
+					<p>0.967ms</p>
+				</td>
+				<td>
+					<p>71.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PUT</p>
+				</td>
+				<td>
+					<p>4.47ms</p>
+				</td>
+				<td>
+					<p>2.31ms</p>
+				</td>
+				<td>
+					<p>48.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PATCH</p>
+				</td>
+				<td>
+					<p>4.41ms</p>
+				</td>
+				<td>
+					<p>2.24ms</p>
+				</td>
+				<td>
+					<p>49.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>DELETE</p>
+				</td>
+				<td>
+					<p>1.21ms</p>
+				</td>
+				<td>
+					<p>1.21ms</p>
+				</td>
+				<td>
+					<p>0%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>These are some pretty good improvements! Not only did we reduce the API latency, we also reduced the database query load, benefiting other systems as well.</p>
+	<h2>Weren’t we talking about batching?</h2>
+	<p>I previously mentioned that the /batch endpoint is fully atomic, making use of a single database transaction. However, a single transaction may still require multiple database network calls, and from the table above, that can add up to a significant amount of time when dealing with large batches. To optimize this, we are making use of <a href="https://pkg.go.dev/github.com/jackc/pgx/v4#Batch"><u>pgx/batch</u></a>, a Golang object that allows us to write and subsequently read multiple queries in a single network call. Here is a high level of how the batch endpoint works:</p>
+	<ol>
+		<li>
+			<p>Collect all the records for the PUTs, PATCHes and DELETEs.</p>
+		</li>
+		<li>
+			<p>Apply any per record differences as requested by the PATCHes and PUTs.</p>
+		</li>
+		<li>
+			<p>Format the batch SQL query to include each of the actions.</p>
+		</li>
+		<li>
+			<p>Execute the batch SQL query in the database.</p>
+		</li>
+		<li>
+			<p>Parse each database response and return any errors if needed.</p>
+		</li>
+		<li>
+			<p>Audit each change.</p>
+		</li>
+	</ol>
+	<p>This takes at most only two database calls per batch. One to fetch, and one to write/delete. If the batch contains only POSTs, this will be further reduced to a single database call. Given all of this, we should expect to see a significant improvement in latency when making multiple changes, which we do when observing how these various endpoints perform:&nbsp;</p>
+	<p><i>Note: Each of these queries was run from multiple locations around the world and the median of the response times are shown here. The server responding to queries is located in Portland, Oregon, United States. Latencies are subject to change depending on geographical location.</i></p>
+	<p><b>Create only:</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>
+					</p>
+				</th>
+				<th>
+					<p><b>10 Records</b></p>
+				</th>
+				<th>
+					<p><b>100 Records</b></p>
+				</th>
+				<th>
+					<p><b>1,000 Records</b></p>
+				</th>
+				<th>
+					<p><b>10,000 Records</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Regular API</b></p>
+				</td>
+				<td>
+					<p>7.55s</p>
+				</td>
+				<td>
+					<p>74.23s</p>
+				</td>
+				<td>
+					<p>757.32s</p>
+				</td>
+				<td>
+					<p>7,877.14s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Batch API - Without database batching</b></p>
+				</td>
+				<td>
+					<p>0.85s</p>
+				</td>
+				<td>
+					<p>1.47s</p>
+				</td>
+				<td>
+					<p>4.32s</p>
+				</td>
+				<td>
+					<p>16.58s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Batch API - with database batching</b></p>
+				</td>
+				<td>
+					<p>0.67s</p>
+				</td>
+				<td>
+					<p>1.21s</p>
+				</td>
+				<td>
+					<p>3.09s</p>
+				</td>
+				<td>
+					<p>10.33s</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><b>Delete only:</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>
+					</p>
+				</th>
+				<th>
+					<p><b>10 Records</b></p>
+				</th>
+				<th>
+					<p><b>100 Records</b></p>
+				</th>
+				<th>
+					<p><b>1,000 Records</b></p>
+				</th>
+				<th>
+					<p><b>10,000 Records</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Regular API</b></p>
+				</td>
+				<td>
+					<p>7.28s</p>
+				</td>
+				<td>
+					<p>67.35s</p>
+				</td>
+				<td>
+					<p>658.11s</p>
+				</td>
+				<td>
+					<p>7,471.30s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Batch API - without database batching</b></p>
+				</td>
+				<td>
+					<p>0.79s</p>
+				</td>
+				<td>
+					<p>1.32s</p>
+				</td>
+				<td>
+					<p>3.18s</p>
+				</td>
+				<td>
+					<p>17.49s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Batch API - with database batching</b></p>
+				</td>
+				<td>
+					<p>0.66s</p>
+				</td>
+				<td>
+					<p>0.78s</p>
+				</td>
+				<td>
+					<p>1.68s</p>
+				</td>
+				<td>
+					<p>7.73s</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><b>Create/Update/Delete:</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>
+					</p>
+				</th>
+				<th>
+					<p><b>10 Records</b></p>
+				</th>
+				<th>
+					<p><b>100 Records</b></p>
+				</th>
+				<th>
+					<p><b>1,000 Records</b></p>
+				</th>
+				<th>
+					<p><b>10,000 Records</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Regular API</b></p>
+				</td>
+				<td>
+					<p>7.11s</p>
+				</td>
+				<td>
+					<p>72.41s</p>
+				</td>
+				<td>
+					<p>715.36s</p>
+				</td>
+				<td>
+					<p>7,298.17s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Batch API - without database batching</b></p>
+				</td>
+				<td>
+					<p>0.79s</p>
+				</td>
+				<td>
+					<p>1.36s</p>
+				</td>
+				<td>
+					<p>3.05s</p>
+				</td>
+				<td>
+					<p>18.27s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Batch API - with database batching</b></p>
+				</td>
+				<td>
+					<p>0.74s</p>
+				</td>
+				<td>
+					<p>1.06s</p>
+				</td>
+				<td>
+					<p>2.17s</p>
+				</td>
+				<td>
+					<p>8.48s</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><b>Overall Average:</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>
+					</p>
+				</th>
+				<th>
+					<p><b>10 Records</b></p>
+				</th>
+				<th>
+					<p><b>100 Records</b></p>
+				</th>
+				<th>
+					<p><b>1,000 Records</b></p>
+				</th>
+				<th>
+					<p><b>10,000 Records</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Regular API</b></p>
+				</td>
+				<td>
+					<p>7.31s</p>
+				</td>
+				<td>
+					<p>71.33s</p>
+				</td>
+				<td>
+					<p>710.26s</p>
+				</td>
+				<td>
+					<p>7,548.87s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Batch API - without database batching</b></p>
+				</td>
+				<td>
+					<p>0.81s</p>
+				</td>
+				<td>
+					<p>1.38s</p>
+				</td>
+				<td>
+					<p>3.51s</p>
+				</td>
+				<td>
+					<p>17.44s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Batch API - with database batching</b></p>
+				</td>
+				<td>
+					<p>0.69s</p>
+				</td>
+				<td>
+					<p>1.02s</p>
+				</td>
+				<td>
+					<p>2.31s</p>
+				</td>
+				<td>
+					<p>8.85s</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>We can see that on average, the new batching API is significantly faster than the regular API trying to do the same actions, and it’s also nearly twice as fast as the batching API without batched database calls. We can see that at 10,000 records, the batching API is a staggering 850x faster than the regular API. As mentioned above, these numbers are likely to change for a number of different reasons, but it’s clear that making several round trips to and from the API adds substantial latency, regardless of the region.</p>
+	<h2>Batch overload</h2>
+	<p>Making our API faster is awesome, but we don’t operate in an isolated environment. Each of these records needs to be processed and pushed to <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>Quicksilver</u></a>, our distributed database. If we have customers creating tens of thousands of records every 10 seconds, we need to be able to handle this downstream so that we don’t overwhelm our system. In a May 2022 blog post titled <a href="https://blog.cloudflare.com/dns-build-improvement"><i><u>How we improved DNS record build speed by more than 4,000x</u></i></a>, I noted<i> </i>that:</p>
+	<blockquote>
+		<p><i>We plan to introduce a batching system that will collect record changes into groups to minimize the number of queries we make to our database and Quicksilver.</i></p>
+	</blockquote>
+	<p>This task has since been completed, and our propagation pipeline is now able to batch thousands of record changes into a single database query which can then be published to Quicksilver in order to be propagated to our global network.&nbsp;</p>
+	<h2>Next steps</h2>
+	<p>We have a couple more improvements we may want to bring into the API. We also intend to improve the UI to bring more usability improvements to the dashboard to more easily manage zones. <a href="https://research.rallyuxr.com/cloudflare/lp/cm0zu2ma7017j1al98l1m8a7n?channel=share&amp;studyId=cm0zu2ma4017h1al9byak79iw"><u>We would love to hear your feedback</u></a>, so please let us know what you think and if you have any suggestions for improvements.</p>
+	<p>For more details on how to use the new /batch API endpoint, head over to our <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes"><u>developer documentation</u></a> and <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-batch-dns-records"><u>API reference</u></a>.</p>
+</div>
