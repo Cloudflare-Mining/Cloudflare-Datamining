@@ -5,30 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the team</strong></p>
-<p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks. Our team works with Rust, Go, Linux, and cloud technologies to simultaneously build on-prem operating systems and distributed cloud backends. We are looking for engineers who are just as interested in building their own Linux-based OS as they are in cloud architecture, and just as interested in Rust as they are in Go.</p>
-<p><strong>Magic WAN Connector</strong></p>
-<p>The Magic WAN Connector is a lightweight network appliance providing zero touch connectivity to the Cloudflare network, extending the power of the Cloudflare global network to customer locations, and providing local network access to Cloudflare’s cloud-native networking services at the Edge. Connectors are deployed worldwide to customer locations and are managed via a cloud backend.</p>
-<p><strong>About the role</strong></p>
-<p>We’re looking for curious and empathetic engineers who are excited to join us in changing the way networking is done. Some of the things our team works on include:</p>
+<h4>About the department</h4>
+<p>Cloudflare’s Billing Engineering team builds and maintains all the internal/external billing services related to customer onboarding, subscription management, payments, provisioning, usage processing/analytics and back office integrations with financial systems. This is a vital team central to every product launch, campaign or initiative Cloudflare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
+<p>The Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.&nbsp;</p>
+<h4>What you'll do</h4>
+<p>We are looking for an engineer to join our Billing Team; an energetic team focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
+<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
+<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka, Kubernetes, Temporal and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>A lightweight linux OS, with networking software written in Rust, deployed via physical devices and virtual machines</li>
-	<li>A distributed cloud backend using Go, Kubernetes, and PostgreSQL</li>
-	<li>Debugging packet flows and IPsec tunnels that span the globally distributed Cloudflare network and globally distributed customer networks, often involving debugging of Linux kernel networking primitives – netfilter, nftables, eBPF, tc, network namespaces, etc</li>
-	<li>Release/Deployment systems for various applications including operating systems and backend APIs</li>
-	<li>Partnering with some of the best engineers and product managers to solve big problems</li>
+	<li>BS+ in Computer Science or equivalent experience</li>
+	<li>5+ years professional experience as a developer/engineer</li>
+	<li>Knowledge of Golang or desire to learn it</li>
+	<li>Solid understanding of RESTful APIs and service security</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
+	<li>Experience with modern Unix/Linux development and runtime environment</li>
+	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
+	<li>Familiarity with event driven architecture</li>
+	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
+	<li>Strong interpersonal and communication skills with a bias towards action</li>
 </ul>
-<p><strong>Desired skills, knowledge, and experience</strong></p>
-<ul>
-	<li><strong>Rust</strong> and/or <strong>Go</strong> programming</li>
-	<li>Broad <strong>networking</strong> expertise across <strong>L3-L7</strong> networking flows and protocols</li>
-	<li>Experience designing and integrating <strong>RESTful APIs</strong> and backend systems</li>
-	<li>Experience building on top of Linux kernel networking primitives – <strong>netfilter, nftables, eBPF, tc, network namespaces</strong>, etc</li>
-	<li>Experience building and shipping <strong>highly distributed systems with best SRE practices</strong></li>
-	<li>Excellent <strong>debugging</strong> and optimization skills</li>
-	<li>Able to <strong>work across teams</strong> and level common, sustainable solutions</li>
-	<li>Focus on clarity in&nbsp;<strong>written and verbal communication</strong></li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
