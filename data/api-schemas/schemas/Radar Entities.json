@@ -1,6 +1,6 @@
 {
 	"GET /radar/entities/asns": {
-		"description": "Gets a list of autonomous systems (AS).",
+		"description": "Get a list of autonomous systems (ASes).",
 		"operationId": "radar-get-entities-asn-list",
 		"parameters": [
 			{
@@ -602,7 +602,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get AS-level relationships by AS number",
+		"summary": "Get as-level relationships by AS number",
 		"tags": [
 			"Radar Entities"
 		],

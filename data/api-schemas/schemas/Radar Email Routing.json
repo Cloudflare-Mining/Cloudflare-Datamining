@@ -1,6 +1,6 @@
 {
 	"GET /radar/email/routing/summary/arc": {
-		"description": "Percentage distribution of emails classified per ARC validation.",
+		"description": "Percentage distribution of emails classified by ARC validation.",
 		"operationId": "radar-get-email-routing-summary-by-arc",
 		"parameters": [
 			{
@@ -351,7 +351,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get ARC Validations Summary",
+		"summary": "Get ARC validations summary",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -368,7 +368,7 @@
 		}
 	},
 	"GET /radar/email/routing/summary/dkim": {
-		"description": "Percentage distribution of emails classified per DKIM validation.",
+		"description": "Percentage distribution of emails classified by DKIM validation.",
 		"operationId": "radar-get-email-routing-summary-by-dkim",
 		"parameters": [
 			{
@@ -719,7 +719,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DKIM Validations Summary",
+		"summary": "Get DKIM validations summary",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -736,7 +736,7 @@
 		}
 	},
 	"GET /radar/email/routing/summary/dmarc": {
-		"description": "Percentage distribution of emails classified per DMARC validation.",
+		"description": "Percentage distribution of emails classified by DMARC validation.",
 		"operationId": "radar-get-email-routing-summary-by-dmarc",
 		"parameters": [
 			{
@@ -1087,7 +1087,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DMARC Validations Summary",
+		"summary": "Get DMARC validations summary",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -1104,7 +1104,7 @@
 		}
 	},
 	"GET /radar/email/routing/summary/encrypted": {
-		"description": "Percentage distribution of emails by Encrypted",
+		"description": "Percentage distribution of emails by encryption status.",
 		"operationId": "radar-get-email-routing-summary-by-encrypted",
 		"parameters": [
 			{
@@ -1451,7 +1451,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Encrypted Summary",
+		"summary": "Get encrypted summary",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -1468,7 +1468,7 @@
 		}
 	},
 	"GET /radar/email/routing/summary/ip_version": {
-		"description": "Percentage distribution of emails by Ip Version.",
+		"description": "Percentage distribution of emails by IP version.",
 		"operationId": "radar-get-email-routing-summary-by-ip-version",
 		"parameters": [
 			{
@@ -1815,7 +1815,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Ip Version Summary",
+		"summary": "Get IP version summary",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -1832,7 +1832,7 @@
 		}
 	},
 	"GET /radar/email/routing/summary/spf": {
-		"description": "Percentage distribution of emails classified per SPF validation.",
+		"description": "Percentage distribution of emails classified by SPF validation.",
 		"operationId": "radar-get-email-routing-summary-by-spf",
 		"parameters": [
 			{
@@ -2183,7 +2183,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SPF Validations Summary",
+		"summary": "Get SPF validations summary",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -2200,7 +2200,7 @@
 		}
 	},
 	"GET /radar/email/routing/timeseries_groups/arc": {
-		"description": "Percentage distribution of emails classified per Arc validation over time.",
+		"description": "Percentage distribution of emails classified by ARC validation over time.",
 		"operationId": "radar-get-email-routing-timeseries-group-by-arc",
 		"parameters": [
 			{
@@ -2488,7 +2488,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get ARC Validations Time Series",
+		"summary": "Get ARC validations time series",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -2505,7 +2505,7 @@
 		}
 	},
 	"GET /radar/email/routing/timeseries_groups/dkim": {
-		"description": "Percentage distribution of emails classified per DKIM validation over time.",
+		"description": "Percentage distribution of emails classified by DKIM validation over time.",
 		"operationId": "radar-get-email-routing-timeseries-group-by-dkim",
 		"parameters": [
 			{
@@ -2793,7 +2793,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DKIM Validations Time Series",
+		"summary": "Get DKIM validations time series",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -2810,7 +2810,7 @@
 		}
 	},
 	"GET /radar/email/routing/timeseries_groups/dmarc": {
-		"description": "Percentage distribution of emails classified per DMARC validation over time.",
+		"description": "Percentage distribution of emails classified by DMARC validation over time.",
 		"operationId": "radar-get-email-routing-timeseries-group-by-dmarc",
 		"parameters": [
 			{
@@ -3098,7 +3098,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DMARC Validations Time Series",
+		"summary": "Get DMARC validations time series",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -3115,7 +3115,7 @@
 		}
 	},
 	"GET /radar/email/routing/timeseries_groups/encrypted": {
-		"description": "Percentage distribution of emails by Encrypted over time.",
+		"description": "Percentage distribution of emails by encryption status over time.",
 		"operationId": "radar-get-email-routing-timeseries-group-by-encrypted",
 		"parameters": [
 			{
@@ -3396,7 +3396,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Encrypted Time Series",
+		"summary": "Get encrypted time series",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -3413,7 +3413,7 @@
 		}
 	},
 	"GET /radar/email/routing/timeseries_groups/ip_version": {
-		"description": "Percentage distribution of emails by Ip Version over time.",
+		"description": "Percentage distribution of emails by IP version over time.",
 		"operationId": "radar-get-email-routing-timeseries-group-by-ip-version",
 		"parameters": [
 			{
@@ -3694,7 +3694,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Ip Version Time Series",
+		"summary": "Get IP version time series",
 		"tags": [
 			"Radar Email Routing"
 		],
@@ -3711,7 +3711,7 @@
 		}
 	},
 	"GET /radar/email/routing/timeseries_groups/spf": {
-		"description": "Percentage distribution of emails classified per SPF validation over time.",
+		"description": "Percentage distribution of emails classified by SPF validation over time.",
 		"operationId": "radar-get-email-routing-timeseries-group-by-spf",
 		"parameters": [
 			{
@@ -3999,7 +3999,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SPF Validations Time Series",
+		"summary": "Get SPF validations time series",
 		"tags": [
 			"Radar Email Routing"
 		],

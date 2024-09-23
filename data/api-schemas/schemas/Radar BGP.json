@@ -423,7 +423,7 @@
 		}
 	},
 	"GET /radar/bgp/ips/timeseries": {
-		"description": "Gets time-series data for the announced IP space count, represented as the number of IPv4 /24s and IPv6 /48s, for a given ASN.",
+		"description": "Get time series data for the announced IP space count, represented as the number of IPv4 /24s and IPv6 /48s, for a given ASN.",
 		"operationId": "radar-get-bgp-ips-timeseries",
 		"parameters": [
 			{
@@ -1059,7 +1059,7 @@
 		}
 	},
 	"GET /radar/bgp/routes/ases": {
-		"description": "List all ASes on current global routing tables with routing statistics",
+		"description": "List all ASes in current global routing tables with routing statistics",
 		"operationId": "radar-get-bgp-routes-asns",
 		"parameters": [
 			{
@@ -1309,7 +1309,7 @@
 		}
 	},
 	"GET /radar/bgp/routes/moas": {
-		"description": "List all Multi-origin AS (MOAS) prefixes on the global routing tables.",
+		"description": "List all Multi-Origin AS (MOAS) prefixes on the global routing tables.",
 		"operationId": "radar-get-bgp-pfx2as-moas",
 		"parameters": [
 			{
@@ -1933,7 +1933,7 @@
 		}
 	},
 	"GET /radar/bgp/timeseries": {
-		"description": "Gets BGP updates change over time. Raw values are returned. When requesting updates of an autonomous system (AS), only BGP updates of type announcement are returned.",
+		"description": "Get BGP updates change over time. Raw values are returned. When requesting updates for an autonomous system (AS), only BGP updates of type announcement are returned.",
 		"operationId": "radar-get-bgp-timeseries",
 		"parameters": [
 			{
@@ -2275,7 +2275,7 @@
 		}
 	},
 	"GET /radar/bgp/top/ases": {
-		"description": "Get the top autonomous systems (AS) by BGP updates (announcements only). Values are a percentage out of the total updates.",
+		"description": "Get the top autonomous systems (ASes) by BGP updates (announcements only). Values are a percentage out of the total updates.",
 		"operationId": "radar-get-bgp-top-ases",
 		"parameters": [
 			{

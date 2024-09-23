@@ -1,7 +1,7 @@
 {
 	"GET /radar/attacks/layer3/summary": {
 		"deprecated": true,
-		"description": "Percentage distribution of network protocols in layer 3/4 attacks over a given time period.",
+		"description": "Percentage distribution of network protocols in Layer 3/4 attacks over a given time period.",
 		"operationId": "radar-get-attacks-layer3-summary",
 		"parameters": [
 			{
@@ -298,7 +298,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 3 Attacks Summary",
+		"summary": "Get Layer 3 attacks summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -663,7 +663,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Attack Bitrate Summary",
+		"summary": "Get attack bitrate summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -1033,7 +1033,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Attack Durations Summary",
+		"summary": "Get attack durations summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -1366,7 +1366,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get IP Versions Summary",
+		"summary": "Get IP versions summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -1708,7 +1708,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 3 Protocols Summary",
+		"summary": "Get Layer 3 protocols summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -2058,7 +2058,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Attack Vector Summary",
+		"summary": "Get attack vector summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -2381,7 +2381,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Attacks By Bytes Summary",
+		"summary": "Get attacks by bytes summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -2399,7 +2399,7 @@
 	},
 	"GET /radar/attacks/layer3/timeseries_groups": {
 		"deprecated": true,
-		"description": "Get a timeseries of the percentage distribution of network protocols in Layer 3/4 attacks.",
+		"description": "Get a time series of the percentage distribution of network protocols in Layer 3/4 attacks.",
 		"operationId": "radar-get-attacks-layer3-timeseries-groups",
 		"parameters": [
 			{
@@ -2741,7 +2741,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 3 Attacks By Network Protocol Time Series",
+		"summary": "Get Layer 3 attacks by network protocol time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -3398,7 +3398,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 3 Attack By Duration Time Series",
+		"summary": "Get Layer 3 attack by duration time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -3712,7 +3712,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 3 Attacks By Target Industries Time Series",
+		"summary": "Get Layer 3 attacks by target industries time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -3999,7 +3999,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 3 Attacks By IP Version Time Series",
+		"summary": "Get Layer 3 attacks by IP version time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -4299,7 +4299,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 3 Attacks By Protocol Timeseries",
+		"summary": "Get Layer 3 attacks by protocol timeseries",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -4613,7 +4613,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 3 Attacks By Vector",
+		"summary": "Get Layer 3 attacks by vector",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -4927,7 +4927,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 3 Attacks By Vertical Time Series",
+		"summary": "Get Layer 3 attacks by vertical time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -5314,7 +5314,7 @@
 		}
 	},
 	"GET /radar/attacks/layer3/top/industry": {
-		"description": "Get the Industry of attacks.",
+		"description": "Get the industries targeted by attacks.",
 		"operationId": "radar-get-attacks-layer3-top-industries",
 		"parameters": [
 			{
@@ -5622,7 +5622,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top Industry of attack",
+		"summary": "Get top industry of attack",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -6309,7 +6309,7 @@
 		}
 	},
 	"GET /radar/attacks/layer3/top/vertical": {
-		"description": "Get the Verticals of attacks.",
+		"description": "Get the verticals targeted by attacks.",
 		"operationId": "radar-get-attacks-layer3-top-verticals",
 		"parameters": [
 			{
@@ -6617,7 +6617,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top Verticals of attack",
+		"summary": "Get top verticals of attack",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -6947,7 +6947,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 7 Attacks Summary",
+		"summary": "Get Layer 7 attacks summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -7317,7 +7317,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get HTTP Method Summary",
+		"summary": "Get HTTP method summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -7735,7 +7735,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get HTTP Version Summary",
+		"summary": "Get HTTP version summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -8149,7 +8149,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Ip Version Summary",
+		"summary": "Get IP version summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -8580,7 +8580,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Managed Rules Summary",
+		"summary": "Get managed rules summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -8990,7 +8990,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Mitigation Product Summary",
+		"summary": "Get mitigation product summary",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -9479,7 +9479,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 7 Attacks Time Series",
+		"summary": "Get Layer 7 attacks time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -9497,7 +9497,7 @@
 	},
 	"GET /radar/attacks/layer7/timeseries_groups": {
 		"deprecated": true,
-		"description": "Get a time series of the percentual distribution of mitigation techniques, over time.",
+		"description": "Get a time series of the distribution of mitigation techniques over time.",
 		"operationId": "radar-get-attacks-layer7-timeseries-group",
 		"parameters": [
 			{
@@ -9864,7 +9864,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 7 Attacks By Mitigation Technique Time Series",
+		"summary": "Get Layer 7 attacks by mitigation technique time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -10183,7 +10183,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 7 Attacks By HTTP Method Time Series",
+		"summary": "Get Layer 7 attacks by HTTP method time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -10545,7 +10545,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 7 Attacks By HTTP Version Time Series",
+		"summary": "Get Layer 7 attacks by HTTP version time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -10562,7 +10562,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/timeseries_groups/industry": {
-		"description": "Percentage distribution of attacks by industry used over time.",
+		"description": "Percentage distribution of attacks by targeted industry over time.",
 		"operationId": "radar-get-attacks-layer7-timeseries-group-by-industry",
 		"parameters": [
 			{
@@ -10940,7 +10940,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 7 Attacks By Target Industries Time Series",
+		"summary": "Get Layer 7 attacks by target industries time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -11311,7 +11311,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 7 Attacks By IP Version Time Series",
+		"summary": "Get Layer 7 attacks by IP version time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -11691,7 +11691,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 7 Attacks By Managed Rules Time Series",
+		"summary": "Get Layer 7 attacks by managed rules time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -12050,7 +12050,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 7 Attacks By Mitigation Product Time Series",
+		"summary": "Get Layer 7 attacks by mitigation product time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -12067,7 +12067,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/timeseries_groups/vertical": {
-		"description": "Percentage distribution of attacks by vertical used over time.",
+		"description": "Percentage distribution of attacks by targeted vertical over time.",
 		"operationId": "radar-get-attacks-layer7-timeseries-group-by-vertical",
 		"parameters": [
 			{
@@ -12445,7 +12445,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Layer 7 Attacks By Vertical Time Series",
+		"summary": "Get Layer 7 attacks by vertical time series",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -12462,7 +12462,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/top/ases/origin": {
-		"description": "Get the top origin Autonomous Systems of and by layer 7 attacks. Values are a percentage out of the total layer 7 attacks. The origin Autonomous Systems is determined by the client IP.",
+		"description": "Get the top origin Autonomous Systems of and by Layer 7 attacks. Values are a percentage out of the total Layer 7 attacks. The origin Autonomous Systems is determined by the client IP address.",
 		"operationId": "radar-get-attacks-layer7-top-origin-as",
 		"parameters": [
 			{
@@ -12862,7 +12862,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Top Origin Autonomous Systems By Layer 7 Attacks",
+		"summary": "Get top origin autonomous systems by Layer 7 attacks",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -12879,7 +12879,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/top/attacks": {
-		"description": "Get the top attacks from origin to target location. Values are a percentage out of the total layer 7 attacks (with billing country). The attack magnitude can be defined by the number of mitigated requests or by the number of zones affected. You can optionally limit the number of attacks per origin/target location (useful if all the top attacks are from or to the same location).",
+		"description": "Get the top attacks from origin to target location. Values are a percentage out of the total Layer 7 attacks (with billing country). The attack magnitude can be defined by the number of mitigated requests or by the number of zones affected. You can optionally limit the number of attacks by origin/target location (useful if all the top attacks are from or to the same location).",
 		"operationId": "radar-get-attacks-layer7-top-attacks",
 		"parameters": [
 			{
@@ -13351,7 +13351,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Top Attack Pairs (origin and target locations) By Layer 7 Attacks",
+		"summary": "Get top attack pairs (origin and target locations) by Layer 7 attacks",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -13368,7 +13368,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/top/industry": {
-		"description": "Get the Industry of attacks.",
+		"description": "Get the industries targeted by attacks.",
 		"operationId": "radar-get-attacks-layer7-top-industries",
 		"parameters": [
 			{
@@ -13788,7 +13788,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/top/locations/origin": {
-		"description": "Get the top origin locations of and by layer 7 attacks. Values are a percentage out of the total layer 7 attacks. The origin location is determined by the client IP.",
+		"description": "Get the top origin locations of and by Layer 7 attacks. Values are a percentage out of the total Layer 7 attacks. The origin location is determined by the client IP address.",
 		"operationId": "radar-get-attacks-layer7-top-origin-location",
 		"parameters": [
 			{
@@ -14188,7 +14188,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Top Origin Locations By Layer 7 Attacks",
+		"summary": "Get top origin locations by Layer 7 attacks",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -14592,7 +14592,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get layer 7 top target locations",
+		"summary": "Get Layer 7 top target locations",
 		"tags": [
 			"Radar Attacks"
 		],
@@ -14609,7 +14609,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/top/vertical": {
-		"description": "Get the Verticals of attacks.",
+		"description": "Get the verticals targeted by attacks.",
 		"operationId": "radar-get-attacks-layer7-top-verticals",
 		"parameters": [
 			{
@@ -15012,7 +15012,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top Verticals of attack",
+		"summary": "Get top verticals of attack",
 		"tags": [
 			"Radar Attacks"
 		],

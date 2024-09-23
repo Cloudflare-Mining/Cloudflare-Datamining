@@ -1,6 +1,6 @@
 {
 	"GET /radar/email/security/summary/arc": {
-		"description": "Percentage distribution of emails classified per ARC validation.",
+		"description": "Percentage distribution of emails classified by ARC validation.",
 		"operationId": "radar-get-email-security-summary-by-arc",
 		"parameters": [
 			{
@@ -336,7 +336,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get ARC Validations Summary",
+		"summary": "Get ARC validations summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -353,7 +353,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/dkim": {
-		"description": "Percentage distribution of emails classified per DKIM validation.",
+		"description": "Percentage distribution of emails classified by DKIM validation.",
 		"operationId": "radar-get-email-security-summary-by-dkim",
 		"parameters": [
 			{
@@ -689,7 +689,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DKIM Validations Summary",
+		"summary": "Get DKIM validations summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -706,7 +706,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/dmarc": {
-		"description": "Percentage distribution of emails classified per DMARC validation.",
+		"description": "Percentage distribution of emails classified by DMARC validation.",
 		"operationId": "radar-get-email-security-summary-by-dmarc",
 		"parameters": [
 			{
@@ -1042,7 +1042,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DMARC Validations Summary",
+		"summary": "Get DMARC validations summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -1408,7 +1408,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get MALICIOUS Validations Summary",
+		"summary": "Get malicious validations summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -1774,7 +1774,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SPAM Summary",
+		"summary": "Get spam summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -1791,7 +1791,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/spf": {
-		"description": "Percentage distribution of emails classified per SPF validation.",
+		"description": "Percentage distribution of emails classified by SPF validation.",
 		"operationId": "radar-get-email-security-summary-by-spf",
 		"parameters": [
 			{
@@ -2127,7 +2127,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SPF Validations Summary",
+		"summary": "Get SPF validations summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -2493,7 +2493,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SPOOF Summary",
+		"summary": "Get spoof summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -2869,7 +2869,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Threat Categories Summary",
+		"summary": "Get threat categories summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -2886,7 +2886,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/tls_version": {
-		"description": "Percentage distribution of emails classified per TLS Version.",
+		"description": "Percentage distribution of emails classified by TLS version.",
 		"operationId": "radar-get-email-security-summary-by-tls-version",
 		"parameters": [
 			{
@@ -3226,7 +3226,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get TLS Version Summary",
+		"summary": "Get TLS version summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -3243,7 +3243,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/arc": {
-		"description": "Percentage distribution of emails classified per Arc validation over time.",
+		"description": "Percentage distribution of emails classified by ARC validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-arc",
 		"parameters": [
 			{
@@ -3516,7 +3516,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get ARC Validations Time Series",
+		"summary": "Get ARC validations time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -3533,7 +3533,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/dkim": {
-		"description": "Percentage distribution of emails classified per DKIM validation over time.",
+		"description": "Percentage distribution of emails classified by DKIM validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-dkim",
 		"parameters": [
 			{
@@ -3806,7 +3806,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DKIM Validations Time Series",
+		"summary": "Get DKIM validations time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -3823,7 +3823,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/dmarc": {
-		"description": "Percentage distribution of emails classified per DMARC validation over time.",
+		"description": "Percentage distribution of emails classified by DMARC validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-dmarc",
 		"parameters": [
 			{
@@ -4096,7 +4096,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DMARC Validations Time Series",
+		"summary": "Get DMARC validations time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -4396,7 +4396,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get MALICIOUS Validations Time Series",
+		"summary": "Get malicious validations time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -4696,7 +4696,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SPAM Validations Time Series",
+		"summary": "Get spam validations time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -4713,7 +4713,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/spf": {
-		"description": "Percentage distribution of emails classified per SPF validation over time.",
+		"description": "Percentage distribution of emails classified by SPF validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-spf",
 		"parameters": [
 			{
@@ -4986,7 +4986,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SPF Validations Time Series",
+		"summary": "Get SPF validations time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5286,7 +5286,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SPOOF Validations Time Series",
+		"summary": "Get spoof validations time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5303,7 +5303,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/threat_category": {
-		"description": "Percentage distribution of emails classified in Threat Categories over time.",
+		"description": "Percentage distribution of emails classified by threat category over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-threat-category",
 		"parameters": [
 			{
@@ -5602,7 +5602,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Threat Categories Time Series",
+		"summary": "Get threat categories time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5619,7 +5619,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/tls_version": {
-		"description": "Percentage distribution of emails classified per TLS Version over time.",
+		"description": "Percentage distribution of emails classified by TLS version over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-tls-version",
 		"parameters": [
 			{
@@ -5899,7 +5899,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get TLS Version Time Series",
+		"summary": "Get TLS version time series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5916,7 +5916,7 @@
 		}
 	},
 	"GET /radar/email/security/top/tlds": {
-		"description": "Get the top TLDs by email messages. Values are a percentage out of the total emails.",
+		"description": "Get the top TLDs by email messages. Values are a percentage out of total email volume.",
 		"operationId": "radar-get-email-security-top-tlds-by-messages",
 		"parameters": [
 			{
@@ -6268,7 +6268,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Top TLDs By Email Messages",
+		"summary": "Get top TLDs by email messages",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -6652,7 +6652,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Top TLDs By Malicious Classification",
+		"summary": "Get top TLDs by malicious classification",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -6669,7 +6669,7 @@
 		}
 	},
 	"GET /radar/email/security/top/tlds/spam/{spam}": {
-		"description": "Get the top TLDs by emails classified as Spam or not.",
+		"description": "Get the top TLDs by emails classified as spam or not.",
 		"operationId": "radar-get-email-security-top-tlds-by-spam",
 		"parameters": [
 			{
@@ -7036,7 +7036,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Top TLDs By Spam Classification",
+		"summary": "Get top TLDs by spam classification",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -7420,7 +7420,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Top TLDs By Spoof Classification",
+		"summary": "Get top TLDs by spoof classification",
 		"tags": [
 			"Radar Email Security"
 		],

@@ -1,5 +1,6 @@
 {
 	"GET /radar/annotations": {
+		"description": "Get the latest annotations.",
 		"operationId": "radar-get-annotations",
 		"parameters": [
 			{
@@ -303,7 +304,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get latest annotations.",
+		"summary": "Get latest annotations",
 		"tags": [
 			"Radar Annotations"
 		],
@@ -320,6 +321,7 @@
 		}
 	},
 	"GET /radar/annotations/outages": {
+		"description": "Get latest Internet outages and anomalies.",
 		"operationId": "radar-get-annotations-outages",
 		"parameters": [
 			{
@@ -623,7 +625,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get latest Internet outages and anomalies.",
+		"summary": "Get latest Internet outages and anomalies",
 		"tags": [
 			"Radar Annotations"
 		],
@@ -640,6 +642,7 @@
 		}
 	},
 	"GET /radar/annotations/outages/locations": {
+		"description": "Get the number of outages by location.",
 		"operationId": "radar-get-annotations-outages-top",
 		"parameters": [
 			{
@@ -800,7 +803,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get the number of outages for locations.",
+		"summary": "Get the number of outages for locations",
 		"tags": [
 			"Radar Annotations"
 		],

@@ -1,6 +1,6 @@
 {
 	"GET /radar/traffic_anomalies": {
-		"description": "Internet traffic anomalies are signals that might point to an outage,\n        These alerts are automatically detected by Radar and then manually verified by our team.\n        This endpoint returns the latest alerts.\n        ",
+		"description": "Internet traffic anomalies are signals that might point to an outage. \n        These alerts are automatically detected by Radar and then manually verified by our team. \n        This endpoint returns the latest alerts.\n        ",
 		"operationId": "radar-get-traffic-anomalies",
 		"parameters": [
 			{
@@ -267,7 +267,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get latest Internet traffic anomalies.",
+		"summary": "Get latest Internet traffic anomalies",
 		"tags": [
 			"Radar Traffic Anomalies"
 		],
@@ -284,7 +284,7 @@
 		}
 	},
 	"GET /radar/traffic_anomalies/locations": {
-		"description": "Internet traffic anomalies are signals that might point to an outage,\n        These alerts are automatically detected by Radar and then manually verified by our team.\n        This endpoint returns the sum of alerts grouped by location.\n        ",
+		"description": "Internet traffic anomalies are signals that might point to an outage. \n        These alerts are automatically detected by Radar and then manually verified by our team. \n        This endpoint returns the sum of alerts grouped by location.",
 		"operationId": "radar-get-traffic-anomalies-top",
 		"parameters": [
 			{
@@ -456,7 +456,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top locations by total traffic anomalies generated.",
+		"summary": "Get top locations by total traffic anomalies generated",
 		"tags": [
 			"Radar Traffic Anomalies"
 		],

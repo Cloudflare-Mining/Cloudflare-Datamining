@@ -169,7 +169,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Datasets",
+		"summary": "Get datasets",
 		"tags": [
 			"Radar Datasets"
 		],
@@ -186,7 +186,7 @@
 		}
 	},
 	"GET /radar/datasets/{alias}": {
-		"description": "Get the csv content of a given dataset by alias or id. When getting the content by alias the latest dataset is returned, optionally filtered by the latest available at a given date.",
+		"description": "Get the CSV content of a given dataset by alias or ID. When getting the content by alias the latest dataset is returned, optionally filtered by the latest available at a given date.",
 		"operationId": "radar-get-reports-dataset-download",
 		"parameters": [
 			{
@@ -258,7 +258,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Dataset csv Stream",
+		"summary": "Get dataset CSV stream",
 		"tags": [
 			"Radar Datasets"
 		],

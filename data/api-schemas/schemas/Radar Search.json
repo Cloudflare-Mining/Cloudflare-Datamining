@@ -1,6 +1,6 @@
 {
 	"GET /radar/search/global": {
-		"description": "Lets you search for locations, autonomous systems (AS) and reports.",
+		"description": "Lets you search for locations, autonomous systems (ASes), and reports.",
 		"operationId": "radar-get-search-global",
 		"parameters": [
 			{
@@ -184,7 +184,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Search for locations, autonomous systems (AS) and reports.",
+		"summary": "Search for locations, autonomous systems (AS) and reports",
 		"tags": [
 			"Radar Search"
 		],
