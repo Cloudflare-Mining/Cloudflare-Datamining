@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/threat-intelligence/about/",
+	"path": "/threat-intelligence/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Threat Intelligence hub - About",
+				"pageName": "Threat Intelligence hub            ",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -32,14 +32,14 @@
 					"plPL": "English for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "threat-intelligence/about",
+				"relativePath": "threat-intelligence",
 				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Threat Intelligence - About - Meta",
-					"metaDescription": "Threat Intelligence - About - Meta",
+					"metaTitle": "Threat Intelligence hub",
+					"metaDescription": "Threat Intelligence hub",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2024-09-23T21:35:58.682Z",
-					"updatedAt": "2024-09-23T21:35:58.682Z"
+					"createdAt": "2024-09-23T21:34:09.050Z",
+					"updatedAt": "2024-09-23T21:34:09.050Z"
 				},
-				"contentfulId": "1BNsUTtqIP6vPWlcz5lr8p",
+				"contentfulId": "6sUT6zw8ZE754fLmZ0TQNI",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -380,18 +380,18 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "4Q7FzQmObhQNMynef3Wfr1",
+						"contentfulId": "47Joxs9lTSOmqsSA0pgBdy",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "About Cloudforce One",
-						"titleSize": "medium",
+						"title": "Cloudforce One threat research and operations",
+						"titleSize": null,
 						"subtitle": null,
 						"subtitleSize": null,
-						"copy": "Detect attacks, degrade threat actors, democratize intelligence\n<br>\n<br>\n<br>\n<br>\n<br>\n",
-						"buttonColor": "orange-outline",
+						"copy": "An embedded team of world-class threat researchers who analyze intelligence pulled from Cloudflare's global network – one of the largest and most interconnected networks in the world – furthering our mission to help build a better Internet.",
+						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Learn more",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://www.cloudflare.com/application-services/products/cloudforceone/",
+						"buttonUrl1": "threat-intelligence/about",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
 						"buttonText2": null,
@@ -444,222 +444,186 @@
 						"imageAssetFile": null
 					},
 					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "7004LCcVpatAR9djgYhkNQ",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "Half & Half",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "2syhZEtyKsBTfX8KG6lgyf",
-								"title": "Our mission",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-1",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Our mission",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare's mission is to build a better Internet. Cloudforce One exists to further that mission by detecting, disrupting and degrading threat actors who seek to erode trust and bend the Internet for personal or political gain",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudforce One hunts and defends with ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "unique insight ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "that no one else has – Cloudflare's global network that serves ~20% of the world's Internet. This vantage point allows us to execute real-time reconnaissance and disruption from the point an attack is launched.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "1hhBdwn9VgHg6vNG3QAgld",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "embedded-asset-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "q9MAg55gvBQ9xiUg53a40",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "q9MAg55gvBQ9xiUg53a40",
-															"locale": "en-US",
-															"title": "Cloudforce One - Logo",
-															"file": {
-																"name": "Thumbnail (2).png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/q9MAg55gvBQ9xiUg53a40/38307ecc5bb474aa3b2de6354d1d7173/Thumbnail__2_.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					},
-					{
-						"contentfulId": "ATnXV8cyHA2CpsSKdjXBN",
+						"contentfulId": "1ToJ4Du2QJg0Wv9sk0DbW2",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "What we do",
-						"eyebrowHeading": null,
-						"description": "We create threat intelligence to arm security teams with the necessary context to make fast, confident decisions.",
-						"textLayout": "center",
+						"title": "Latest threat research",
+						"eyebrowHeading": "Most recent/featured threat report",
+						"description": null,
+						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1BZIFsY5zNqPdwrKzdSz9F",
-								"title": "Global Threat Visibility ",
+								"contentfulId": "4cyn8AN5KypAODyiKDXoIz",
+								"title": "Freight fraud surge: global supply chain compromises",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Our vast global network provides extensive visibility into developing threat actor behavior and infrastructure, not just IOCs after the fact.",
+								"description": "Campaign snapshot",
+								"learnMoreUrl": "threat-intelligence/research/report/freight-fraud-surge-global-supply-chain-compromises",
+								"learnMoreText": "Read now",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "23f07b05-f69c-5573-bc19-e69f9ed99d2b",
+									"altText": "Freight fraud surge: global supply chain compromises",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QMphkIgUD3v8htayDr67v/7abdfa6d8a3adb609375d87ca3caf8df/Freight_Fraud.png"
+										},
+										"description": "Freight fraud surge: global supply chain compromises"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7xYryMKu8paj17DxZoCjIw",
+								"title": "Disrupting FlyingYeti's campaign targeting Ukraine",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Threat brief",
+								"learnMoreUrl": "threat-intelligence/research/report/disrupting-flyingyetis-campaign-targeting-ukrainev",
+								"learnMoreText": "Read now",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "47f2497f-4cc6-5b0e-b517-afa03bf8eefc",
+									"altText": "Disrupting FlyingYeti's campaign targeting Ukraine",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CRg4oGOmH0FxQAPDY3Jls/def5d0ea0e390250a85739eef4023c49/Standard_Yeti.png"
+										},
+										"description": "Disrupting FlyingYeti's campaign targeting Ukraine"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "76km1rbKSQet8AnqfTfalZ",
+								"title": "Impersonation is fooling the enterprise",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Threat spotlight",
+								"learnMoreUrl": "threat-intelligence/research/report/impersonation-is-fooling-the-enterprise",
+								"learnMoreText": "Read now",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "82a15462-975e-5e73-8f01-5b2c48f2da4f",
+									"altText": "Impersonation is fooling the enterprise",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bvTclIhsaz4xgWvevZ10f/50ca442a1a167753fdc9e96f28129fed/Impersonation_attacks.png"
+										},
+										"description": "Impersonation is fooling the enterprise"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6kbRKsCd3r5ptrDsfACN83",
+								"title": "Malicious \"RedAlert - Rocket Alerts\" application targets Israeli phone calls, SMS, and user information",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Threat brief",
+								"learnMoreUrl": "threat-intelligence/research/report/malicious-redalert-rocket-alerts-application-targets-israeli-phone-calls-sms-and-user-information",
+								"learnMoreText": "Read now",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "f385627f-ea85-5824-a74d-53742cd7a7b1",
+									"altText": "Malicious \"RedAlert - Rocket Alerts\" application targets Israeli phone calls, SMS, and user information",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/63OrtE7ykYz7LNZkH3G7xQ/02ec67a2de70ac913b7fa21aa1ae1bfe/image_7.png"
+										},
+										"description": "Malicious \"RedAlert - Rocket Alerts\" application targets Israeli phone calls, SMS, and user informatione"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentfulId": "6uSM0bjCWlLuUDK2sntUNk",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Two Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4U2ia3JsAMzyZBp9DsZlrr",
+								"title": null,
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "large",
+								"description": "# See all threat insights",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": {
-									"id": "f705f70f-6061-5494-a41c-589d683ec8a2",
-									"altText": "network-scale",
-									"title": "network-scale",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6voDUQ7XmHDJ9zX0u2IrkW/e347d8fff227565dd30e1e9c85f1fe97/network-scale__1_.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -669,65 +633,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5MFfM2pwF9kQAsy0rqXNzt",
-								"title": "Shared Platform Intelligence",
+								"contentfulId": "1yMTVAZuD0pNMrhvPjoxxn",
+								"title": "Access all research reports",
 								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": null,
-								"description": "Intelligence is automatically shared across Cloudflare's platform to stop more than 150 billion attacks every day, protecting people, applications, and networks for our millions of customers.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"titleSize": "medium",
+								"description": null,
+								"learnMoreUrl": "/threat-intelligence/research/",
+								"learnMoreText": "View all",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "f705f70f-6061-5494-a41c-589d683ec8a2",
-									"altText": "network-scale",
-									"title": "network-scale",
+									"id": "148afc63-873a-50db-ab55-afee5425740b",
+									"altText": "Documentation clipboard orange",
+									"title": "Documentation clipboard orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6voDUQ7XmHDJ9zX0u2IrkW/e347d8fff227565dd30e1e9c85f1fe97/network-scale__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/19x0ZDKejPWaNUzMYK04aX/ffc886616daa33ca802250d2c208fc02/documentation-clipboard.svg"
 										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7tehX2f3q7PqVlH3V65c66",
-								"title": "Attack Disruption",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "We go beyond insight to actively disrupt and dismantle threat actor infrastructure from the point of launch, before it can cause damage.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "f705f70f-6061-5494-a41c-589d683ec8a2",
-									"altText": "network-scale",
-									"title": "network-scale",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6voDUQ7XmHDJ9zX0u2IrkW/e347d8fff227565dd30e1e9c85f1fe97/network-scale__1_.svg"
-										},
-										"description": null
+										"description": "bot scores orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -742,52 +670,6 @@
 						],
 						"sectionPadding": null,
 						"htmlId": null
-					},
-					{
-						"contentfulId": "R8geBGr2XO6u6Aqnk8kcY",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "How it works",
-						"eyebrowHeading": null,
-						"description": "![How it works](//cf-assets.www.cloudflare.com/slt3lc6tev37/1iwMm2emumO45Ka6OmLaV4/62d33687b2b5e4008b843fd097e7de3a/Threat_intel_Diagram_horizontal_adjustment.png)",
-						"textLayout": "center",
-						"columnsLayout": "One Column",
-						"columnContent": [],
-						"sectionPadding": "tile--no-bottom-padding",
-						"htmlId": null
-					},
-					{
-						"contentTypeId": "bladeNetworkStats",
-						"contentfulId": "3cFJhGIeR3h8xR3ZZkpD1g",
-						"title": null,
-						"description": null,
-						"backgroundColor": "white",
-						"htmlId": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"variant": null,
-						"sectionPadding": null,
-						"bladeBorder": "none",
-						"learnMoreLink": null,
-						"bigImage": null,
-						"quotearticle": null,
-						"bigImageAssetFile": null,
-						"networkLocationImage": null,
-						"networkLocationImageAssetFile": null,
-						"networkLocationText": null,
-						"statsFeatures": [
-							{
-								"title": "20%",
-								"description": "of Internet properties run on Cloudflare"
-							},
-							{
-								"title": "150B",
-								"description": "attacks blocked in the past quarter"
-							},
-							{
-								"title": "60M",
-								"description": "HTTP requests processed every second"
-							}
-						]
 					},
 					{
 						"contentfulId": "TbB3QvIrlrqigvkfTxH0v",
@@ -868,6 +750,196 @@
 						"secondaryCtaButton": null
 					},
 					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "1JQDofRQ48vjI5l74QnRhR",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "j1T3n6Q5BqrRHJipQCMFW",
+								"title": "Unmatched threat intelligence services",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-2",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Unmatched threat intelligence services",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudforce One provides a powerful package of intelligence, tooling, and expertise to grant security teams an edge, making them smarter, more responsive, and more secure.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/application-services/products/cloudforceone/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "See all threat services",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5sZ9seeiDl6x2lItNDixpb",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "q9MAg55gvBQ9xiUg53a40",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "q9MAg55gvBQ9xiUg53a40",
+															"locale": "en-US",
+															"title": "Cloudforce One - Logo",
+															"file": {
+																"name": "Thumbnail (2).png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/q9MAg55gvBQ9xiUg53a40/38307ecc5bb474aa3b2de6354d1d7173/Thumbnail__2_.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "38nfX7mkZGs0w3pPIvJykw",
 						"htmlContent": "<style>\n  .top-nav__logo{\n  width: 200px !important;\n  max-width: unset !important;\n  }\n  </style>\n",
@@ -887,8 +959,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/threat-intelligence/about/",
-			"contentfulId": "1BNsUTtqIP6vPWlcz5lr8p",
+			"pathname": "/threat-intelligence/",
+			"contentfulId": "6sUT6zw8ZE754fLmZ0TQNI",
 			"allowedHrefLangs": [
 				"en-US"
 			],
