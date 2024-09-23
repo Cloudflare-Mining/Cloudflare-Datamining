@@ -212,7 +212,7 @@
 	"workers_and_pages.delete_route.disable_confirmation_dialog.body": "Are you sure you want to disable the %{type} <0>%{value}</0> for your application?",
 	"workers_and_pages.dns_propagation_info": "It may take up to 24 hours for this DNS change to propagate.",
 	"workers_and_pages.variables": "Variables and Secrets",
-	"workers_and_pages.variables.description": "Define the environment variables for your Worker",
+	"workers_and_pages.variables.description": "Define the environment variables and secrets for your Worker used at runtime",
 	"workers_and_pages.variables.pages.description": "Define the text, secret or build variables for your project",
 	"workers_and_pages.variables.pages.empty_state": "",
 	"workers_and_pages.variable_name": "Variable name",
@@ -495,8 +495,8 @@
 	"workers_and_pages.observability.tail_worker.drawer.description": "Gain visibility on this Worker's executions by connecting a Tail Worker to capture metadata.",
 	"workers_and_pages.observability.tail_worker.drawer.info": "Select Worker with a tail() event handler",
 	"workers_and_pages.observability.tail_worker.empty_state.assets_only": "Tail Workers cannot be added to a Worker that has static assets. <0>Learn more</0>",
-	"workers_and_pages.observability.new_ui.obs_section.title": "Logpush and Tail Workers has moved",
-	"workers_and_pages.observability.new_ui.obs_section.description": "You can now access Logpush and Tail Workers from the Observability section in Settings.",
+	"workers_and_pages.observability.new_ui.obs_section.title": "Logpush & Tail Workers has moved",
+	"workers_and_pages.observability.new_ui.obs_section.description": "You can now access Logpush & Tail Workers from the Observability section in Settings.",
 	"workers_and_pages.observability.new_ui.cron_events.title": "View Cron events",
 	"workers_and_pages.observability.new_ui.cron_events.description": "Access Cron events from by clicking on View events under Details."
 }
