@@ -11,7 +11,7 @@
 	],
 	"internal_job_id": 2963531,
 	"location": {
-		"name": "Hybrid"
+		"name": "Hybrid or Remote"
 	},
 	"metadata": [
 		{
@@ -31,13 +31,15 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Lisbon, Portugal",
-				"Mexico City, Mexico"
+				"Mexico",
+				"Mexico City, Mexico",
+				"Portugal"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6255851,
-	"updated_at": "2024-09-19T10:01:36-04:00",
+	"updated_at": "2024-09-23T10:10:35-04:00",
 	"requisition_id": null,
 	"title": "Data and Analytics Engineer",
 	"departments": [
@@ -55,6 +57,20 @@
 			"location": "Lisboa, Lisboa, Portugal",
 			"child_ids": [],
 			"parent_id": 74843
+		},
+		{
+			"id": 82455,
+			"name": "Remote Portugal",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 84342,
+			"name": "Remote Mexico",
+			"location": "Mexico City, Mexico City, Mexico",
+			"child_ids": [],
+			"parent_id": 87170
 		},
 		{
 			"id": 112096,
