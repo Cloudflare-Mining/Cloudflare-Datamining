@@ -215,6 +215,27 @@
 			}
 		}
 	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/expression-template/fallthrough": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string"
+					},
+					{
+						"readOnly": true,
+						"type": "string"
+					}
+				]
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/operations": [
 		{
 			"in": "path",
@@ -453,6 +474,48 @@
 						"type": "string"
 					}
 				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/api_gateway/user_schemas/hosts": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string"
+					},
+					{
+						"readOnly": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		{
+			"description": "Page number of paginated results.",
+			"in": "query",
+			"name": "page",
+			"schema": {
+				"default": 1,
+				"minimum": 1,
+				"type": "integer"
+			}
+		},
+		{
+			"description": "Maximum number of results per page.",
+			"in": "query",
+			"name": "per_page",
+			"schema": {
+				"default": 20,
+				"maximum": 50,
+				"minimum": 5,
+				"type": "integer"
 			}
 		}
 	]
