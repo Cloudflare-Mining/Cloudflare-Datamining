@@ -1458,7 +1458,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "38nfX7mkZGs0w3pPIvJykw",
-						"htmlContent": "<style>\n  .top-nav__logo{\n  width: 200px !important;\n  max-width: unset !important;\n  }\n  </style>\n",
+						"htmlContent": "<style>\n  .top-nav__logo{\n  width: 200px !important;\n  max-width: unset !important;\n  }\n\n  @media screen and (max-width: 576px){\n    .main-header-logo {\n      overflow: hidden;\n      min-width: 58px !important;\n    }\n  }\n  </style>\n",
 						"htmlId": null
 					}
 				],

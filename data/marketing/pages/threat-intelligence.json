@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-09-23T21:34:09.050Z",
-					"updatedAt": "2024-09-23T21:34:09.050Z"
+					"updatedAt": "2024-09-24T17:08:56.864Z"
 				},
 				"contentfulId": "6sUT6zw8ZE754fLmZ0TQNI",
 				"contentTypeId": "page",
@@ -379,6 +379,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "38nfX7mkZGs0w3pPIvJykw",
+						"htmlContent": "<style>\n  .top-nav__logo{\n  width: 200px !important;\n  max-width: unset !important;\n  }\n\n  @media screen and (max-width: 576px){\n    .main-header-logo {\n      overflow: hidden;\n      min-width: 58px !important;\n    }\n  }\n  </style>\n",
+						"htmlId": null
+					},
 					{
 						"contentfulId": "47Joxs9lTSOmqsSA0pgBdy",
 						"contentTypeId": "bladeHeroAnimation",
@@ -974,12 +980,6 @@
 								}
 							}
 						]
-					},
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "38nfX7mkZGs0w3pPIvJykw",
-						"htmlContent": "<style>\n  .top-nav__logo{\n  width: 200px !important;\n  max-width: unset !important;\n  }\n  </style>\n",
-						"htmlId": null
 					}
 				],
 				"noindex": false,
