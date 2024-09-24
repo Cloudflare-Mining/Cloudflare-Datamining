@@ -2,11 +2,11 @@
 <div class="post-content lh-copy gray1">
 	<p><sub><i></i></sub></p>
 	<blockquote>
-		<p><sub><i>NOTE: This post has been updated to reflect the new default behavior </i></sub><a href="https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption"><sub><i>outlined here</i></sub></a><sub><i>.</i></sub></p>
+		<p><sub><i>NOTE: This post has been updated to reflect that the feature is no longer enabled by default. Further details </i></sub><a href="https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption"><sub><i>outlined here</i></sub></a><sub><i>.</i></sub></p>
 	</blockquote>
 	<p>Cloudflare’s mission is to help build a faster and more secure Internet. Over the last several years, the Internet Engineering Task Force (IETF) has been working on a new version of TLS, the protocol that powers the secure web. <a href="https://blog.cloudflare.com/introducing-tls-1-3">Last September</a>, Cloudflare was the first service provider to enable people to use this new version of the protocol, <a href="https://blog.cloudflare.com/tag/tls%201.3">TLS 1.3</a>, improving security and performance for millions of customers.</p>
 	<p>Today we are introducing another performance-enhancing feature: zero <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip</a> time resumption, abbreviated as <i>0-RTT</i>. About 60% of the connections we see are from people who are visiting a site for the first time or revisiting after an extended period of time. TLS 1.3 speeds up these connections significantly. The remaining 40% of connections are from visitors who have recently visited a site and are resuming a previous connection. For these resumed connections, standard TLS 1.3 is safer but no faster than any previous version of TLS. 0-RTT changes this. It dramatically speeds up resumed connections, leading to a faster and smoother web experience for web sites that you visit regularly. This speed boost is especially noticeable on mobile networks.</p>
-	<p>We’re happy to announce that 0-RTT is now <b>NOT</b> enabled by default for all sites on Cloudflare’s free service. For paid customers, it can be enabled in the Crypto app in the Cloudflare dashboard. </p>
+	<p>We’re happy to announce that 0-RTT is <b>NOT</b> enabled by default for all sites on Cloudflare’s free service. For paid customers, it can be enabled in the Crypto app in the Cloudflare dashboard. </p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jnAtBFcCo19Qvyjxa2aVI/7825e8ad85adc280704bd1d5ae710e68/image05.jpg" alt="" class="kg-image" width="1960" height="342" loading="lazy">
