@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-10-13T19:34:45.709Z",
-					"updatedAt": "2024-09-05T03:22:42.328Z"
+					"updatedAt": "2024-09-24T12:19:36.173Z"
 				},
 				"contentfulId": "3nNAZTs9uedp0HATUpLBt9",
 				"contentTypeId": "page",
@@ -119,7 +119,7 @@
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": "keyfeatures",
 						"copy": null,
-						"title": "Get your site up and running with our Free plan features:",
+						"title": "Get your site or network up and running with our Free plan features",
 						"subtitle": null,
 						"bladeStyle": null,
 						"bladeBorder": "none",
@@ -229,6 +229,42 @@
 									"description": "Icon of SSL certificate"
 								},
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1CT6N9PM5rNWu9ie3JrUNi",
+								"title": "Free Network Security",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Secure, connect, and accelerate your network with our free Zero Trust and network security products",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ef0244bd-efac-5180-b4d6-0a467d8337c8",
+									"altText": "Security Network - Illustration",
+									"title": "Security Network",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iYn3M3hngX7sAslSieDlx/48d29ce6b94e646db8f5f513ee2399ad/cloudflare-security-network.svg"
+										},
+										"description": "Security Network"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -1054,25 +1090,25 @@
 							},
 							{
 								"locale": "en-US",
-								"entryTitle": "AddOns - Access",
-								"contentfulId": "4pR30DnoyAOu6CWepQULSG",
+								"entryTitle": "AddOns - Cloudflare One",
+								"contentfulId": "624Fq0CxheWjchZtk72JRj",
 								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "87f9101d-857c-5202-9a77-f2f35ff7e4a9",
-									"altText": "Cloudflare One  SASE Solution",
-									"title": "Cloudflare Access Orange",
+									"id": "e5001450-3aa0-54a4-bfb8-650de21ea05e",
+									"altText": "Cloudflare one - Illustration",
+									"title": "Cloudflare one icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/64ekoyPlI1bPZ9MvWEuxqu/9de135bc78a1e1559505fcb8b59788c0/cloudflare-access.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5p9CFwFzbbvP4LZ5XhzNWH/6bd23612eb6989ad3ec8810e06a8f27c/cloudflare_one.svg"
 										},
-										"description": null
+										"description": "Cloudflare one icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"title": "Access",
+								"title": "Cloudflare One",
 								"description": {
 									"nodeType": "document",
 									"content": [
@@ -1091,7 +1127,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare Access protects internal resources by securing, authenticating and monitoring access per-user and by application.",
+													"value": "Cloudflare One helps customers connect, protect, and accelerate their network traffic",
 													"marks": [],
 													"content": null
 												}
@@ -1100,28 +1136,28 @@
 									]
 								},
 								"category": "Security",
-								"pricingText": "Starting at $3 per month",
+								"pricingText": "Try for free",
 								"learnMoreLink": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "3Lq9pF6rA4CzKFD59HRi97",
-									"elementName": "AddOns - Access-Learn more",
+									"contentfulId": "60uAUC78hFf65S4baf0Ujx",
+									"elementName": "AddOns - Cloudflare One - Learn more",
 									"standardText": null,
 									"text": "Learn more",
-									"url": "https://www.cloudflare.com/zero-trust/products/access/",
+									"url": "https://www.cloudflare.com/plans/zero-trust-services/",
 									"elementModal": null,
 									"openInNewTab": false,
 									"locale": "en-US"
 								},
 								"callToAction": {
 									"buttonAssetFile": null,
-									"buttonTextLoggedIn": "Activate",
+									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
-									"contentfulId": "7l3WxO6IFPLt7bDGE3RQx2",
-									"elementName": "AddOns - Access - Button",
+									"contentfulId": "7FTN8nV5mFScRMXAl7Vdx2",
+									"elementName": "AddOns - Cloudflare One - Active Button",
 									"standardText": null,
 									"text": "Activate",
-									"url": "https://dash.cloudflare.com/access",
-									"loggedInUrl": "https://dash.cloudflare.com/access",
+									"url": "https://dash.cloudflare.com/sign-up/teams",
+									"loggedInUrl": null,
 									"buttonModal": null,
 									"openInNewTab": false,
 									"locale": "en-US"
