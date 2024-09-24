@@ -255,18 +255,16 @@ const navigation = {
 		}]
 	}, {
 		title: "navigation.account.ip_addresses",
-		url: "/ip-addresses/ip-prefixes",
+		url: "/ip-addresses/proxy-ips",
 		iconType: "network",
 		pages: [{
 			title: "navigation.account.ip_addresses.ip_prefixes",
 			url: "/ip-addresses/ip-prefixes",
-			hasPermission: b => (0, a.iY)(b) && !!(0, r.Le)(b, "addressing", "ip_prefixes")
+			hasPermission: b => (0, a.iY)(b) && ((0, l.$f)(b, "addressing.byoip_allowed") || !!(0, r.Le)(b, "addressing", "ip_prefixes"))
 		}, {
 			title: "navigation.account.ip_addresses.proxy-ips",
-			url: "/ip-addresses/proxy-ips",
-			hasPermission: b => (0, a.iY)(b) && !!(0, e.z1)("proxy-ips-ui")(b)
-		}],
-		hasPermission: b => (0, a.iY)(b) && !!(0, r.Le)(b, "addressing", "ip_prefixes")
+			url: "/ip-addresses/proxy-ips"
+		}]
 	}, {
 		title: "account.home",
 		url: "/",

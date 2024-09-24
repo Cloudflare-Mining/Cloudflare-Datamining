@@ -42,8 +42,8 @@
 	"onramp.detail.properties.cloud_type": "Cloud Type",
 	"onramp.detail.properties.description": "Description (optional)",
 	"onramp.detail.section.cloud_network": "Cloud Network",
-	"onramp.detail.activation.title": "Deploy this on-ramp",
-	"onramp.detail.activation.title.v2": "Review %{name}'s affected resources ",
+	"onramp.detail.activation.title": "Planning on-ramp",
+	"onramp.detail.activation.title.v2": "Review %{name}'s affected resources",
 	"onramp.detail.activation.description": "This on-ramp needs to be activated ",
 	"onramp.detail.activation.description.v2": "Please review pending resource discovery changes to your on-ramp.",
 	"onramp.detail.activation.note": "There are no errors. Please click review and deploy to setup connectivity.",
@@ -149,5 +149,11 @@
 	"onramp.pending_resources.coming_soon": "Coming soon",
 	"onramp.pending_resources.cost_format": "$%{cost}/month",
 	"onramp.pending_resources.total_cost_format": "Estimated total: $%{totalCost}/month",
-	"onramp.listpage.banner.content": "You have %{count} on-ramp(s) that need to be reviewed."
+	"onramp.listpage.banner.content": "You have %{count} on-ramp(s) that need to be reviewed.",
+	"onramp.deployment_status": "Deployment status",
+	"onramp.deploying.initiated_at": "You initiated an on-ramp deployment at %{time} on %{date}.",
+	"onramp.preparing_to_deploy": "Preparing to deploy",
+	"onramp.planning_status": "Planning status",
+	"onramp.planning.initiated_at": "You initiated an on-ramp planning at %{time} on %{date}.",
+	"onramp.preparing_to_plan": "Preparing to plan"
 }
