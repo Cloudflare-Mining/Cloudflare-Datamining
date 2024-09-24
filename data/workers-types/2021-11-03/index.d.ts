@@ -1518,11 +1518,7 @@ declare abstract class Body {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response)
  */
 declare class Response extends Body {
-  constructor(
-    body?: BodyInit | null,
-    init?: ResponseInit,
-    webSocket?: WebSocket,
-  );
+  constructor(body?: BodyInit | null, init?: ResponseInit);
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirect_static) */
   static redirect(url: string, status?: number): Response;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/json_static) */
@@ -1549,7 +1545,7 @@ interface ResponseInit {
   statusText?: string;
   headers?: HeadersInit;
   cf?: any;
-  webSocket?: WebSocket;
+  webSocket?: WebSocket | null;
   encodeBody?: "automatic" | "manual";
 }
 type RequestInfo<CfHostMetadata = unknown, Cf = CfProperties<CfHostMetadata>> =
@@ -2736,6 +2732,17 @@ type SqlStorageValue = ArrayBuffer | string | number | null;
 declare abstract class SqlStorageCursor<
   T extends Record<string, SqlStorageValue>,
 > {
+  next():
+    | {
+        done?: false;
+        value: T;
+      }
+    | {
+        done: true;
+        value?: never;
+      };
+  toArray(): T[];
+  one(): T;
   raw<U extends SqlStorageValue[]>(): IterableIterator<U>;
   get columnNames(): string[];
   get rowsRead(): number;
