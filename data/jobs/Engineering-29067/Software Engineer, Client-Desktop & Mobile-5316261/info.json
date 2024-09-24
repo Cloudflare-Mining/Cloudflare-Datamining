@@ -36,7 +36,7 @@
 		}
 	],
 	"id": 5316261,
-	"updated_at": "2024-09-23T19:02:11-04:00",
+	"updated_at": "2024-09-24T17:41:34-04:00",
 	"requisition_id": null,
 	"title": "Software Engineer, Client-Desktop & Mobile",
 	"departments": [
@@ -49,11 +49,52 @@
 	],
 	"offices": [
 		{
+			"id": 73335,
+			"name": "Toronto, ON",
+			"location": "Toronto, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
+		},
+		{
 			"id": 75375,
 			"name": "Remote US",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 75596,
+			"name": "Ottawa, ON",
+			"location": "Ottawa, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
+		},
+		{
+			"id": 75883,
+			"name": "Canada",
+			"location": null,
+			"child_ids": [
+				73335,
+				75596,
+				75884,
+				75885,
+				75886
+			],
+			"parent_id": 48752
+		},
+		{
+			"id": 75884,
+			"name": "Montreal, QC",
+			"location": "Montréal, Quebec, Canada",
+			"child_ids": [],
+			"parent_id": 75883
+		},
+		{
+			"id": 75885,
+			"name": "Calgary, AB",
+			"location": "Calgary, Alberta, Canada",
+			"child_ids": [],
+			"parent_id": 75883
 		}
 	]
 }

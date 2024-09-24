@@ -5,42 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the role</strong></p>
-<p>The Cloudflare Field Chief Security Officer (Field CSO) will have expertise in cloud technologies and cloud-native computing trends as well as enterprise computing, security, and networking technologies. The person in this role will possess a passion for helping people and communities connect to our platform and achieve their short- and long-term technology goals. The ideal candidate will enjoy educating and influencing broad audiences about new technologies and their benefits and will deliver outstanding content, technical expertise and support in a variety of formats. The candidate will work closely with our most critical clients and prospects to articulate the Cloudflare Global Platform message and drive deeper technical engagement and market adoption. The Field CSO will partner closely with Cloudflare’s Security, Engineering, Product, and go to market teams to drive the impact and adoption of our security and performance platform.</p>
-<p>We are seeking a highly skilled Field CSO Officer with a storied history in the technological sector. Reporting to the CSO, this role is a regional leadership role that will be responsible for delivering against corporate objectives and meeting the growth targets for the business. The role will act as both a technology and business expert, making decisions that will impact the current and future strategy and operations of the company. The role will be a public facing persona representing the organization at a regional or global level at conferences, media engagements, analyst conferences and other key industry events.</p>
-<p>&nbsp;</p>
-<p><strong>What you’ll do</strong></p>
-<ul>
-	<li>Work directly with customers and prospects to deliver executive level demonstrations, and partner with strategic sales to implement concepts and solutions within customer environments. Evangelize our technology platform relative to the status quo.</li>
-	<li>Develop and implement a technology-informed go-to-market strategy for the region, ensuring it integrates with the overall company strategic roadmap.</li>
-	<li>Define and simplify the Cloudflare offering to key market segments and deliver key messaging to the market.</li>
-	<li>Build an awareness of key market conditions and the competitive landscape.</li>
-	<li>Work with International Leadership peers on key company initiatives.</li>
-	<li>Introduce new innovations to the market through traditional and social media (press interviews, Twitter, Hacker News, etc.), blogs, and analyst briefings.</li>
-	<li>Drive and contribute to key business activities including: Business Reviews, Pipeline generation and Assist with Deal Closure.</li>
-	<li>Engage with strategic accounts by building strong relationships with the senior leaders and decision makers within customer companies and help drive product adoption.</li>
-	<li>Work with Cloudflare global leaders to help define company regional priorities to best deliver company success.</li>
-	<li>Work within the Cloudflare Regional Leadership team to formulate tactical and long-term strategic plans to increase technology awareness, drive market development and contribute to company growth targets.</li>
-	<li>Be willing to work remotely as required and travel regularly (at least 30%) to engage with customers.</li>
-	<li>Be a company technical voice working with solution engineering to evolve the product to meet the needs of the market &amp; customer segments</li>
-</ul>
+<p><strong>About the Team</strong></p>
+<p>The Cloudflare One Engineering Team builds products and technologies that connect and secure organizations infrastructure, networks, devices and users. Our Zero Trust security and Network-as-a-Service products provide highly secure and reliable connectivity to data centers and endpoints and also protect users and systems from security and privacy risks.</p>
+<p>The Zero Trust Clients team provides an important component to both connectivity and security in the Cloudflare One Agent and server side Cloudflare Tunnel. These components truly are the foundation of our entire Zero Trust Security suite.</p>
+<h4>What you'll do</h4>
+<p>The Engineering Director will lead a group of engineering teams building and operating the technologies that power Cloudflare’s Zero Trust client solutions. This role will deliver high quality products that support and drive the Zero Trust solutions by managing all aspects of the group’s organization, planning, and execution. The Engineering Director will manage, mentor, and develop Engineer Managers while building a high functioning engineering team. The Director will also manage relationships and communication with other organizations in Cloudflare, representing the team and advocating for its needs.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>A qualified candidate will be equally skilled with people and technology, able to organize and inspire others while participating in technical discussions and planning.&nbsp;</p>
 <ul>
-	<li>10+ years of experience within IT, Cyber Security. Service Provider, or Telecommunications industry, with a minimum of three years of experience in a similar executive-level position.</li>
-	<li>Own CxO level relationships both at the business and technical level and have strong existing executive customer, partner and industry associations and relationships that can be leveraged.</li>
-	<li>Desirable background in a technology start-up organization leading to significant business growth or acquisition.</li>
-	<li>Have solid experience in shaping and translating a technology-enabled vision into delivery of successful business outcomes and led a company through key digital transitions.</li>
-	<li>Have a strong understanding and experience in managing cloud-based models including Saas, Paas and Iaas and worked with customers through digital and cloud transformation.</li>
-	<li>Has experience in working with Web-Scale organizations or Large Service Providers.</li>
-	<li>Has a strong background in Cyber Security, Security Operations and IT Risk Governance.</li>
-	<li>Has experience in speaking at public forums and presenting at key industry events.</li>
-	<li>Proven track record in building and managing high performing technical teams.</li>
-	<li>Highly skilled communicator and influencer with the ability to reflect and question positively and effectively.</li>
-	<li>Advanced technological skillset and a demonstrated history with technology.</li>
-	<li>Extensive industry knowledge with an eye towards the future.</li>
-	<li>Proven ability to forge and sustain effective partnerships internally and externally.</li>
-	<li>Proven ability to articulate a clear vision for change and manage the process while supporting people.</li>
+	<li>Experience managing engineering managers.</li>
+	<li>Experience managing complex projects with external dependencies</li>
+	<li>Results and metrics driven</li>
+	<li>A strong attention to detail</li>
+	<li>Great communication skills</li>
+	<li>Experience hiring great engineers</li>
+	<li>A kind and generous attitude towards customers and coworkers alike</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Experience with mobile and desktop applications</li>
+	<li>Experience with networking</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
