@@ -5,27 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX and or must be willing to relocate to the area for this role.&nbsp;</strong></p>
-<p><strong>About the Role:</strong></p>
-<p>We are looking for a highly self-motivated Portfolio Manager to join our Business Intelligence team as a key member of our Strategy and Planning initiative. You will work with our stakeholders in driving the roadmap and balancing the portfolio of data sourcing projects for our GTM and Machine Learning / AI initiatives while maintaining an end-to-end perspective when determining prioritization.&nbsp; You will serve as the main point of contact between the business teams and BI.&nbsp; Unlike traditional product managers, this role is solely dedicated to supporting the building of internal data environments or the data products that serve internal data customers. You will bring a passion for matching up business needs to the building of innovative data solutions.&nbsp; The ideal candidate is flexible and comfortable in playing multiple roles, managing internal and external stakeholders, and is able to adapt to quickly evolving situations. Combined with a planning and process-oriented mindset, you have the ability to cultivate trust and build strong partnerships with counterparts in Engineering, Security, and the Business teams.</p>
-<p><strong>What You’ll Do</strong><strong><br></strong></p>
+<p><strong>Please note this is a Fixed Term 11-month contract role.</strong></p>
+<p><strong>Position Summary:</strong></p>
+<p>We are seeking a highly organized and detail-oriented Partner Marketing Operations Specialist to join our dynamic marketing team. This role is pivotal in managing our Market Development Funds (MDF) program, processing requests and claims globally, collaborating with Finance and Regional Partner Marketing teams, and supporting partner events coordination. The ideal candidate will help build a robust operational framework, ensure seamless lead uploading and reporting, and maintain accurate records for auditing purposes. Additionally, this role will serve as the primary point of contact for all partner inquiries related to MDF.</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Drive the roadmap of one of the key business areas we support, including prioritization and management of data needs based on evolving business requirements, new requests, corporate priorities and stakeholder feedback, while maintaining a holistic and long range view the key goals.</li>
-	<li>Elicit clear and comprehensive user requirements from business stakeholders to ensure clarity and alignment with business goals and&nbsp; help translate complex data capabilities into tangible business value.</li>
-	<li>Identify and proactively address any discrepancies between business needs and potential technical implementation.</li>
-	<li>Prioritize and manage department backlog based on business value, user needs, and stakeholder input to ensure effective prioritization.</li>
-	<li>Facilitate communication between business stakeholders and the development team</li>
-	<li>Support the management of data sourcing schedules, timelines, and milestones for the implementation and delivery of the projects in your business team’s portfolio.</li>
-	<li>Assist in modeling and analyzing business processes and workflows to identify areas for improvement and enhance operational efficiency.</li>
+	<li>Manage the global MDF program, including processing requests and claims.</li>
+	<li>Ensure compliance with MDF guidelines and policies.</li>
+	<li>Collaborate with Finance and Regional Partner Marketing teams to facilitate timely approvals and payments.</li>
+	<li>Follow up on outstanding payments and resolve any issues or discrepancies.</li>
+	<li>Act as the primary point of contact for all partner inquiries related to MDF.</li>
+	<li>Provide timely and accurate information to partners regarding MDF processes, status updates, and requirements.</li>
+	<li>Develop and maintain tools and systems for efficient MDF management and auditing purposes.</li>
+	<li>Maintain database, campaign trackers, budget sheet and SFDC with all partner marketing activity, including post event lead list uploads and ROI tracking/reporting for the channel and sales team.</li>
+	<li>Upload and manage leads in the CRM system, ensuring accuracy and completeness.</li>
+	<li>Generate regular reports on MDF utilization, lead metrics, and other key performance indicators.</li>
+	<li>Provide insights and recommendations based on data analysis.</li>
+	<li>Document processes, best practices, and standard operating procedures.</li>
+	<li>Support the coordination of partner events, including logistics, vendor management, and communication.</li>
+	<li>Manage event budgets and track expenses.</li>
+	<li>Provide training and support to partners on MDF processes and tools.</li>
 </ul>
-<p><strong>Desirable skills, knowledge, and experience:</strong></p>
+<p>Qualifications:</p>
 <ul>
-	<li>BA/BS in Business Administration or Computer Science, or an equivalent combination of education and experience.</li>
-	<li>Minimum 5 years experience in planning and prioritization for highly cross functional teams</li>
-	<li>Proven ability to clearly and concisely communicate with an executive audience in both written and verbal communications</li>
-	<li>Thrive in a fast-paced iterative engineering environment, and embrace creating paths where none existed before</li>
-	<li>Strong competency with program management tools a MUST (Confluence, JIRA, Smartsheets, etc.) and various methodologies (Agile, Waterfall, Scrum, etc).&nbsp;</li>
-	<li>Highly motivated, self-driven, and able to deal well with ambiguity.</li>
+	<li>Bachelor’s degree in Marketing, Business Administration, or a related field.</li>
+	<li>2-4 years of experience in marketing operations, partner marketing, or a similar role.</li>
+	<li>Strong understanding of MDF programs and partner marketing dynamics is preferred.</li>
+	<li>Proficient in CRM systems, lead management, and reporting tools.</li>
+	<li>Excellent organizational skills and attention to detail.</li>
+	<li>Strong analytical skills with the ability to interpret data and provide actionable insights.</li>
+	<li>Effective communication and interpersonal skills.</li>
+	<li>Ability to manage multiple tasks and meet deadlines in a fast-paced environment.</li>
+	<li>Experience in event coordination is a plus.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,38 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Please note this is a Fixed Term 11-month contract role.</strong></p>
-<p><strong>Position Summary:</strong></p>
-<p>We are seeking a highly organized and detail-oriented Partner Marketing Operations Coordinator to join our dynamic marketing team. This role is pivotal in managing our Market Development Funds (MDF) program, processing requests and claims globally, collaborating with Finance and Regional Partner Marketing teams, and supporting partner events coordination. The ideal candidate will help build a robust operational framework, ensure seamless lead uploading and reporting, and maintain accurate records for auditing purposes. Additionally, this role will serve as the primary point of contact for all partner inquiries related to MDF.</p>
-<p><strong>Key Responsibilities:</strong></p>
+<h4><strong>Job Locations: Remote, Mexico City, MX</strong></h4>
+<h4><strong>To the attention of candidates (Mexico City):&nbsp;</strong></h4>
+<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
+<h4><strong>About the Department</strong></h4>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h4><strong>Description</strong></h4>
+<p>Network Operations Center ("NOC") Engineers provide premium-level support for Cloudflare's largest and most technically sophisticated customers. The NOC service will specifically provide monitoring, alerting, and remediation for degradation in availability and latency across Layer 7 traffic. The NOC system will monitor HTTP requests for alert-able conditions, and our NOC team will alert customers about problems as soon as they are found.&nbsp;</p>
+<p>NOC Engineers analyze the alerts, inform the customer of any material impact, and proactively put in motion a remediation path to resolving the degraded service, whether that be by moving traffic through a new route or working with the Systems Reliability Engineering team for a quick product fix or to declare a broader incident. The team also provides reporting and analysis to the customer on a regular cadence, beyond any report that would be self-serviceable within the Cloudflare UI.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Manage the global MDF program, including processing requests and claims.</li>
-	<li>Ensure compliance with MDF guidelines and policies.</li>
-	<li>Collaborate with Finance and Regional Partner Marketing teams to facilitate timely approvals and payments.</li>
-	<li>Follow up on outstanding payments and resolve any issues or discrepancies.</li>
-	<li>Act as the primary point of contact for all partner inquiries related to MDF.</li>
-	<li>Provide timely and accurate information to partners regarding MDF processes, status updates, and requirements.</li>
-	<li>Develop and maintain tools and systems for efficient MDF management and auditing purposes.</li>
-	<li>Maintain database, campaign trackers, budget sheet and SFDC with all partner marketing activity, including post event lead list uploads and ROI tracking/reporting for the channel and sales team.</li>
-	<li>Upload and manage leads in the CRM system, ensuring accuracy and completeness.</li>
-	<li>Generate regular reports on MDF utilization, lead metrics, and other key performance indicators.</li>
-	<li>Provide insights and recommendations based on data analysis.</li>
-	<li>Document processes, best practices, and standard operating procedures.</li>
-	<li>Support the coordination of partner events, including logistics, vendor management, and communication.</li>
-	<li>Manage event budgets and track expenses.</li>
-	<li>Provide training and support to partners on MDF processes and tools.</li>
+	<li>Configure and maintain custom alerting for availability and latency across Layer 7.&nbsp;&nbsp;</li>
+	<li>Build and maintain customer dashboards&nbsp; in Grafana, which will be used to monitor for alert signals.</li>
+	<li>Work closely with internal teams such as System Reliability Engineering, Infrastructure Engineering, and Network Engineering to alert against, and subsequently provide meaningful data on performance degradation.</li>
+	<li>Outreach to customers for triggered alerts, providing them with meaningful information on what alerts are firing and why.</li>
+	<li>Escalate impactful alerts to customer support and/or other internal teams.</li>
+	<li>Join customer calls to provide granular and frequent status updates on critical issues.</li>
+	<li>Compile historical reporting on a regular cadence to customers, including remediation steps.</li>
 </ul>
-<p>Qualifications:</p>
+<p><strong>Requirements</strong></p>
+<p><strong>3+ years experience in a customer-facing technical support role</strong></p>
 <ul>
-	<li>Bachelor’s degree in Marketing, Business Administration, or a related field.</li>
-	<li>2-4 years of experience in marketing operations, partner marketing, or a similar role.</li>
-	<li>Strong understanding of MDF programs and partner marketing dynamics is preferred.</li>
-	<li>Proficient in CRM systems, lead management, and reporting tools.</li>
-	<li>Excellent organizational skills and attention to detail.</li>
-	<li>Strong analytical skills with the ability to interpret data and provide actionable insights.</li>
-	<li>Effective communication and interpersonal skills.</li>
-	<li>Ability to manage multiple tasks and meet deadlines in a fast-paced environment.</li>
-	<li>Experience in event coordination is a plus.</li>
+	<li>Modern internet protocols like HTTPS, UDP, TCP, etc.</li>
+	<li>Analysis of traffic for anomaly detection and creation of mitigation rules</li>
+	<li>Knowledge of Cloudflare Products &amp; Features</li>
+	<li>Excellent communication skills with both an internal technical audience and a high-level customer stakeholder</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
