@@ -1,11 +1,7 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ez3BsqcG7Lzn097HAva9u/f4e261050c52e883b7c9f7bd5883ffe0/improving-the-resiliency-of-our-infrastructure-dns-zone.png" alt="">
 <div class="post-content lh-copy gray1">
+	<p></p>
 	<p>In this blog post we will discuss how we made our infrastructure DNS zone more reliable by using multiple primary nameservers to leverage our own DNS product running on our edge as well as a third-party DNS provider.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5S9VHp43NjjWK5QqZ0lYC4/fa0e555f2e167ffa7a4b197d91fd59f6/image2-16.png" alt="" class="kg-image" width="1726" height="866" loading="lazy">
-
-	</figure>
 	<h2>Authoritative Nameservers</h2>
 	<p>You can think of an authoritative nameserver as the source of truth for the records of a given DNS zone. When a recursive resolver wants to look up a record, it will eventually need to talk to the authoritative nameserver(s) for the zone in question. If you’d like to read more on the topic, our learning center provides some <a href="https://www.cloudflare.com/learning/dns/dns-server-types">additional information</a>.</p>
 	<p>Here’s an example of our authoritative nameservers (replacing our actual domain with example.com):</p>

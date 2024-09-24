@@ -1,8 +1,12 @@
 <div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01zugo4vFijAmQS86pVIrN/8bcaffc640fcbaf10cccc1e09060d7bc/introducing-0-rtt.jpg" alt="">
 <div class="post-content lh-copy gray1">
+	<p><sub><i></i></sub></p>
+	<blockquote>
+		<p><sub><i>NOTE: This post has been updated to reflect the new default behavior </i></sub><a href="https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption"><sub><i>outlined here</i></sub></a><sub><i>.</i></sub></p>
+	</blockquote>
 	<p>Cloudflare’s mission is to help build a faster and more secure Internet. Over the last several years, the Internet Engineering Task Force (IETF) has been working on a new version of TLS, the protocol that powers the secure web. <a href="https://blog.cloudflare.com/introducing-tls-1-3">Last September</a>, Cloudflare was the first service provider to enable people to use this new version of the protocol, <a href="https://blog.cloudflare.com/tag/tls%201.3">TLS 1.3</a>, improving security and performance for millions of customers.</p>
 	<p>Today we are introducing another performance-enhancing feature: zero <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip</a> time resumption, abbreviated as <i>0-RTT</i>. About 60% of the connections we see are from people who are visiting a site for the first time or revisiting after an extended period of time. TLS 1.3 speeds up these connections significantly. The remaining 40% of connections are from visitors who have recently visited a site and are resuming a previous connection. For these resumed connections, standard TLS 1.3 is safer but no faster than any previous version of TLS. 0-RTT changes this. It dramatically speeds up resumed connections, leading to a faster and smoother web experience for web sites that you visit regularly. This speed boost is especially noticeable on mobile networks.</p>
-	<p>We’re happy to announce that 0-RTT is now enabled by default for all sites on Cloudflare’s free service. For paid customers, it can be enabled in the Crypto app in the Cloudflare dashboard.</p>
+	<p>We’re happy to announce that 0-RTT is now <b>NOT</b> enabled by default for all sites on Cloudflare’s free service. For paid customers, it can be enabled in the Crypto app in the Cloudflare dashboard. </p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jnAtBFcCo19Qvyjxa2aVI/7825e8ad85adc280704bd1d5ae710e68/image05.jpg" alt="" class="kg-image" width="1960" height="342" loading="lazy">
@@ -25,7 +29,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59Z9OOkEOcRLQzaJM6A2ZB/7ead82fdc425276acbc830856754962a/image01.jpg" alt="200ms into the 200m" class="kg-image" width="1280" height="850" loading="lazy">
 
 	</figure>
-	<p>Creative Commons Attribution 2.0 Generic [Nick J. Webb](<a href="https://commons.wikimedia.org/wiki/File:London/_2012/_200m/_heat/_1/_start.jpg">https://commons.wikimedia.org/wiki/File:London\_2012\_200m\_heat\_1\_start.jpg</a>)</p>
+	<p><sub>Creative Commons Attribution 2.0 Generic [</sub><a href="https://commons.wikimedia.org/wiki/File:London/_2012/_200m/_heat/_1/_start.jpg"><sub>Nick J. Webb</sub></a><sub>]</sub></p>
 	<p>Connections that travel over longer distances have higher latency. Data travel speed is limited by the speed of light. When Cloudflare opens a new datacenter in a <a href="https://blog.cloudflare.com/panama-expands-cloudflare-network-to-50-countries">new city</a>, latency is reduced for people in the surrounding areas when visiting sites that use Cloudflare. This improvement is often simply because data has a shorter distance to travel.</p>
 	<p>Geographic proximity is not the only contributor to latency. WiFi and cellular networks can add <a href="https://hpbn.co/wifi/#measuring-your-wifi-first-hop-latency">tens</a> or even <a href="https://opensignal.com/blog/2014/03/10/lte-latency-how-does-it-compare-to-other-technologies">hundreds</a> of milliseconds to transmission latency. For example, using a 3G cellular network adds around 1.5 bolts to every transmission. Satellite Internet connections are even worse, adding up to <a href="https://arstechnica.com/information-technology/2013/02/satellite-internet-faster-than-advertised-but-latency-still-awful">4 bolts to every transmission</a>.</p>
 	<figure class="kg-card kg-image-card ">
