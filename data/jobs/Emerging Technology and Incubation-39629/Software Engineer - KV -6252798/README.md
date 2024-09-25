@@ -15,10 +15,13 @@
 <p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how KV processes and stores data, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust, and C++.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>4+ years of experience with (and love for) distributed systems and data</li>
-	<li>Willing and eager to share knowledge, and mentorGreat oral and written communications skills, especially concisely documenting complex concepts</li>
+	<li>2+ years of experience writing high volume production software</li>
+	<li>Interest in (and love for) distributed systems and data</li>
+	<li>Eagerness to learn and share knowledge</li>
+	<li>Excellent oral and written communications skills, especially concisely documenting complex concepts</li>
 	<li>Solid understanding of Go and JavaScript, including asynchronous programming in both</li>
-	<li>Strong systems level programming skillsUnderstanding of security issues and responsibilities</li>
+	<li>Strong systems level programming skills</li>
+	<li>Understanding of security issues and responsibilities</li>
 	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
 	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
 	<li>Solid Linux experience</li>
