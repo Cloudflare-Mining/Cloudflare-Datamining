@@ -5,68 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Senior Technical Program Manager - Engineering PMO</strong></h4>
-<h4>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Product Engineering.&nbsp; Your main responsibility will be to work cross functionally across product, engineering, design, marketing, security, billing, technical operations, infrastructure, legal, and more to build and execute on the overall strategy.&nbsp;</h4>
-<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
-<p><strong>This position will be based in Austin, TX, San Francisco, CA or Remote, USA. You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</strong></p>
-<h4>&nbsp;</h4>
-<p><strong>Major areas of responsibilities</strong></p>
+<p><strong>About the Role</strong><strong><br></strong>Cloudflare is seeking a passionate, motivated, and creative Marketing &amp; Events Manager, EMEA to join our dynamic EMEA Events Center of Excellence team. If you're full of positive energy, thrive in a fast-paced environment, and have a knack for both the analytical and the creative sides of marketing, this role is for you!</p>
+<p>As part of the EMEA Marketing team, you'll play a pivotal role in delivering high-impact events across the region, generating leads from new prospects, expanding accounts, and driving our marketing pipeline growth. This is your chance to take ownership of a wide array of event campaigns—from contract negotiations and promotional strategies to booth execution, team coordination, and ensuring sales follow-up to maximize event ROI.</p>
+<p>We're looking for someone who loves to measure success, has exceptional project management skills, and can think strategically while managing multiple moving parts. If you're eager to understand the sales process firsthand and learn how to create strategic marketing campaigns that align with ambitious goals, this is the perfect opportunity to kickstart your marketing career.</p>
+<p><strong>A key aspect of this role is supporting the DACH region</strong> (Germany, Austria, Switzerland), so <strong>proficiency in German</strong> is essential. You must also be willing to travel to support events within the DACH region.</p>
+<p><strong>What You’ll Be Doing</strong></p>
 <ul>
-	<li>Understand technical requirements of assigned engineering programs</li>
-	<li>Effectively balance risk and achieve business objectives&nbsp;</li>
-	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
-	<li>Drive creation and roll out of scalable processes to meet product and engineering team goals</li>
-	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
-	<li>Provide regular status updates to stakeholders and senior management<br><br></li>
+	<li>Collaborate cross-functionally with teams (Design, Sales, Marketing, Localization, Product) to deliver high-impact integrated online marketing campaigns.</li>
+	<li>Define campaign objectives, create marketing assets (website offers, email templates, landing pages, banners), segment leads, and track/report campaign performance.</li>
+	<li>Manage local vendors to support EMEA events and ensure seamless execution.</li>
+	<li>Plan, promote, and host a variety of marketing events (trade shows, conferences, meetups, breakfast briefings, and digital events) across the region, capturing prospects and nurturing them into customers, while also driving cross-sell opportunities.</li>
+	<li>Lead end-to-end project management, tracking campaign execution across platforms like Marketo and Salesforce, ensuring data accuracy, timelines, ROI, and ongoing optimization.</li>
+	<li>Communicate results and insights to key stakeholders, driving continuous improvements.</li>
 </ul>
-<p><strong>Desirable skills and knowledge&nbsp;</strong></p>
+<p><strong>What We’re Looking For</strong></p>
 <ul>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
-	<li>Knowledge of network architecture and working with infrastructure teams a plus</li>
-	<li>10+ years experience in technical program management and a desire for continuous improvement</li>
-	<li>Proven track record on creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
-	<li>Experience working with multiple time zones and multiple cross functional teams</li>
-	<li>Strong competency with Confluence, JIRA (admin-level experience strongly preferred), and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
+	<li>Fluency in English and German</li>
+	<li>Based in London, UK or Lisbon, Portugal</li>
+	<li>Experience in Events Marketing</li>
+	<li>A highly motivated, positive, and collaborative team player</li>
+	<li>Strong organizational skills with a sharp attention to detail</li>
+	<li>Analytical mindset with a love for data and optimization</li>
+	<li>Ability to thrive in a fast-paced, constantly evolving environment</li>
+	<li>Excellent written communication skills and strong organizational abilities</li>
+	<li>Extreme curiosity and a passion for learning</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Bonus Points If You Have</strong></p>
 <ul>
-	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $131,000 - $161,000.</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $145,000 - $161,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $151,000 - $185,000.</span></li>
+	<li>Hands-on experience with Salesforce, Marketo, Contentful, Eloqua (or other marketing automation tools)</li>
+	<li>Experience with Adobe Creative Suite (InDesign, Illustrator, Photoshop)</li>
+	<li>Skills in rewriting translated content to make it more engaging</li>
+	<li>Outreach messaging and content creation expertise</li>
+	<li>Prior internship experience at a high-growth company, especially in SaaS, security, or networking</li>
+	<li>Additional language skills</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
