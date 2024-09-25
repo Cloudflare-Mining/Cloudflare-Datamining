@@ -1032,9 +1032,11 @@
 		"fatalInternalErrors": "Sum of fatal internal server errors",
 		"inboundWebsocketMsgCount": "Sum of incoming websocket messages",
 		"outboundWebsocketMsgCount": "Sum of outbound websocket messages",
-		"storageDeletes": "Sum of storage deletes",
-		"storageReadUnits": "Sum of storage reads - in 4KB units",
-		"storageWriteUnits": "Sum of storage writes - in 4KB units",
+		"rowsRead": "Sum of rows read (by sqlite backed DOs)",
+		"rowsWritten": "Sum of rows written (by sqlite backed DOs)",
+		"storageDeletes": "Sum of storage deletes (by non-sqlite backed DOs)",
+		"storageReadUnits": "Sum of storage reads - in 4KB units (by non-sqlite backed DOs)",
+		"storageWriteUnits": "Sum of storage writes - in 4KB units (by non-sqlite backed DOs)",
 		"subrequests": "Sum of subrequests"
 	},
 	"AccountDurableObjectsStorageGroups": {
