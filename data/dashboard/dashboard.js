@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "abd26e44-1fc6-5be8-80f3-c179510f5217")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "8472244d-171a-595a-964c-a9119f3cf962")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -910,10 +910,10 @@
 					n.g.build = mn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "5b6419981bd8713788cb381358eff959a274f865",
-						dashVersion: "27459138",
+						commit: "ea6c75fed8cf71958cf2462d8882f1b95f91ee5a",
+						dashVersion: "27489727",
 						env: "production",
-						builtAt: 1727209172833,
+						builtAt: 1727284087467,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -11101,6 +11101,7 @@
 						moduleSyntax: "https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#migrate-from-service-workers-to-es-modules",
 						configureQueues: "https://developers.cloudflare.com/queues/configuration/configure-queues/",
 						observability: "https://developers.cloudflare.com/workers/observability/",
+						observabilityLogs: "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
 						workersAssets: "https://developers.cloudflare.com/workers/frameworks/"
 					},
 					serverlist: "https://blog.cloudflare.com/tag/serverlist/",
@@ -11298,8 +11299,8 @@
 				v = null,
 				b = {
 					bandaWorkersCI: "banda-workers-ui",
-					workersAssets: "workers-assets",
-					observability: "workers-observability"
+					observability: "workers-observability",
+					previewUrls: "workers-preview-urls-enabled"
 				};
 			let R = function(h) {
 				return h[h.NONE = 0] = "NONE", h[h.MISS = 1] = "MISS", h[h.EXPIRED = 2] = "EXPIRED", h[h.UPDATING = 3] = "UPDATING", h[h.STALE = 4] = "STALE", h[h.HIT = 5] = "HIT", h[h.IGNORED = 6] = "IGNORED", h[h.BYPASS = 7] = "BYPASS", h[h.REVALIDATED = 8] = "REVALIDATED", h[h.DYNAMIC = 9] = "DYNAMIC", h[h.STREAM_HIT = 10] = "STREAM_HIT", h[h.DEFERRED = 11] = "DEFERRED", h
@@ -11375,6 +11376,7 @@
 					serviceDetailsSettingsBuildsV2: (0, e.BC)`/${"accountId"}/workers/services/view/${"serviceId"}/${"environmentName"}/settings#builds`,
 					serviceDetailsSettingsTriggers: (0, e.BC)`/${"accountId"}/workers/services/view/${"serviceId"}/${"environmentName"}/settings/triggers`,
 					serviceDetailsSettingsTriggersV2: (0, e.BC)`/${"accountId"}/workers/services/view/${"serviceId"}/${"environmentName"}/settings#trigger-events`,
+					serviceDetailsSettingsObservabilityV2: (0, e.BC)`/${"accountId"}/workers/services/view/${"serviceId"}/${"environmentName"}/settings#observability`,
 					serviceDetailsLogs: (0, e.BC)`/${"accountId"}/workers/services/view/${"serviceId"}/${"environmentName"}/logs`,
 					serviceDetailsLogsLive: (0, e.BC)`/${"accountId"}/workers/services/view/${"serviceId"}/${"environmentName"}/logs/live`,
 					serviceDetailsLogpush: (0, e.BC)`/${"accountId"}/workers/services/view/${"serviceId"}/${"environmentName"}/logs/logpush`,
@@ -14237,4 +14239,4 @@
 	}
 ]);
 
-//# debugId=abd26e44-1fc6-5be8-80f3-c179510f5217
+//# debugId=8472244d-171a-595a-964c-a9119f3cf962
