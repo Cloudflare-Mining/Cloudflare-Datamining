@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 72,
+	"version": "2024.8.458.0",
+	"short_version": "",
+	"size": 120889344,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "91433998204e96d6091a079d87f994a3",
+	"fingerprint": "8b0716a034bb3b120b6c888c1ae80b6d",
+	"uploaded_at": "2024-09-26T18:15:24.165Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains minor fixes and improvements.\r\n\r\n## Notable updates\r\n- Added the ability to customize PCAP options in the warp-cli.\r\n- Added a list of installed applications in warp-diag.\r\n- Added a summary of warp-dex traceroute results in its JSON output.\r\n- Improved the performance of firewall operations when enforcing split tunnel configuration.\r\n- Reduced the time it takes for a WARP client update to complete.\r\n- Fixed an issue where clients using service tokens failed to retry the initial connection when there is no network connectivity on startup.\r\n- Fixed issues where incorrect DNS server addresses were being applied following reboots and network changes. Any incorrect static entries set by previous WARP versions must be manually reverted.\r\n- Fixed a known issue which required users to re-register when an older single configuration MDM file was deployed after deploying the newer, multiple configuration format.\r\n- Deprecated warp-cli commands have been removed. If you have any workflows that use the deprecated commands, please update to the new commands where necessary.\r\n\r\n## Known issues\r\n- Using MASQUE as the tunnel protocol may be incompatible if your organization has Regional Services enabled.\r\n- DNS resolution may be broken when the following condition are all true:\r\n    - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.\r\n    - A custom DNS server address is configured on the primary network adapter.\r\n    - The custom DNS server address on the primary network adapter is changed while WARP is connected.\r\n  To work around this issue, please reconnect the WARP client by toggling off and back on.\r\n\r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"6686c07c400a22bd52d588e765ea171db54c56432def27086b34183d6d72a68c"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}
