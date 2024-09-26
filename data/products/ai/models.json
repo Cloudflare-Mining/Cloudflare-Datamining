@@ -561,28 +561,6 @@
 		]
 	},
 	{
-		"id": "872d9af1-5ff8-4e84-aed1-ab3caf909436",
-		"source": 1,
-		"name": "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
-		"description": "Llama 3.1 8B quantized to FP8 precision, optimized to be faster",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "terms",
-				"value": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE"
-			}
-		]
-	},
-	{
 		"id": "85c5a3c6-24b0-45e7-b23a-023182578822",
 		"source": 2,
 		"name": "@hf/thebloke/llama-2-13b-chat-awq",
