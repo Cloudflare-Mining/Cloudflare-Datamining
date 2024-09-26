@@ -43,6 +43,18 @@ while (hasMore) {
 models = models.sort((modelA, modelB) => modelA.id - modelB.id);
 await fs.writeJson(file, models, { spaces: '\t' });
 
+const schemaFile = path.resolve(dir, 'models-schema.json');
+const schemaRes = await fetch('https://ai.cloudflare.com/api/models');
+if (!schemaRes.ok) {
+	console.log(`models-schema failed: ${schemaRes.status} ${schemaRes.statusText}`);
+} else {
+	const schemaJson = await schemaRes.json();
+	if (schemaJson.models) {
+		schemaJson.models = schemaJson.models.sort((modelA, modelB) => modelA.id - modelB.id);
+	}
+	await fs.writeJson(schemaFile, schemaJson, { spaces: '\t' });
+}
+
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(
 	[
