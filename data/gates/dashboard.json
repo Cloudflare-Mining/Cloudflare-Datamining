@@ -980,6 +980,13 @@
 	"prg-upsell-banner-supression": {
 		"enabled": true
 	},
+	"prg-waf-custom-rule-upsell-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"prg-workers-free-plan-cta-experiment": {
 		"enabled": false,
 		"branches": [
