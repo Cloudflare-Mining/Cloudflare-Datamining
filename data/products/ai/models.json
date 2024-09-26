@@ -420,6 +420,24 @@
 		]
 	},
 	{
+		"id": "9e087485-23dc-47fa-997d-f5bfafc0c7cc",
+		"source": 1,
+		"name": "@cf/black-forest-labs/flux-1-schnell",
+		"description": "FLUX.1 [schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions. ",
+		"task": {
+			"id": "ccb1ca5a-043d-41a7-8a3b-61017b2796fd",
+			"name": "Dumb Pipe",
+			"description": "Internal - Dumb Pipe models don't use tensors"
+		},
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "beta",
+				"value": "true"
+			}
+		]
+	},
+	{
 		"id": "9d2ab560-065e-4d0d-a789-d4bc7468d33e",
 		"source": 1,
 		"name": "@cf/thebloke/discolm-german-7b-v1-awq",
@@ -539,6 +557,28 @@
 			{
 				"property_id": "terms",
 				"value": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/LICENSE"
+			}
+		]
+	},
+	{
+		"id": "872d9af1-5ff8-4e84-aed1-ab3caf909436",
+		"source": 1,
+		"name": "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
+		"description": "Llama 3.1 8B quantized to FP8 precision, optimized to be faster",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "beta",
+				"value": "true"
+			},
+			{
+				"property_id": "terms",
+				"value": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE"
 			}
 		]
 	},
