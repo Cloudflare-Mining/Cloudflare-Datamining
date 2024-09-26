@@ -542,6 +542,7 @@ const navigation = {
 			title: "navigation.account.api_tokens",
 			url: "/api-tokens",
 			testId: "account-homepage-api-tokens",
+			labels: ["beta"],
 			hasPermission: b => (0, a.iY)(b) && !!(0, e.z1)("account-owned-api-tokens")(b)
 		}, {
 			title: "navigation.account.audit_log",
