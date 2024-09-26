@@ -45,18 +45,9 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"result": {
-											"properties": {
-												"image": {
-													"description": "The generated image in Base64 format.",
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										"success": {
-											"default": true,
-											"type": "boolean"
+										"image": {
+											"description": "The generated image in Base64 format.",
+											"type": "string"
 										}
 									},
 									"type": "object"
