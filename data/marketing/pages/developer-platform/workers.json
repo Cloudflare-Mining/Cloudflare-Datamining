@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-09-26T13:52:45.193Z",
-					"updatedAt": "2024-09-10T21:54:16.386Z"
+					"updatedAt": "2024-09-26T09:45:00.201Z"
 				},
 				"contentfulId": "3IcvEtHKLpaiKgusyXaAIL",
 				"contentTypeId": "page",
@@ -66,21 +66,21 @@
 					{
 						"contentfulId": "1CtNgIMWu3LBOIZLT52eWJ",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Build applications for the modern cloud",
+						"title": "Cloudflare Workers",
 						"titleSize": null,
-						"subtitle": "Deploy serverless code, globally with exceptional performance, reliability, and scale.",
+						"subtitle": "Run serverless code with exceptional performance, reliability, and scale.",
 						"subtitleSize": null,
-						"copy": "Build web functions and applications without configuring or maintaining infrastructure when it's deployed globally to over %{DataCenterCount} data centers around the world on Cloudflare's global network.",
+						"copy": "Build serverless functions and applications without configuring or maintaining infrastructure with global deployment to over %{DataCenterCount} data centers around the world on Cloudflare's global network.",
 						"buttonColor": null,
 						"buttonColor2": "orange",
-						"buttonText1": "For Developers",
+						"buttonText1": "Start building",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://workers.cloudflare.com/",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/workers-and-pages",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Start Building",
+						"buttonText2": "Read developer docs",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://dash.cloudflare.com/sign-up/workers-and-pages",
+						"buttonUrl2": "https://developers.cloudflare.com/workers/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -100,7 +100,7 @@
 						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "[Visit workers playground](https://workers.cloudflare.com/playground)",
+						"leftLink": "[Visit the Workers playground](https://workers.cloudflare.com/playground)",
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "show",
 						"backgroundColor": "white",
@@ -109,67 +109,146 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "7d69ec71-56b6-56f5-ad61-2538435af035",
-							"altText": "workers-now-even-more-unbound",
-							"title": "workers-now-even-more-unbound",
+							"id": "c5ba2603-c24a-55a4-af45-169d9894ea40",
+							"altText": "Build Powerful Applications - Hero",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/p9Spglf8rUnpLISMlDuoF/0d4029b96250c468878a52df2d561fc5/BDES-5039_-_Workers-Unbound.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6elch54Rkrp0HUB7UJNNLd/0dd12730b17615dc97513c618b164973/Improving_Developer_Experience_for_Framework_Users.png"
 								},
-								"description": ""
+								"description": "Build Powerful Applications"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
 					},
 					{
-						"contentfulId": "24mbA2QjZ0iNbh56ILtwgK",
-						"title": "Build powerful serverless applications",
-						"copy": "From fast and light to longer running and more CPU-intensive workloads, code is deployed and executes globally reducing network round-trips and providing exceptional performance, reliability, and scale. \n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MsJ8xgSvDAfjsCoIWCaWN/6bcce65b61a0bd7f78ee168ce09c92f5/Workers_for_Platforms__1_.png"
+						"contentfulId": "65vyTv7olm1VFJss8ACPD",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF WORKERS",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "Ssq4V3smMC8ocEFjiloDi",
+								"title": "Increase developer productivity",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Spin up applications in hours not days with no tuning necessary. Code is automatically placed for optimal performance. ",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "af141425-00b0-562b-a8d3-5e7727ecc395",
+									"altText": "Innovation thinking orange",
+									"title": "Innovation thinking orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SWsnCv2TXMXADX1uFOe30/a9e83fe2a338d06b5f01d3bdb58b712f/innovation-thinking.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
-							"description": "Illustration of Developer Platform building blocks"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": "top",
-						"togglesTo": []
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7azjMffs8nCcwV5fjCIJdl",
+								"title": "Scale automatically",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "No action is required from developers to add more compute power or worry about reaching a limit no matter how much traffic an application receives.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
+										},
+										"description": "icon scale aqua"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5D5pLfuEt5w6EIo3lZG6G0",
+								"title": "Improve reliability",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Gradually deploy code change to improve reliability and catch errors before they impact end users.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "33d31860-e857-5323-98f8-8102528a9f69",
+									"altText": "Performance arrow up icon",
+									"title": "Performance arrow up icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Bv7zElyuDmw76ORWjFL8b/e12526c289fcc43ebf221959e6093a61/performance-arrow-up.svg"
+										},
+										"description": "Performance arrow up icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
-						"contentfulId": "4Q43JVwiYKN4Yhx8a16OvF",
-						"title": "Scale projects with built-in security",
-						"copy": "Get the security and reliability you need with out-of-the-box tools from Cloudflare's secure ecosystem. Workers offers robust security built in including: \n\n- WAF\n- SSL/TLS\n- DDoS protection\n- Highly reliable DNS & CDN network\n- Latest web standards (HTTP3/QUIC)\n- Mutual TLS Authentication for Workers\n",
+						"contentfulId": "8cv8aenLjM7T729tDPmCa",
+						"title": "Run serverless code from region: Earth",
+						"copy": "To enable industry-leading performance automatically, Cloudflare Workers runs on V8 isolates not containers.  Our V8 isolate architecture enables instant start up times at no additional cost as there is no delay waiting for the runtime to be loaded into an instance upon initiation. Isolates already have the runtime, all that is needed is for the code to be loaded on invocation, virtually eliminating cold starts on requests.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -182,231 +261,2399 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
+						"streamOptions": [
+							"controls"
+						],
 						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4unmcrcelPVFmJvIMBdGDM/f8a738865b3372eef8a38ccc5c6d6163/workers-apps-scaling-globally-spot-illustration.png"
-							},
-							"description": "Cloudflare Workers illustration"
-						},
+						"image": null,
 						"imageAssetFile": {
-							"id": "21073195-820e-5795-9092-e6760e0754b5",
-							"altText": "Scale projects with built-in security",
+							"id": "d84879cc-0696-5706-912b-40159ec9d905",
+							"altText": "Workers - How it works - image",
 							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ht4MvZ9Y7sIN2OkdT1T4Y/de3639bd49a86dc46954db909eb88ffd/BDES-5039_-_Workers-apps-scaling-globally.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RpnQl0NtK6nbbIVO2OWQ4/1dc0a9ebc139d9a8237c1b8467b9c745/Workers_howmit_works.png"
 								},
-								"description": "Scale projects with built-in security"
+								"description": "Workers - How it works - image"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": "top",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "65Td1MAjYskE8rohjR0yZF",
-						"contentTypeId": "bladeMultipleColumnsLayout",
+						"contentfulId": "XPRWdX7opF38u8HdYzXY9",
+						"contentTypeId": "bladeLeadGeneration",
 						"title": null,
-						"eyebrowHeading": null,
-						"description": null,
-						"textLayout": "center",
-						"columnsLayout": "Two Columns",
-						"columnContent": [
-							{
-								"contentTypeId": "elementColumnContent",
-								"contentfulId": "W3YhK6DQsJGHqiDwI34Go",
-								"title": null,
-								"heading": "Deploy code without configurations",
-								"copy": "With automated configuration, deployment, scale, and agile Developer services, developers can spend more time coding and building new products with the resources needed for scale, performance, security and reliability."
-							},
-							{
-								"contentTypeId": "elementColumnContent",
-								"contentfulId": "4qF4dDExoUymMXzI4wU3jF",
-								"title": null,
-								"heading": "Expand your toolkit with Workers Integration Marketplace",
-								"copy": "Expand your toolkit with developer products to easily discover, configure and deploy products to use with Workers. The Workers Integration Marketplace enables developers to bring any products of their choice to Cloudflare Workers."
-							}
-						],
-						"sectionPadding": null,
-						"htmlId": null
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "6Om9yecuNyJXTZjmStipNO",
-						"quote": "\"With Workers, we now have the guarantee that our origin would be protected from high traffic volumes. Our readers depend on us, and Workers has been the solidly reliable platform we needed to deliver for them.\"",
-						"quoteAuthor": "Frank Sharpe",
-						"quoteTitle": "Senior Product Developer",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
+						"description": "Learn how to build a global API gateway with Workers.",
+						"variant": "inline",
 						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1s9if3EyH8f1ig9BQKy570/193b79acf5f6c0cfb0a9685e023fef7c/logo_propublica.svg"
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
 							},
-							"description": "ProPublica logo"
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
 						},
-						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2OZyTKlteZVH7MHwjPGUen",
+							"elementName": "Workers - Lead gen - CTA",
+							"standardText": null,
+							"text": "See reference architecture",
+							"url": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "3mFjmCJCzXWahImrsi1pED",
-						"contentTypeId": "bladeKeyFeatures",
-						"backgroundColor": "light-blue",
-						"title": "Key Features",
-						"keyFeature": [
-							"Service bindings to send request from one Worker to another",
-							"Automatic configuration of certificates, origin servers and DNS",
-							"Run periodic jobs or maintenance tasks with Cron Triggers",
-							"Lower latency with zero cold-starts",
-							"DB connectors ",
-							"Transparent pricing",
-							"Capture metrics on Workers utilization with Workers Analytics Engine",
-							"Debug and troubleshoot with tracing & logging",
-							"Improve visibility and debugging with events collected via Workers Logpush",
-							"Wrangler, a command-line tool for building Workers",
-							"Ecosystem of developer tools ",
-							"Mutual TLS Authentication for Workers",
-							"Run browser automation directly in Workers (Puppeteer)"
-						],
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "qX1FpKk4x9rn7reOWHDTn",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": null,
-						"titleColor": null,
-						"variant": null,
-						"description": null,
-						"featuresTextStyle": "body1",
-						"htmlId": null
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2gz211FkVPXNRv39abdQKC",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "We need exceptionally strong security for our customers who upload private app code to Docker Hub. Cloudflare Workers provides an authentication layer that ensures that anyone who tries to access user data is authorized to do so.",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n- Docker",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
 					},
 					{
-						"contentfulId": "5SAEesAhVFWU9Aqyid0J9",
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "e2ec94e1-5198-59de-ba36-d94e64d7299e",
+								"altText": "8x8",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nG9l7TAuZE0aHfxPGh1rd/0f1fa6e6aad0a54d231f753983caf0db/logo_8x8_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "320b153b-94ff-5d2f-8a97-af10d692025f",
+								"altText": "Applied Systems",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ccFypTv38XuGPWyX4t3mJ/152157e5f3544e7e6ff283a1ed408857/logo_applied-sciences_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f598f8df-db52-5bf1-b683-c9b55d79ffea",
+								"altText": "Canva",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xV3mJg17PDJd4s2gOmd0R/24268d39f36e83d00fbfd1d3bf05d74f/logo_canva_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "237cb76e-9942-5889-be23-901eece16b9a",
+								"altText": "DeliveryHero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1A7PvpqMbRgf25bIFlMRP8/5103cc54c23d69d716fef69fd02b6c3e/logo_delivery-hero_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ca260af0-8f63-5508-90b2-f8a6ba8b10bd",
+								"altText": "EQT",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2X4bbrSiy4xEnXAEqgf1WY/3f6d57ecd670d5adbfe0d067f61ef398/logo_EQT_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ee5ae45e-790a-5349-9e33-f5842aaf5210",
+								"altText": "Indeed",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vIlSpn8aLMYdbNLf2QAVk/606bbdcf8faabd23ee7e2db7b63c9ba3/logo_indeed_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "cd2d3f62-209f-5dad-a75a-cda7831b4fc5",
+								"altText": "Japan Airlines",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/L3DrbVVMwAkPCbHiTb5fN/3cd12946c2d3b5f8106d6dec92a08ed8/featured_logo_japan_airlines_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "18382700-5ac8-5805-b724-95e94acbd883",
+								"altText": "JetBlue Travel Products",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/27YorMcFFA3hbQ88Fgsv50/7a10904f6bfc1802ef8d203a5c8abdc6/logo_jetblue-travel-products_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f1a833c0-bb06-5d58-9fe4-051a30350e74",
+								"altText": "Knauf",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33wforxIaRsKYbxl1fnBpc/9a649de7c9f96154cbb747ddd6ecbf20/logo_knauf_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d15cb740-d67e-5443-b5d1-baac636002ec",
+								"altText": "Mindbody",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dDd4cLdsE3hBx6EZTBimX/a2f71a2356e787c3c0ee3edebd746c25/logo_mindbody_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "91342339-2914-572a-ae7a-3102347b7bdf",
+								"altText": "Werner Enterprises",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AWBiH3Kfe6OT7esKWR9I4/f804cd5bd32d31f7ecc51c47b33cd47d/logo_werner_enterprises_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "1fa3eb14-5ca6-5892-8a0d-6397cefdfc5a",
+								"altText": "Ziff Media",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h4ORr4AcL2kOW0Va6Q6dh/c253afc9b0bf1587ca8fa8698e6cdad5/logo_ziff-davis_trusted-by_gray.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "4wywg6UEzUHTOBhwqwXhGV",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": null,
-						"eyebrowHeading": null,
+						"title": "Focus on your code and innovate faster.",
+						"eyebrowHeading": "Top Workers use cases",
 						"description": null,
-						"textLayout": "center",
-						"columnsLayout": "Two Columns",
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
-								"contentTypeId": "elementColumnContent",
-								"contentfulId": "uxTBuuBIAHwV9StI4dIl0",
-								"title": null,
-								"heading": "Intelligent code execution",
-								"copy": "Workloads run from the most optimal location with Smart Placement. Cloudflare intelligently executes code closer to the data or closer to the user for the best performance possible."
+								"contentTypeId": "feature",
+								"contentfulId": "3war9iIgKQ1hs2vTPTUwae",
+								"title": "Run serverless functions",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "From fast and light to longer running and more CPU-intensive workloads, deploy and execute code globally.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0dc25a13-ecf5-503c-b3e1-4e3e6e60cd68",
+									"altText": "cloudflare-workers-80x80-0ab91d2",
+									"title": "cloudflare-workers-80x80-0ab91d2",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/329Q5Xu07lQPSczptz6AgI/f87ec76e0079903a5caf727202e4b6ff/cloudflare-workers_outline.png"
+										},
+										"description": "Cloudflare Workers icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"contentTypeId": "elementColumnContent",
-								"contentfulId": "v9FG5hz2oSz0Mw58T2zKE",
-								"title": null,
-								"heading": "Build better experiences",
-								"copy": "Build great software and applications with easy-to use developer tools. Developers build deploy and update code while Cloudflare manages configuring auto-scaling, load balancers, or paying for capacity you don't use."
+								"contentTypeId": "feature",
+								"contentfulId": "7DOVcDnpZL0eecSZUs4OMW",
+								"title": "Build frontend applications",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Upload and serve HTML, CSS and client-side JS with native support for static files.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "134a8bb8-faef-533e-96a2-dabd4762da64",
+									"altText": "Cloudflare Images",
+									"title": "Cloudflare Images Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cdHgwhn8poW5M4IegENwA/f0640421be98265b555ba988953252c2/image.svg"
+										},
+										"description": "Orange image icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2CprJFK0yGybyRx438xj9e",
+								"title": "Observability and troubleshooting",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Collect, filtersearch, and query Workers logs to troubleshoot and resolve problems faster.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+										},
+										"description": "Performance acceleration rocket orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						],
 						"sectionPadding": null,
 						"htmlId": null
 					},
 					{
-						"contentfulId": "OIJs34feno5C8ijh4hWOI",
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "6SfO40O6jgkFu0HdHJEh07",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://cfl.re/swg-overview\" target=\"_self\" class=\"inline-link-style\">Explore use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://cfl.re/swg-overview\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "69mFcT7XMNDDILYN3EdV6R",
+						"title": "Helping organizations worldwide modernize applications",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "45KLS3VsrG9rtqcZUmmNFQ",
+							"elementName": "Workers - View case studies",
+							"standardText": null,
+							"text": "View case studies",
+							"url": "https://www.cloudflare.com/case-studies/?product=Workers",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "3h2IOSSRCetcpIwW0GcpWH",
+						"contentTypeId": "bladeTabs",
+						"anchorTag": "overview",
+						"sectionPadding": "tile--no-bottom-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"heading": null,
+						"tabPosition": "left",
+						"tabs": [
+							{
+								"contentfulId": "3fusbGKUEwF8BMoTAwmq9x",
+								"contentTypeId": "elementTab",
+								"title": "Cloudflare Workers",
+								"description": "Deploy serverless code instantly across the globe",
+								"tabContent": [
+									{
+										"bladeBorder": null,
+										"sectionPadding": "tile--no-top-padding",
+										"backgroundColor": null,
+										"contentTypeId": "bladePricingPlans",
+										"contentfulId": "4tPFBEoZ0c9IdtOxLCjRAz",
+										"title": null,
+										"description": null,
+										"htmlId": "overview",
+										"plansList": [
+											{
+												"contentTypeId": "plan",
+												"contentfulId": "4GyBFDQIZIppCBRaTZ5Olt",
+												"type": "Workers Free",
+												"priceCurrencySymbol": null,
+												"price": "$0/mo",
+												"priceDurationPeriod": null,
+												"billingSubtext": "100,000 requests per day (Across all of your Worker scripts, UTC+0)",
+												"description": "Experience the Workers ecosystem without commitment.",
+												"shortDescription": null,
+												"mediumDescription": null,
+												"supportResponseTitleText": null,
+												"supportResponseTime": null,
+												"ctaButtonText": "Get started",
+												"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/workers",
+												"ctaButton": {
+													"buttonAssetFile": null,
+													"buttonTextLoggedIn": null,
+													"contentTypeId": "button",
+													"contentfulId": "4oX0QPLBmknFTy2P2z2Qrz",
+													"elementName": "Workers Free Plan-CTA",
+													"standardText": null,
+													"text": "Get started",
+													"url": "https://dash.cloudflare.com/sign-up/workers",
+													"loggedInUrl": null,
+													"buttonModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"additionalTermsText": null,
+												"learnMoreText": null,
+												"plansPageLinkText": null,
+												"plansPageLinkUrl": null,
+												"activatedKeyFeatures": null,
+												"deactivatedKeyFeatures": null,
+												"coreFeatures": null,
+												"supportResponse": null,
+												"bottomCtaLinkUrl": "/",
+												"bottomCtaLinkText": "Learn more",
+												"bottomCtaLink": {
+													"contentTypeId": "elementLink",
+													"contentfulId": "7hhUllbEp59YYenatq9ekQ",
+													"elementName": "Workers Free Plan - Learn more",
+													"standardText": null,
+													"text": "Learn more",
+													"url": "/developer-platform/workers/",
+													"elementModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"hideTopDivider": true,
+												"featureList1": {
+													"contentTypeId": "featureList",
+													"contentfulId": "2Dfu7kNvA8XqBRVsK2OHB8",
+													"title": "Workers features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "Includes 100k requests per day",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Max 10ms CPU time per request",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Access to Developer Platform products. Limits apply",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList2": {
+													"contentTypeId": "featureList",
+													"contentfulId": "4P0VqCNCSIy85EzL66eqd4",
+													"title": "Key-value storage features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "100,000 read operations per day",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "1,000 write, delete, list operations per day",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Up to 1GB of storage",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList3": {
+													"contentTypeId": "featureList",
+													"contentfulId": "6dNBDqx2Qdz7BuxEW6hXD0",
+													"title": "Platform basics",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "Up to 100 Worker scripts",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Up to 100 namespaces",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Automatic global deployments to hundreds of data centers",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Maintenance-free infrastructure that scales automatically",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "High performance runtime with no cold starts",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Support for JavaScript and over 10 other languages",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Full CLI deployment capabilities",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Mutual TLS for Workers",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Static asset hosting",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Preview URLs ",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Integrated CI/CD",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Gradually rollout changes",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "200,000 logs per day",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": false,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												}
+											},
+											{
+												"contentTypeId": "plan",
+												"contentfulId": "13rVSEtBKuIwe5Ia9dMWlC",
+												"type": "Workers Paid",
+												"priceCurrencySymbol": null,
+												"price": "Starting at $5/mo",
+												"priceDurationPeriod": null,
+												"billingSubtext": " $0.30/million requests per month",
+												"description": "Build scalable, production ready applications without usage limits.",
+												"shortDescription": null,
+												"mediumDescription": null,
+												"supportResponseTitleText": null,
+												"supportResponseTime": null,
+												"ctaButtonText": "Get started",
+												"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/workers",
+												"ctaButton": {
+													"buttonAssetFile": null,
+													"buttonTextLoggedIn": null,
+													"contentTypeId": "button",
+													"contentfulId": "11eZrlh8U5qKhhBZGihV2D",
+													"elementName": "Workers Paid-CTA",
+													"standardText": null,
+													"text": "Get started",
+													"url": "https://dash.cloudflare.com/sign-up/workers",
+													"loggedInUrl": null,
+													"buttonModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"additionalTermsText": null,
+												"learnMoreText": "Learn more",
+												"plansPageLinkText": null,
+												"plansPageLinkUrl": null,
+												"activatedKeyFeatures": null,
+												"deactivatedKeyFeatures": null,
+												"coreFeatures": null,
+												"supportResponse": null,
+												"bottomCtaLinkUrl": "/",
+												"bottomCtaLinkText": "Learn more",
+												"bottomCtaLink": {
+													"contentTypeId": "elementLink",
+													"contentfulId": "jRSIhkIvs03MIPhMz83Qz",
+													"elementName": "Workers Paid-Learn more",
+													"standardText": null,
+													"text": "Learn more",
+													"url": "/developer-platform/workers/",
+													"elementModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"hideTopDivider": true,
+												"featureList1": {
+													"contentTypeId": "featureList",
+													"contentfulId": "1wiyjSuzo3RsjyEuOP1yKK",
+													"title": "Workers features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited requests. 10M requests/month included",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Max 30s CPU time/request. 30M CPU ms/month included",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": " Access to Developer Platform products",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList2": {
+													"contentTypeId": "featureList",
+													"contentfulId": "kldb9KoH5BZ862VtOVEag",
+													"title": "Key-value storage features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "Includes 10 million read operations per month ",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Includes 1 million write, delete, and list operations per month",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Up to 1GB of storage",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList3": {
+													"contentTypeId": "featureList",
+													"contentfulId": "3pmMB2AuXFPC4pmQezE6Gt",
+													"title": "Platform basics",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "Up to 500 Worker scripts",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Up to 100 namespaces",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Automatic global deployments to hundreds of data centers",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Maintenance-free infrastructure that scales automatically",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "High performance runtime with no cold starts",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Support for JavaScript and over 10 other languages",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Full CLI deployment capabilities",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Mutual TLS for Workers",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Static asset hosting",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Preview URLs ",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Integrated CI/CD",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Gradually rollout changes",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "20,000,000 logs per month",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "491rx4i19x1oLCwQQEN0J3",
+								"contentTypeId": "elementTab",
+								"title": "Workers KV",
+								"description": "Provides access to a secure low latency key-value store at all of our data centers",
+								"tabContent": [
+									{
+										"bladeBorder": null,
+										"sectionPadding": "tile--no-top-padding",
+										"backgroundColor": null,
+										"contentTypeId": "bladePricingPlans",
+										"contentfulId": "Spn8qecOUH7i9FwGxSeU8",
+										"title": null,
+										"description": null,
+										"htmlId": null,
+										"plansList": [
+											{
+												"contentTypeId": "plan",
+												"contentfulId": "1K0Jy5il2vXOJTNrPSDtby",
+												"type": "Included with Workers Free",
+												"priceCurrencySymbol": null,
+												"price": null,
+												"priceDurationPeriod": null,
+												"billingSubtext": null,
+												"description": null,
+												"shortDescription": null,
+												"mediumDescription": null,
+												"supportResponseTitleText": null,
+												"supportResponseTime": null,
+												"ctaButtonText": "Get started",
+												"ctaButtonUrl": "/",
+												"ctaButton": {
+													"buttonAssetFile": null,
+													"buttonTextLoggedIn": null,
+													"contentTypeId": "button",
+													"contentfulId": "4u0ZlFqcCoukaZyR65hha9",
+													"elementName": "Workers KV - Included with Workers Free-CTA",
+													"standardText": null,
+													"text": "Get started",
+													"url": "https://dash.cloudflare.com/sign-up/workers",
+													"loggedInUrl": null,
+													"buttonModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"additionalTermsText": null,
+												"learnMoreText": null,
+												"plansPageLinkText": null,
+												"plansPageLinkUrl": null,
+												"activatedKeyFeatures": null,
+												"deactivatedKeyFeatures": null,
+												"coreFeatures": null,
+												"supportResponse": null,
+												"bottomCtaLinkUrl": "/",
+												"bottomCtaLinkText": "Learn more",
+												"bottomCtaLink": {
+													"contentTypeId": "elementLink",
+													"contentfulId": "5qlBugPoKCMjXZ2rXeCScK",
+													"elementName": "Workers KV - Included with Workers Free-Learn more",
+													"standardText": null,
+													"text": "Learn more",
+													"url": "https://www.cloudflare.com/products/workers-kv/",
+													"elementModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"hideTopDivider": true,
+												"featureList1": {
+													"contentTypeId": "featureList",
+													"contentfulId": "4d82xMVWQtY7oTrJ5jlZQJ",
+													"title": "Core features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "1 GB - Key-value storage space",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "100K - Key-value reads per day",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "1K - Key-value writes per day",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "1K - Key-value deletes per day",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "1K - Key-value lists per day",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList2": null,
+												"featureList3": null
+											},
+											{
+												"contentTypeId": "plan",
+												"contentfulId": "6Ja47CEQoGeMoIAaUi5tDL",
+												"type": "Included with Workers Paid",
+												"priceCurrencySymbol": null,
+												"price": null,
+												"priceDurationPeriod": null,
+												"billingSubtext": null,
+												"description": null,
+												"shortDescription": null,
+												"mediumDescription": null,
+												"supportResponseTitleText": null,
+												"supportResponseTime": null,
+												"ctaButtonText": "Get started",
+												"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/workers",
+												"ctaButton": {
+													"buttonAssetFile": null,
+													"buttonTextLoggedIn": null,
+													"contentTypeId": "button",
+													"contentfulId": "7jGqU7cQyvHsA5gGZ2MzDl",
+													"elementName": "Included in Workers Free-Workers KV-CTA",
+													"standardText": null,
+													"text": "Get started",
+													"url": "https://dash.cloudflare.com/sign-up/workers",
+													"loggedInUrl": null,
+													"buttonModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"additionalTermsText": null,
+												"learnMoreText": null,
+												"plansPageLinkText": null,
+												"plansPageLinkUrl": null,
+												"activatedKeyFeatures": null,
+												"deactivatedKeyFeatures": null,
+												"coreFeatures": null,
+												"supportResponse": null,
+												"bottomCtaLinkUrl": "/",
+												"bottomCtaLinkText": "Learn more",
+												"bottomCtaLink": {
+													"contentTypeId": "elementLink",
+													"contentfulId": "3DdUbLJIb9QvPTpJGApPsi",
+													"elementName": "Workers KV - Included with Workers Paid-Learn more",
+													"standardText": null,
+													"text": "Learn more",
+													"url": "/products/workers-kv/",
+													"elementModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"hideTopDivider": true,
+												"featureList1": {
+													"contentTypeId": "featureList",
+													"contentfulId": "4i36X6ABAmbZQw1Yb1aYyD",
+													"title": "Core features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "1 GB - Key-value storage space",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "10M - Key-value reads per month",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "1M - Key-value writes per month",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "1M - Key-value deletes month",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "1M - Key-value lists month",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList2": null,
+												"featureList3": null
+											},
+											{
+												"contentTypeId": "plan",
+												"contentfulId": "4mMbZy2ffc2yWScpC3QzCA",
+												"type": "Additional usage",
+												"priceCurrencySymbol": null,
+												"price": null,
+												"priceDurationPeriod": null,
+												"billingSubtext": null,
+												"description": null,
+												"shortDescription": null,
+												"mediumDescription": null,
+												"supportResponseTitleText": null,
+												"supportResponseTime": null,
+												"ctaButtonText": "Get started",
+												"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/workers",
+												"ctaButton": {
+													"buttonAssetFile": null,
+													"buttonTextLoggedIn": null,
+													"contentTypeId": "button",
+													"contentfulId": "6DMWfwAqny7qPshFnw2vAC",
+													"elementName": "Workers KV - Additional usage",
+													"standardText": null,
+													"text": "Get started",
+													"url": "https://dash.cloudflare.com/sign-up/workers",
+													"loggedInUrl": null,
+													"buttonModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"additionalTermsText": null,
+												"learnMoreText": null,
+												"plansPageLinkText": null,
+												"plansPageLinkUrl": null,
+												"activatedKeyFeatures": null,
+												"deactivatedKeyFeatures": null,
+												"coreFeatures": null,
+												"supportResponse": null,
+												"bottomCtaLinkUrl": "/",
+												"bottomCtaLinkText": "Learn more",
+												"bottomCtaLink": {
+													"contentTypeId": "elementLink",
+													"contentfulId": "41IY1Fgai4aqeyAFzn4kex",
+													"elementName": "Workers KV - Additional usage-Learn more",
+													"standardText": null,
+													"text": "Learn more",
+													"url": "/products/workers-kv/",
+													"elementModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"hideTopDivider": true,
+												"featureList1": {
+													"contentTypeId": "featureList",
+													"contentfulId": "634QQGrAW9tVbStIbGRXvg",
+													"title": "Core features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "$0.50 GB/month - Additional storage",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "$0.50 1M - Additional key-value reads",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "$5 1M - Additional key-value writes ",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "$5/1M - Additional key-value deletes",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "$5/1M - Additional key-value lists",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList2": null,
+												"featureList3": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "2fKB2FDqKAvoDGspBOwWMJ",
+								"contentTypeId": "elementTab",
+								"title": "Cloudflare Pages",
+								"description": "JAMstack platform for frontend developers to collaborate and deploy websites",
+								"tabContent": [
+									{
+										"bladeBorder": null,
+										"sectionPadding": "tile--no-top-padding",
+										"backgroundColor": null,
+										"contentTypeId": "bladePricingPlans",
+										"contentfulId": "10IMup0TgWquE7vHSH8e0d",
+										"title": null,
+										"description": null,
+										"htmlId": "cloudflare-pages",
+										"plansList": [
+											{
+												"contentTypeId": "plan",
+												"contentfulId": "2kDws9LahhdjKIn8EH6l4d",
+												"type": "Cloudflare Free",
+												"priceCurrencySymbol": null,
+												"price": "$0",
+												"priceDurationPeriod": null,
+												"billingSubtext": "Add-ons billed annually",
+												"description": "The free plan makes it easy to collaborate on and host your websites without a commitment.",
+												"shortDescription": null,
+												"mediumDescription": null,
+												"supportResponseTitleText": null,
+												"supportResponseTime": null,
+												"ctaButtonText": "Get started",
+												"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/pages",
+												"ctaButton": {
+													"buttonAssetFile": null,
+													"buttonTextLoggedIn": null,
+													"contentTypeId": "button",
+													"contentfulId": "37U4mgagg2vu3uVTYg30gr",
+													"elementName": "Cloudflare Pages - Pages Free-CTA",
+													"standardText": null,
+													"text": "Get started",
+													"url": "https://dash.cloudflare.com/sign-up/pages",
+													"loggedInUrl": null,
+													"buttonModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"additionalTermsText": null,
+												"learnMoreText": null,
+												"plansPageLinkText": null,
+												"plansPageLinkUrl": null,
+												"activatedKeyFeatures": null,
+												"deactivatedKeyFeatures": null,
+												"coreFeatures": null,
+												"supportResponse": null,
+												"bottomCtaLinkUrl": "https://pages.cloudflare.com/",
+												"bottomCtaLinkText": "Learn more",
+												"bottomCtaLink": {
+													"contentTypeId": "elementLink",
+													"contentfulId": "4y3krAmoWbqnMx0jNtCb89",
+													"elementName": "Cloudflare Pages-Pages Free Plan - Learn more",
+													"standardText": null,
+													"text": "Learn more",
+													"url": "https://pages.cloudflare.com/",
+													"elementModal": null,
+													"openInNewTab": true,
+													"locale": "en-US"
+												},
+												"hideTopDivider": true,
+												"featureList1": {
+													"contentTypeId": "featureList",
+													"contentfulId": "6tWl0XniC2XG5FTxeq4YoH",
+													"title": "Core features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "1 build at a time",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "500 builds per month",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Integrated web analytics",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited free admin seats",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited sites",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited requests",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited bandwidth",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList2": null,
+												"featureList3": null
+											},
+											{
+												"contentTypeId": "plan",
+												"contentfulId": "2zX3BPyKrmandYj5O8Ft64",
+												"type": "Cloudflare Pro",
+												"priceCurrencySymbol": null,
+												"price": "$20/month",
+												"priceDurationPeriod": null,
+												"billingSubtext": "Billed $240 annually or $25/mo when billed monthly",
+												"description": "The Pro plan enables you to grow your website with additional functionality.",
+												"shortDescription": null,
+												"mediumDescription": null,
+												"supportResponseTitleText": null,
+												"supportResponseTime": null,
+												"ctaButtonText": "Get started",
+												"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/pages",
+												"ctaButton": {
+													"buttonAssetFile": null,
+													"buttonTextLoggedIn": null,
+													"contentTypeId": "button",
+													"contentfulId": "7cZFa4yGZNtx2CCW4cg6zn",
+													"elementName": "Cloudflare Pages - Pages Pro-CTA",
+													"standardText": null,
+													"text": "Get started",
+													"url": "https://dash.cloudflare.com/sign-up/pages",
+													"loggedInUrl": null,
+													"buttonModal": null,
+													"openInNewTab": false,
+													"locale": "en-US"
+												},
+												"additionalTermsText": null,
+												"learnMoreText": null,
+												"plansPageLinkText": null,
+												"plansPageLinkUrl": null,
+												"activatedKeyFeatures": null,
+												"deactivatedKeyFeatures": null,
+												"coreFeatures": null,
+												"supportResponse": null,
+												"bottomCtaLinkUrl": "https://pages.cloudflare.com/",
+												"bottomCtaLinkText": "Learn more",
+												"bottomCtaLink": {
+													"contentTypeId": "elementLink",
+													"contentfulId": "2v7VDVPCHsRzNqAjXQIW7b",
+													"elementName": "Cloudflare Pages - Pages Pro-Learn more",
+													"standardText": null,
+													"text": "Learn more",
+													"url": "https://pages.cloudflare.com/",
+													"elementModal": null,
+													"openInNewTab": true,
+													"locale": "en-US"
+												},
+												"hideTopDivider": true,
+												"featureList1": {
+													"contentTypeId": "featureList",
+													"contentfulId": "3mvO5nBswjvgxODdtoWRYK",
+													"title": "Core Features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "5 concurrent builds",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "5,000 builds per month",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Integrated web analytics",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited free admin seats",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited sites",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited requests",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited bandwidth",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList2": null,
+												"featureList3": null
+											},
+											{
+												"contentTypeId": "plan",
+												"contentfulId": "2Coq6ZEdlJvinizjyp1wCl",
+												"type": "Cloudflare Business",
+												"priceCurrencySymbol": null,
+												"price": "$200/month",
+												"priceDurationPeriod": null,
+												"billingSubtext": "Billed $2400 annually or $250/mo when billed monthly",
+												"description": "The Business plan enables you to scale your website to meet the needs of a large audience.",
+												"shortDescription": null,
+												"mediumDescription": null,
+												"supportResponseTitleText": null,
+												"supportResponseTime": null,
+												"ctaButtonText": "Get started",
+												"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/pages",
+												"ctaButton": {
+													"buttonAssetFile": null,
+													"buttonTextLoggedIn": null,
+													"contentTypeId": "button",
+													"contentfulId": "5FoAI8E8XijFjjxtCeh9hq",
+													"elementName": "Cloudflare Pages - Pages Business-CTA",
+													"standardText": null,
+													"text": "Get started",
+													"url": "https://dash.cloudflare.com/sign-up/pages",
+													"loggedInUrl": null,
+													"buttonModal": null,
+													"openInNewTab": true,
+													"locale": "en-US"
+												},
+												"additionalTermsText": null,
+												"learnMoreText": null,
+												"plansPageLinkText": null,
+												"plansPageLinkUrl": null,
+												"activatedKeyFeatures": null,
+												"deactivatedKeyFeatures": null,
+												"coreFeatures": null,
+												"supportResponse": null,
+												"bottomCtaLinkUrl": "https://pages.cloudflare.com/",
+												"bottomCtaLinkText": "Learn more",
+												"bottomCtaLink": {
+													"contentTypeId": "elementLink",
+													"contentfulId": "4zOhyryVwtGhppF8ZWl3yq",
+													"elementName": "Cloudflare Pages - Pages Business-Learn more",
+													"standardText": null,
+													"text": "Learn more",
+													"url": "https://pages.cloudflare.com/",
+													"elementModal": null,
+													"openInNewTab": true,
+													"locale": "en-US"
+												},
+												"hideTopDivider": true,
+												"featureList1": {
+													"contentTypeId": "featureList",
+													"contentfulId": "3XBr6LgH5z5HFBAzk9wxl5",
+													"title": "Core features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "20 concurrent builds",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "20,000 builds per month",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Integrated web analytics",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited free admin seats",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited sites",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited requests",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Unlimited bandwidth",
+															"description": null,
+															"displayBorder": null,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList2": null,
+												"featureList3": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "6WazHh3dcOvuMe89B38tBE",
+								"contentTypeId": "elementTab",
+								"title": "R2",
+								"description": "Store and retrieve objects with zero egress fees.",
+								"tabContent": [
+									{
+										"bladeBorder": "none",
+										"sectionPadding": "tile--no-top-padding",
+										"backgroundColor": "white",
+										"contentTypeId": "bladePricingPlans",
+										"contentfulId": "4Qwj6tESyUU4rVcsu5Hqkn",
+										"title": null,
+										"description": null,
+										"htmlId": null,
+										"plansList": [
+											{
+												"contentTypeId": "plan",
+												"contentfulId": "5rx2PZvYHIvIDmlKZjmDnc",
+												"type": "Forever Free",
+												"priceCurrencySymbol": null,
+												"price": "$0/mo",
+												"priceDurationPeriod": null,
+												"billingSubtext": "Add-ons billed monthly",
+												"description": "Get started with R2 object storage with our generous free tier.",
+												"shortDescription": null,
+												"mediumDescription": null,
+												"supportResponseTitleText": null,
+												"supportResponseTime": null,
+												"ctaButtonText": "Get started",
+												"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/r2",
+												"ctaButton": null,
+												"additionalTermsText": null,
+												"learnMoreText": null,
+												"plansPageLinkText": null,
+												"plansPageLinkUrl": null,
+												"activatedKeyFeatures": null,
+												"deactivatedKeyFeatures": null,
+												"coreFeatures": null,
+												"supportResponse": null,
+												"bottomCtaLinkUrl": null,
+												"bottomCtaLinkText": null,
+												"bottomCtaLink": null,
+												"hideTopDivider": true,
+												"featureList1": {
+													"contentTypeId": "featureList",
+													"contentfulId": "cJnMX0BKhQ9FniCHkdV2i",
+													"title": "Included features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "Storage: 10 GB/month ",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Class A operations (mutate state): 1,000,000 / month ",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Class B operations (read state): 10,000,000 / month",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList2": null,
+												"featureList3": null
+											},
+											{
+												"contentTypeId": "plan",
+												"contentfulId": "6NqgRQfbdauvFAE6XkOh1m",
+												"type": "Monthly rates",
+												"priceCurrencySymbol": null,
+												"price": "See below",
+												"priceDurationPeriod": null,
+												"billingSubtext": "Billed monthly",
+												"description": "Monthly billing for usage beyond the free allocation.",
+												"shortDescription": null,
+												"mediumDescription": null,
+												"supportResponseTitleText": null,
+												"supportResponseTime": null,
+												"ctaButtonText": "Get started",
+												"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/r2",
+												"ctaButton": null,
+												"additionalTermsText": null,
+												"learnMoreText": null,
+												"plansPageLinkText": null,
+												"plansPageLinkUrl": null,
+												"activatedKeyFeatures": null,
+												"deactivatedKeyFeatures": null,
+												"coreFeatures": null,
+												"supportResponse": null,
+												"bottomCtaLinkUrl": null,
+												"bottomCtaLinkText": null,
+												"bottomCtaLink": null,
+												"hideTopDivider": true,
+												"featureList1": {
+													"contentTypeId": "featureList",
+													"contentfulId": "36FCmeYp4YSTx4GVzFvm1M",
+													"title": "Core features",
+													"description": null,
+													"features": [
+														{
+															"contentTypeId": "feature",
+															"title": "Storage: $0.015 / GB",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Class A operations (mutate state): $4.50 per million",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														},
+														{
+															"contentTypeId": "feature",
+															"title": "Class B operations (read state): $0.36 per million",
+															"description": null,
+															"displayBorder": false,
+															"learnMoreUrl": null,
+															"learnMoreText": null,
+															"streamId": null,
+															"openLinkInNewTab": null,
+															"streamThumbnail": null,
+															"icon": null,
+															"iconAssetFile": null,
+															"imageAssetFile": null
+														}
+													],
+													"supplementaryCallToAction": null
+												},
+												"featureList2": null,
+												"featureList3": null
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"contentfulId": "2yEhsqCwPWJbrE4hwzsxhE",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"copy": "With Workers you can deploy and run code from Cloudflare's global network. Build web functions and applications without the hassle of maintaining infrastructure. Workers is a part of the Cloudflare Developer Platform giving you compute, storage, and services to build and scale your application. ",
-						"title": "Learn more about Workers",
+						"copy": null,
+						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4IAxBEefUhx6E6jBlowBsr",
-								"title": "Built-with Workers",
-								"makeTitleLink": null,
+								"contentfulId": "m9R2LH45ur0BEylnJTSGA",
+								"title": "Developers Discord",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Built on Cloudflare: Explore what other companies are building with the Cloudflare Developer Platform.",
-								"learnMoreUrl": "https://workers.cloudflare.com/built-with",
-								"learnMoreText": "Explore",
-								"displayBorder": true,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "a93b78c9-f96b-52f7-b9d7-2d29ebc1d917",
-									"altText": "Cloudflare Workers",
-									"title": "Pages and Workers are merging into a unified development and application hosting platform",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5df5tsrC9h5GxedMQEnScq/8b5ca64b77479325052c4217d827f385/cloudflare-workers.svg"
-										},
-										"description": "Cloudflare Developers Platform illustration"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7g5iSRLxVOpdwQ1RlX7v5k",
-								"title": "Community of Developers",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Join the Developers Discord. Share what you're building or ask questions with the Workers community and Cloudflare employees. ",
+								"description": "Share what you're building or ask questions with the Workers community and Cloudflare employees.",
 								"learnMoreUrl": "https://discord.cloudflare.com",
-								"learnMoreText": "Join today ",
+								"learnMoreText": "Join the developer community",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "0ccf32ba-b7bd-50ae-aaec-5787aa662bcc",
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
 									"altText": null,
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PAu9OUEC5Xz5OSIPiCbt8/3ad26f183f6b1184b8067d1e755e0b0e/Developers-Discord-Logo_2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": "Cloudflare Developers illustration"
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -417,32 +2664,68 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3hHSMeWHEBoDHnnugVuDP5",
-								"title": "Start building today",
-								"makeTitleLink": null,
+								"contentfulId": "1kjBKAToMDfxmhTfZasv5u",
+								"title": "Observability",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "After taking this Egghead course you'll be ready to start experimenting with your own Cloudflare Workers projects. ",
-								"learnMoreUrl": "https://egghead.io/courses/introduction-to-cloudflare-workers-5aa3",
-								"learnMoreText": "Start building",
+								"description": "Understand how your Workers are performing with logs, traces, and other analytics.",
+								"learnMoreUrl": "https://developers.cloudflare.com/workers/observability/",
+								"learnMoreText": "Read the docs",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "d739dd1d-6651-5345-a74f-ea781a8b54fa",
-									"altText": "Platform Week 22 - Announcing our Spring Developer Challenge",
-									"title": "Platform Week 22 - Announcing our Spring Developer Challenge",
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/23l50BK87IA5OUPBQAUKES/1ef16e10e2fc148321c55184f738d629/developer-challenges.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": ""
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6YflQ1wkahZZ4BAVS026wY",
+								"title": "Workers 101",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how to build your first Cloudflare Workers application and deploy it to Cloudflare's global network.",
+								"learnMoreUrl": "https://www.youtube.com/watch?v=H7Qe96fqg1M",
+								"learnMoreText": "Watch the video",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -454,385 +2737,36 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeTable",
-						"contentfulId": "2yZWjAy2GRTKwFfd3FgLvf",
-						"locale": "en-US",
-						"sectionPadding": "tile--no-bottom-padding",
-						"bladeBorder": "none",
-						"backgroundColor": "white",
-						"displayHeader": null,
-						"showFilter": null,
-						"sectionTitle": null,
-						"title": "Workers Pricing Plans",
-						"copy": "All plans come with a free workers.dev subdomain. ",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2LkMwyV6xmSVXtLSoGxrd6",
+						"title": "Start building today",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"columnHeaders": [
-							{
-								"cellText": "Free",
-								"cellTextLinkUrl": null,
-								"cellSubtitle": null,
-								"buttonText": null,
-								"buttonUrl": null,
-								"commonElements": null,
-								"imageAssetFile": null
-							},
-							{
-								"cellText": "Paid",
-								"cellTextLinkUrl": null,
-								"cellSubtitle": "Starting at $5 / month",
-								"buttonText": null,
-								"buttonUrl": null,
-								"commonElements": null,
-								"imageAssetFile": null
-							},
-							{
-								"cellText": "Incremental cost",
-								"cellTextLinkUrl": null,
-								"cellSubtitle": null,
-								"buttonText": null,
-								"buttonUrl": null,
-								"commonElements": null,
-								"imageAssetFile": null
-							}
-						],
-						"groupsInTable": [],
-						"rowsInTable": [
-							{
-								"contentfulId": "1gnpCAHg05n5dph3TaIXDY",
-								"rowHeader2": {
-									"contentfulId": "1dEAbmPjctoA5xrpjEdiIj",
-									"cellText": "Maximum number of scripts",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "5mXwG1LZAx06c344km7dGO",
-										"cellText": "100",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "27V1a5BhZr4u0TiyqzViui",
-										"cellText": "500",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "3vDkNfpB1opzMkxGumkJAM",
-										"cellText": null,
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "6peAXSTnHy0zL0KL45SA8q",
-								"rowHeader2": {
-									"contentfulId": "1SHM5n02YLYAjWg9hxFU8P",
-									"cellText": "Max CPU time",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "6NOY5ytL1UmckJZyXg49dw",
-										"cellText": "10 ms per request",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "7IdbDixmVqrNUlnUjdz95V",
-										"cellText": "30 million ms/month",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "5FZbTnd4mIaT0u62hMDbaZ",
-										"cellText": "$0.02 per million CPU milliseconds",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "5WCVcXB8kMYB2L0fTllkJZ",
-								"rowHeader2": {
-									"contentfulId": "5mgoudwjrcTDSNLMLaNmT6",
-									"cellText": "Included requests",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "2uWdyfvJh492TDW9ArJyzX",
-										"cellText": "Hard limit 100,000/day",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "4tVQWNSiC2bTXkiMJU99Dx",
-										"cellText": "10 million / month",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "RzHsv7A0WyxWSwSxm0ucP",
-										"cellText": "$0.30 / million",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "3tGev2twpcmyfVixG3UBIj",
-								"rowHeader2": {
-									"contentfulId": "4TDk999k0N7KJAohkkNwvk",
-									"cellText": "Workers storage ",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "3vDkNfpB1opzMkxGumkJAM",
-										"cellText": null,
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "1kmmMf6L8Ti6PIDqedZrvb",
-								"rowHeader2": {
-									"contentfulId": "6ksXXwoyjzfXWh38B9zKeK",
-									"cellText": "Included Workers KV read operations",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "3ZmtFV1iN44reX3tZlnvtW",
-										"cellText": "100,000 / day",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "6zsuAojeiS40JF3YiBIiSW",
-										"cellText": "10,000,000 / month",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "56m7B8pDd5AdyHp3UafVMR",
-										"cellText": "$0.50 / million",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "4Ilc8s1AtmzlscM9DNaJc1",
-								"rowHeader2": {
-									"contentfulId": "Y66OaEh7BZNA0i4msIYh5",
-									"cellText": "Included Workers KV write, delete, and list operations",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "3dCYxdwLcLIY7ISzHqK9qy",
-										"cellText": "1,000 / day",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "1vEQjUWRMQmXnobl4P9OQa",
-										"cellText": "1,000,000 / month",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "1bZl6BlxrRtVDhHLWtXBRx",
-										"cellText": "$5.00 / million",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "312D4ICAY03yjV3mLhMtp3",
-								"rowHeader2": {
-									"contentfulId": "xVLjQl1t1xIMScNgbKkSd",
-									"cellText": "Included KV storage",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "5kIozEIy4dGEo1JXJEONaF",
-										"cellText": "1 GB",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "2VijeHi8Slw3lsrEgViGKz",
-										"cellText": "1 GB",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "7w0kFbmDnDrDcB5l4EFuip",
-										"cellText": "$0.50 / GB-month",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "HU0BUC2Q71uLUICqqy1qi",
-								"rowHeader2": {
-									"contentfulId": "5dTSZ2yM0h5v8BiCHP47PM",
-									"cellText": "Included Durable Objects requests",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "4Ge18B8z2vYBHyCydNFQmw",
-										"cellText": "N/A",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "m2l29xToyjl6NzZ1pSRqq",
-										"cellText": "1,000,000 ",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "5q187Nt0mzVKnCjhRyNRg6",
-										"cellText": "$0.15 / million",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							}
-						],
-						"dataSource": null
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "1WoJp9lYaSBiRIICJ3w1CW",
-						"quote": "\"With Workers, we now have the guarantee that our origin would be protected from high traffic volumes. Our readers depend on us, and Workers has been the solidly reliable platform we needed to deliver for them.\"",
-						"quoteAuthor": "Frank Sharpe",
-						"quoteTitle": "Senior Product Developer",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1s9if3EyH8f1ig9BQKy570/193b79acf5f6c0cfb0a9685e023fef7c/logo_propublica.svg"
-							},
-							"description": "ProPublica logo"
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2zEhy75aphjfTQTECXLfYr",
+							"elementName": "Workers - Start building today",
+							"standardText": null,
+							"text": "Sign up",
+							"url": "https://dash.cloudflare.com/sign-up/workers-and-pages",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
 						},
-						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
