@@ -25,15 +25,50 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"description": "An array of detected objects within the input image",
+									"items": {
+										"properties": {
+											"box": {
+												"description": "Coordinates defining the bounding box around the detected object",
+												"properties": {
+													"xmax": {
+														"description": "The x-coordinate of the bottom-right corner of the bounding box",
+														"type": "number"
+													},
+													"xmin": {
+														"description": "The x-coordinate of the top-left corner of the bounding box",
+														"type": "number"
+													},
+													"ymax": {
+														"description": "The y-coordinate of the bottom-right corner of the bounding box",
+														"type": "number"
+													},
+													"ymin": {
+														"description": "The y-coordinate of the top-left corner of the bounding box",
+														"type": "number"
+													}
+												},
+												"type": "object"
+											},
+											"label": {
+												"description": "The class label or name of the detected object",
+												"type": "string"
+											},
+											"score": {
+												"description": "Confidence score indicating the likelihood that the detection is correct",
+												"type": "number"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"success": {
-									"default": "true",
+									"default": true,
 									"type": "boolean"
 								}
 							},
@@ -41,11 +76,11 @@
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {

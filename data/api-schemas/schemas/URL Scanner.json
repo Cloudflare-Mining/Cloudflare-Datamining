@@ -1,15 +1,176 @@
 {
+	"GET /accounts/{accountId}/urlscanner/response/{responseId}": {
+		"description": "Returns the plain response of the network request.",
+		"operationId": "urlscanner-get-response-text",
+		"parameters": [
+			{
+				"description": "Response hash.",
+				"in": "path",
+				"name": "responseId",
+				"required": true,
+				"schema": {
+					"description": "Response hash.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Account Id.",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account Id.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"text/plain or image": {
+						"schema": {
+							"description": "Web resource text/image.",
+							"type": "string"
+						}
+					}
+				},
+				"description": "When `har.log.entries[].response._cf.contentAvailable` is `true`, use `response._cf.hash` value to fetch the raw response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "Scan ID is not a valid uuid.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether request was successful or not",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"errors",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid params."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "Scan not found.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether request was successful or not",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"errors",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Scan not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get raw response",
+		"tags": [
+			"URL Scanner"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /accounts/{accountId}/urlscanner/scan": {
 		"description": "Search scans by date and webpages' requests, including full URL (after redirects), hostname, and path. <br/> A successful scan will appear in search results a few minutes after finishing but may take much longer if the system in under load. By default, only successfully completed scans will appear in search results, unless searching by `scanId`. Please take into account that older scans may be removed from the search index at an unspecified time.",
 		"operationId": "urlscanner-search-scans",
 		"parameters": [
 			{
-				"description": "Account Id",
+				"description": "Account Id.",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
 				"schema": {
-					"description": "Account Id",
+					"description": "Account Id.",
 					"type": "string"
 				}
 			},
@@ -369,23 +530,23 @@
 		"operationId": "urlscanner-get-scan",
 		"parameters": [
 			{
-				"description": "Scan uuid",
+				"description": "Scan uuid.",
 				"in": "path",
 				"name": "scanId",
 				"required": true,
 				"schema": {
-					"description": "Scan uuid",
+					"description": "Scan uuid.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id",
+				"description": "Account Id.",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
 				"schema": {
-					"description": "Account Id",
+					"description": "Account Id.",
 					"type": "string"
 				}
 			},
@@ -1927,23 +2088,23 @@
 		"operationId": "urlscanner-get-scan-har",
 		"parameters": [
 			{
-				"description": "Scan uuid",
+				"description": "Scan uuid.",
 				"in": "path",
 				"name": "scanId",
 				"required": true,
 				"schema": {
-					"description": "Scan uuid",
+					"description": "Scan uuid.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id",
+				"description": "Account Id.",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
 				"schema": {
-					"description": "Account Id",
+					"description": "Account Id.",
 					"type": "string"
 				}
 			}
@@ -2567,33 +2728,33 @@
 		"operationId": "urlscanner-get-scan-screenshot",
 		"parameters": [
 			{
-				"description": "Scan uuid",
+				"description": "Scan uuid.",
 				"in": "path",
 				"name": "scanId",
 				"required": true,
 				"schema": {
-					"description": "Scan uuid",
+					"description": "Scan uuid.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id",
+				"description": "Account Id.",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
 				"schema": {
-					"description": "Account Id",
+					"description": "Account Id.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Target device type",
+				"description": "Target device type.",
 				"in": "query",
 				"name": "resolution",
 				"schema": {
 					"default": "desktop",
-					"description": "Target device type",
+					"description": "Target device type.",
 					"enum": [
 						"desktop",
 						"mobile",
@@ -2608,7 +2769,7 @@
 				"content": {
 					"image/png": {
 						"schema": {
-							"description": "PNG Image",
+							"description": "PNG Image.",
 							"type": "string"
 						}
 					}
@@ -2878,12 +3039,12 @@
 		"operationId": "urlscanner-create-scan",
 		"parameters": [
 			{
-				"description": "Account Id",
+				"description": "Account Id.",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
 				"schema": {
-					"description": "Account Id",
+					"description": "Account Id.",
 					"type": "string"
 				}
 			}
@@ -2897,14 +3058,14 @@
 								"additionalProperties": {
 									"type": "string"
 								},
-								"description": "Set custom headers",
+								"description": "Set custom headers.",
 								"type": "object"
 							},
 							"screenshotsResolutions": {
 								"default": [
 									"desktop"
 								],
-								"description": "Take multiple screenshots targeting different device types",
+								"description": "Take multiple screenshots targeting different device types.",
 								"items": {
 									"default": "desktop",
 									"description": "Device resolutions.",

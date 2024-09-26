@@ -19,12 +19,15 @@
 						"properties": {
 							"source_lang": {
 								"default": "en",
+								"description": "The language code of the source text (e.g., 'en' for English). Defaults to 'en' if not specified",
 								"type": "string"
 							},
 							"target_lang": {
+								"description": "The language code to translate the text into (e.g., 'es' for Spanish)",
 								"type": "string"
 							},
 							"text": {
+								"description": "The text to be translated",
 								"minLength": 1,
 								"type": "string"
 							}
@@ -41,15 +44,20 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"translated_text": {
+											"description": "The translated text in the target language",
+											"type": "string"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
-									"default": "true",
+									"default": true,
 									"type": "boolean"
 								}
 							},
@@ -57,11 +65,11 @@
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {

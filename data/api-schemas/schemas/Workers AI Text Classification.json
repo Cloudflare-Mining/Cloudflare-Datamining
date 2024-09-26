@@ -18,6 +18,7 @@
 					"schema": {
 						"properties": {
 							"text": {
+								"description": "The text that you want to classify",
 								"minLength": 1,
 								"type": "string"
 							}
@@ -33,15 +34,28 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"description": "An array of classification results for the input text",
+									"items": {
+										"properties": {
+											"label": {
+												"description": "The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE')",
+												"type": "string"
+											},
+											"score": {
+												"description": "Confidence score indicating the likelihood that the text belongs to the specified label",
+												"type": "number"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"success": {
-									"default": "true",
+									"default": true,
 									"type": "boolean"
 								}
 							},
@@ -49,11 +63,11 @@
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {

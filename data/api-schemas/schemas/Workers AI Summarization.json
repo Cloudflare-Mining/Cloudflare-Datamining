@@ -18,11 +18,13 @@
 					"schema": {
 						"properties": {
 							"input_text": {
+								"description": "The text that you want the model to summarize",
 								"minLength": 1,
 								"type": "string"
 							},
 							"max_length": {
 								"default": 1024,
+								"description": "The maximum length of the generated summary in tokens",
 								"type": "integer"
 							}
 						},
@@ -37,15 +39,20 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"summary": {
+											"description": "The summarized version of the input text",
+											"type": "string"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
-									"default": "true",
+									"default": true,
 									"type": "boolean"
 								}
 							},
@@ -53,11 +60,11 @@
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {

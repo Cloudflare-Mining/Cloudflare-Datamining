@@ -518,6 +518,7 @@
 							{
 								"properties": {
 									"text": {
+										"description": "The text that you want to classify",
 										"minLength": 1,
 										"type": "string"
 									}
@@ -532,48 +533,61 @@
 								"properties": {
 									"guidance": {
 										"default": 7.5,
+										"description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt",
 										"type": "number"
 									},
 									"height": {
+										"description": "The height of the generated image in pixels",
 										"maximum": 2048,
 										"minimum": 256,
 										"type": "integer"
 									},
 									"image": {
+										"description": "For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 										"items": {
+											"description": "A value between 0 and 255",
 											"type": "number"
 										},
 										"type": "array"
 									},
 									"image_b64": {
+										"description": "For use with img2img tasks. A base64-encoded string of the input image",
 										"type": "string"
 									},
 									"mask": {
+										"description": "An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values",
 										"items": {
+											"description": "A value between 0 and 255",
 											"type": "number"
 										},
 										"type": "array"
 									},
 									"negative_prompt": {
+										"description": "Text describing elements to avoid in the generated image",
 										"type": "string"
 									},
 									"num_steps": {
 										"default": 20,
+										"description": "The number of diffusion steps; higher values can improve quality but take longer",
 										"maximum": 20,
 										"type": "integer"
 									},
 									"prompt": {
+										"description": "A text description of the image you want to generate",
 										"minLength": 1,
 										"type": "string"
 									},
 									"seed": {
+										"description": "Random seed for reproducibility of the image generation",
 										"type": "integer"
 									},
 									"strength": {
 										"default": 1,
+										"description": "A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image",
 										"type": "number"
 									},
 									"width": {
+										"description": "The width of the generated image in pixels",
 										"maximum": 2048,
 										"minimum": 256,
 										"type": "integer"
@@ -590,11 +604,14 @@
 									"text": {
 										"oneOf": [
 											{
+												"description": "The text to embed",
 												"minLength": 1,
 												"type": "string"
 											},
 											{
+												"description": "Batch of text values to embed",
 												"items": {
+													"description": "The text to embed",
 													"minLength": 1,
 													"type": "string"
 												},
@@ -619,15 +636,19 @@
 									{
 										"properties": {
 											"audio": {
+												"description": "An array of integers that represent the audio data constrained to 8-bit unsigned integer values",
 												"items": {
+													"description": "A value between 0 and 255",
 													"type": "number"
 												},
 												"type": "array"
 											},
 											"source_lang": {
+												"description": "The language of the recorded audio",
 												"type": "string"
 											},
 											"target_lang": {
+												"description": "The language to translate the transcription into. Currently only English is supported.",
 												"type": "string"
 											}
 										},
@@ -643,13 +664,16 @@
 							{
 								"oneOf": [
 									{
+										"description": "The image to classify",
 										"format": "binary",
 										"type": "string"
 									},
 									{
 										"properties": {
 											"image": {
+												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 												"items": {
+													"description": "A value between 0 and 255 (unsigned 8bit)",
 													"type": "number"
 												},
 												"type": "array"
@@ -667,13 +691,16 @@
 							{
 								"oneOf": [
 									{
+										"description": "The image to use for detection",
 										"format": "binary",
 										"type": "string"
 									},
 									{
 										"properties": {
 											"image": {
+												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 												"items": {
+													"description": "A value between 0 and 255 (unsigned 8bit)",
 													"type": "number"
 												},
 												"type": "array"
@@ -690,57 +717,86 @@
 									{
 										"properties": {
 											"frequency_penalty": {
+												"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
 												"maximum": 2,
 												"minimum": 0,
 												"type": "number"
 											},
+											"image": {
+												"oneOf": [
+													{
+														"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
+														"items": {
+															"description": "A value between 0 and 255",
+															"type": "number"
+														},
+														"type": "array"
+													},
+													{
+														"description": "Binary string representing the image contents.",
+														"format": "binary",
+														"type": "string"
+													}
+												]
+											},
 											"lora": {
+												"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 												"type": "string"
 											},
 											"max_tokens": {
 												"default": 256,
+												"description": "The maximum number of tokens to generate in the response.",
 												"type": "integer"
 											},
 											"presence_penalty": {
+												"description": "Increases the likelihood of the model introducing new topics.",
 												"maximum": 2,
 												"minimum": 0,
 												"type": "number"
 											},
 											"prompt": {
+												"description": "The input text prompt for the model to generate a response.",
 												"maxLength": 131072,
 												"minLength": 1,
 												"type": "string"
 											},
 											"raw": {
 												"default": false,
+												"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
 												"type": "boolean"
 											},
 											"repetition_penalty": {
+												"description": "Penalty for repeated tokens; higher values discourage repetition.",
 												"maximum": 2,
 												"minimum": 0,
 												"type": "number"
 											},
 											"seed": {
+												"description": "Random seed for reproducibility of the generation.",
 												"maximum": 9999999999,
 												"minimum": 1,
 												"type": "integer"
 											},
 											"stream": {
 												"default": false,
+												"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
 												"type": "boolean"
 											},
 											"temperature": {
 												"default": 0.6,
+												"description": "Controls the randomness of the output; higher values produce more random results.",
 												"maximum": 5,
 												"minimum": 0,
 												"type": "number"
 											},
 											"top_k": {
+												"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
 												"maximum": 50,
 												"minimum": 1,
 												"type": "integer"
 											},
 											"top_p": {
+												"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 												"maximum": 2,
 												"minimum": 0,
 												"type": "number"
@@ -748,11 +804,13 @@
 										},
 										"required": [
 											"prompt"
-										]
+										],
+										"title": "Prompt"
 									},
 									{
 										"properties": {
 											"frequency_penalty": {
+												"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
 												"maximum": 2,
 												"minimum": 0,
 												"type": "number"
@@ -775,18 +833,39 @@
 												},
 												"type": "array"
 											},
+											"image": {
+												"oneOf": [
+													{
+														"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
+														"items": {
+															"description": "A value between 0 and 255",
+															"type": "number"
+														},
+														"type": "array"
+													},
+													{
+														"description": "Binary string representing the image contents.",
+														"format": "binary",
+														"type": "string"
+													}
+												]
+											},
 											"max_tokens": {
 												"default": 256,
+												"description": "The maximum number of tokens to generate in the response.",
 												"type": "integer"
 											},
 											"messages": {
+												"description": "An array of message objects representing the conversation history.",
 												"items": {
 													"properties": {
 														"content": {
+															"description": "The content of the message as a string.",
 															"maxLength": 131072,
 															"type": "string"
 														},
 														"role": {
+															"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
 															"type": "string"
 														}
 													},
@@ -799,50 +878,61 @@
 												"type": "array"
 											},
 											"presence_penalty": {
+												"description": "Increases the likelihood of the model introducing new topics.",
 												"maximum": 2,
 												"minimum": 0,
 												"type": "number"
 											},
 											"repetition_penalty": {
+												"description": "Penalty for repeated tokens; higher values discourage repetition.",
 												"maximum": 2,
 												"minimum": 0,
 												"type": "number"
 											},
 											"seed": {
+												"description": "Random seed for reproducibility of the generation.",
 												"maximum": 9999999999,
 												"minimum": 1,
 												"type": "integer"
 											},
 											"stream": {
 												"default": false,
+												"description": "If true, the response will be streamed back incrementally.",
 												"type": "boolean"
 											},
 											"temperature": {
 												"default": 0.6,
+												"description": "Controls the randomness of the output; higher values produce more random results.",
 												"maximum": 5,
 												"minimum": 0,
 												"type": "number"
 											},
 											"tools": {
+												"description": "A list of tools available for the assistant to use.",
 												"items": {
 													"oneOf": [
 														{
 															"properties": {
 																"description": {
+																	"description": "A brief description of what the tool does.",
 																	"type": "string"
 																},
 																"name": {
+																	"description": "The name of the tool. More descriptive the better.",
 																	"type": "string"
 																},
 																"parameters": {
+																	"description": "Schema defining the parameters accepted by the tool.",
 																	"properties": {
 																		"properties": {
 																			"additionalProperties": {
 																				"properties": {
 																					"description": {
+																						"description": "A description of the expected parameter.",
 																						"type": "string"
 																					},
 																					"type": {
+																						"description": "The data type of the parameter.",
 																						"type": "string"
 																					}
 																				},
@@ -852,15 +942,18 @@
 																				],
 																				"type": "object"
 																			},
+																			"description": "Definitions of each parameter.",
 																			"type": "object"
 																		},
 																		"required": {
+																			"description": "List of required parameter names.",
 																			"items": {
 																				"type": "string"
 																			},
 																			"type": "array"
 																		},
 																		"type": {
+																			"description": "The type of the parameters object (usually 'object').",
 																			"type": "string"
 																		}
 																	},
@@ -880,22 +973,28 @@
 														{
 															"properties": {
 																"function": {
+																	"description": "Details of the function tool.",
 																	"properties": {
 																		"description": {
+																			"description": "A brief description of what the function does.",
 																			"type": "string"
 																		},
 																		"name": {
+																			"description": "The name of the function.",
 																			"type": "string"
 																		},
 																		"parameters": {
+																			"description": "Schema defining the parameters accepted by the function.",
 																			"properties": {
 																				"properties": {
 																					"additionalProperties": {
 																						"properties": {
 																							"description": {
+																								"description": "A description of the expected parameter.",
 																								"type": "string"
 																							},
 																							"type": {
+																								"description": "The data type of the parameter.",
 																								"type": "string"
 																							}
 																						},
@@ -905,15 +1004,18 @@
 																						],
 																						"type": "object"
 																					},
+																					"description": "Definitions of each parameter.",
 																					"type": "object"
 																				},
 																				"required": {
+																					"description": "List of required parameter names.",
 																					"items": {
 																						"type": "string"
 																					},
 																					"type": "array"
 																				},
 																				"type": {
+																					"description": "The type of the parameters object (usually 'object').",
 																					"type": "string"
 																				}
 																			},
@@ -932,6 +1034,7 @@
 																	"type": "object"
 																},
 																"type": {
+																	"description": "Specifies the type of tool (e.g., 'function').",
 																	"type": "string"
 																}
 															},
@@ -946,11 +1049,13 @@
 												"type": "array"
 											},
 											"top_k": {
+												"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
 												"maximum": 50,
 												"minimum": 1,
 												"type": "integer"
 											},
 											"top_p": {
+												"description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
 												"maximum": 2,
 												"minimum": 0,
 												"type": "number"
@@ -958,7 +1063,8 @@
 										},
 										"required": [
 											"messages"
-										]
+										],
+										"title": "Messages"
 									}
 								],
 								"title": "Text Generation",
@@ -968,12 +1074,15 @@
 								"properties": {
 									"source_lang": {
 										"default": "en",
+										"description": "The language code of the source text (e.g., 'en' for English). Defaults to 'en' if not specified",
 										"type": "string"
 									},
 									"target_lang": {
+										"description": "The language code to translate the text into (e.g., 'es' for Spanish)",
 										"type": "string"
 									},
 									"text": {
+										"description": "The text to be translated",
 										"minLength": 1,
 										"type": "string"
 									}
@@ -988,11 +1097,13 @@
 							{
 								"properties": {
 									"input_text": {
+										"description": "The text that you want the model to summarize",
 										"minLength": 1,
 										"type": "string"
 									},
 									"max_length": {
 										"default": 1024,
+										"description": "The maximum length of the generated summary in tokens",
 										"type": "integer"
 									}
 								},
@@ -1005,26 +1116,24 @@
 							{
 								"oneOf": [
 									{
+										"description": "Binary string representing the image contents.",
 										"format": "binary",
 										"type": "string"
 									},
 									{
-										"not": {
-											"required": [
-												"prompt",
-												"messages"
-											]
-										},
 										"properties": {
 											"image": {
 												"oneOf": [
 													{
+														"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 														"items": {
+															"description": "A value between 0 and 255",
 															"type": "number"
 														},
 														"type": "array"
 													},
 													{
+														"description": "Binary string representing the image contents.",
 														"format": "binary",
 														"type": "string"
 													}
@@ -1032,35 +1141,20 @@
 											},
 											"max_tokens": {
 												"default": 512,
+												"description": "The maximum number of tokens to generate in the response.",
 												"type": "integer"
 											},
-											"messages": {
-												"items": {
-													"properties": {
-														"content": {
-															"maxLength": 6144,
-															"type": "string"
-														},
-														"role": {
-															"type": "string"
-														}
-													},
-													"required": [
-														"role",
-														"content"
-													],
-													"type": "object"
-												},
-												"type": "array"
-											},
 											"prompt": {
+												"description": "The input text prompt for the model to generate a response.",
 												"type": "string"
 											},
 											"raw": {
 												"default": false,
+												"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
 												"type": "boolean"
 											},
 											"temperature": {
+												"description": "Controls the randomness of the output; higher values produce more random results.",
 												"type": "number"
 											}
 										},
@@ -1088,12 +1182,15 @@
 								"result": {
 									"oneOf": [
 										{
+											"description": "An array of classification results for the input text",
 											"items": {
 												"properties": {
 													"label": {
+														"description": "The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE')",
 														"type": "string"
 													},
 													"score": {
+														"description": "Confidence score indicating the likelihood that the text belongs to the specified label",
 														"type": "number"
 													}
 												},
@@ -1103,6 +1200,7 @@
 											"type": "array"
 										},
 										{
+											"description": "The generated image in PNG format",
 											"format": "binary",
 											"title": "Text To Image",
 											"type": "string"
@@ -1110,7 +1208,9 @@
 										{
 											"properties": {
 												"data": {
+													"description": "Embeddings of the requested text values",
 													"items": {
+														"description": "Floating point embedding representation shaped by the embedding model",
 														"items": {
 															"type": "number"
 														},
@@ -1131,6 +1231,7 @@
 										{
 											"properties": {
 												"text": {
+													"description": "The transcription",
 													"type": "string"
 												},
 												"vtt": {
@@ -1143,9 +1244,11 @@
 													"items": {
 														"properties": {
 															"end": {
+																"description": "The ending second when the word completes",
 																"type": "number"
 															},
 															"start": {
+																"description": "The second this word begins in the recording",
 																"type": "number"
 															},
 															"word": {
@@ -1167,9 +1270,11 @@
 											"items": {
 												"properties": {
 													"label": {
+														"description": "The predicted category or class for the input image based on analysis",
 														"type": "string"
 													},
 													"score": {
+														"description": "A confidence value, between 0 and 1, indicating how certain the model is about the predicted label",
 														"type": "number"
 													}
 												},
@@ -1179,29 +1284,37 @@
 											"type": "array"
 										},
 										{
+											"description": "An array of detected objects within the input image",
 											"items": {
 												"properties": {
 													"box": {
+														"description": "Coordinates defining the bounding box around the detected object",
 														"properties": {
 															"xmax": {
+																"description": "The x-coordinate of the bottom-right corner of the bounding box",
 																"type": "number"
 															},
 															"xmin": {
+																"description": "The x-coordinate of the top-left corner of the bounding box",
 																"type": "number"
 															},
 															"ymax": {
+																"description": "The y-coordinate of the bottom-right corner of the bounding box",
 																"type": "number"
 															},
 															"ymin": {
+																"description": "The y-coordinate of the top-left corner of the bounding box",
 																"type": "number"
 															}
 														},
 														"type": "object"
 													},
 													"label": {
+														"description": "The class label or name of the detected object",
 														"type": "string"
 													},
 													"score": {
+														"description": "Confidence score indicating the likelihood that the detection is correct",
 														"type": "number"
 													}
 												},
@@ -1215,15 +1328,19 @@
 												{
 													"properties": {
 														"response": {
+															"description": "The generated text response from the model",
 															"type": "string"
 														},
 														"tool_calls": {
+															"description": "An array of tool calls requests made during the response generation",
 															"items": {
 																"properties": {
 																	"arguments": {
+																		"description": "The arguments passed to be passed to the tool call request",
 																		"type": "object"
 																	},
 																	"name": {
+																		"description": "The name of the tool to be called",
 																		"type": "string"
 																	}
 																},
@@ -1245,6 +1362,7 @@
 										{
 											"properties": {
 												"translated_text": {
+													"description": "The translated text in the target language",
 													"type": "string"
 												}
 											},
@@ -1254,6 +1372,7 @@
 										{
 											"properties": {
 												"summary": {
+													"description": "The summarized version of the input text",
 													"type": "string"
 												}
 											},

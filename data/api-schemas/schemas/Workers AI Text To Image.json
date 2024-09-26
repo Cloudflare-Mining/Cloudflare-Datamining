@@ -1,4 +1,144 @@
 {
+	"POST /accounts/{account_id}/ai/run/@cf/black-forest-labs/flux-1-schnell": {
+		"operationId": "workers-ai-post-run-cf-black-forest-labs-flux-1-schnell",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"prompt": {
+								"description": "A text description of the image you want to generate.",
+								"minLength": 1,
+								"type": "string"
+							},
+							"steps": {
+								"default": 4,
+								"description": "The number of diffusion steps; higher values can improve quality but take longer.",
+								"maximum": 8,
+								"type": "integer"
+							}
+						},
+						"required": [
+							"prompt"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"result": {
+											"properties": {
+												"image": {
+													"description": "The generated image in Base64 format.",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"default": true,
+											"type": "boolean"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"default": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"applications/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/black-forest-labs/flux-1-schnell model.",
+		"tags": [
+			"Workers AI Text To Image"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/bytedance/stable-diffusion-xl-lightning": {
 		"operationId": "workers-ai-post-run-cf-bytedance-stable-diffusion-xl-lightning",
 		"parameters": [
@@ -19,48 +159,61 @@
 						"properties": {
 							"guidance": {
 								"default": 7.5,
+								"description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt",
 								"type": "number"
 							},
 							"height": {
+								"description": "The height of the generated image in pixels",
 								"maximum": 2048,
 								"minimum": 256,
 								"type": "integer"
 							},
 							"image": {
+								"description": "For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 								"items": {
+									"description": "A value between 0 and 255",
 									"type": "number"
 								},
 								"type": "array"
 							},
 							"image_b64": {
+								"description": "For use with img2img tasks. A base64-encoded string of the input image",
 								"type": "string"
 							},
 							"mask": {
+								"description": "An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values",
 								"items": {
+									"description": "A value between 0 and 255",
 									"type": "number"
 								},
 								"type": "array"
 							},
 							"negative_prompt": {
+								"description": "Text describing elements to avoid in the generated image",
 								"type": "string"
 							},
 							"num_steps": {
 								"default": 20,
+								"description": "The number of diffusion steps; higher values can improve quality but take longer",
 								"maximum": 20,
 								"type": "integer"
 							},
 							"prompt": {
+								"description": "A text description of the image you want to generate",
 								"minLength": 1,
 								"type": "string"
 							},
 							"seed": {
+								"description": "Random seed for reproducibility of the image generation",
 								"type": "integer"
 							},
 							"strength": {
 								"default": 1,
+								"description": "A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image",
 								"type": "number"
 							},
 							"width": {
+								"description": "The width of the generated image in pixels",
 								"maximum": 2048,
 								"minimum": 256,
 								"type": "integer"
@@ -79,25 +232,16 @@
 				"content": {
 					"image/png": {
 						"schema": {
-							"properties": {
-								"result": {
-									"format": "binary",
-									"type": "string"
-								},
-								"success": {
-									"default": "true",
-									"type": "boolean"
-								}
-							},
-							"type": "object"
+							"format": "binary",
+							"type": "string"
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -182,48 +326,61 @@
 						"properties": {
 							"guidance": {
 								"default": 7.5,
+								"description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt",
 								"type": "number"
 							},
 							"height": {
+								"description": "The height of the generated image in pixels",
 								"maximum": 2048,
 								"minimum": 256,
 								"type": "integer"
 							},
 							"image": {
+								"description": "For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 								"items": {
+									"description": "A value between 0 and 255",
 									"type": "number"
 								},
 								"type": "array"
 							},
 							"image_b64": {
+								"description": "For use with img2img tasks. A base64-encoded string of the input image",
 								"type": "string"
 							},
 							"mask": {
+								"description": "An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values",
 								"items": {
+									"description": "A value between 0 and 255",
 									"type": "number"
 								},
 								"type": "array"
 							},
 							"negative_prompt": {
+								"description": "Text describing elements to avoid in the generated image",
 								"type": "string"
 							},
 							"num_steps": {
 								"default": 20,
+								"description": "The number of diffusion steps; higher values can improve quality but take longer",
 								"maximum": 20,
 								"type": "integer"
 							},
 							"prompt": {
+								"description": "A text description of the image you want to generate",
 								"minLength": 1,
 								"type": "string"
 							},
 							"seed": {
+								"description": "Random seed for reproducibility of the image generation",
 								"type": "integer"
 							},
 							"strength": {
 								"default": 1,
+								"description": "A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image",
 								"type": "number"
 							},
 							"width": {
+								"description": "The width of the generated image in pixels",
 								"maximum": 2048,
 								"minimum": 256,
 								"type": "integer"
@@ -242,25 +399,16 @@
 				"content": {
 					"image/png": {
 						"schema": {
-							"properties": {
-								"result": {
-									"format": "binary",
-									"type": "string"
-								},
-								"success": {
-									"default": "true",
-									"type": "boolean"
-								}
-							},
-							"type": "object"
+							"format": "binary",
+							"type": "string"
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -345,48 +493,61 @@
 						"properties": {
 							"guidance": {
 								"default": 7.5,
+								"description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt",
 								"type": "number"
 							},
 							"height": {
+								"description": "The height of the generated image in pixels",
 								"maximum": 2048,
 								"minimum": 256,
 								"type": "integer"
 							},
 							"image": {
+								"description": "For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 								"items": {
+									"description": "A value between 0 and 255",
 									"type": "number"
 								},
 								"type": "array"
 							},
 							"image_b64": {
+								"description": "For use with img2img tasks. A base64-encoded string of the input image",
 								"type": "string"
 							},
 							"mask": {
+								"description": "An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values",
 								"items": {
+									"description": "A value between 0 and 255",
 									"type": "number"
 								},
 								"type": "array"
 							},
 							"negative_prompt": {
+								"description": "Text describing elements to avoid in the generated image",
 								"type": "string"
 							},
 							"num_steps": {
 								"default": 20,
+								"description": "The number of diffusion steps; higher values can improve quality but take longer",
 								"maximum": 20,
 								"type": "integer"
 							},
 							"prompt": {
+								"description": "A text description of the image you want to generate",
 								"minLength": 1,
 								"type": "string"
 							},
 							"seed": {
+								"description": "Random seed for reproducibility of the image generation",
 								"type": "integer"
 							},
 							"strength": {
 								"default": 1,
+								"description": "A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image",
 								"type": "number"
 							},
 							"width": {
+								"description": "The width of the generated image in pixels",
 								"maximum": 2048,
 								"minimum": 256,
 								"type": "integer"
@@ -405,25 +566,16 @@
 				"content": {
 					"image/png": {
 						"schema": {
-							"properties": {
-								"result": {
-									"format": "binary",
-									"type": "string"
-								},
-								"success": {
-									"default": "true",
-									"type": "boolean"
-								}
-							},
-							"type": "object"
+							"format": "binary",
+							"type": "string"
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -508,48 +660,61 @@
 						"properties": {
 							"guidance": {
 								"default": 7.5,
+								"description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt",
 								"type": "number"
 							},
 							"height": {
+								"description": "The height of the generated image in pixels",
 								"maximum": 2048,
 								"minimum": 256,
 								"type": "integer"
 							},
 							"image": {
+								"description": "For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 								"items": {
+									"description": "A value between 0 and 255",
 									"type": "number"
 								},
 								"type": "array"
 							},
 							"image_b64": {
+								"description": "For use with img2img tasks. A base64-encoded string of the input image",
 								"type": "string"
 							},
 							"mask": {
+								"description": "An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values",
 								"items": {
+									"description": "A value between 0 and 255",
 									"type": "number"
 								},
 								"type": "array"
 							},
 							"negative_prompt": {
+								"description": "Text describing elements to avoid in the generated image",
 								"type": "string"
 							},
 							"num_steps": {
 								"default": 20,
+								"description": "The number of diffusion steps; higher values can improve quality but take longer",
 								"maximum": 20,
 								"type": "integer"
 							},
 							"prompt": {
+								"description": "A text description of the image you want to generate",
 								"minLength": 1,
 								"type": "string"
 							},
 							"seed": {
+								"description": "Random seed for reproducibility of the image generation",
 								"type": "integer"
 							},
 							"strength": {
 								"default": 1,
+								"description": "A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image",
 								"type": "number"
 							},
 							"width": {
+								"description": "The width of the generated image in pixels",
 								"maximum": 2048,
 								"minimum": 256,
 								"type": "integer"
@@ -568,25 +733,16 @@
 				"content": {
 					"image/png": {
 						"schema": {
-							"properties": {
-								"result": {
-									"format": "binary",
-									"type": "string"
-								},
-								"success": {
-									"default": "true",
-									"type": "boolean"
-								}
-							},
-							"type": "object"
+							"format": "binary",
+							"type": "string"
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -671,48 +827,61 @@
 						"properties": {
 							"guidance": {
 								"default": 7.5,
+								"description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt",
 								"type": "number"
 							},
 							"height": {
+								"description": "The height of the generated image in pixels",
 								"maximum": 2048,
 								"minimum": 256,
 								"type": "integer"
 							},
 							"image": {
+								"description": "For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 								"items": {
+									"description": "A value between 0 and 255",
 									"type": "number"
 								},
 								"type": "array"
 							},
 							"image_b64": {
+								"description": "For use with img2img tasks. A base64-encoded string of the input image",
 								"type": "string"
 							},
 							"mask": {
+								"description": "An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values",
 								"items": {
+									"description": "A value between 0 and 255",
 									"type": "number"
 								},
 								"type": "array"
 							},
 							"negative_prompt": {
+								"description": "Text describing elements to avoid in the generated image",
 								"type": "string"
 							},
 							"num_steps": {
 								"default": 20,
+								"description": "The number of diffusion steps; higher values can improve quality but take longer",
 								"maximum": 20,
 								"type": "integer"
 							},
 							"prompt": {
+								"description": "A text description of the image you want to generate",
 								"minLength": 1,
 								"type": "string"
 							},
 							"seed": {
+								"description": "Random seed for reproducibility of the image generation",
 								"type": "integer"
 							},
 							"strength": {
 								"default": 1,
+								"description": "A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image",
 								"type": "number"
 							},
 							"width": {
+								"description": "The width of the generated image in pixels",
 								"maximum": 2048,
 								"minimum": 256,
 								"type": "integer"
@@ -731,25 +900,16 @@
 				"content": {
 					"image/png": {
 						"schema": {
-							"properties": {
-								"result": {
-									"format": "binary",
-									"type": "string"
-								},
-								"success": {
-									"default": "true",
-									"type": "boolean"
-								}
-							},
-							"type": "object"
+							"format": "binary",
+							"type": "string"
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {

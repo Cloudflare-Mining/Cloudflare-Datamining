@@ -25,15 +25,27 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"items": {
+										"properties": {
+											"label": {
+												"description": "The predicted category or class for the input image based on analysis",
+												"type": "string"
+											},
+											"score": {
+												"description": "A confidence value, between 0 and 1, indicating how certain the model is about the predicted label",
+												"type": "number"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"success": {
-									"default": "true",
+									"default": true,
 									"type": "boolean"
 								}
 							},
@@ -41,11 +53,11 @@
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {

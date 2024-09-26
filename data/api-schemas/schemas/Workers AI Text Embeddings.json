@@ -20,11 +20,14 @@
 							"text": {
 								"oneOf": [
 									{
+										"description": "The text to embed",
 										"minLength": 1,
 										"type": "string"
 									},
 									{
+										"description": "Batch of text values to embed",
 										"items": {
+											"description": "The text to embed",
 											"minLength": 1,
 											"type": "string"
 										},
@@ -45,15 +48,33 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"data": {
+											"description": "Embeddings of the requested text values",
+											"items": {
+												"description": "Floating point embedding representation shaped by the embedding model",
+												"items": {
+													"type": "number"
+												},
+												"type": "array"
+											},
+											"type": "array"
+										},
+										"shape": {
+											"items": {
+												"type": "number"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
-									"default": "true",
+									"default": true,
 									"type": "boolean"
 								}
 							},
@@ -61,11 +82,11 @@
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -151,11 +172,14 @@
 							"text": {
 								"oneOf": [
 									{
+										"description": "The text to embed",
 										"minLength": 1,
 										"type": "string"
 									},
 									{
+										"description": "Batch of text values to embed",
 										"items": {
+											"description": "The text to embed",
 											"minLength": 1,
 											"type": "string"
 										},
@@ -176,15 +200,33 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"data": {
+											"description": "Embeddings of the requested text values",
+											"items": {
+												"description": "Floating point embedding representation shaped by the embedding model",
+												"items": {
+													"type": "number"
+												},
+												"type": "array"
+											},
+											"type": "array"
+										},
+										"shape": {
+											"items": {
+												"type": "number"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
-									"default": "true",
+									"default": true,
 									"type": "boolean"
 								}
 							},
@@ -192,11 +234,11 @@
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -282,11 +324,14 @@
 							"text": {
 								"oneOf": [
 									{
+										"description": "The text to embed",
 										"minLength": 1,
 										"type": "string"
 									},
 									{
+										"description": "Batch of text values to embed",
 										"items": {
+											"description": "The text to embed",
 											"minLength": 1,
 											"type": "string"
 										},
@@ -307,15 +352,33 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"data": {
+											"description": "Embeddings of the requested text values",
+											"items": {
+												"description": "Floating point embedding representation shaped by the embedding model",
+												"items": {
+													"type": "number"
+												},
+												"type": "array"
+											},
+											"type": "array"
+										},
+										"shape": {
+											"items": {
+												"type": "number"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
-									"default": "true",
+									"default": true,
 									"type": "boolean"
 								}
 							},
@@ -323,11 +386,11 @@
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {

@@ -25,15 +25,48 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"text": {
+											"description": "The transcription",
+											"type": "string"
+										},
+										"vtt": {
+											"type": "string"
+										},
+										"word_count": {
+											"type": "number"
+										},
+										"words": {
+											"items": {
+												"properties": {
+													"end": {
+														"description": "The ending second when the word completes",
+														"type": "number"
+													},
+													"start": {
+														"description": "The second this word begins in the recording",
+														"type": "number"
+													},
+													"word": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"text"
+									],
+									"type": "object"
 								},
 								"success": {
-									"default": "true",
+									"default": true,
 									"type": "boolean"
 								}
 							},
@@ -41,11 +74,11 @@
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {
@@ -136,15 +169,48 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"text": {
+											"description": "The transcription",
+											"type": "string"
+										},
+										"vtt": {
+											"type": "string"
+										},
+										"word_count": {
+											"type": "number"
+										},
+										"words": {
+											"items": {
+												"properties": {
+													"end": {
+														"description": "The ending second when the word completes",
+														"type": "number"
+													},
+													"start": {
+														"description": "The second this word begins in the recording",
+														"type": "number"
+													},
+													"word": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"text"
+									],
+									"type": "object"
 								},
 								"success": {
-									"default": "true",
+									"default": true,
 									"type": "boolean"
 								}
 							},
@@ -152,11 +218,11 @@
 						}
 					}
 				},
-				"description": "Successful response"
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
-					"application/json": {
+					"applications/json": {
 						"schema": {
 							"properties": {
 								"errors": {
