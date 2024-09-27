@@ -2,8 +2,8 @@
 	"name": "create-cloudflare",
 	"dist-tags": {
 		"next": "2.0.0",
-		"latest": "2.29.0",
-		"beta": "0.0.0-5bfb75df8"
+		"beta": "0.0.0-ce7db9d9c",
+		"latest": "2.29.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -104907,6 +104907,210 @@
 			"name": "create-cloudflare",
 			"version": "0.0.0-5bfb75df8",
 			"devDependencies": {
+				"dns2": "^2.1.0",
+				"glob": "^10.3.3",
+				"open": "^8.4.0",
+				"chalk": "^5.2.0",
+				"degit": "^2.8.4",
+				"execa": "^7.1.1",
+				"yargs": "^17.7.2",
+				"dotenv": "^16.0.0",
+				"recast": "^0.22.0",
+				"semver": "^7.5.1",
+				"undici": "^5.28.4",
+				"esbuild": "0.17.19",
+				"wrangler": "0.0.0-5bfb75df8",
+				"deepmerge": "^4.3.1",
+				"wrap-ansi": "^9.0.0",
+				"haikunator": "^2.1.2",
+				"@iarna/toml": "^3.0.0",
+				"@types/dns2": "^2.0.3",
+				"@types/node": "20.8.3",
+				"cross-spawn": "^7.0.3",
+				"@babel/types": "^7.21.4",
+				"@types/degit": "^2.8.6",
+				"@types/yargs": "^17.0.22",
+				"magic-string": "^0.30.5",
+				"@babel/parser": "^7.21.3",
+				"@types/semver": "^7.5.1",
+				"indent-string": "^5.0.0",
+				"which-pm-runs": "^1.1.0",
+				"xdg-app-paths": "^8.3.0",
+				"@clack/prompts": "^0.6.3",
+				"@types/esprima": "^4.0.3",
+				"command-exists": "^1.2.9",
+				"@cloudflare/cli": "1.1.1",
+				"@types/deepmerge": "^2.2.0",
+				"@types/cross-spawn": "^6.0.2",
+				"vite-tsconfig-paths": "^4.0.8",
+				"@types/which-pm-runs": "^1.0.0",
+				"@types/command-exists": "^1.2.0",
+				"@cloudflare/workers-types": "^4.20240925.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/eslint-config-worker": "1.1.0",
+				"@typescript-eslint/eslint-plugin": "^6.9.0"
+			},
+			"bin": {
+				"create-cloudflare": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "e4f85f387361ff34bd4f6974f5534104a8a520e1",
+				"tarball": "https://registry.npmjs.org/create-cloudflare/-/create-cloudflare-0.0.0-5bfb75df8.tgz",
+				"fileCount": 254,
+				"integrity": "sha512-DQlAjVMa3se0bjfiEbp8nSpkmriLHabVTzkIAP2EjfXMWzaawXIO1fhWkEl9t7wZSdkVXehrkDdlZUAnu3c0TQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIG3Eq5CPMPuDViIlQU12gz6yoyy/hC/vIvaEDGIJi8SuAiEAmD0xmaZOoipePzi/iQoRRfRCq7yfWJhHgpIy/jo2GXk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 3652181
+			},
+			"engines": {
+				"node": ">=18.14.1"
+			}
+		},
+		"0.0.0-ce41da555": {
+			"name": "create-cloudflare",
+			"version": "0.0.0-ce41da555",
+			"devDependencies": {
+				"dns2": "^2.1.0",
+				"glob": "^10.3.3",
+				"open": "^8.4.0",
+				"chalk": "^5.2.0",
+				"degit": "^2.8.4",
+				"execa": "^7.1.1",
+				"yargs": "^17.7.2",
+				"dotenv": "^16.0.0",
+				"recast": "^0.22.0",
+				"semver": "^7.5.1",
+				"undici": "^5.28.4",
+				"esbuild": "0.17.19",
+				"wrangler": "0.0.0-ce41da555",
+				"deepmerge": "^4.3.1",
+				"wrap-ansi": "^9.0.0",
+				"haikunator": "^2.1.2",
+				"@iarna/toml": "^3.0.0",
+				"@types/dns2": "^2.0.3",
+				"@types/node": "20.8.3",
+				"cross-spawn": "^7.0.3",
+				"@babel/types": "^7.21.4",
+				"@types/degit": "^2.8.6",
+				"@types/yargs": "^17.0.22",
+				"magic-string": "^0.30.5",
+				"@babel/parser": "^7.21.3",
+				"@types/semver": "^7.5.1",
+				"indent-string": "^5.0.0",
+				"which-pm-runs": "^1.1.0",
+				"xdg-app-paths": "^8.3.0",
+				"@clack/prompts": "^0.6.3",
+				"@types/esprima": "^4.0.3",
+				"command-exists": "^1.2.9",
+				"@cloudflare/cli": "1.1.1",
+				"@types/deepmerge": "^2.2.0",
+				"@types/cross-spawn": "^6.0.2",
+				"vite-tsconfig-paths": "^4.0.8",
+				"@types/which-pm-runs": "^1.0.0",
+				"@types/command-exists": "^1.2.0",
+				"@cloudflare/workers-types": "^4.20240925.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/eslint-config-worker": "1.1.0",
+				"@typescript-eslint/eslint-plugin": "^6.9.0"
+			},
+			"bin": {
+				"create-cloudflare": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "9d889df8184ea76fc62c975e068c748919f794c6",
+				"tarball": "https://registry.npmjs.org/create-cloudflare/-/create-cloudflare-0.0.0-ce41da555.tgz",
+				"fileCount": 254,
+				"integrity": "sha512-zt/e9HItd0VR7M1fz4dt0Xp2bZJGbab2Ge37VTj20VXD+XAxnV+Vvb3g/qyBUtfXpg6ESDyBxocvTkzuXfnFkQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDij3CJd6CT1lGQgRSky7PaSIEYKYkY8gpq+L2WT9ZpXAIhAKJ5QU1zZmPPn2+Hc3mzBLC232VYCk8eT0wx5pFFuZYA",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 3652181
+			},
+			"engines": {
+				"node": ">=18.14.1"
+			}
+		},
+		"2.29.1": {
+			"name": "create-cloudflare",
+			"version": "2.29.1",
+			"devDependencies": {
+				"dns2": "^2.1.0",
+				"glob": "^10.3.3",
+				"open": "^8.4.0",
+				"chalk": "^5.2.0",
+				"degit": "^2.8.4",
+				"execa": "^7.1.1",
+				"yargs": "^17.7.2",
+				"dotenv": "^16.0.0",
+				"recast": "^0.22.0",
+				"semver": "^7.5.1",
+				"undici": "^5.28.4",
+				"esbuild": "0.17.19",
+				"wrangler": "3.78.12",
+				"deepmerge": "^4.3.1",
+				"wrap-ansi": "^9.0.0",
+				"haikunator": "^2.1.2",
+				"@iarna/toml": "^3.0.0",
+				"@types/dns2": "^2.0.3",
+				"@types/node": "20.8.3",
+				"cross-spawn": "^7.0.3",
+				"@babel/types": "^7.21.4",
+				"@types/degit": "^2.8.6",
+				"@types/yargs": "^17.0.22",
+				"magic-string": "^0.30.5",
+				"@babel/parser": "^7.21.3",
+				"@types/semver": "^7.5.1",
+				"indent-string": "^5.0.0",
+				"which-pm-runs": "^1.1.0",
+				"xdg-app-paths": "^8.3.0",
+				"@clack/prompts": "^0.6.3",
+				"@types/esprima": "^4.0.3",
+				"command-exists": "^1.2.9",
+				"@cloudflare/cli": "1.1.1",
+				"@types/deepmerge": "^2.2.0",
+				"@types/cross-spawn": "^6.0.2",
+				"vite-tsconfig-paths": "^4.0.8",
+				"@types/which-pm-runs": "^1.0.0",
+				"@types/command-exists": "^1.2.0",
+				"@cloudflare/workers-types": "^4.20240925.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/eslint-config-worker": "1.1.0",
+				"@typescript-eslint/eslint-plugin": "^6.9.0"
+			},
+			"bin": {
+				"create-cloudflare": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "6b2eecb3308f6b52094bfbc55ba1707c52b25151",
+				"tarball": "https://registry.npmjs.org/create-cloudflare/-/create-cloudflare-2.29.1.tgz",
+				"fileCount": 253,
+				"integrity": "sha512-gMqNor/QuuKys6S2yT3liUZt0Oe9VxYgiaDleUuSn0E2+bAFbhxF3+GHITlhZ+6JnXoynQ26A9LTU5Cj86kr7Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDAgxX13GAysUy+XRDnuQGLNIW7ISD4zqM+D7rwnHaXgQIgBezpJZbWl3H/qTIK9JQvNRen4w56N+oaV2bVViOea9k=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 3572361
+			},
+			"engines": {
+				"node": ">=18.14.1"
+			}
+		},
+		"0.0.0-ce7db9d9c": {
+			"name": "create-cloudflare",
+			"version": "0.0.0-ce7db9d9c",
+			"devDependencies": {
 				"@babel/parser": "^7.21.3",
 				"@babel/types": "^7.21.4",
 				"@clack/prompts": "^0.6.3",
@@ -104946,24 +105150,24 @@
 				"wrap-ansi": "^9.0.0",
 				"xdg-app-paths": "^8.3.0",
 				"yargs": "^17.7.2",
-				"@cloudflare/cli": "1.1.1",
 				"@cloudflare/eslint-config-worker": "1.1.0",
 				"@cloudflare/workers-tsconfig": "0.0.0",
-				"wrangler": "0.0.0-5bfb75df8"
+				"wrangler": "0.0.0-ce7db9d9c",
+				"@cloudflare/cli": "1.1.1"
 			},
 			"bin": {
 				"create-cloudflare": "dist/cli.js"
 			},
 			"dist": {
-				"integrity": "sha512-DQlAjVMa3se0bjfiEbp8nSpkmriLHabVTzkIAP2EjfXMWzaawXIO1fhWkEl9t7wZSdkVXehrkDdlZUAnu3c0TQ==",
-				"shasum": "e4f85f387361ff34bd4f6974f5534104a8a520e1",
-				"tarball": "https://registry.npmjs.org/create-cloudflare/-/create-cloudflare-0.0.0-5bfb75df8.tgz",
+				"integrity": "sha512-r9/7nFd4rliFjv5KM85yN9vZkQ6SoWS6ihMWxIFbQ+kcYcTjVh08hiJu/idwpMnbqoFsvTmL8dOHimz6n05zqQ==",
+				"shasum": "de603d84f85c77f06476278e90f60453a0a565a7",
+				"tarball": "https://registry.npmjs.org/create-cloudflare/-/create-cloudflare-0.0.0-ce7db9d9c.tgz",
 				"fileCount": 254,
 				"unpackedSize": 3652181,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIG3Eq5CPMPuDViIlQU12gz6yoyy/hC/vIvaEDGIJi8SuAiEAmD0xmaZOoipePzi/iQoRRfRCq7yfWJhHgpIy/jo2GXk="
+						"sig": "MEQCIHZRpLVl5Lc5fAjgg8j+3P1Dtp5B5I+RbfiZ61VhDRENAiBJ5YHPEhnLP3YGerlbf9tJ9EJ2pXECUDb3+vIq3LHGdQ=="
 					}
 				]
 			},
