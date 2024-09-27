@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "af6a5d7b-128b-5c75-940e-21a2ec2a165a")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "984016ac-16f6-5d1d-b50f-b031519109da")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -910,10 +910,10 @@
 					n.g.build = mn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "b2a1eae068ff98644463f750b9e956fd410aa07c",
-						dashVersion: "27538699",
+						commit: "856808ab3de4ae992d6f0f8e4fe9e399ed84292e",
+						dashVersion: "27548426",
 						env: "production",
-						builtAt: 1727430421012,
+						builtAt: 1727451596071,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -11102,7 +11102,7 @@
 						configureQueues: "https://developers.cloudflare.com/queues/configuration/configure-queues/",
 						observability: "https://developers.cloudflare.com/workers/observability/",
 						observabilityLogs: "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
-						workersAssets: "https://developers.cloudflare.com/workers/frameworks/"
+						workersAssets: "https://developers.cloudflare.com/workers/static-assets/"
 					},
 					serverlist: "https://blog.cloudflare.com/tag/serverlist/",
 					discord: "https://discord.cloudflare.com/",
@@ -14239,4 +14239,4 @@
 	}
 ]);
 
-//# debugId=af6a5d7b-128b-5c75-940e-21a2ec2a165a
+//# debugId=984016ac-16f6-5d1d-b50f-b031519109da
