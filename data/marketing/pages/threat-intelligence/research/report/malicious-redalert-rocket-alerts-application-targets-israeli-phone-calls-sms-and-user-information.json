@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-09-23T21:41:27.104Z",
-					"updatedAt": "2024-09-23T21:41:27.104Z"
+					"updatedAt": "2024-09-27T04:44:21.536Z"
 				},
 				"contentfulId": "3s2lo9m5sKocbjDfbM7rs7",
 				"contentTypeId": "page",
@@ -386,7 +386,7 @@
 						"titleSize": "large",
 						"subtitle": null,
 						"subtitleSize": "medium",
-						"copy": null,
+						"copy": "Threat spotlight - October 14, 2023",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": null,
@@ -451,7 +451,7 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"sectionPadding": null,
-						"columnLayout": "One Third & Two Thirds",
+						"columnLayout": "Left Sidebar",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
@@ -502,7 +502,133 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Summary & Background\n\nAnalysis & Mitigation\n\nTimeline & Response\n\nRecommendations",
+													"value": "Overview",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Malicious Android Package Kit (APK) Analysis",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Capabilities",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Anti-Analysis Runtime Capabilities",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "How To Detect This Malware On Your Device",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "How To Protect Yourself",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "IOCs",
 													"marks": [],
 													"content": null
 												}
@@ -662,7 +788,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "On October 13, 2023, Cloudflare's Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (https://play.google.com/store/apps/details?id=com.red.alert&hl=en&pli=1). More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023.  RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.",
+													"value": "On October 13, 2023, Cloudflare's Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://play.google.com/store/apps/details?id=com.red.alert&hl=en&pli=1"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "https://play.google.com/store/apps/details?id=com.red.alert&hl=en&pli=1",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "). More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023.  RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.",
 													"marks": [],
 													"content": null
 												}
@@ -948,7 +1105,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1017,7 +1174,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "5087a896360f5d99fbf4eb859c824d19eb6fa358387bf6c2c5e836f7927921c5",
+													"value": "5087a896360f5d99fbf4eb859c824d19e\nb6fa358387bf6c2c5e836f7927921c5",
 													"marks": [
 														{
 															"type": "italic"
@@ -1038,7 +1195,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1328,7 +1485,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "android.permission.READ_PRIVILEGED_PHONE_STATE",
+																	"value": "android.permission.READ_PRIVILEGED\n_PHONE_STATE",
 																	"marks": [],
 																	"content": null
 																}
@@ -1454,43 +1611,65 @@
 											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
+											"nodeType": "paragraph",
 											"data": {
-												"target": {
-													"sys": {
-														"id": "2ZHuafLWqLTnXkgdBXkqx9",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "2ZHuafLWqLTnXkgdBXkqx9",
-															"locale": "en-US",
-															"title": "Threat Intelligence - Report 5 - Image 2",
-															"file": {
-																"name": "report5image2.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZHuafLWqLTnXkgdBXkqx9/4369837788d87fe2c4887dcaac58bcc2/report5image2.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
+												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "2CaNQwU93QSQv4cHhba5y7",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -1795,43 +1974,61 @@
 											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
+											"nodeType": "paragraph",
 											"data": {
-												"target": {
-													"sys": {
-														"id": "1LOk6HEhIkSw8Ma3xV6gdP",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "1LOk6HEhIkSw8Ma3xV6gdP",
-															"locale": "en-US",
-															"title": "Threat Intelligence - Report 5 - Image 3",
-															"file": {
-																"name": "report5image3.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LOk6HEhIkSw8Ma3xV6gdP/0b98d73ac8a4ee64caf9c16b85083687/report5image3.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
+												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "1k6u6TrP6WFVkZTBkLXgba",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -1904,43 +2101,61 @@
 											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
+											"nodeType": "paragraph",
 											"data": {
-												"target": {
-													"sys": {
-														"id": "7bPmQY9DozzwZQLtfBh2BL",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "7bPmQY9DozzwZQLtfBh2BL",
-															"locale": "en-US",
-															"title": "Threat Intelligence - Report 5 - Image 4",
-															"file": {
-																"name": "report5image4.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bPmQY9DozzwZQLtfBh2BL/fb07576f2bef3ab98039398669c549c5/report5image4.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
+												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "4nvHMbKKUTPV4VeP4pPD0L",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -1989,43 +2204,61 @@
 											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
+											"nodeType": "paragraph",
 											"data": {
-												"target": {
-													"sys": {
-														"id": "36CI7l0LXLlwFQjEHufaam",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "36CI7l0LXLlwFQjEHufaam",
-															"locale": "en-US",
-															"title": "Threat Intelligence - Report 5 - Image 5",
-															"file": {
-																"name": "report5image5.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/36CI7l0LXLlwFQjEHufaam/02d08531426ce439c82806fe22b127f9/report5image5.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
+												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "5Gm1wqXTEjkEE1YfLXnps9",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -2316,7 +2549,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -2424,43 +2657,61 @@
 											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
+											"nodeType": "paragraph",
 											"data": {
-												"target": {
-													"sys": {
-														"id": "601CM6liFFJSLIntaWkmw2",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "601CM6liFFJSLIntaWkmw2",
-															"locale": "en-US",
-															"title": "Threat Intelligence - Report 5 - Image 6",
-															"file": {
-																"name": "report5image6.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/601CM6liFFJSLIntaWkmw2/72e659372606ca4c5f1c067da054f62f/report5image6.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
+												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "4pPMhaUVaOiWVgo7U5vfUH",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -2636,43 +2887,61 @@
 											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
+											"nodeType": "paragraph",
 											"data": {
-												"target": {
-													"sys": {
-														"id": "01Gd81KvjmW8VTIpd6KWdi",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "01Gd81KvjmW8VTIpd6KWdi",
-															"locale": "en-US",
-															"title": "Threat Intelligence - Report 5 - Image 8",
-															"file": {
-																"name": "report5image8.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/01Gd81KvjmW8VTIpd6KWdi/12550d7218f6e07cbc9be95eebb85bb9/report5image8.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
+												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "6P8LVlmMER6Ee7mjZHZirL",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -2721,7 +2990,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -3146,7 +3415,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -3167,7 +3436,7 @@
 											]
 										},
 										{
-											"nodeType": "table",
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
@@ -3176,399 +3445,77 @@
 											"marks": null,
 											"content": [
 												{
-													"nodeType": "table-row",
+													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "table-cell",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "paragraph",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Type",
-																			"marks": [
-																				{
-																					"type": "bold"
-																				}
-																			],
-																			"content": null
-																		}
-																	]
-																}
-															]
-														},
-														{
-															"nodeType": "table-cell",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "paragraph",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Indicator",
-																			"marks": [
-																				{
-																					"type": "bold"
-																				}
-																			],
-																			"content": null
-																		}
-																	]
-																}
-															]
-														}
-													]
+													"value": "",
+													"marks": [],
+													"content": null
 												},
 												{
-													"nodeType": "table-row",
+													"nodeType": "embedded-entry-inline",
 													"data": {
-														"target": null,
+														"target": {
+															"sys": {
+																"id": "20d56HcQdLEOXBqXiciQeG",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
 														"uri": null
 													},
 													"value": null,
 													"marks": null,
-													"content": [
-														{
-															"nodeType": "table-cell",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "paragraph",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Malicious RedAlert APK Download URL",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																}
-															]
-														},
-														{
-															"nodeType": "table-cell",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "paragraph",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "hxxp://redalerts[.]me/app.apk",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																}
-															]
-														}
-													]
+													"content": []
 												},
 												{
-													"nodeType": "table-row",
+													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "table-cell",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "paragraph",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Malicious RedAlert APK Command and Control",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																}
-															]
-														},
-														{
-															"nodeType": "table-cell",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "paragraph",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "hxxp://23.254.228[.]135:80/file.php",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "table-row",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "table-cell",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "paragraph",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Malicious RedAlert APK",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																}
-															]
-														},
-														{
-															"nodeType": "table-cell",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "paragraph",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "5087a896360f5d99fbf4eb859c824d19eb6fa358387bf6c2c5e836f7927921c5",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "table-row",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "table-cell",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "paragraph",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Public key, RSA/ECB/PKCS1Padding",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																}
-															]
-														},
-														{
-															"nodeType": "table-cell",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "paragraph",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvBYe8dLw 1TVH39EVQEwCr7kg BRtQz2M2vQbgkbr 0UiTFm0Tk9KVZ1jn0uVgJ+dh1I7uuIfzFEopFQ35OxRnjmNAJsO YpYA5ZvD2llS+KUyE4TRJZGh+dfGjc98dCGCVW9aPVuyfciFN pzGU+lUV/nIbi8xm HOSzho+GZvrRWNDvJqmX7Xunjr1crAKIpG1kF8bpa9+VkoKnM OqFBTc6aPEmwj4C meTsTy+j7ubdKc8tsdoCTGfrLzVj4wlGDjtf06dYEtZ6zvdBbzb4 UA6Ilxsb12KY03qdlql FREqCxjtJUYDEYChnpOSkrzpLOu+TTkAlW68+u6JjgE8AAAnjpI GRRNvuj5ZfTS3Ub3x EABBRUuHcesseuaN3wVwvMBIMbWJabVUWUNWYyCewxrtdr c8HStECbS/b05j2lv6 Cl1Qv1iQefurL/hvfREmxlHAnkCmzTxlrEStHHnNmhWOccQI+ u0VO6klJShNg8XlRs KXnqpPi3aicki+ QMo3i1oWOve6aWkAIJvmHaY4Gmz0nX2foxlJ2YxOGQe0rU AqDXa8S6tYSmIy CYJoTmllvwJAEpCtOFxerZIAa/1BaxYFhH/iQUzzayJuc6ooUmK Lw7q72pe3tN0cRT3 RAJUmRwTcV5hL+UQgakkSzIMFBpM/rpvNC0Qy94mtpNf6iA6gbKm40CAwEAAQ==",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																}
-															]
-														}
-													]
+													"value": "",
+													"marks": [],
+													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "hr",
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -3643,45 +3590,6 @@
 						]
 					},
 					{
-						"contentfulId": "1iyjxGekaeVLgcEQQrbWHR",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Subscribe to Cloudforce One",
-						"description": "Subscribe to Cloudforce One",
-						"variant": "inline",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "4526a0e7-98ff-58c2-a6a8-10324e3c2948",
-							"altText": "Generic Lead Generation background",
-							"title": "Generic Lead Generation background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GXH7p3scfTG26xKndTZ0Z/fb56c78967ff82b1633b9f5386f1605f/Lead-generation-background-generic.png"
-								},
-								"description": "Lead generation background generic"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "25YuJxguo9iAz2RxKCwaoB",
-							"elementName": "Threat Intelligence - Subscribe CTA link",
-							"standardText": null,
-							"text": "Subscribe",
-							"url": "#",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": null
-					},
-					{
 						"contentfulId": "2sdnQxHmAE471TW5aZAM1k",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": "Related Resources",
@@ -3692,12 +3600,12 @@
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7LvrG5A9JQzP2ufBsptuRc",
-								"title": "Freight fraud - Campaign snapshot",
+								"contentfulId": "4cyn8AN5KypAODyiKDXoIz",
+								"title": "Freight fraud surge: global supply chain compromises",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Threat brief",
+								"description": "Campaign snapshot",
 								"learnMoreUrl": "threat-intelligence/research/report/freight-fraud-surge-global-supply-chain-compromises",
 								"learnMoreText": "Read now",
 								"displayBorder": false,
@@ -3764,32 +3672,32 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "76km1rbKSQet8AnqfTfalZ",
-								"title": "Impersonation is fooling the enterprise - Campaign snapshot",
+								"contentfulId": "1WDZ9e5P2h9kkhN8TtOaYJ",
+								"title": "Unraveling SloppyLemming's Operations Across South Asia",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Threat spotlight",
-								"learnMoreUrl": "threat-intelligence/research/report/impersonation-is-fooling-the-enterprise",
+								"description": "Threat brief",
+								"learnMoreUrl": "https://blog.cloudflare.com/unraveling-sloppylemming-operations/",
 								"learnMoreText": "Read now",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "82a15462-975e-5e73-8f01-5b2c48f2da4f",
-									"altText": "Impersonation is fooling the enterprise - Campaign snapshot",
+									"id": "c95d8419-a75b-574b-b6dc-28f6c3e5c94f",
+									"altText": "Unraveling SloppyLemming's Operations Across South Asia",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bvTclIhsaz4xgWvevZ10f/50ca442a1a167753fdc9e96f28129fed/Impersonation_attacks.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/fgi0zzdDYzOlSAFHkjLPy/a505ea0c7766a59d632f81e0fb66b01b/Sloppy_Lemming.png"
 										},
-										"description": "Impersonation is fooling the enterprise"
+										"description": "Unraveling SloppyLemming's Operations Across South Asia"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null

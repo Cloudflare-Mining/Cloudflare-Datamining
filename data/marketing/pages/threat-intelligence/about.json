@@ -43,16 +43,16 @@
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mJwiC9wFNQORruuROSnNG/acc69b9eb918df00540a27c555c023c6/Cloudforce-One-clean-meta.png"
 						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						"description": "Cloudforce One - Meta image"
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
 					"createdAt": "2024-09-23T21:35:58.682Z",
-					"updatedAt": "2024-09-23T21:35:58.682Z"
+					"updatedAt": "2024-09-27T04:39:05.265Z"
 				},
 				"contentfulId": "1BNsUTtqIP6vPWlcz5lr8p",
 				"contentTypeId": "page",
@@ -607,7 +607,7 @@
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": "What we do",
 						"eyebrowHeading": null,
-						"description": "We create threat intelligence to arm security teams with the necessary context to make fast, confident decisions.",
+						"description": "We create threat intelligence to arm security teams with the necessary context to make fast, confident decisions.\n<br><br>",
 						"textLayout": "center",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
@@ -720,7 +720,7 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
 					},
 					{
@@ -760,39 +760,30 @@
 								"description": "of Internet properties run on Cloudflare"
 							},
 							{
-								"title": "150B",
+								"title": "%{ThreatsBlockedPerDay}B",
 								"description": "attacks blocked in the past quarter"
 							},
 							{
-								"title": "60M",
+								"title": "%{HTTPRequests}M",
 								"description": "HTTP requests processed every second"
 							}
 						]
 					},
 					{
-						"contentfulId": "TbB3QvIrlrqigvkfTxH0v",
-						"contentTypeId": "bladeLeadGeneration",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "sJEzP8w5T5I0ktN2sVdmC",
 						"title": "Get updates from Cloudforce One",
-						"description": "Get updates from Cloudforce One",
-						"variant": "inline",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "4526a0e7-98ff-58c2-a6a8-10324e3c2948",
-							"altText": "Generic Lead Generation background",
-							"title": "Generic Lead Generation background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GXH7p3scfTG26xKndTZ0Z/fb56c78967ff82b1633b9f5386f1605f/Lead-generation-background-generic.png"
-								},
-								"description": "Lead generation background generic"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
@@ -845,7 +836,9 @@
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeHtml",
