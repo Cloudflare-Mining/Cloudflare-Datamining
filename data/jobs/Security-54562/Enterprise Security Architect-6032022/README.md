@@ -93,7 +93,8 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $187,000 - $206,000.</span></li>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $168,000 - $206,000.</li>
+	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $187,000 - $229,000.</span></li>
 	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $196,000 - $240,000.</span></li>
 </ul>
 <p><strong>Equity</strong></p>
