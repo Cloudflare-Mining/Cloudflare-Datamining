@@ -20,7 +20,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Excellent Python and SQL (one of the interviews will be a live coding exercise)</li>
+	<li>Excellent Python and SQL (one of the interviews will be a code review)</li>
 	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields, or equivalent experience</li>
 	<li>Minimum 3 years of industry experience in software engineering, data engineering, data science or related field with a track record of extracting, transforming and loading large datasets&nbsp;</li>
 	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
