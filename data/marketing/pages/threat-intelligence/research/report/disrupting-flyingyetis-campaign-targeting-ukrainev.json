@@ -1059,7 +1059,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Executive Summary",
+													"value": "Executive summary",
 													"marks": [],
 													"content": null
 												}
@@ -2953,7 +2953,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "4HulyLWFKB0ne0jGtFTy5q",
+																	"locale": "en-US",
+																	"entryTitle": "Threat Intelligence - Report 3 - Timeline tabl",
+																	"markdown": "\n| Date     | Event Description     |\n| ---------- | ---------- |\n| 2024-04-18 12:18       | Threat Actor (TA) creates a Worker to handle requests from a phishing site       |\n| 2024-04-18 14:16       | TA creates phishing site komunalka[.]github[.]io on GitHub       |\n| 2024-04-25 12:25       | TA creates a GitHub repo to host a RAR file      |\n| 2024-04-26 07:46       | TA updates the first Worker to handle requests from users visiting komunalka[.]github[.]io       |\n| 2024-04-26 08:24       | TA uploads a benign test RAR to the GitHub repo       |\n| 2024-04-26 13:38       | Cloudforce One identifies a Worker receiving requests from users visiting komunalka[.]github[.]io, observes its use as a phishing page       |\n| 2024-04-26 13:46       | Cloudforce One identifies that the Worker fetches a RAR file from GitHub (the malicious RAR payload is not yet hosted on the site) |\n| 2024-04-26 19:22 | Cloudforce One creates a detection to identify the Worker that fetches the RAR       |\n| 2024-04-26 21:13       | Cloudforce One deploys real-time monitoring of the RAR file on GitHub       |\n| 2024-05-02 06:35       | TA deploys a weaponized RAR (CVE-2023-38831) to GitHub with their COOKBOX malware packaged in the archive       |\n| 2024-05-06 10:03       | TA attempts to update the Worker with link to weaponized RAR, the Worker is immediately blocked       |\n| 2024-05-06 10:38       | TA creates a new Worker, the Worker is immediately blocked       |\n| 2024-05-06 11:04       | TA creates a new account (#2) on Cloudflare       |\n| 2024-05-06 11:06       | TA creates a new Worker on account #2 (blocked)       |\n| 2024-05-06 11:50       | TA creates a new Worker on account #2 (blocked)       |\n| 2024-05-06 12:22       | TA creates a new modified Worker on account #2|\n| 2024-05-06 16:05       | Cloudforce One disables the running Worker on account #2       |\n| 2024-05-07 22:16       | TA notices the Worker is blocked, ceases all operations       |\n| 2024-05-07 22:18       |TA deletes original Worker first created to fetch the RAR file from the GitHub phishing page       |\n| 2024-05-09 19:28       |Cloudforce One adds phishing page komunalka[.]github[.]io to real-time monitoring       |\n| 2024-05-13 07:36       | TA updates the github.io phishing site to point directly to the GitHub RAR link        |\n| 2024-05-13 17:47       | Cloudforce One adds COOKBOX C2 postdock[.]serveftp[.]com to real-time monitoring for DNS resolution       |\n| 2024-05-14 00:04       |Cloudforce One notifies GitHub to take down the RAR file       |\n| 2024-05-15 09:00       | GitHub user, project, and link for RAR are no longer accessible       |\n| 2024-05-21 08:23       | TA updates Komunalka phishing site on github.io to link to pixeldrain URL for dummy payload (pixeldrain only tracks view and download counts)       |\n| 2024-05-21 08:25       | TA updates Komunalka phishing site to link to FileMail URL for dummy payload (FileMail tracks not only view and download counts, but also IP addresses)       |\n| 2024-05-21 12:21      | Cloudforce One downloads PixelDrain document to evaluate payload       |\n| 2024-05-21 12:47       | Cloudforce One downloads FileMail document to evaluate payload       |\n|2024-05-29 23:59       |GitHub takes down Komunalka phishing site      |\n| 2024-05-30 13:00       |Cloudforce One publishes the results of this investigation       |\n"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -3188,7 +3196,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "7Ehz3hvTtr5faVfBPkKBPf",
+																	"locale": "en-US",
+																	"entryTitle": "Threat Intelligence - Report 3 - Content - Code Snipet 1",
+																	"markdown": "    CVE-2023-38831\n    Description:winrar exploit detection \n    open suspios (.tar / .zip / .rar) and run this script to check it \n\n    function winrar-exploit-detect(){\n      $targetExtensions = @(\".cmd\" , \".ps1\" , \".bat\")\n      $tempDir = [System.Environment]::GetEnvironmentVariable(\"TEMP\")\n      $dirsToCheck = Get-ChildItem -Path $tempDir -Directory -Filter \"Rar*\"\n      foreach ($dir in $dirsToCheck) {\n        $files = Get-ChildItem -Path $dir.FullName -File\n        foreach ($file in $files) {\n          $fileName = $file.Name\n          $fileExtension = [System.IO.Path]::GetExtension($fileName)\n          if ($targetExtensions -contains $fileExtension) {\n          $fileWithoutExtension = [System.IO.Path]::GetFileNameWithoutExtension($fileName);       \n          $filename.TrimEnd() -replace '\\.$'\n          $cmdFileName = \"$fileWithoutExtension\"\n          $secondFile = Join-Path -Path $dir.FullName -ChildPath $cmdFileName\n          if (Test-Path $secondFile -PathType Leaf) {\n            Write-Host \"[!] Suspicious pair detected \"\n            Write-Host \"[*]  Original File:$($secondFile)\" -ForegroundColor Green \n            Write-Host \"[*] Suspicious File:$($file.FullName)\" -ForegroundColor Red\n            # Read and display the content of the command file\n            $cmdFileContent = Get-Content -Path $($file.FullName)\n            Write-Host \"[+] Command File Content:$cmdFileContent\"\n          }\n        }\n      }\n    }\n    }\n    winrar-exploit-detect\n"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -3287,7 +3303,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "3tY8D0ZkdsSRg4GPy7q5Ga",
+																	"locale": "en-US",
+																	"entryTitle": "Threat Intelligence - Report 3 - Content - Code Snipet 2",
+																	"markdown": "    DeviceProcessEvents\n    | where InitiatingProcessParentFileName has @\"winrar.exe\"\n    | where InitiatingProcessFileName has @\"cmd.exe\"\n    | project Timestamp, DeviceName, FileName, FolderPath, ProcessCommandLine, AccountName\n    | sort by Timestamp desc"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -3417,7 +3441,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "1hp9eGwxvNSA1nSFIWfNRl",
+																	"locale": "en-US",
+																	"entryTitle": "Threat Intelligence - Report 3 - Content - Code Snipet 3",
+																	"markdown": "    | tstats `security_content_summariesonly` count min(_time) as firstTime max(_time) as lastTime from datamodel=Endpoint.Processes where Processes.parent_process_name=winrar.exe `windows_shells` OR Processes.process_name IN (\"certutil.exe\",\"mshta.exe\",\"bitsadmin.exe\") by Processes.dest Processes.user Processes.parent_process_name Processes.parent_process Processes.process_name Processes.process Processes.process_id Processes.parent_process_id \n    | `drop_dm_object_name(Processes)` \n    | `security_content_ctime(firstTime)` \n    | `security_content_ctime(lastTime)` \n    | `winrar_spawning_shell_application_filter`"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -4069,7 +4101,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "1sAgm918bwMd5YHunFPwoL",
+																	"locale": "en-US",
+																	"entryTitle": "Threat Intelligence - Report 3 - indicators of compromise - table 1",
+																	"markdown": "\n| Filename     | SHA256 Hash     | Description     |\n| ---------- | ---------- | ---------- |\n| Заборгованість по ЖКП.rar | a0a294f85c8a19be048ffcc05ede6fd5a7a c5e2f0032a3ca0050dc1ae960c314  | RAR archive       |\n| ахунок на оплату.pdf.cmd| 0cca8f795c7a81d33d36d5204fcd9bc73bd c2af7de315c1449cbc3551ef4fb59       | COOKBOX Sample (contained in RAR archive)       |\n| Реструктуризація боргу за житлово комунальні послуги.docx       | 915721b94e3dffa6cef3664532b586be6c f989fec923b26c62fdaf201ee81d2c       | Benign Word Document with Tracking Link (contained in RAR archive)       |\n| Угода користувача.docx       |79a9740f5e5ea4aa2157d9d96df34ee49a 32e2d386fe55fedfd1aa33e151c06d       | Benign Word Document with Tracking Link (contained in RAR archive)      |\n|Рахунок на оплату.pdf      |19e25456c2996ded3e29577b609de54a 2bef90dad8f868cdad795c18df05a79b      | Random Binary Data (contained in RAR archive)      |\n|Заборгованість по ЖКП станом на 26.04.24.docx       |e0d65e2d36afd3db1b603f10e0488cee3f 58ade24d8abc6bee240314d8696708      | Random Binary Data (contained in RAR archive)      |\n"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -4130,7 +4170,15 @@
 																"linkType": "Entry"
 															},
 															"related_asset": [],
-															"entry_elementMarkdown": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "3jlyniSTyUJThPcui8cc6A",
+																	"locale": "en-US",
+																	"entryTitle": "Threat Intelligence - Report 3 - Indicators of compromise - table 2",
+																	"markdown": "\n| Domain / URL     | Description     |\n| ---------- | ---------- |\n| komunalka[.]github[.]io       | Phishing page       |\n| hxxps[:]//github[.]com/komunalka/komunalka[.]github[.]io      | Phishing page      |\n| hxxps[:]//worker-polished-union-f396[.]vqu89698[.]workers[.]dev      | Worker that fetches malicious RAR file      |\n| hxxps[:]//raw[.]githubusercontent[.]com/kudoc8989/project/main/Заборгованість по ЖКП.rar      | Delivery of malicious RAR file      |\n| hxxps[:]//1014[.]filemail[.]com/api/file/get?filekey=e_8S1HEnM5Rzhy_jpN6nLGF4UAP533VrXzgXjxH1GzbVQZvmp FzrFA&pk_vid=a3d82455433c8ad11715865826cf18f6       | Dummy payload      |\n| hxxps[:]//pixeldrain[.]com/api/file/ZAJxwFFX?download=      | Dummy payload      || hxxp[:]//canarytokens[.]com/stuff/tags/ni1cknk2yq3xfcw2al3efs37m/payments.js      |Tracking link |\n| hxxp[:]//canarytokens[.]com/stuff/tags/ni1cknk2yq3xfcw2al3efs37m/payments.js      | Tracking link      |\n| hxxp[:]//canarytokens[.]com/stuff/terms/images/k22r2dnjrvjsm e8680ojf5ccs/index.html      | Tracking link      |\n"
+																}
+															],
 															"entry_assetFile": [],
 															"entry_button": [],
 															"entry_elementLink": [],
@@ -4229,6 +4277,77 @@
 								}
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "frO1Wb6sSyH8oFuAoFr7V",
+						"title": "Subscribe to Cloudforce One",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "3AE0ZM4rOFyc2FXW7c6dOB",
+							"elementName": "Threat Intelligence - Subscribe CTA",
+							"standardText": null,
+							"text": "Subscribe",
+							"url": "threat-intelligence-subscribe-cta",
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "bkftg7VrTPdtzgtHKXCv4",
+								"modalName": "Threat Intelligence - Subscribe CTA - modal",
+								"modalId": "threat-intelligence-subscribe-cta-modal",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "7kuQHC8CeZnI1RrApQKjQu",
+									"bladeName": "Threat Intelligence - Subscribe CTA - marketo form",
+									"backgroundColor": "white",
+									"marketoFormId": 4129,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "24Q3-SUB-GBL-Cloudforce One Threat Intelligence-EVS-PAS-ALL-ALL",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Get updates from Cloudforce One",
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentfulId": "5dQbUOYiy1E70pUp92AtHY",
@@ -4355,6 +4474,12 @@
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "38nfX7mkZGs0w3pPIvJykw",
 						"htmlContent": "<style>\n  .top-nav__logo{\n  width: 200px !important;\n  max-width: unset !important;\n  }\n\n  .button-cta a:hover, a:visited:hover {\n   background-color: white !important;\n}\n\n.bg-focus-orange-3-400_01:focus, .h-bg-orange-3-400_01:hover {\n    background-color: white !important;\n}\n\n  @media screen and (max-width: 576px){\n    .main-header-logo {\n      overflow: hidden;\n      min-width: 58px !important;\n    }\n  }\n  </style>\n",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "5dJ4cV38B5LEXNdGvzUuRi",
+						"htmlContent": "<style>\n  code {\n    display: block;\n    background-color: #f1f3f4;\n    padding: 20px;\n    border-radius: 8px;\n    text-wrap: wrap;\n  }\n</style>",
 						"htmlId": null
 					}
 				],
