@@ -1,0 +1,120 @@
+{
+	"alias": "to-do-list-template-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "to-do-list-template-workers",
+			"build": "./src/template",
+			"files": [
+				"index.js",
+				"escape.js",
+				"template.html"
+			],
+			"replacements": {
+				"worker-name-placeholder": {
+					"$ref": "values://target/worker/name"
+				},
+				"namespace-id-placeholder": {
+					"$ref": "values://resources/to-do-list-template-kv-namespace/result/id"
+				}
+			}
+		}
+	],
+	"category": "workers-databases",
+	"description": "A simple to-do list application, powered by Workers and KV.",
+	"docs_url": null,
+	"flags": [
+		"exclude_permissions_step",
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "To-do List",
+	"permissions": null,
+	"setup_steps": [
+		{
+			"title": "Create a KV namespace",
+			"type": "form",
+			"components": [
+				{
+					"type": "text_input",
+					"name": "kvNamespaceName",
+					"label": "Name your KV namespace",
+					"required": true
+				}
+			],
+			"resources": [
+				{
+					"name": "to-do-list-template-kv-namespace",
+					"type": "kv_namespace",
+					"params": {
+						"title": {
+							"$ref": "values://data/kvNamespaceName"
+						}
+					}
+				}
+			]
+		}
+	],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "To-do List App",
+			"products": [
+				"Workers"
+			],
+			"categories": [
+				"starter"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_resources": [
+				{
+					"name": "to-do-list-template-worker",
+					"type": "worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"body": {
+							"$ref": "assets://to-do-list-template-workers/bundle.js"
+						},
+						"bindings": [
+							{
+								"type": "kv_namespace",
+								"name": "EXAMPLE_TODOS",
+								"namespace_id": {
+									"$ref": "values://resources/to-do-list-template-kv-namespace/result/id"
+								}
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": "index.js",
+					"content": {
+						"$ref": "assets://to-do-list-template-workers/files/index.js"
+					}
+				},
+				{
+					"filename": "escape.js",
+					"content": {
+						"$ref": "assets://to-do-list-template-workers/files/escape.js"
+					}
+				},
+				{
+					"filename": "template.html",
+					"content": {
+						"$ref": "assets://to-do-list-template-workers/files/template.html"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "0.2.0"
+}

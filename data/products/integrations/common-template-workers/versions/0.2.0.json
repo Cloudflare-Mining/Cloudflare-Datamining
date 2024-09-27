@@ -1,0 +1,86 @@
+{
+	"alias": "common-template-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "common-template-workers",
+			"build": "./src/template",
+			"files": [
+				"worker.js",
+				"proxy.js",
+				"redirect.js",
+				"router.js"
+			]
+		}
+	],
+	"category": "workers-databases",
+	"description": "Build from a collection of simple Worker use cases.",
+	"docs_url": null,
+	"flags": [
+		"exclude_permissions_step",
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Common",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "Common Worker Examples",
+			"products": [
+				"Workers"
+			],
+			"categories": [
+				"starter"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_resources": [
+				{
+					"name": "common-template-worker",
+					"type": "worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"body": {
+							"$ref": "assets://common-template-workers/bundle.js"
+						}
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": "worker.js",
+					"content": {
+						"$ref": "assets://common-template-workers/files/worker.js"
+					}
+				},
+				{
+					"filename": "proxy.js",
+					"content": {
+						"$ref": "assets://common-template-workers/files/proxy.js"
+					}
+				},
+				{
+					"filename": "redirect.js",
+					"content": {
+						"$ref": "assets://common-template-workers/files/redirect.js"
+					}
+				},
+				{
+					"filename": "router.js",
+					"content": {
+						"$ref": "assets://common-template-workers/files/router.js"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "0.2.0"
+}

@@ -1,0 +1,77 @@
+{
+	"alias": "vector-embedding-template-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "vector-embedding-template-workers",
+			"build": "./src/template",
+			"files": [
+				"index.js"
+			],
+			"replacements": {
+				"worker-name-placeholder": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "workers-databases",
+	"description": "Convert text into mathematical vectors so that you can perform text analysis and transformations.",
+	"docs_url": null,
+	"flags": [
+		"exclude_permissions_step",
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Vector Embedding",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "Vector Embedding App",
+			"products": [
+				"Workers",
+				"AI"
+			],
+			"categories": [
+				"ai"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/3560de9d-3ab0-4349-6e33-1deed58a2c00/public"
+			],
+			"deploy_resources": [
+				{
+					"name": "vector-embedding-template-worker",
+					"type": "worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"body": {
+							"$ref": "assets://vector-embedding-template-workers/bundle.js"
+						},
+						"bindings": [
+							{
+								"type": "ai",
+								"name": "AI"
+							}
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": "index.js",
+					"content": {
+						"$ref": "assets://vector-embedding-template-workers/files/index.js"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "0.2.0"
+}

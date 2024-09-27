@@ -1,0 +1,73 @@
+{
+	"alias": "python-hello-world-template-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "python-hello-world-template-workers",
+			"build": "./src/template",
+			"files": [
+				"index.py"
+			],
+			"replacements": {
+				"worker-name-placeholder": {
+					"$ref": "values://target/worker/name"
+				}
+			}
+		}
+	],
+	"category": "workers-databases",
+	"description": "Display a simple text response, but in Python.",
+	"docs_url": null,
+	"flags": [
+		"exclude_permissions_step",
+		"template_only"
+	],
+	"get_data_action": null,
+	"icon_url": null,
+	"install_target": "worker",
+	"name": "Python Hello World",
+	"permissions": null,
+	"setup_steps": [],
+	"templates": [
+		{
+			"context": "create-worker",
+			"label": "Python Hello World",
+			"products": [
+				"Workers"
+			],
+			"categories": [
+				"starter"
+			],
+			"icon_urls": [
+				"https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/e323d708-4dad-4823-bccf-d1015c9ecd00/public"
+			],
+			"deploy_resources": [
+				{
+					"name": "python-hello-world-template-worker",
+					"type": "worker",
+					"params": {
+						"name": {
+							"$ref": "values://target/worker/name"
+						},
+						"body": {
+							"$ref": "assets://python-hello-world-template-workers/bundle.js"
+						},
+						"compatibility_flags": [
+							"python_workers"
+						]
+					}
+				}
+			],
+			"preview_files": [
+				{
+					"filename": "index.py",
+					"content": {
+						"$ref": "assets://python-hello-world-template-workers/files/index.py"
+					}
+				}
+			]
+		}
+	],
+	"uninstall_action": null,
+	"version": "0.2.0"
+}
