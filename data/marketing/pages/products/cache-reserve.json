@@ -315,20 +315,7 @@
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "2x8ibYXIm1rdJdqDtmgT4O",
-							"elementName": "Cache Reserve - ADDITIONAL OFFER BLADE - CTA",
-							"standardText": null,
-							"text": "Watch the demo",
-							"url": "https://www.youtube.com/watch?v=hyBelB1S8KI",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
+						"primaryCtaButton": null,
 						"secondaryCtaButton": null
 					},
 					{
@@ -712,42 +699,6 @@
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "EMzD3V1oLKsdgatTxbaGn",
-								"title": "Maximize the cache lifetime of your resources",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cache Reserve gives you full control over the retention period of your cached assets, helping you lower cache \"misses\" and optimize your storage when cache space nears capacity.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "33d31860-e857-5323-98f8-8102528a9f69",
-									"altText": "Performance arrow up icon",
-									"title": "Performance arrow up icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Bv7zElyuDmw76ORWjFL8b/e12526c289fcc43ebf221959e6093a61/performance-arrow-up.svg"
-										},
-										"description": "Performance arrow up icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "3uIU5B0X0K5q7cTppxZAOY",
 								"title": "Customize cache settings",
 								"makeTitleLink": false,
@@ -827,131 +778,6 @@
 						"contentfulId": "1gnoCT02eLUdpdfqKAymQl",
 						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions \" target=\"_self\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"/developer-platform/solutions/#build-deploy-code-solutions \"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
-					},
-					{
-						"contentfulId": "p84iV8D8BFpnWFxuHpctF",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5zRIjknP2Vg7nopEyb2LO8",
-								"title": "How to set up Cache Reserve",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Learn how to activate Cache Reserve, reserve storage space for your assets, extend your asset retention periods, and more.",
-								"learnMoreUrl": "https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/",
-								"learnMoreText": "Explore the developer docs ",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7ft3wSvHf2IwpkwDTS4oNP",
-								"title": "Demo: Cloudflare Cache Reserve",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Storing large, static assets on cloud provider networks can incur hefty egress fees. See how Cache Reserve lowers costs while improving response times.",
-								"learnMoreUrl": "https://www.youtube.com/watch?v=hyBelB1S8KI",
-								"learnMoreText": "Watch the demo",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "ByKqNDGweGyMVk52qsE3v",
-								"title": " Cache Reserve goes GA",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cache Reserve is now generally available and comes with several new features, including usage analytics and granular Cache Rules.",
-								"learnMoreUrl": "https://blog.cloudflare.com/cache-reserve-goes-ga",
-								"learnMoreText": "Read the blog post",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
