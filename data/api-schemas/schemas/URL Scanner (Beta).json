@@ -30,7 +30,7 @@
 				"content": {
 					"text/plain": {
 						"schema": {
-							"description": "HTML of webpage",
+							"description": "HTML of webpage.",
 							"type": "string"
 						}
 					}
@@ -49,7 +49,7 @@
 												"type": "string"
 											},
 											"status": {
-												"description": "Status code",
+												"description": "Status code.",
 												"example": 400,
 												"type": "integer"
 											},
@@ -505,7 +505,7 @@
 												"type": "string"
 											},
 											"status": {
-												"description": "Status code",
+												"description": "Status code.",
 												"example": 400,
 												"type": "integer"
 											},
@@ -621,7 +621,7 @@
 		}
 	},
 	"GET /accounts/{accountId}/urlscanner/v2/responses/{responseId}": {
-		"description": "Returns the plain text response of the network request.",
+		"description": "Returns the raw response of the network request. If HTML, a plain text response will be returned.",
 		"operationId": "urlscanner-get-response-v2",
 		"parameters": [
 			{
@@ -669,7 +669,7 @@
 												"type": "string"
 											},
 											"status": {
-												"description": "Status code",
+												"description": "Status code.",
 												"example": 400,
 												"type": "integer"
 											},
@@ -2475,8 +2475,15 @@
 										"domain": {
 											"type": "string"
 										},
-										"extraOptions": {
+										"method": {
+											"type": "string"
+										},
+										"options": {
 											"properties": {
+												"customHeaders": {
+													"description": "Custom headers set.",
+													"type": "object"
+												},
 												"screenshotsResolutions": {
 													"items": {
 														"type": "string"
@@ -2485,9 +2492,6 @@
 												}
 											},
 											"type": "object"
-										},
-										"method": {
-											"type": "string"
 										},
 										"reportURL": {
 											"type": "string"
@@ -2526,7 +2530,7 @@
 										"reportURL",
 										"screenshotURL",
 										"domURL",
-										"extraOptions",
+										"options",
 										"success"
 									],
 									"type": "object"
@@ -2597,7 +2601,7 @@
 												"type": "string"
 											},
 											"status": {
-												"description": "Status code",
+												"description": "Status code.",
 												"example": 400,
 												"type": "integer"
 											},
@@ -2758,7 +2762,7 @@
 				"content": {
 					"image/png": {
 						"schema": {
-							"description": "PNG Image",
+							"description": "PNG Image.",
 							"type": "string"
 						}
 					}
@@ -2777,7 +2781,7 @@
 												"type": "string"
 											},
 											"status": {
-												"description": "Status code",
+												"description": "Status code.",
 												"example": 400,
 												"type": "integer"
 											},
@@ -2912,6 +2916,13 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"customHeaders": {
+								"additionalProperties": {
+									"type": "string"
+								},
+								"description": "Set custom headers.",
+								"type": "object"
+							},
 							"customagent": {
 								"maxLength": 4096,
 								"type": "string"
@@ -2919,6 +2930,23 @@
 							"referer": {
 								"maxLength": 4096,
 								"type": "string"
+							},
+							"screenshotsResolutions": {
+								"default": [
+									"desktop"
+								],
+								"description": "Take multiple screenshots targeting different device types.",
+								"items": {
+									"default": "desktop",
+									"description": "Device resolutions.",
+									"enum": [
+										"desktop",
+										"mobile",
+										"tablet"
+									],
+									"type": "string"
+								},
+								"type": "array"
 							},
 							"url": {
 								"example": "https://www.example.com",
@@ -3009,7 +3037,7 @@
 												"type": "string"
 											},
 											"status": {
-												"description": "Status code",
+												"description": "Status code.",
 												"example": 400,
 												"type": "integer"
 											},
