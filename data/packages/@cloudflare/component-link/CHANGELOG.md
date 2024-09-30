@@ -1,5 +1,13 @@
 # Change Log
 
+## 8.1.7
+
+### Patch Changes
+
+- Updated dependencies [1231b30a16]
+- Updated dependencies [1231b30a16]
+  - @cloudflare/util-sparrow@6.0.0
+
 ## 8.1.6
 
 ### Patch Changes
