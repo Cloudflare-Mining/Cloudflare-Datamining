@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https:undefined" alt="">
 <div class="post-content lh-copy gray1">
 	<p>If you followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f">part one</a>, I have an environment setup where I can write Typescript with tests and deploy to the Cloudflare Edge with <code>npm run upload</code>. For this post, I want to take one of the <a href="https://developers.cloudflare.com/workers/recipes/aggregating-multiple-requests">Worker Recipes</a> further.</p>
 	<p>I'm going to build a mini HTTP request routing and handling framework, then use it to build a <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">gateway</a> to multiple cryptocurrency API providers. My point here is that in a single file, with no dependencies, you can quickly build pretty sophisticated logic and deploy fast and easily to the Edge. Furthermore, using modern Typescript with async/await and the rich type structure, you also write clean, async code.</p>

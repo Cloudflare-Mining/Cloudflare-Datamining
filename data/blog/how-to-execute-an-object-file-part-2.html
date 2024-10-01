@@ -1,4 +1,4 @@
-<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oTbNBbKeXEuW6SrSE4SUz/a81677c8b215301fa4ebeb5ea422ba2f/how-to-execute-an-object-file-part-2.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oTbNBbKeXEuW6SrSE4SUz/a81677c8b215301fa4ebeb5ea422ba2f/how-to-execute-an-object-file-part-2.png" alt="">
 <div class="post-content lh-copy gray1">
 	<h2>Handling relocations</h2>
 	<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">previous post</a>, we learned how to parse an object file and import and execute some functions from it. However, the functions in our toy object file were simple and self-contained: they computed their output solely based on their inputs and didn't have any external code or data dependencies. In this post we will build upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1">the code from part 1</a>, exploring additional steps needed to handle code with some dependencies.</p>

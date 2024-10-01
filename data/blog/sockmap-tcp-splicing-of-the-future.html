@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/b5eaPg3ZE1e4cmf0JeDVX/f9c64c4ed933d91e94535a26b7da34fc/sockmap-tcp-splicing-of-the-future.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/b5eaPg3ZE1e4cmf0JeDVX/f9c64c4ed933d91e94535a26b7da34fc/sockmap-tcp-splicing-of-the-future.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Recently we stumbled upon the holy grail for reverse proxies - a TCP socket splicing API. This caught our attention because, as you may know, we run a global network of reverse proxy services. Proper TCP socket splicing reduces the load on userspace processes and enables more efficient data forwarding. We realized that Linux Kernel's SOCKMAP infrastructure can be reused for this purpose. SOCKMAP is a very promising API and is likely to cause a tectonic shift in the architecture of data-heavy applications like software proxies.</p>
 	<figure class="kg-card kg-image-card ">

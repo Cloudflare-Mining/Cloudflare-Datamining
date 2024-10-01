@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https:undefined" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https:undefined" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As TLS 1.3 was ratified earlier <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">this year</a>, I was recollecting how we got started with it here at Cloudflare. We made the decision to be early adopters of <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a> a little over two years ago. It was a very important decision, and we took it very seriously.</p>
 	<p>It is no secret that Cloudflare uses <a href="https://blog.cloudflare.com/end-of-the-road-for-cloudflare-nginx">nginx</a> to handle user traffic. A little less known fact, is that we have several instances of nginx running. I won’t go into detail, but there is one instance whose job is to accept connections on port 443, and proxy them to another instance of nginx that actually handles the requests. It has pretty limited functionality otherwise. We fondly call it nginx-ssl.</p>

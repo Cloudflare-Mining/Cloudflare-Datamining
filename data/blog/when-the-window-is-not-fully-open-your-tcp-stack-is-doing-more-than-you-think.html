@@ -1,4 +1,4 @@
-<div class="mb2 gray5">12 min read</div>
+<div class="mb2 gray5">11 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45eBWLkPaFFlbeBbPSSyuR/1408f26a417d950f18a128d8e7a3e228/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Over the years I've been lurking around the Linux kernel and have investigated the TCP code many times. But when recently we were working on <a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">Optimizing TCP for high WAN throughput while preserving low latency</a>, I realized I have gaps in my knowledge about how Linux manages TCP receive buffers and windows. As I dug deeper I found the subject complex and certainly non-obvious.</p>

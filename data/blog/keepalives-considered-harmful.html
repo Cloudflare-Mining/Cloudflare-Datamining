@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qru6JpKfhpQankc5rUyyl/08de7cbda7079c7906bc5fdb7401ec56/keepalives-considered-harmful.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qru6JpKfhpQankc5rUyyl/08de7cbda7079c7906bc5fdb7401ec56/keepalives-considered-harmful.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>This may sound like a weird title, but hear me out. You’d think keepalives would always be helpful, but turns out reality isn’t always what you expect it to be. It really helps if you read <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">Why does one NGINX worker take all the load?</a> first. This post is an adaptation of a rather old post on Cloudflare’s internal blog, so not all details are exactly as they are in production today but the lessons are still valid.</p>
 	<p>This is a story about how we were seeing some complaints about sporadic latency spikes, made some unconventional changes, and were able to slash the 99.9th latency percentile by 4x!</p>

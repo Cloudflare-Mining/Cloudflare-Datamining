@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/S8Y3r3u8JOU0j94W4InMI/648a99fb95966ccdce6a17cb7ff79a61/improving-compression-with-preset-deflate-dictionary.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/S8Y3r3u8JOU0j94W4InMI/648a99fb95966ccdce6a17cb7ff79a61/improving-compression-with-preset-deflate-dictionary.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A few years ago Google made a proposal for a new HTTP compression method, called SDCH (SanDwiCH). The idea behind the method is to create a dictionary of long strings that appear throughout many pages of the same domain (or popular search results). The compression is then simply searching for the appearance of the long strings in a dictionary and replacing them with references to the aforementioned dictionary. Afterwards the output is further compressed with <a href="https://en.wikipedia.org/wiki/DEFLATE">DEFLATE</a>.</p>
 	<figure class="kg-card kg-image-card ">

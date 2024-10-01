@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4L2LYeMJ5dbwiIINGXRCJ2/fc402d5812d80ce884adf382569429da/how-to-execute-an-object-file-part-3.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4L2LYeMJ5dbwiIINGXRCJ2/fc402d5812d80ce884adf382569429da/how-to-execute-an-object-file-part-3.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<h2>Dealing with external libraries</h2>
 	<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a> we learned how to process relocations in object files in order to properly wire up internal dependencies in the code. In this post we will look into what happens if the code has external dependencies — that is, it tries to call functions from external libraries. As before, we will be building upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/2">the code from part 2</a>. Let's add another function to our toy object file:</p>

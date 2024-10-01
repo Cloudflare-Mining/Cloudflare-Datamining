@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LKQG43lQbCXdnCR35QWx/0bcecac41043f2fa5c2ae2707aaa57fa/speeding-up-https-and-http-3-negotiation-with-dns.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LKQG43lQbCXdnCR35QWx/0bcecac41043f2fa5c2ae2707aaa57fa/speeding-up-https-and-http-3-negotiation-with-dns.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In late June 2019, Cloudflare's resolver team noticed a spike in DNS requests for the 65479 Resource Record thanks to data exposed through <a href="https://blog.cloudflare.com/introducing-cloudflare-radar">our new Radar service</a>. We began investigating and found these to be a part of <a href="https://developer.apple.com/videos/play/wwdc2020/10111">Apple’s iOS14 beta release</a> where they were testing out a new SVCB/HTTPS record type.</p>
 	<p>Once we saw that Apple was requesting this record type, and while the iOS 14 beta was still on-going, we rolled out support across the Cloudflare customer base.</p>

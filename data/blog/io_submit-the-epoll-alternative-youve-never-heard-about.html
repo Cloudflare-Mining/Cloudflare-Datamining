@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZpaAETYvADuip6gpfOvTP/01adfb4e76ed4452595650b6d7b7e523/io_submit-the-epoll-alternative-youve-never-heard-about.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZpaAETYvADuip6gpfOvTP/01adfb4e76ed4452595650b6d7b7e523/io_submit-the-epoll-alternative-youve-never-heard-about.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>My curiosity was piqued by an LWN article about <a href="https://lwn.net/Articles/743714">IOCB_CMD_POLL - A new kernel polling interface</a>. It discusses an addition of a new polling mechanism to Linux AIO API, which was merged in 4.18 kernel. The whole idea is rather intriguing. The author of the patch is proposing to use the Linux AIO API with things like network sockets.</p>
 	<p>Hold on. The Linux AIO is designed for, well, <b>A</b>synchronous disk <b>IO</b>! Disk files are not the same thing as network sockets! Is it even possible to use the Linux AIO API with network sockets in the first place?</p>
