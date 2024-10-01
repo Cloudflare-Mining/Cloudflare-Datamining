@@ -1435,8 +1435,8 @@
 																	{
 																		"properties": {
 																			"content": {
-																				"description": "Text content for the record.",
-																				"example": "example text content",
+																				"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																				"example": "\"v=spf1 include:example.com -all\"",
 																				"type": "string"
 																			},
 																			"type": {
@@ -2538,8 +2538,8 @@
 																			{
 																				"properties": {
 																					"content": {
-																						"description": "Text content for the record.",
-																						"example": "example text content",
+																						"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																						"example": "\"v=spf1 include:example.com -all\"",
 																						"type": "string"
 																					},
 																					"type": {
@@ -3749,8 +3749,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "Text content for the record.",
-																			"example": "example text content",
+																			"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																			"example": "\"v=spf1 include:example.com -all\"",
 																			"type": "string"
 																		},
 																		"type": {
@@ -4820,8 +4820,8 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "Text content for the record.",
-																					"example": "example text content",
+																					"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																					"example": "\"v=spf1 include:example.com -all\"",
 																					"type": "string"
 																				},
 																				"type": {
@@ -6107,8 +6107,8 @@
 											{
 												"properties": {
 													"content": {
-														"description": "Text content for the record.",
-														"example": "example text content",
+														"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+														"example": "\"v=spf1 include:example.com -all\"",
 														"type": "string"
 													},
 													"type": {
@@ -7105,8 +7105,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "Text content for the record.",
-																			"example": "example text content",
+																			"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																			"example": "\"v=spf1 include:example.com -all\"",
 																			"type": "string"
 																		},
 																		"type": {
@@ -8176,8 +8176,8 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "Text content for the record.",
-																					"example": "example text content",
+																					"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																					"example": "\"v=spf1 include:example.com -all\"",
 																					"type": "string"
 																				},
 																				"type": {
@@ -9304,8 +9304,8 @@
 											{
 												"properties": {
 													"content": {
-														"description": "Text content for the record.",
-														"example": "example text content",
+														"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+														"example": "\"v=spf1 include:example.com -all\"",
 														"type": "string"
 													},
 													"type": {
@@ -10308,8 +10308,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "Text content for the record.",
-																			"example": "example text content",
+																			"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																			"example": "\"v=spf1 include:example.com -all\"",
 																			"type": "string"
 																		},
 																		"type": {
@@ -11379,8 +11379,8 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "Text content for the record.",
-																					"example": "example text content",
+																					"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																					"example": "\"v=spf1 include:example.com -all\"",
 																					"type": "string"
 																				},
 																				"type": {
@@ -12534,8 +12534,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "Text content for the record.",
-																			"example": "example text content",
+																			"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																			"example": "\"v=spf1 include:example.com -all\"",
 																			"type": "string"
 																		},
 																		"type": {
@@ -13474,8 +13474,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "Text content for the record.",
-																			"example": "example text content",
+																			"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																			"example": "\"v=spf1 include:example.com -all\"",
 																			"type": "string"
 																		},
 																		"type": {
@@ -14408,8 +14408,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "Text content for the record.",
-																			"example": "example text content",
+																			"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																			"example": "\"v=spf1 include:example.com -all\"",
 																			"type": "string"
 																		},
 																		"type": {
@@ -15434,8 +15434,8 @@
 																			{
 																				"properties": {
 																					"content": {
-																						"description": "Text content for the record.",
-																						"example": "example text content",
+																						"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																						"example": "\"v=spf1 include:example.com -all\"",
 																						"type": "string"
 																					},
 																					"type": {
@@ -16425,8 +16425,8 @@
 																			{
 																				"properties": {
 																					"content": {
-																						"description": "Text content for the record.",
-																						"example": "example text content",
+																						"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																						"example": "\"v=spf1 include:example.com -all\"",
 																						"type": "string"
 																					},
 																					"type": {
@@ -17416,8 +17416,8 @@
 																			{
 																				"properties": {
 																					"content": {
-																						"description": "Text content for the record.",
-																						"example": "example text content",
+																						"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																						"example": "\"v=spf1 include:example.com -all\"",
 																						"type": "string"
 																					},
 																					"type": {
@@ -18407,8 +18407,8 @@
 																			{
 																				"properties": {
 																					"content": {
-																						"description": "Text content for the record.",
-																						"example": "example text content",
+																						"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																						"example": "\"v=spf1 include:example.com -all\"",
 																						"type": "string"
 																					},
 																					"type": {
@@ -20326,8 +20326,8 @@
 											{
 												"properties": {
 													"content": {
-														"description": "Text content for the record.",
-														"example": "example text content",
+														"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+														"example": "\"v=spf1 include:example.com -all\"",
 														"type": "string"
 													},
 													"type": {
@@ -21330,8 +21330,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "Text content for the record.",
-																			"example": "example text content",
+																			"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																			"example": "\"v=spf1 include:example.com -all\"",
 																			"type": "string"
 																		},
 																		"type": {
@@ -22401,8 +22401,8 @@
 																		{
 																			"properties": {
 																				"content": {
-																					"description": "Text content for the record.",
-																					"example": "example text content",
+																					"description": "Text content for the record. The content must consist of quoted \"character strings\" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split.",
+																					"example": "\"v=spf1 include:example.com -all\"",
 																					"type": "string"
 																				},
 																				"type": {
