@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/zaraz/",
+	"path": "/products/cache-reserve/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Zaraz product page",
+				"pageName": "Cache Reserve - Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,14 +32,14 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/zaraz/",
-				"topNavOptions": null,
+				"relativePath": "products/cache-reserve",
+				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Zaraz | Load Third-Party Tools in the Cloud",
-					"metaDescription": "Cloudflare Zaraz is a third-party tool manager that loads tools in the cloud - away from browsers. Learn more about benefits and use cases of Zaraz.",
+					"metaTitle": "Cloudflare Cache Reserve | Zero Egress Fees",
+					"metaDescription": "Cloudflare Cache Reserve eliminates egress costs and improves cache hit ratios by enabling you to persistently cache your data with the push of a single button.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2022-02-28T22:42:24.710Z",
-					"updatedAt": "2024-09-30T20:56:53.042Z"
+					"createdAt": "2023-03-02T22:00:43.281Z",
+					"updatedAt": "2024-09-28T06:13:24.627Z"
 				},
-				"contentfulId": "2n97VpSW9zCIEXFmOhMxRN",
+				"contentfulId": "4xD27KPUlMrJZxSpQHZUMU",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,29 +64,29 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "2kJwaI9RewLOwBsDTBDlr5",
+						"contentfulId": "1CfF1vXb0o8pXMwyKnvCMF",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Zaraz",
+						"title": "Cloudflare Cache Reserve",
 						"titleSize": null,
-						"subtitle": "A third-party tool manager built for speed, privacy, and security",
+						"subtitle": "Persistent caching for all static content",
 						"subtitleSize": null,
-						"copy": "Zaraz loads third-party tools in the cloud, away from browsers, improving web application speed, security, and privacy. Load analytics tools, advertising pixels, widgets, and other third-party tools without slowing down your applications.",
+						"copy": "Cache Reserve persistently serves static content from our global network, helping businesses lower their egress bills while ensuring higher cache hit ratios.",
 						"buttonColor": "orange",
-						"buttonColor2": "orange-outline",
-						"buttonText1": "Get started",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://dash.cloudflare.com/?to=/:account/:zone/zaraz",
-						"buttonUrl1LoggedIn": null,
+						"buttonColor2": "orange",
+						"buttonText1": "Sign up",
+						"buttonText1LoggedIn": "Sign up",
+						"buttonUrl1": "https://dash.cloudflare.com/75dc25450c0df538a370922812d388a6/ehpacha.com/caching/cache-reserve",
+						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/75dc25450c0df538a370922812d388a6/ehpacha.com/caching/cache-reserve",
 						"button1ExtraClass": null,
-						"buttonText2": "Get the data sheet",
+						"buttonText2": "Get the solution brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FzMUTzF1AvIiWnkHxRh1i/aba5540c73c87a4c138391e1c6d107c1/Zaraz_2024_-_Datasheet.pdf",
+						"buttonUrl2": "https://cfl.re/3XF1TWM",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
+						"includeVideo": true,
+						"streamVideoId": "533f0ec988f7a79e347bdaa02546f7c6",
 						"streamOptions": [
 							"controls",
 							"captions"
@@ -99,8 +99,13 @@
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Large",
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/fBOGbRxQaR46faAbcbpN0/7db06ba20b53e7a65108da27dc82c514/Cache-Reserve-stream-poster.png"
+							},
+							"description": ""
+						},
+						"imageSize": "Medium",
 						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -111,39 +116,25 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "fd65107e-f35d-5c32-8525-627f4d123c14",
-							"altText": "Illustration of Cloudflare Zaraz",
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jOh8VA5PPm5PsHTtAIx5q/777911fb4df328fe59be136b7e4e594e/Announcing_Cloudflare_Network_Interconnect_2.0.svg"
-								},
-								"description": "Illustration of Cloudflare Zaraz"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "7dvm7BnDowpjNk5tDXuQ6O",
+						"contentfulId": "39ZVIjZ57DjRCnj051Gmz3",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE ZARAZ",
+						"eyebrowHeading": " BENEFITS OF CLOUDFLARE CACHE RESERVE",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Four Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "gmKjy80B9GfMLdSKZPhgu",
-								"title": "Speed up your website",
+								"contentfulId": "6RIS6jiumkuPwuPqIxjUF5",
+								"title": "Increased cache hits",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Improve website performance by loading third-party tools in the cloud instead of the browser. The result: a better user experience and improved SEO.",
+								"description": "Improve your cache hit ratios by storing long tail content from the [Cloudflare CDN](https://www.cloudflare.com/application-services/products/cdn/).",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -151,16 +142,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
-									"altText": "Lightning bolt icon",
-									"title": null,
+									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
+									"altText": "internet globe",
+									"title": "internet globe",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
 										},
-										"description": "Lightning bolt icon"
+										"description": "Orange icon of a globe"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -174,12 +165,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "uuOzG9PqSQ2ax18AzKujd",
-								"title": "Make your app more secure",
+								"contentfulId": "7i7cEjDlwRH8HCph4051LD",
+								"title": "Faster performance",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Third-party scripts can be entry points for attackers. Zaraz gives you control over what scripts can do on your site, reducing your risk.",
+								"description": "Shield your origin servers from unnecessary, voluminous requests to ensure faster performance and a smoother user experience.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -187,16 +178,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "3eb2a090-6777-5cfa-ae9f-fba98ba92f39",
-									"altText": "Shield with checkmark icon",
-									"title": null,
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/0K8UzbV8AINKBfgDlRAhK/cc511a44737676ddb0ca216c28d040fe/security-shield-protection-2.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
 										},
-										"description": "Shield with checkmark icon"
+										"description": "Performance acceleration rocket orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -210,12 +201,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1VCXtyL7Aho6Niwp1CmzHr",
-								"title": "More user privacy",
+								"contentfulId": "3DLfJTlQPfpzq05l3n15tm",
+								"title": "Affordable, consistent pricing",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Control personal data accessed by third-party tools.",
+								"description": "Maximize your savings by limiting unnecessary cache data evictions and eliminating associated egress costs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -223,52 +214,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b2c191f0-effd-503a-b3f1-1074c1fe8181",
-									"altText": "View icon",
-									"title": "View icon",
+									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
+									"altText": "Price",
+									"title": "Price",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/bCn6sPxILTPh4Eei55A24/bad50a5773f3fdb795fa717bb751b694/view-eye.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
 										},
-										"description": "View icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5RKhHhVBNWL9SihZk7Npvr",
-								"title": "Easier development",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Add multiple third-party tools using the Zaraz dashboard, with minimal code changes. Use one API to track engagement.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "6b2c5242-171b-588a-954a-f72b27e667f9",
-									"altText": "Wrench icon",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4pct6uvknDUwfOeAM2VxUn/18079e5a1b43c3dd1c3e4d942820528b/performance-wrench.svg"
-										},
-										"description": "Wrench icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -285,9 +240,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "3CVFQzQD5OSVKLiVbsUbaD",
-						"title": "Load third-party tools without weighing down web apps",
-						"copy": "With Cloudflare Zaraz, third-party tools load in the cloud instead of the browser.\n\nRunning on the Cloudflare global network, which spans %{DataCenterCount} cities across %{CountryCount} countries, Zaraz dynamically deploys third-party tools with minimal latency, no matter where users are.",
+						"contentfulId": "6VOlhBYXqSDQXuc08MSFCC",
+						"title": "Serve static content faster from our global CDN",
+						"copy": "Cloudflare Cache Reserve is a large, persistent data store built on [R2](https://www.cloudflare.com/developer-platform/r2/) — our global, [S3-compatible object storage service](https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage/).\n\nBy serving static content from the edge of our global network, Cache Reserve helps increase cache hit ratios, speed up load times for end users, and minimize unnecessary egress fees.\n",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -310,23 +265,23 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "13534300-4d05-5201-81c9-f9aae1c8dce8",
-							"altText": "Zaraz illustration",
-							"title": null,
+							"id": "f00ca93e-47c1-53aa-8779-72969fcd3725",
+							"altText": "R2 Storage - Multi-Cloud",
+							"title": "R2 Storage - Multi-Cloud",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YBCpoRgBLox71W3fiKYUV/2c5792db1cbeec2c4d396b2099dd3ee4/BDES-5035_-_BDES-2969_Zaraz_productpage_illustration_v2-01.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ltjBPznhikhwxKjfmxHww/31ea411d4bfbc74f5a79702c7e5971da/BDES-4909_-_r2-multi-cloud__1_.svg"
 								},
-								"description": "Zaraz illustration"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "How it works",
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": "tile--no-top-padding",
@@ -338,50 +293,57 @@
 						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "3tvGIrzrA8Bz1YhyEpkvP6",
-						"title": "Zaraz uses Workers to make 3rd party tools secure and fast",
-						"titleSize": "medium",
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
+						"contentfulId": "q3uixQDMEaV0JW3H9qomG",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "See how Cache Reserve works",
+						"variant": "inline",
 						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "51V7xEUnt3YVxVGznuroNn",
-							"elementName": "Zaraz - Additional offer CTA",
+							"contentfulId": "2x8ibYXIm1rdJdqDtmgT4O",
+							"elementName": "Cache Reserve - ADDITIONAL OFFER BLADE - CTA",
 							"standardText": null,
-							"text": "Read the blog",
-							"url": "https://blog.cloudflare.com/zaraz-use-workers-to-make-third-party-tools-secure-and-fast",
+							"text": "Watch the demo",
+							"url": "https://www.youtube.com/watch?v=hyBelB1S8KI",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
-						"buttonTwo": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"eyebrow": null
+						"secondaryCtaButton": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "3bhsVRdbKqCJOdA6UVff5t",
+						"contentfulId": "5MXHN5wyabsDhi2s5jkWFy",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "One Column Wide",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "5qniHgMNtgQ2ogtUfHPRrc",
+								"contentfulId": "3kjbO0cHoIOW2zFOcktE01",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -433,7 +395,17 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"Leveraging Zaraz, Instacart was able to significantly improve performance of our Shopper-specific domains with minimal changes required to the overall site.\"",
+															"value": "\"The 2% cache hit ratio improvement enabled by Cloudflare Cache Reserve has eliminated roughly two-thirds of our S3 egress activity. The reduction in egress charges is almost an order of magnitude larger than the price we paid for Cache Reserve. ",
+															"marks": [],
+															"content": null
+														},
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"",
 															"marks": [],
 															"content": null
 														}
@@ -477,7 +449,27 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Staff Software Engineer, Cloud Foundations, Instacart — Marc Barry",
+													"value": "Senior Manager of Engineering",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " — ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Docker",
 													"marks": [],
 													"content": null
 												}
@@ -678,22 +670,54 @@
 						"sectionPadding": "tile--no-top-padding"
 					},
 					{
-						"contentfulId": "5kjcb3NXZFduu6ovkTBjW7",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "769gZrE7rnixLO1XKvBujK",
+						"title": "Trusted by millions of Internet properties",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1AdE2OvNnGRQAK4swvGBlL",
+							"elementName": "Cache Reserve - CASE STUDIES - CTA",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "https://www.cloudflare.com/case-studies/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "537RZnIMGBCH0lZK8lqL7E",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Zaraz improves the user experience, helps to prevent attacks, supports user privacy, and makes life easier for developers.",
-						"eyebrowHeading": "Top Zaraz use cases",
+						"title": "Cache Reserve helps you extend the cache lifetime of your assets, control which assets get cached, and optimize content performance for your users",
+						"eyebrowHeading": "Top Cache Reserve use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5N1s7MS3K7XEjuNq6aqY0W",
-								"title": "Improve page load with minimal effort:",
+								"contentfulId": "EMzD3V1oLKsdgatTxbaGn",
+								"title": "Maximize the cache lifetime of your resources",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Without code changes, Zaraz can speed up websites by offloading third-party tools from the browser.",
+								"description": "Cache Reserve gives you full control over the retention period of your cached assets, helping you lower cache \"misses\" and optimize your storage when cache space nears capacity.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -701,16 +725,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "82677b25-7ecf-5ffc-b863-32d69b7b43a4",
-									"altText": "DDoS ransomware icon",
-									"title": "Ramson DDoS - Approved web icons",
+									"id": "33d31860-e857-5323-98f8-8102528a9f69",
+									"altText": "Performance arrow up icon",
+									"title": "Performance arrow up icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QLUkgVKLYb0gMKMJZG8yi/710a2770bfa0e6ad07c1d14d17e287bd/ransom-ddos.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Bv7zElyuDmw76ORWjFL8b/e12526c289fcc43ebf221959e6093a61/performance-arrow-up.svg"
 										},
-										"description": "DDoS ransomware icon"
+										"description": "Performance arrow up icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -724,12 +748,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6GrwfCDnVY3BO5XB5YTGSF",
-								"title": "Reduce attack surface:",
+								"contentfulId": "3uIU5B0X0K5q7cTppxZAOY",
+								"title": "Customize cache settings",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Limit what scripts can do on your website to reduce the risks from potential third-party tool compromise.",
+								"description": "Cache Rules allows you to define which resources are available for Cache Reserve, so you can tailor your content delivery strategy for almost any use case — without needing to write code.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -737,16 +761,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "66c276f6-6ad4-5f16-9336-c60a522c3ae8",
-									"altText": "Building icon",
-									"title": null,
+									"id": "c241854c-77e1-5c45-9b8d-479a6651b12b",
+									"altText": "Code content optimization blue",
+									"title": "Code content optimization blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1anRTmpPAC5r3LL8BBwka9/c3a3b7caa7f4006b14f5a5c2809b8b69/Vector.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KDaTpdwZcctx9Q8G3WN5/34be97098084c540c60d6745096da8c6/code-content-optimization.svg"
 										},
-										"description": "Building icon"
+										"description": "Content security policies icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -760,12 +784,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4vtKrTuvI7GGR35acFZDGl",
-								"title": "Better control of sensitive data:",
+								"contentfulId": "2A5kVifSg31rEOnuaYYYUY",
+								"title": "Accelerate content performance ",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Get an alert or mask sensitive information when it is passed to third-party vendors.",
+								"description": "Our global network enables you to cache content from %{DataCenterCount}+ data centers worldwide, so your users get content as quickly as possible, no matter where they are located.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -773,16 +797,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "972f8c7f-55b4-5d7b-80e1-4952b0cc4192",
-									"altText": "Gear icon",
-									"title": null,
+									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
+									"altText": "Performance acceleration bolt orange",
+									"title": "Performance acceleration bolt orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AMozC0aALDNgd2rjHlIr3/2573bd8f8adbb8cb761d737d17a38ca9/Vector__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/7104c2a5381e49f73144e8a6e1095b53/performance-acceleration-bolt.svg"
 										},
-										"description": "Gear icon"
+										"description": "Lightning bolt icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -800,14 +824,139 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "4rOkhGYd2TJHD4Cbb8wzXE",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/developer-platform/solutions\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "1gnoCT02eLUdpdfqKAymQl",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions \" target=\"_self\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"/developer-platform/solutions/#build-deploy-code-solutions \"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
+						"contentfulId": "p84iV8D8BFpnWFxuHpctF",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5zRIjknP2Vg7nopEyb2LO8",
+								"title": "How to set up Cache Reserve",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how to activate Cache Reserve, reserve storage space for your assets, extend your asset retention periods, and more.",
+								"learnMoreUrl": "https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/",
+								"learnMoreText": "Explore the developer docs ",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7ft3wSvHf2IwpkwDTS4oNP",
+								"title": "Demo: Cloudflare Cache Reserve",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Storing large, static assets on cloud provider networks can incur hefty egress fees. See how Cache Reserve lowers costs while improving response times.",
+								"learnMoreUrl": "https://www.youtube.com/watch?v=hyBelB1S8KI",
+								"learnMoreText": "Watch the demo",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "ByKqNDGweGyMVk52qsE3v",
+								"title": " Cache Reserve goes GA",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cache Reserve is now generally available and comes with several new features, including usage analytics and granular Cache Rules.",
+								"learnMoreUrl": "https://blog.cloudflare.com/cache-reserve-goes-ga",
+								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "7m5CgNpeuXIoLFF9yU8mwR",
-						"title": "Ready to use Cloudflare Zaraz",
+						"contentfulId": "3uyfCEqVUndUPvgt7izNmF",
+						"title": "Get started with Cache Reserve",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -818,55 +967,27 @@
 						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
-						"buttonOne": null,
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1ToFgknl6HyCrJCipIhqcN",
+							"elementName": "Cache Reserve - ENABLEMENT BLADE - CTA",
+							"standardText": null,
+							"text": "Sign up",
+							"url": "https://dash.cloudflare.com/sign-up",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
 					}
 				],
 				"noindex": false,
-				"formModal": [
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "AOzLzorinRy7FgWGOHnV8",
-						"modalName": "Cloudflare Zaraz - Demo Request",
-						"modalId": "cloudflare-zaraz-demo-request",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "kryNXR7rWMgC75l00rF5q",
-							"bladeName": "Cloudflare Zaraz – Request a Demo Form",
-							"backgroundColor": "blue",
-							"marketoFormId": 2496,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "[ACQ] Q1'22 WEB - GBL - Zaraz - Product Page - Request demo form",
-							"marketoFormHeaderText": "Request a demo of Cloudflare Zaraz",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": "Request a demo of Cloudflare Zaraz",
-						"regularCopy": null,
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					}
-				],
+				"formModal": [],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -878,8 +999,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/zaraz/",
-			"contentfulId": "2n97VpSW9zCIEXFmOhMxRN",
+			"pathname": "/products/cache-reserve/",
+			"contentfulId": "4xD27KPUlMrJZxSpQHZUMU",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",

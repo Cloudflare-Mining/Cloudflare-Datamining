@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/load-balancing/",
+	"path": "/products/cloudflare-stream/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Load Balancing - Product Page ",
+				"pageName": "Cloudflare Stream - Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,14 +32,14 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/load-balancing/",
+				"relativePath": "products/cloudflare-stream",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Load Balancing | DNS-Based Load Balancer",
-					"metaDescription": "Cloudflare Load Balancing is a DNS-based load balancing solution that maximizes uptime and reduces costs. Explore benefits, use cases, and pricing.",
+					"metaTitle": "Cloudflare Stream | Video streaming made easy and affordable at scale",
+					"metaDescription": "Cloudflare Stream is an easy-to-use online video streaming platform. Spend less time managing your video platform and more time promoting your product.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2018-12-12T21:09:32.213Z",
-					"updatedAt": "2024-09-30T20:58:35.282Z"
+					"createdAt": "2018-10-22T06:17:01.292Z",
+					"updatedAt": "2024-09-28T00:15:26.742Z"
 				},
-				"contentfulId": "1TkMywxXLaw2aAkquAasSM",
+				"contentfulId": "2Tq4dKzDxes4kEWCECocYq",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,31 +64,34 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "1NaQMnIGMgeIYao26SmukY",
+						"contentfulId": "232DY0ToPnI5gi6O6M7mwT",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Load Balancing",
+						"title": "Cloudflare Stream",
 						"titleSize": null,
-						"subtitle": "A global, always-on load balancer",
+						"subtitle": "Serverless live and on-demand video streaming",
 						"subtitleSize": null,
-						"copy": "Cloudflare Load Balancing ensures better performance, uptime and user experience by dynamically balancing traffic across geographically-distributed data centers and servers.\n",
-						"buttonColor": null,
+						"copy": "Upload, store, encode, and deliver live and on-demand video with one API. Stream comes with unlimited video storage and low-latency delivery — with no format, protocol, or encoding expertise required by your development team.",
+						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Get started",
-						"buttonText1LoggedIn": "View in Dashboard",
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
-						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing",
+						"buttonText1LoggedIn": "Get Started",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/stream",
+						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/sign-up/stream",
 						"button1ExtraClass": null,
-						"buttonText2": "Get the whitepaper",
-						"buttonText2LoggedIn": "Looking for enterprise-grade solutions? ",
-						"buttonUrl2": "https://www.cloudflare.com/lp/load-balancing-best-practices/",
+						"buttonText2": "Read the product brief",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "https://cfl.re/3YXsEXT",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"includeVideo": true,
+						"streamVideoId": "e7bd2dd67e0f8860b4ae81e33a966049 ",
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": true,
@@ -96,9 +99,14 @@
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xg6MJoO3dijvdbX6wK2it/fcf8859e864950d164149ad337df77cb/SecureWebGateway_Webinar_Thumbnail.png"
+							},
+							"description": "Secure Web Gateway Webinar"
+						},
 						"imageSize": "Medium",
-						"imagePosition": false,
+						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -108,39 +116,25 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "4e50d397-d6f1-5f06-9ae2-1ae8b9b93c89",
-							"altText": "load-balancing-hero",
-							"title": "load-balancing-hero",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rHTL3xnl6084cOiYgcyeU/af8508b64db079cabe50d3d81e01a5ea/BDES-4889-load-balancing-hero-illustration.svg"
-								},
-								"description": "Load balancing hero"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "7nM29EE3bPVZF02Lu4cHFa",
+						"contentfulId": "1uKzLU6tNjY5nf2tDYjZlv",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE LOAD BALANCING",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE STREAM",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3fkMxFagRfgLzlx56N7au4",
-								"title": "Improved performance and resiliency",
+								"contentfulId": "5oeQLN26cKY77WOqjv3iPb",
+								"title": "Unified and simplified infrastructure",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "As soon as an origin server or server pool goes down, requests proxied through Cloudflare get instantly rerouted to the nearest data center — helping maximize performance and resiliency.",
+								"description": "Store and deliver video from a single pipeline. Stream automatically handles codecs, protocols, and bitrate, freeing up your team to focus on other projects.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -148,16 +142,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "f5307774-0846-5238-a3c7-d4da0a685dd6",
-									"altText": "Performance arrow up",
-									"title": "Performance arrow up",
+									"id": "08e29c98-f860-5f57-8de5-a2d65dc17f11",
+									"altText": "Cloudflare stream delivery blue",
+									"title": "Cloudflare stream delivery blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gpwto8WV76iRI4GJ9xlPS/d2f9700bb6e89cd972dc8c1b6d8722d3/performance-arrow-up.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uZVCcQ0QrCNctcZMrzPMS/30bd1c225dde4080bc283c1fe63d7e9a/cloudflare-stream-delivery.png"
 										},
-										"description": "Improved performance icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -171,12 +165,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4OPZ0A8OaLVb9CdIIAHipa",
-								"title": "Increased flexibility",
+								"contentfulId": "1bxABG9223yU2nqBJ3j9k0",
+								"title": "Cost-effective, low-latency video delivery",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Load balance traffic across multiple L4-7 protocols — including HTTP(S), TCP or UDP — and tailor your configuration to support evolving business needs.",
+								"description": "With Stream, you pay only for the minutes of video delivered and stored — with no additional charges for encoding or bandwidth.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -184,16 +178,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
+									"altText": "Price",
+									"title": "Price",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -207,12 +201,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6e8YtanVdV171VsMGDlY9L",
-								"title": "Quick, simple configuration and management",
+								"contentfulId": "3cl1twHL5bJZnGHvWFl0Ls",
+								"title": "Custom video editing and analytics",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Set up a customizable and scalable load balancing infrastructure using the Cloudflare Dashboard or REST API — no additional hardware or software required.",
+								"description": "Stream lets you add multilingual captions, apply custom watermarks, and clip videos without re-uploading. It also offers detailed analytics, breaking down metrics per creator.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -220,14 +214,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "d2b32cbc-f943-5e9e-9085-1aab95c79802",
-									"altText": "configuration",
-									"title": "configuration",
+									"id": "082acf6d-2836-52a9-a97d-f6a571c67183",
+									"altText": "Icon of a graph going up",
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mbB3plryIUBjzOv6eX04H/089dfc12bcb1e144e97b0a34436c435d/optimization-gear.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/yXs0Mrat5Fwc9hqisn4li/2741ce0d3466e09e4775ea7f5caa894b/analytics-data.png"
 										},
 										"description": null
 									},
@@ -246,9 +240,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "6zk4Yu5GWNsXzdbysX9tLP",
-						"title": "Improve availability and web performance with our global, cloud-based load balancer",
-						"copy": "Load Balancing intelligently distributes traffic across your multicloud deployments to reduce server strain, enhance application availability and user experience, and minimize bandwidth consumption and latency.\n\nIt runs in each of our data centers across %{DataCenterCount}+ cities worldwide and is backed by our [DDoS-resilient DNS](https://www.cloudflare.com/application-services/products/dns/) — the fastest authoritative DNS in the world.",
+						"contentfulId": "knRDACnuhEhRDPisRUcrJ",
+						"title": "End-to-end global video storage and delivery",
+						"copy": "Cloudflare Stream allows you to build, deliver, store, and analyze live and on-demand video features from a single platform, without the need to configure or maintain infrastructure.\n\nStream delivers your video content from %{DataCenterCount}+ data centers worldwide, ensuring that your users get the fastest, highest-quality playback and streaming options from any location.\n",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -261,29 +255,26 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DtsbzZuXhp10jg8oJhoqj/de2a4824fae910e96e0bb6987d42a7be/illustration_network-map_animation.gif"
-							},
-							"description": null
-						},
+						"image": null,
 						"imageAssetFile": {
-							"id": "c1b7141c-d432-5097-b65c-fe776cf32ebe",
-							"altText": "Network map spot hero illustration",
-							"title": "Network map spot hero illustration",
+							"id": "6c21b9a3-06fd-5c12-91b5-89dfc46e8123",
+							"altText": "Cost effective video delivery",
+							"title": "Cost effective video delivery",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/684JwC6JCxvi1E8ofkgvsJ/a86c37444b225f2cb22a349cc9483c12/BDES-4906_-_network-map-spot-hero-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5G3jV33s5Coo5guHxt26F3/e89b4bfe71cd228aabedc7f666670c11/stream-live-hero-illustration.svg"
 								},
-								"description": null
+								"description": "Cost effective video delivery"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -293,7 +284,7 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
@@ -302,40 +293,47 @@
 						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "73Zerzz54XgCNus6dYUmHl",
-						"title": "Learn how you can elevate application performance and scalability with Cloudflare",
-						"titleSize": "medium",
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
+						"contentfulId": "34aJVRLtfsLo9fGobJNKCu",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Streamline your video infrastructure",
+						"variant": "inline",
 						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
+						"sectionPadding": "tile--no-bottom-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4xRwSGWdavcwiDvzkQGaQg",
-							"elementName": "Load Balancing - ADDITIONAL OFFER BLADE - CTA",
+							"contentfulId": "5jLrM7QcqDjHybqU4W2vNC",
+							"elementName": "Stream product page - ADDITIONAL OFFER BLADE - CTA",
 							"standardText": null,
-							"text": "Watch the webinar",
-							"url": "https://gateway.on24.com/wcc/eh/2153307/lp/4440776/?_gl=1%2a1322qse%2a_ga%2aMTgxOTkwMTMyLjE2NjE4OTkzNDA.%2a_gid%2aMjg5NTI3ODg2LjE3MTIwMDI1MDM.%2a_gac%2aQ2owS0NRancyYTZ3QmhDVkFSSXNBQlBlSDF2YWVRdVpObXBrRDRUR25fajdRQnhublVpeF9JVUdlcndPck",
+							"text": "Learn more",
+							"url": "https://developers.cloudflare.com/stream/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
+						"secondaryCtaButton": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "2e8wxcLPQJuT1qkwpxtMXC",
+						"contentfulId": "1bKFOYtHMmnPzNXGn7fR4j",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -345,7 +343,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "1mUzJKr4ukvIks8JHNcP99",
+								"contentfulId": "51yMVDAtXYw8PYwJBD2Ki8",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -397,7 +395,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"The combination of Load Balancing's geolocation steering and Cloudflare's caching makes sure customers are getting the fastest load times possible.\" ",
+															"value": "\"Video is incredibly important to us and our community. Cloudflare Stream makes it easy for us to show off our game and distribute videos without having to build our own streaming solution from scratch.\"",
 															"marks": [],
 															"content": null
 														}
@@ -441,7 +439,37 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Active Solutions, Managing Director — Nigel Hepworth",
+													"value": "Director of IT",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " — ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Hypixel",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " ",
 													"marks": [],
 													"content": null
 												}
@@ -642,22 +670,22 @@
 						"sectionPadding": "tile--no-top-padding"
 					},
 					{
-						"contentfulId": "XhTu64vqQDgXc6BvGFSl8",
+						"contentfulId": "43NSqFIsBNqnyNgFmZyZGJ",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Load Balancing helps you maximize application availability while reducing server strain and eliminating hardware-related costs",
-						"eyebrowHeading": "TOP LOAD BALANCING USE CASES",
+						"title": " Use Stream to build your own video features in websites and native applications, from simple playback to an entire video platform",
+						"eyebrowHeading": "Top Stream use cases",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Two Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1Nyzvhe3xtRyXnVArkbnX2",
-								"title": "Global traffic management (GTM)",
+								"contentfulId": "3jRCBYKqV1Cv1lrT4zNl1l",
+								"title": "Deliver better video experiences",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Load balance traffic across geographically-distributed data centers to ensure application uptime and resiliency, even during surges, outages, or attacks.",
+								"description": "Stream automatically encodes and delivers video at the ideal quality for live and on-demand streams — on websites, dedicated streaming devices, and native iOS and Android applications.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -665,16 +693,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
-									"altText": "Traffic legit orange",
-									"title": "Traffic legit orange",
+									"id": "08e29c98-f860-5f57-8de5-a2d65dc17f11",
+									"altText": "Cloudflare stream delivery blue",
+									"title": "Cloudflare stream delivery blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uZVCcQ0QrCNctcZMrzPMS/30bd1c225dde4080bc283c1fe63d7e9a/cloudflare-stream-delivery.png"
 										},
-										"description": "Global traffic management icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -688,12 +716,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3WqOPr5AsKjSE8F3hfHX0U",
-								"title": "Local traffic management (LTM)",
+								"contentfulId": "3vYGrwnjAPwIiv1ZxhnBf",
+								"title": "Control access by location and IP",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "With private IP support, get near real-time failover across multiple servers, whether they are deployed in a private, public or hybrid cloud.",
+								"description": "Enable private, authenticated, or time-bound access to paid content, and restrict downloads on a per-video basis.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -701,14 +729,50 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b0331808-1f0c-54d6-8df1-60b11c7567d1",
-									"altText": null,
-									"title": null,
+									"id": "e29e0a6c-57e1-5296-b7fe-a4bb365da279",
+									"altText": "Location pin blue",
+									"title": "Location pin blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/frcF2i75lu5RopYE9cSlY/a504da78027ed77ad5d6b9e591f370b1/analytics-data__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2n70a7lYG4c0JERRzgrv3H/3eef13377e4c1de176da77c48ef8b52b/location-pin.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2dTvJSXp4ZDjSmKBGgNZM0",
+								"title": "Manage user-generated content",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Let your users upload videos directly to Stream with unique, one-time upload URLs, and track video analytics for each creator.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "d19c09bd-84d4-5ee5-83f6-cb536e5c4227",
+									"altText": "User blue",
+									"title": "User blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/52HRlOQUb20zMebvThxRFj/a6017b1c356d40ef918a3a19677d8a0b/user.png"
 										},
 										"description": null
 									},
@@ -728,51 +792,248 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "4e9gZUs18AbJlLPrAzccbv",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "1KYTYzSZKVxIhCWBijgkon",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://developers.cloudflare.com/stream/examples/\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://developers.cloudflare.com/stream/examples/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "6fECb5ShIHlNXItyQhI2ZM",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": null,
-						"description": "Trusted by millions of Internet properties",
-						"variant": "inline",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2KXHBeoAf9Cj5sl4scoiMl",
+						"title": "Trusted by millions of Internet properties",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "5F8OaHL12z8VP2aSWm2r0v",
-							"elementName": "China Network  - CASE STUDIES - CTA",
+							"contentfulId": "aE9GHd34dfimEbPDI65qf",
+							"elementName": "Stream product page - CASE STUDIES - CTA",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "https://www.cloudflare.com/case-studies/?China+Network=China+Network",
+							"url": "https://www.cloudflare.com/case-studies/?product=Stream",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
-						"contentfulId": "4ziXZpy7t84etnolh4RUCB",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"contentTypeId": "bladePricingPlans",
+						"contentfulId": "67UjSbsSdbTy6Cq0JaVKgT",
+						"title": "Pricing",
+						"description": null,
+						"htmlId": "html-pricing",
+						"plansList": [
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "5s6fHSRMfVGnYK4d5b6gsH",
+								"type": "Starter Bundle",
+								"priceCurrencySymbol": null,
+								"price": "Starting at $10/mo",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Stream + Images",
+								"description": null,
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "Get Started",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/stream",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": null,
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": null,
+								"bottomCtaLinkText": null,
+								"bottomCtaLink": null,
+								"hideTopDivider": false,
+								"featureList1": {
+									"contentTypeId": "featureList",
+									"contentfulId": "3nuH1uibiOND2D5Kkiysio",
+									"title": "Included",
+									"description": null,
+									"features": [
+										{
+											"contentTypeId": "feature",
+											"title": "__$10 / month in savings__",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "All the features of Cloudflare Stream and Cloudflare Images",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Store up to 100,000 images and 1,000 minutes of video content",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Deliver up to 500,000 images and 5,000 minutes of video content each month",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										}
+									],
+									"supplementaryCallToAction": null
+								},
+								"featureList2": null,
+								"featureList3": null
+							},
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "35aoatnkwblCUCLTCvfhhr",
+								"type": "Creator Bundle",
+								"priceCurrencySymbol": null,
+								"price": "Starting at $50/mo",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Stream + Images",
+								"description": null,
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "Get Started",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/stream",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": null,
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": null,
+								"bottomCtaLinkText": null,
+								"bottomCtaLink": null,
+								"hideTopDivider": false,
+								"featureList1": {
+									"contentTypeId": "featureList",
+									"contentfulId": "4wAKzSJCzYrNj3z6pUIfcV",
+									"title": "Included",
+									"description": null,
+									"features": [
+										{
+											"contentTypeId": "feature",
+											"title": "__$50/ month in savings__",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "All the features of Cloudflare Stream and Cloudflare Images",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Store up to 500,000 images and 10,000 minutes of video content",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Deliver up to 1,000,000 images and 50,000 minutes of video content each month",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										}
+									],
+									"supplementaryCallToAction": null
+								},
+								"featureList2": null,
+								"featureList3": null
+							}
+						]
+					},
+					{
+						"contentfulId": "3RSH9QVIpJOZYNleG6b8V8",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
@@ -788,16 +1049,16 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5Hc9A4b6Kq1WdRwWrgdTQw",
-								"title": "Improve web performance and reliability with load balancing",
+								"contentfulId": "5Tvrulr8864gr2vp4jIJEU",
+								"title": "Get started with Cloudflare Stream",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Learn how cloud-based load balancing can help minimize latency and downtime — and find a solution that works for you.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/optimize-web-performance-and-reliability-with-load-balancing/",
-								"learnMoreText": "Get the whitepaper",
+								"description": "Learn how to build your own video features, upload user-generated content, stream live video, and more.",
+								"learnMoreUrl": "https://developers.cloudflare.com/stream/",
+								"learnMoreText": "Explore the developer docs",
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -824,16 +1085,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6EiDdeHoqpr6vX5q6j8v1s",
-								"title": "Learn more about Load Balancing with Cloudflare",
+								"contentfulId": "2Y1Is5tsCnYTAesBve8Ydk",
+								"title": "Generate video captions effortlessly with Workers AI",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Tune in for live weekly application performance demos — hosted by our Solution Engineering team.",
-								"learnMoreUrl": "/lp/app-performance-demo-series/",
-								"learnMoreText": "Register now",
+								"description": "Stream offers AI-generated captions for on-demand videos and live stream recordings — at no additional cost to existing Stream customers.",
+								"learnMoreUrl": "https://blog.cloudflare.com/stream-automatic-captions-with-ai",
+								"learnMoreText": "Read the blog post ",
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -860,16 +1121,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3UTUr1612awm4qsaQMNYL9",
-								"title": "Drive business agility and growth with Cloudflare Load Balancing",
+								"contentfulId": "ez2LRj8G2fkre7qvftJP5",
+								"title": "Streamline video storage with scheduled deletion for Stream",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Growing traffic demands, unexpected attacks, and geographic distance can negatively impact your business. See how Cloudflare's edge-hosted load balancer solves for these challenges.",
-								"learnMoreUrl": "/lp/idc-effective-load-balancing/",
-								"learnMoreText": "Read the report",
+								"description": "Easily manage video lifecycles from the Stream dashboard or API, so you can maximize your video storage and reduce associated costs.",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-scheduled-deletion-for-cloudflare-stream",
+								"learnMoreText": "Read the blog post",
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -898,8 +1159,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "20GdEYztPal465FAPWL5dt",
-						"title": "Get Cloudflare Load Balancing for your enterprise",
+						"contentfulId": "6qg3j8gzi3paQBS0QGIaiv",
+						"title": "Take control of your video infrastructure",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -914,28 +1175,14 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "10Apk9DqF5iWdBWPt4oiOO",
-							"elementName": "Load Balancing - Talk to an expert (modal form) - CTA",
+							"contentfulId": "cFWZ2v75RD270MCjo42TP",
+							"elementName": "Stream product page - enablement - Primary CTA",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": null,
+							"text": "Get started",
+							"url": "https://dash.cloudflare.com/sign-up/stream",
 							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "39G5Bl2CVZVeylVSwBgL5E",
-								"modalName": "Load Balancing - Talk to an expert (modal form) - Modal form",
-								"modalId": "load-balancing-talk-to-an-expert-modal-form-modal-form",
-								"modalType": "single-form",
-								"marketoForm": null,
-								"title": null,
-								"regularCopy": null,
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
-							"openInNewTab": false,
+							"buttonModal": null,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -944,23 +1191,7 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "39G5Bl2CVZVeylVSwBgL5E",
-						"modalName": "Load Balancing - Talk to an expert (modal form) - Modal form",
-						"modalId": "load-balancing-talk-to-an-expert-modal-form-modal-form",
-						"modalType": "single-form",
-						"marketoForm": null,
-						"title": null,
-						"regularCopy": null,
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					}
-				],
+				"formModal": [],
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
@@ -972,8 +1203,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/load-balancing/",
-			"contentfulId": "1TkMywxXLaw2aAkquAasSM",
+			"pathname": "/products/cloudflare-stream/",
+			"contentfulId": "2Tq4dKzDxes4kEWCECocYq",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
