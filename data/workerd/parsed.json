@@ -2678,6 +2678,13 @@
 						"compatEnableDate": "2024-10-14",
 						"compatEnableFlag": "handle_cross_request_promise_resolution"
 					}
+				},
+				{
+					"name": "pythonExternalBundle",
+					"annotations": {
+						"compatEnableFlag": "python_external_bundle",
+						"experimental": "true"
+					}
 				}
 			]
 		},
