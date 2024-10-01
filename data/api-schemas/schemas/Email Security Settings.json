@@ -3647,6 +3647,7 @@
 													],
 													"created_at": "2023-11-14T22:13:20Z",
 													"domain": "example.com",
+													"folder": "Inbox",
 													"id": 2400,
 													"integration_id": "a5dbb180-60ea-4578-84bb-d01a5d4e50c3",
 													"last_modified": "2023-11-14T22:13:20Z",
@@ -3673,6 +3674,21 @@
 													},
 													"domain": {
 														"type": "string"
+													},
+													"folder": {
+														"allOf": [
+															{
+																"enum": [
+																	"AllItems",
+																	"Inbox"
+																],
+																"type": "string"
+															},
+															{
+																"nullable": true,
+																"type": "string"
+															}
+														]
 													},
 													"id": {
 														"description": "Unique domain identifier",
@@ -5855,6 +5871,7 @@
 												],
 												"created_at": "2023-11-14T22:13:20Z",
 												"domain": "example.com",
+												"folder": "Inbox",
 												"id": 2400,
 												"integration_id": "a5dbb180-60ea-4578-84bb-d01a5d4e50c3",
 												"last_modified": "2023-11-14T22:13:20Z",
@@ -5881,6 +5898,21 @@
 												},
 												"domain": {
 													"type": "string"
+												},
+												"folder": {
+													"allOf": [
+														{
+															"enum": [
+																"AllItems",
+																"Inbox"
+															],
+															"type": "string"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
 												},
 												"id": {
 													"description": "Unique domain identifier",
