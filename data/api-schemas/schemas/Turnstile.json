@@ -107,6 +107,11 @@
 													"maxLength": 10,
 													"type": "array"
 												},
+												"ephemeral_id": {
+													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
+													"example": false,
+													"type": "boolean"
+												},
 												"mode": {
 													"description": "Widget Mode",
 													"enum": [
@@ -167,7 +172,8 @@
 												"region",
 												"bot_fight_mode",
 												"offlabel",
-												"clearance_level"
+												"clearance_level",
+												"ephemeral_id"
 											],
 											"type": "object"
 										}
@@ -423,6 +429,11 @@
 														"maxLength": 10,
 														"type": "array"
 													},
+													"ephemeral_id": {
+														"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
+														"example": false,
+														"type": "boolean"
+													},
 													"mode": {
 														"description": "Widget Mode",
 														"enum": [
@@ -477,7 +488,8 @@
 													"region",
 													"bot_fight_mode",
 													"offlabel",
-													"clearance_level"
+													"clearance_level",
+													"ephemeral_id"
 												],
 												"type": "object"
 											},
@@ -703,6 +715,11 @@
 													"maxLength": 10,
 													"type": "array"
 												},
+												"ephemeral_id": {
+													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
+													"example": false,
+													"type": "boolean"
+												},
 												"mode": {
 													"description": "Widget Mode",
 													"enum": [
@@ -763,7 +780,8 @@
 												"region",
 												"bot_fight_mode",
 												"offlabel",
-												"clearance_level"
+												"clearance_level",
+												"ephemeral_id"
 											],
 											"type": "object"
 										}
@@ -916,6 +934,11 @@
 								},
 								"maxLength": 10,
 								"type": "array"
+							},
+							"ephemeral_id": {
+								"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
+								"example": false,
+								"type": "boolean"
 							},
 							"mode": {
 								"description": "Widget Mode",
@@ -1098,6 +1121,11 @@
 													"maxLength": 10,
 													"type": "array"
 												},
+												"ephemeral_id": {
+													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
+													"example": false,
+													"type": "boolean"
+												},
 												"mode": {
 													"description": "Widget Mode",
 													"enum": [
@@ -1158,7 +1186,8 @@
 												"region",
 												"bot_fight_mode",
 												"offlabel",
-												"clearance_level"
+												"clearance_level",
+												"ephemeral_id"
 											],
 											"type": "object"
 										}
@@ -1394,6 +1423,11 @@
 													"maxLength": 10,
 													"type": "array"
 												},
+												"ephemeral_id": {
+													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
+													"example": false,
+													"type": "boolean"
+												},
 												"mode": {
 													"description": "Widget Mode",
 													"enum": [
@@ -1454,7 +1488,8 @@
 												"region",
 												"bot_fight_mode",
 												"offlabel",
-												"clearance_level"
+												"clearance_level",
+												"ephemeral_id"
 											],
 											"type": "object"
 										}
@@ -1604,6 +1639,11 @@
 								"maxLength": 10,
 								"type": "array"
 							},
+							"ephemeral_id": {
+								"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
+								"example": false,
+								"type": "boolean"
+							},
 							"mode": {
 								"description": "Widget Mode",
 								"enum": [
@@ -1742,6 +1782,11 @@
 													"maxLength": 10,
 													"type": "array"
 												},
+												"ephemeral_id": {
+													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
+													"example": false,
+													"type": "boolean"
+												},
 												"mode": {
 													"description": "Widget Mode",
 													"enum": [
@@ -1802,7 +1847,8 @@
 												"region",
 												"bot_fight_mode",
 												"offlabel",
-												"clearance_level"
+												"clearance_level",
+												"ephemeral_id"
 											],
 											"type": "object"
 										}
