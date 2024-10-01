@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="text-decoration: underline;"><strong>Available</strong><strong> Locations: Remote US, London, UK</strong></span></p>
+<p><span style="text-decoration: underline;"><strong>Available</strong><strong> Locations: Hybrid Locations San Francisco, CA and or Austin, TX, London, UK. Must be willing to relocate</strong></span></p>
 <p><strong>What You'll Do:&nbsp;</strong></p>
 <p>Join Cloudflare's Self-Serve team as a Product Advocate, helping customers on the Developer Platform scale up their product adoption and identify new use cases to help them grow. This customer-facing position involves working directly with Self-Serve customers to enhance adoption, focus on retention, and escalate their engagement to the point of needing a contractual commitment. As a quota-carrying representative, you'll collaborate closely with the Self Serve, Product, Product Marketing, Developer Relations, and GTM teams to strategically expand our developer business. The ideal candidate should be a proactive, customer-oriented individual with a track record in customer-facing roles, adept at problem-solving and thriving in a fast-paced setting.</p>
 <p><strong>Responsibilities:</strong></p>
