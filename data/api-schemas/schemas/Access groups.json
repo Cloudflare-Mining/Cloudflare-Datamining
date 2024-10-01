@@ -430,7 +430,8 @@
 																		"everyone": {
 																			"description": "An empty object which matches on all users.",
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -493,7 +494,8 @@
 																	"properties": {
 																		"certificate": {
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -705,7 +707,8 @@
 																		"any_valid_service_token": {
 																			"description": "An empty object which matches on all service tokens.",
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -903,7 +906,8 @@
 																		"everyone": {
 																			"description": "An empty object which matches on all users.",
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -966,7 +970,8 @@
 																	"properties": {
 																		"certificate": {
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -1178,7 +1183,8 @@
 																		"any_valid_service_token": {
 																			"description": "An empty object which matches on all service tokens.",
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -1370,7 +1376,8 @@
 																		"everyone": {
 																			"description": "An empty object which matches on all users.",
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -1433,7 +1440,8 @@
 																	"properties": {
 																		"certificate": {
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -1645,7 +1653,8 @@
 																		"any_valid_service_token": {
 																			"description": "An empty object which matches on all service tokens.",
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -1842,7 +1851,8 @@
 																		"everyone": {
 																			"description": "An empty object which matches on all users.",
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -1905,7 +1915,8 @@
 																	"properties": {
 																		"certificate": {
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -2117,7 +2128,8 @@
 																		"any_valid_service_token": {
 																			"description": "An empty object which matches on all service tokens.",
 																			"example": {},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-empty-object": true
 																		}
 																	},
 																	"required": [
@@ -2541,7 +2553,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -2604,7 +2617,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -2816,7 +2830,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -3014,7 +3029,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -3077,7 +3093,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -3289,7 +3306,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -3481,7 +3499,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -3544,7 +3563,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -3756,7 +3776,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -3953,7 +3974,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -4016,7 +4038,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -4228,7 +4251,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -4564,7 +4588,8 @@
 												"everyone": {
 													"description": "An empty object which matches on all users.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -4627,7 +4652,8 @@
 											"properties": {
 												"certificate": {
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -4839,7 +4865,8 @@
 												"any_valid_service_token": {
 													"description": "An empty object which matches on all service tokens.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -5031,7 +5058,8 @@
 												"everyone": {
 													"description": "An empty object which matches on all users.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -5094,7 +5122,8 @@
 											"properties": {
 												"certificate": {
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -5306,7 +5335,8 @@
 												"any_valid_service_token": {
 													"description": "An empty object which matches on all service tokens.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -5507,7 +5537,8 @@
 												"everyone": {
 													"description": "An empty object which matches on all users.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -5570,7 +5601,8 @@
 											"properties": {
 												"certificate": {
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -5782,7 +5814,8 @@
 												"any_valid_service_token": {
 													"description": "An empty object which matches on all service tokens.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -6064,7 +6097,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -6127,7 +6161,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -6339,7 +6374,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -6537,7 +6573,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -6600,7 +6637,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -6812,7 +6850,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -7004,7 +7043,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -7067,7 +7107,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -7279,7 +7320,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -7476,7 +7518,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -7539,7 +7582,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -7751,7 +7795,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -8097,7 +8142,8 @@
 												"everyone": {
 													"description": "An empty object which matches on all users.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -8160,7 +8206,8 @@
 											"properties": {
 												"certificate": {
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -8372,7 +8419,8 @@
 												"any_valid_service_token": {
 													"description": "An empty object which matches on all service tokens.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -8564,7 +8612,8 @@
 												"everyone": {
 													"description": "An empty object which matches on all users.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -8627,7 +8676,8 @@
 											"properties": {
 												"certificate": {
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -8839,7 +8889,8 @@
 												"any_valid_service_token": {
 													"description": "An empty object which matches on all service tokens.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -9040,7 +9091,8 @@
 												"everyone": {
 													"description": "An empty object which matches on all users.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -9103,7 +9155,8 @@
 											"properties": {
 												"certificate": {
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -9315,7 +9368,8 @@
 												"any_valid_service_token": {
 													"description": "An empty object which matches on all service tokens.",
 													"example": {},
-													"type": "object"
+													"type": "object",
+													"x-stainless-empty-object": true
 												}
 											},
 											"required": [
@@ -9597,7 +9651,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -9660,7 +9715,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -9872,7 +9928,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -10070,7 +10127,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -10133,7 +10191,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -10345,7 +10404,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -10537,7 +10597,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -10600,7 +10661,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -10812,7 +10874,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -11009,7 +11072,8 @@
 																	"everyone": {
 																		"description": "An empty object which matches on all users.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -11072,7 +11136,8 @@
 																"properties": {
 																	"certificate": {
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [
@@ -11284,7 +11349,8 @@
 																	"any_valid_service_token": {
 																		"description": "An empty object which matches on all service tokens.",
 																		"example": {},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-empty-object": true
 																	}
 																},
 																"required": [

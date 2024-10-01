@@ -425,6 +425,34 @@
 																"example": true,
 																"type": "boolean"
 															},
+															"connection_rules": {
+																"description": "The rules that define how users may connect to the targets secured by your application.",
+																"properties": {
+																	"ssh": {
+																		"description": "The SSH-specific rules that define how users may connect to the targets secured by your application.",
+																		"properties": {
+																			"usernames": {
+																				"description": "Contains the Unix usernames that may be used when connecting over SSH.",
+																				"example": [
+																					"root",
+																					"ubuntu"
+																				],
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"usernames"
+																		],
+																		"title": "SSH Connection Rules",
+																		"type": "object"
+																	}
+																},
+																"title": "Connection Rules",
+																"type": "object"
+															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
@@ -521,7 +549,8 @@
 																				"everyone": {
 																					"description": "An empty object which matches on all users.",
 																					"example": {},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-empty-object": true
 																				}
 																			},
 																			"required": [
@@ -584,7 +613,8 @@
 																			"properties": {
 																				"certificate": {
 																					"example": {},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-empty-object": true
 																				}
 																			},
 																			"required": [
@@ -796,7 +826,8 @@
 																				"any_valid_service_token": {
 																					"description": "An empty object which matches on all service tokens.",
 																					"example": {},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-empty-object": true
 																				}
 																			},
 																			"required": [
@@ -994,7 +1025,8 @@
 																				"everyone": {
 																					"description": "An empty object which matches on all users.",
 																					"example": {},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-empty-object": true
 																				}
 																			},
 																			"required": [
@@ -1057,7 +1089,8 @@
 																			"properties": {
 																				"certificate": {
 																					"example": {},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-empty-object": true
 																				}
 																			},
 																			"required": [
@@ -1269,7 +1302,8 @@
 																				"any_valid_service_token": {
 																					"description": "An empty object which matches on all service tokens.",
 																					"example": {},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-empty-object": true
 																				}
 																			},
 																			"required": [
@@ -1483,7 +1517,8 @@
 																				"everyone": {
 																					"description": "An empty object which matches on all users.",
 																					"example": {},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-empty-object": true
 																				}
 																			},
 																			"required": [
@@ -1546,7 +1581,8 @@
 																			"properties": {
 																				"certificate": {
 																					"example": {},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-empty-object": true
 																				}
 																			},
 																			"required": [
@@ -1758,7 +1794,8 @@
 																				"any_valid_service_token": {
 																					"description": "An empty object which matches on all service tokens.",
 																					"example": {},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-empty-object": true
 																				}
 																			},
 																			"required": [
@@ -2180,6 +2217,34 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"connection_rules": {
+															"description": "The rules that define how users may connect to the targets secured by your application.",
+															"properties": {
+																"ssh": {
+																	"description": "The SSH-specific rules that define how users may connect to the targets secured by your application.",
+																	"properties": {
+																		"usernames": {
+																			"description": "Contains the Unix usernames that may be used when connecting over SSH.",
+																			"example": [
+																				"root",
+																				"ubuntu"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"usernames"
+																	],
+																	"title": "SSH Connection Rules",
+																	"type": "object"
+																}
+															},
+															"title": "Connection Rules",
+															"type": "object"
+														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -2276,7 +2341,8 @@
 																			"everyone": {
 																				"description": "An empty object which matches on all users.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -2339,7 +2405,8 @@
 																		"properties": {
 																			"certificate": {
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -2551,7 +2618,8 @@
 																			"any_valid_service_token": {
 																				"description": "An empty object which matches on all service tokens.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -2749,7 +2817,8 @@
 																			"everyone": {
 																				"description": "An empty object which matches on all users.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -2812,7 +2881,8 @@
 																		"properties": {
 																			"certificate": {
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -3024,7 +3094,8 @@
 																			"any_valid_service_token": {
 																				"description": "An empty object which matches on all service tokens.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -3238,7 +3309,8 @@
 																			"everyone": {
 																				"description": "An empty object which matches on all users.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -3301,7 +3373,8 @@
 																		"properties": {
 																			"certificate": {
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -3513,7 +3586,8 @@
 																			"any_valid_service_token": {
 																				"description": "An empty object which matches on all service tokens.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -3860,6 +3934,34 @@
 										"example": true,
 										"type": "boolean"
 									},
+									"connection_rules": {
+										"description": "The rules that define how users may connect to the targets secured by your application.",
+										"properties": {
+											"ssh": {
+												"description": "The SSH-specific rules that define how users may connect to the targets secured by your application.",
+												"properties": {
+													"usernames": {
+														"description": "Contains the Unix usernames that may be used when connecting over SSH.",
+														"example": [
+															"root",
+															"ubuntu"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"usernames"
+												],
+												"title": "SSH Connection Rules",
+												"type": "object"
+											}
+										},
+										"title": "Connection Rules",
+										"type": "object"
+									},
 									"decision": {
 										"description": "The action Access will take if a user matches this policy.",
 										"enum": [
@@ -3951,7 +4053,8 @@
 														"everyone": {
 															"description": "An empty object which matches on all users.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -4014,7 +4117,8 @@
 													"properties": {
 														"certificate": {
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -4226,7 +4330,8 @@
 														"any_valid_service_token": {
 															"description": "An empty object which matches on all service tokens.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -4418,7 +4523,8 @@
 														"everyone": {
 															"description": "An empty object which matches on all users.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -4481,7 +4587,8 @@
 													"properties": {
 														"certificate": {
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -4693,7 +4800,8 @@
 														"any_valid_service_token": {
 															"description": "An empty object which matches on all service tokens.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -4907,7 +5015,8 @@
 														"everyone": {
 															"description": "An empty object which matches on all users.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -4970,7 +5079,8 @@
 													"properties": {
 														"certificate": {
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -5182,7 +5292,8 @@
 														"any_valid_service_token": {
 															"description": "An empty object which matches on all service tokens.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -5444,6 +5555,34 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"connection_rules": {
+															"description": "The rules that define how users may connect to the targets secured by your application.",
+															"properties": {
+																"ssh": {
+																	"description": "The SSH-specific rules that define how users may connect to the targets secured by your application.",
+																	"properties": {
+																		"usernames": {
+																			"description": "Contains the Unix usernames that may be used when connecting over SSH.",
+																			"example": [
+																				"root",
+																				"ubuntu"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"usernames"
+																	],
+																	"title": "SSH Connection Rules",
+																	"type": "object"
+																}
+															},
+															"title": "Connection Rules",
+															"type": "object"
+														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -5540,7 +5679,8 @@
 																			"everyone": {
 																				"description": "An empty object which matches on all users.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -5603,7 +5743,8 @@
 																		"properties": {
 																			"certificate": {
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -5815,7 +5956,8 @@
 																			"any_valid_service_token": {
 																				"description": "An empty object which matches on all service tokens.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -6013,7 +6155,8 @@
 																			"everyone": {
 																				"description": "An empty object which matches on all users.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -6076,7 +6219,8 @@
 																		"properties": {
 																			"certificate": {
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -6288,7 +6432,8 @@
 																			"any_valid_service_token": {
 																				"description": "An empty object which matches on all service tokens.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -6502,7 +6647,8 @@
 																			"everyone": {
 																				"description": "An empty object which matches on all users.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -6565,7 +6711,8 @@
 																		"properties": {
 																			"certificate": {
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -6777,7 +6924,8 @@
 																			"any_valid_service_token": {
 																				"description": "An empty object which matches on all service tokens.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -7135,6 +7283,34 @@
 										"example": true,
 										"type": "boolean"
 									},
+									"connection_rules": {
+										"description": "The rules that define how users may connect to the targets secured by your application.",
+										"properties": {
+											"ssh": {
+												"description": "The SSH-specific rules that define how users may connect to the targets secured by your application.",
+												"properties": {
+													"usernames": {
+														"description": "Contains the Unix usernames that may be used when connecting over SSH.",
+														"example": [
+															"root",
+															"ubuntu"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"usernames"
+												],
+												"title": "SSH Connection Rules",
+												"type": "object"
+											}
+										},
+										"title": "Connection Rules",
+										"type": "object"
+									},
 									"decision": {
 										"description": "The action Access will take if a user matches this policy.",
 										"enum": [
@@ -7226,7 +7402,8 @@
 														"everyone": {
 															"description": "An empty object which matches on all users.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -7289,7 +7466,8 @@
 													"properties": {
 														"certificate": {
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -7501,7 +7679,8 @@
 														"any_valid_service_token": {
 															"description": "An empty object which matches on all service tokens.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -7693,7 +7872,8 @@
 														"everyone": {
 															"description": "An empty object which matches on all users.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -7756,7 +7936,8 @@
 													"properties": {
 														"certificate": {
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -7968,7 +8149,8 @@
 														"any_valid_service_token": {
 															"description": "An empty object which matches on all service tokens.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -8182,7 +8364,8 @@
 														"everyone": {
 															"description": "An empty object which matches on all users.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -8245,7 +8428,8 @@
 													"properties": {
 														"certificate": {
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -8457,7 +8641,8 @@
 														"any_valid_service_token": {
 															"description": "An empty object which matches on all service tokens.",
 															"example": {},
-															"type": "object"
+															"type": "object",
+															"x-stainless-empty-object": true
 														}
 													},
 													"required": [
@@ -8719,6 +8904,34 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"connection_rules": {
+															"description": "The rules that define how users may connect to the targets secured by your application.",
+															"properties": {
+																"ssh": {
+																	"description": "The SSH-specific rules that define how users may connect to the targets secured by your application.",
+																	"properties": {
+																		"usernames": {
+																			"description": "Contains the Unix usernames that may be used when connecting over SSH.",
+																			"example": [
+																				"root",
+																				"ubuntu"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"usernames"
+																	],
+																	"title": "SSH Connection Rules",
+																	"type": "object"
+																}
+															},
+															"title": "Connection Rules",
+															"type": "object"
+														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -8815,7 +9028,8 @@
 																			"everyone": {
 																				"description": "An empty object which matches on all users.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -8878,7 +9092,8 @@
 																		"properties": {
 																			"certificate": {
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -9090,7 +9305,8 @@
 																			"any_valid_service_token": {
 																				"description": "An empty object which matches on all service tokens.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -9288,7 +9504,8 @@
 																			"everyone": {
 																				"description": "An empty object which matches on all users.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -9351,7 +9568,8 @@
 																		"properties": {
 																			"certificate": {
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -9563,7 +9781,8 @@
 																			"any_valid_service_token": {
 																				"description": "An empty object which matches on all service tokens.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -9777,7 +9996,8 @@
 																			"everyone": {
 																				"description": "An empty object which matches on all users.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -9840,7 +10060,8 @@
 																		"properties": {
 																			"certificate": {
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
@@ -10052,7 +10273,8 @@
 																			"any_valid_service_token": {
 																				"description": "An empty object which matches on all service tokens.",
 																				"example": {},
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-empty-object": true
 																			}
 																		},
 																		"required": [
