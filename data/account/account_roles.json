@@ -1,5 +1,35 @@
 [
 	{
+		"id": "fe700b87d989a8a99428e5258301e277",
+		"name": "Cloudforce One Read",
+		"description": "Grants read access to Cloudforce One",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "2741c27a8ba4829e5e6ce89bfb778c16",
+		"name": "Cloudforce One Admin",
+		"description": "Grants write access to Cloudforce One",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "dfed41846ee1b4952dbeec65c7195e31",
 		"name": "Email Security Reporting",
 		"description": "Read access to CES Home, PhishGuard, and Submission Transparency",
