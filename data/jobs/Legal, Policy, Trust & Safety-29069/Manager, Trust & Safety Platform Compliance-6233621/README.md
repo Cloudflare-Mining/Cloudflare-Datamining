@@ -6,22 +6,29 @@
 	</div>
 </div>
 <p>People need to Trust Cloudflare. Our team is responsible for trust in everything that Cloudflare does. Trust &amp; Safety responds to claims of abuse and legal requests for private customer data&nbsp; for a vast and diverse customer base while maintaining Cloudflare’s core principles of transparency, consistency, and due process. We navigate the complex web of country-specific law enforcement demands and content-related regulations on a global scale.&nbsp;</p>
+<p>&nbsp;</p>
 <p>We are looking for a Trust &amp; Safety Manager to join our global Trust &amp; Safety Platform Compliance team, and lead our team of Trust &amp; Safety Investigators. As manager, you will further develop and enhance our Trust &amp; Safety policies and procedures, to ensure efficiencies and exceptional customer experience. You will be leading a global team of highly skilled Trust &amp; Safety Investigators, and getting your hands dirty with the team in the queues, to create, modify and enhance our policies and processes. You will also partner with the Trust &amp; Safety Platform Integrity team to provide support as needed on abuse investigations. This is a position where you will also gain familiarity with the inner workings of Cloudflare’s technologies and policies. This role is located in Mexico as Remote / Hybrid.</p>
 <p>&nbsp;</p>
 <p><strong>Responsibilities:</strong></p>
+<p>&nbsp;</p>
 <ul>
 	<li>Lead and manage the Trust &amp; Safety Platform Compliance team in Mexico with effective leadership, ability to hire and retain talented staff, ability to train and develop a team in Trust &amp; Safety issues</li>
 	<li>You will develop deep expertise on the processes and be responsible for driving continuous process improvement initiatives, with a particular focus on customer experience</li>
-	<li>Create and implement proactive measures to stop fraud while minimizing potential false positives</li>
+	<li>Create and implement proactive measures to stop abusive behaviour while minimizing potential false positives</li>
+	<li>Handle abuse complaints regarding DMCA, Trademark, Phishing, CSAM, ICANN domain compliance and escalated issues</li>
+	<li>Handle and manage Takedown notices on behalf of Cloudflare</li>
+	<li>Investigate account compromises and take-overs through to resolution.</li>
 	<li>Through data-driven insights, you will develop recommendations for process improvements, new process standards, and agent tooling improvements that enable a more frictionless, consistent experience, and increased team efficiency</li>
 	<li>You will operationalize these recommendations through strong project management in partnership with Trust &amp; Safety, Finance, Product, and others.</li>
 	<li>Generate weekly, monthly and quarterly reports on Platform Compliance</li>
 	<li>Interact with internal and external partners such as vendors to improve Platform Compliance capabilities</li>
+	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
 	<li>Ensure that ongoing operations maintain a high level of stakeholder satisfaction</li>
 	<li>You will be part of an on-call leadership team, and may be a part of weekend and holiday coverage schedule</li>
 </ul>
-<p>&nbsp;</p>
+<p><br><br></p>
 <p><strong>Requirements:</strong></p>
+<p>&nbsp;</p>
 <ul>
 	<li>You have a strong 5-8 years of anti-abuse or support escalations experience at an Internet Service Provider, hosting provider, or similar type of role.</li>
 	<li>You have 2-3 years experience leading a team</li>
@@ -40,6 +47,7 @@
 </ul>
 <p>&nbsp;</p>
 <p><strong>Bonus:</strong></p>
+<p>&nbsp;</p>
 <ul>
 	<li>You have working knowledge of financial fraud</li>
 	<li>You have working knowledge of the ICANN Compliance process</li>
