@@ -433,8 +433,8 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
+															"description": "Total number of results on the current page",
+															"example": 20,
 															"type": "number"
 														},
 														"page": {
@@ -443,7 +443,7 @@
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page",
 															"example": 20,
 															"type": "number"
 														},
@@ -451,12 +451,20 @@
 															"description": "Total results available without any search parameters",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages available",
+															"example": 100,
+															"type": "number"
 														}
 													},
 													"type": "object"
 												}
 											}
 										}
+									],
+									"required": [
+										"result_info"
 									],
 									"type": "object"
 								},
@@ -628,20 +636,13 @@
 																"type": "number"
 															},
 															"pool_weights": {
+																"additionalProperties": {
+																	"type": "number"
+																},
 																"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																"example": {
 																	"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																	"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																},
-																"properties": {
-																	"key": {
-																		"description": "Pool ID",
-																		"type": "string"
-																	},
-																	"value": {
-																		"description": "Weight",
-																		"type": "number"
-																	}
 																},
 																"type": "object"
 															}
@@ -835,20 +836,13 @@
 																					"type": "number"
 																				},
 																				"pool_weights": {
+																					"additionalProperties": {
+																						"type": "number"
+																					},
 																					"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																					"example": {
 																						"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																						"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																					},
-																					"properties": {
-																						"key": {
-																							"description": "Pool ID",
-																							"type": "string"
-																						},
-																						"value": {
-																							"description": "Weight",
-																							"type": "number"
-																						}
 																					},
 																					"type": "object"
 																				}
@@ -876,14 +870,13 @@
 																			"type": "object"
 																		},
 																		"session_affinity": {
-																			"default": "",
-																			"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																			"default": "none",
+																			"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																			"enum": [
 																				"none",
 																				"cookie",
 																				"ip_cookie",
-																				"header",
-																				""
+																				"header"
 																			],
 																			"example": "cookie",
 																			"type": "string"
@@ -997,14 +990,13 @@
 														"type": "array"
 													},
 													"session_affinity": {
-														"default": "",
-														"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+														"default": "none",
+														"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 														"enum": [
 															"none",
 															"cookie",
 															"ip_cookie",
-															"header",
-															""
+															"header"
 														],
 														"example": "cookie",
 														"type": "string"
@@ -1186,8 +1178,8 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
+																	"description": "Total number of results on the current page",
+																	"example": 20,
 																	"type": "number"
 																},
 																"page": {
@@ -1196,7 +1188,7 @@
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page",
 																	"example": 20,
 																	"type": "number"
 																},
@@ -1204,12 +1196,20 @@
 																	"description": "Total results available without any search parameters",
 																	"example": 2000,
 																	"type": "number"
+																},
+																"total_pages": {
+																	"description": "Total number of pages available",
+																	"example": 100,
+																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
 													}
 												}
+											],
+											"required": [
+												"result_info"
 											],
 											"type": "object"
 										},
@@ -1381,20 +1381,13 @@
 																		"type": "number"
 																	},
 																	"pool_weights": {
+																		"additionalProperties": {
+																			"type": "number"
+																		},
 																		"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																		"example": {
 																			"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																			"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																		},
-																		"properties": {
-																			"key": {
-																				"description": "Pool ID",
-																				"type": "string"
-																			},
-																			"value": {
-																				"description": "Weight",
-																				"type": "number"
-																			}
 																		},
 																		"type": "object"
 																	}
@@ -1588,20 +1581,13 @@
 																							"type": "number"
 																						},
 																						"pool_weights": {
+																							"additionalProperties": {
+																								"type": "number"
+																							},
 																							"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																							"example": {
 																								"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																								"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																							},
-																							"properties": {
-																								"key": {
-																									"description": "Pool ID",
-																									"type": "string"
-																								},
-																								"value": {
-																									"description": "Weight",
-																									"type": "number"
-																								}
 																							},
 																							"type": "object"
 																						}
@@ -1629,14 +1615,13 @@
 																					"type": "object"
 																				},
 																				"session_affinity": {
-																					"default": "",
-																					"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																					"default": "none",
+																					"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																					"enum": [
 																						"none",
 																						"cookie",
 																						"ip_cookie",
-																						"header",
-																						""
+																						"header"
 																					],
 																					"example": "cookie",
 																					"type": "string"
@@ -1750,14 +1735,13 @@
 																"type": "array"
 															},
 															"session_affinity": {
-																"default": "",
-																"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																"default": "none",
+																"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																"enum": [
 																	"none",
 																	"cookie",
 																	"ip_cookie",
-																	"header",
-																	""
+																	"header"
 																],
 																"example": "cookie",
 																"type": "string"
@@ -2245,20 +2229,13 @@
 															"type": "number"
 														},
 														"pool_weights": {
+															"additionalProperties": {
+																"type": "number"
+															},
 															"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 															"example": {
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-															},
-															"properties": {
-																"key": {
-																	"description": "Pool ID",
-																	"type": "string"
-																},
-																"value": {
-																	"description": "Weight",
-																	"type": "number"
-																}
 															},
 															"type": "object"
 														}
@@ -2452,20 +2429,13 @@
 																				"type": "number"
 																			},
 																			"pool_weights": {
+																				"additionalProperties": {
+																					"type": "number"
+																				},
 																				"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																				"example": {
 																					"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																					"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																				},
-																				"properties": {
-																					"key": {
-																						"description": "Pool ID",
-																						"type": "string"
-																					},
-																					"value": {
-																						"description": "Weight",
-																						"type": "number"
-																					}
 																				},
 																				"type": "object"
 																			}
@@ -2493,14 +2463,13 @@
 																		"type": "object"
 																	},
 																	"session_affinity": {
-																		"default": "",
-																		"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																		"default": "none",
+																		"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																		"enum": [
 																			"none",
 																			"cookie",
 																			"ip_cookie",
-																			"header",
-																			""
+																			"header"
 																		],
 																		"example": "cookie",
 																		"type": "string"
@@ -2614,14 +2583,13 @@
 													"type": "array"
 												},
 												"session_affinity": {
-													"default": "",
-													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+													"default": "none",
+													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 													"enum": [
 														"none",
 														"cookie",
 														"ip_cookie",
-														"header",
-														""
+														"header"
 													],
 													"example": "cookie",
 													"type": "string"
@@ -2982,20 +2950,13 @@
 																	"type": "number"
 																},
 																"pool_weights": {
+																	"additionalProperties": {
+																		"type": "number"
+																	},
 																	"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																	"example": {
 																		"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																		"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																	},
-																	"properties": {
-																		"key": {
-																			"description": "Pool ID",
-																			"type": "string"
-																		},
-																		"value": {
-																			"description": "Weight",
-																			"type": "number"
-																		}
 																	},
 																	"type": "object"
 																}
@@ -3189,20 +3150,13 @@
 																						"type": "number"
 																					},
 																					"pool_weights": {
+																						"additionalProperties": {
+																							"type": "number"
+																						},
 																						"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																						"example": {
 																							"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																							"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																						},
-																						"properties": {
-																							"key": {
-																								"description": "Pool ID",
-																								"type": "string"
-																							},
-																							"value": {
-																								"description": "Weight",
-																								"type": "number"
-																							}
 																						},
 																						"type": "object"
 																					}
@@ -3230,14 +3184,13 @@
 																				"type": "object"
 																			},
 																			"session_affinity": {
-																				"default": "",
-																				"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																				"default": "none",
+																				"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																				"enum": [
 																					"none",
 																					"cookie",
 																					"ip_cookie",
-																					"header",
-																					""
+																					"header"
 																				],
 																				"example": "cookie",
 																				"type": "string"
@@ -3351,14 +3304,13 @@
 															"type": "array"
 														},
 														"session_affinity": {
-															"default": "",
-															"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+															"default": "none",
+															"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 															"enum": [
 																"none",
 																"cookie",
 																"ip_cookie",
-																"header",
-																""
+																"header"
 															],
 															"example": "cookie",
 															"type": "string"
@@ -3730,20 +3682,13 @@
 										"type": "number"
 									},
 									"pool_weights": {
+										"additionalProperties": {
+											"type": "number"
+										},
 										"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 										"example": {
 											"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 											"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-										},
-										"properties": {
-											"key": {
-												"description": "Pool ID",
-												"type": "string"
-											},
-											"value": {
-												"description": "Weight",
-												"type": "number"
-											}
 										},
 										"type": "object"
 									}
@@ -3937,20 +3882,13 @@
 															"type": "number"
 														},
 														"pool_weights": {
+															"additionalProperties": {
+																"type": "number"
+															},
 															"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 															"example": {
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-															},
-															"properties": {
-																"key": {
-																	"description": "Pool ID",
-																	"type": "string"
-																},
-																"value": {
-																	"description": "Weight",
-																	"type": "number"
-																}
 															},
 															"type": "object"
 														}
@@ -3978,14 +3916,13 @@
 													"type": "object"
 												},
 												"session_affinity": {
-													"default": "",
-													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+													"default": "none",
+													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 													"enum": [
 														"none",
 														"cookie",
 														"ip_cookie",
-														"header",
-														""
+														"header"
 													],
 													"example": "cookie",
 													"type": "string"
@@ -4099,14 +4036,13 @@
 								"type": "array"
 							},
 							"session_affinity": {
-								"default": "",
-								"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+								"default": "none",
+								"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 								"enum": [
 									"none",
 									"cookie",
 									"ip_cookie",
-									"header",
-									""
+									"header"
 								],
 								"example": "cookie",
 								"type": "string"
@@ -4461,20 +4397,13 @@
 															"type": "number"
 														},
 														"pool_weights": {
+															"additionalProperties": {
+																"type": "number"
+															},
 															"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 															"example": {
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-															},
-															"properties": {
-																"key": {
-																	"description": "Pool ID",
-																	"type": "string"
-																},
-																"value": {
-																	"description": "Weight",
-																	"type": "number"
-																}
 															},
 															"type": "object"
 														}
@@ -4668,20 +4597,13 @@
 																				"type": "number"
 																			},
 																			"pool_weights": {
+																				"additionalProperties": {
+																					"type": "number"
+																				},
 																				"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																				"example": {
 																					"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																					"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																				},
-																				"properties": {
-																					"key": {
-																						"description": "Pool ID",
-																						"type": "string"
-																					},
-																					"value": {
-																						"description": "Weight",
-																						"type": "number"
-																					}
 																				},
 																				"type": "object"
 																			}
@@ -4709,14 +4631,13 @@
 																		"type": "object"
 																	},
 																	"session_affinity": {
-																		"default": "",
-																		"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																		"default": "none",
+																		"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																		"enum": [
 																			"none",
 																			"cookie",
 																			"ip_cookie",
-																			"header",
-																			""
+																			"header"
 																		],
 																		"example": "cookie",
 																		"type": "string"
@@ -4830,14 +4751,13 @@
 													"type": "array"
 												},
 												"session_affinity": {
-													"default": "",
-													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+													"default": "none",
+													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 													"enum": [
 														"none",
 														"cookie",
 														"ip_cookie",
-														"header",
-														""
+														"header"
 													],
 													"example": "cookie",
 													"type": "string"
@@ -5198,20 +5118,13 @@
 																	"type": "number"
 																},
 																"pool_weights": {
+																	"additionalProperties": {
+																		"type": "number"
+																	},
 																	"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																	"example": {
 																		"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																		"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																	},
-																	"properties": {
-																		"key": {
-																			"description": "Pool ID",
-																			"type": "string"
-																		},
-																		"value": {
-																			"description": "Weight",
-																			"type": "number"
-																		}
 																	},
 																	"type": "object"
 																}
@@ -5405,20 +5318,13 @@
 																						"type": "number"
 																					},
 																					"pool_weights": {
+																						"additionalProperties": {
+																							"type": "number"
+																						},
 																						"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																						"example": {
 																							"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																							"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																						},
-																						"properties": {
-																							"key": {
-																								"description": "Pool ID",
-																								"type": "string"
-																							},
-																							"value": {
-																								"description": "Weight",
-																								"type": "number"
-																							}
 																						},
 																						"type": "object"
 																					}
@@ -5446,14 +5352,13 @@
 																				"type": "object"
 																			},
 																			"session_affinity": {
-																				"default": "",
-																				"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																				"default": "none",
+																				"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																				"enum": [
 																					"none",
 																					"cookie",
 																					"ip_cookie",
-																					"header",
-																					""
+																					"header"
 																				],
 																				"example": "cookie",
 																				"type": "string"
@@ -5567,14 +5472,13 @@
 															"type": "array"
 														},
 														"session_affinity": {
-															"default": "",
-															"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+															"default": "none",
+															"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 															"enum": [
 																"none",
 																"cookie",
 																"ip_cookie",
-																"header",
-																""
+																"header"
 															],
 															"example": "cookie",
 															"type": "string"
@@ -5941,20 +5845,13 @@
 										"type": "number"
 									},
 									"pool_weights": {
+										"additionalProperties": {
+											"type": "number"
+										},
 										"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 										"example": {
 											"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 											"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-										},
-										"properties": {
-											"key": {
-												"description": "Pool ID",
-												"type": "string"
-											},
-											"value": {
-												"description": "Weight",
-												"type": "number"
-											}
 										},
 										"type": "object"
 									}
@@ -6148,20 +6045,13 @@
 															"type": "number"
 														},
 														"pool_weights": {
+															"additionalProperties": {
+																"type": "number"
+															},
 															"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 															"example": {
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-															},
-															"properties": {
-																"key": {
-																	"description": "Pool ID",
-																	"type": "string"
-																},
-																"value": {
-																	"description": "Weight",
-																	"type": "number"
-																}
 															},
 															"type": "object"
 														}
@@ -6189,14 +6079,13 @@
 													"type": "object"
 												},
 												"session_affinity": {
-													"default": "",
-													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+													"default": "none",
+													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 													"enum": [
 														"none",
 														"cookie",
 														"ip_cookie",
-														"header",
-														""
+														"header"
 													],
 													"example": "cookie",
 													"type": "string"
@@ -6310,14 +6199,13 @@
 								"type": "array"
 							},
 							"session_affinity": {
-								"default": "",
-								"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+								"default": "none",
+								"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 								"enum": [
 									"none",
 									"cookie",
 									"ip_cookie",
-									"header",
-									""
+									"header"
 								],
 								"example": "cookie",
 								"type": "string"
@@ -6677,20 +6565,13 @@
 															"type": "number"
 														},
 														"pool_weights": {
+															"additionalProperties": {
+																"type": "number"
+															},
 															"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 															"example": {
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-															},
-															"properties": {
-																"key": {
-																	"description": "Pool ID",
-																	"type": "string"
-																},
-																"value": {
-																	"description": "Weight",
-																	"type": "number"
-																}
 															},
 															"type": "object"
 														}
@@ -6884,20 +6765,13 @@
 																				"type": "number"
 																			},
 																			"pool_weights": {
+																				"additionalProperties": {
+																					"type": "number"
+																				},
 																				"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																				"example": {
 																					"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																					"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																				},
-																				"properties": {
-																					"key": {
-																						"description": "Pool ID",
-																						"type": "string"
-																					},
-																					"value": {
-																						"description": "Weight",
-																						"type": "number"
-																					}
 																				},
 																				"type": "object"
 																			}
@@ -6925,14 +6799,13 @@
 																		"type": "object"
 																	},
 																	"session_affinity": {
-																		"default": "",
-																		"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																		"default": "none",
+																		"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																		"enum": [
 																			"none",
 																			"cookie",
 																			"ip_cookie",
-																			"header",
-																			""
+																			"header"
 																		],
 																		"example": "cookie",
 																		"type": "string"
@@ -7046,14 +6919,13 @@
 													"type": "array"
 												},
 												"session_affinity": {
-													"default": "",
-													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+													"default": "none",
+													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 													"enum": [
 														"none",
 														"cookie",
 														"ip_cookie",
-														"header",
-														""
+														"header"
 													],
 													"example": "cookie",
 													"type": "string"
@@ -7414,20 +7286,13 @@
 																	"type": "number"
 																},
 																"pool_weights": {
+																	"additionalProperties": {
+																		"type": "number"
+																	},
 																	"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																	"example": {
 																		"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																		"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																	},
-																	"properties": {
-																		"key": {
-																			"description": "Pool ID",
-																			"type": "string"
-																		},
-																		"value": {
-																			"description": "Weight",
-																			"type": "number"
-																		}
 																	},
 																	"type": "object"
 																}
@@ -7621,20 +7486,13 @@
 																						"type": "number"
 																					},
 																					"pool_weights": {
+																						"additionalProperties": {
+																							"type": "number"
+																						},
 																						"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																						"example": {
 																							"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																							"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																						},
-																						"properties": {
-																							"key": {
-																								"description": "Pool ID",
-																								"type": "string"
-																							},
-																							"value": {
-																								"description": "Weight",
-																								"type": "number"
-																							}
 																						},
 																						"type": "object"
 																					}
@@ -7662,14 +7520,13 @@
 																				"type": "object"
 																			},
 																			"session_affinity": {
-																				"default": "",
-																				"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																				"default": "none",
+																				"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																				"enum": [
 																					"none",
 																					"cookie",
 																					"ip_cookie",
-																					"header",
-																					""
+																					"header"
 																				],
 																				"example": "cookie",
 																				"type": "string"
@@ -7783,14 +7640,13 @@
 															"type": "array"
 														},
 														"session_affinity": {
-															"default": "",
-															"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+															"default": "none",
+															"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 															"enum": [
 																"none",
 																"cookie",
 																"ip_cookie",
-																"header",
-																""
+																"header"
 															],
 															"example": "cookie",
 															"type": "string"
@@ -8172,20 +8028,13 @@
 										"type": "number"
 									},
 									"pool_weights": {
+										"additionalProperties": {
+											"type": "number"
+										},
 										"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 										"example": {
 											"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 											"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-										},
-										"properties": {
-											"key": {
-												"description": "Pool ID",
-												"type": "string"
-											},
-											"value": {
-												"description": "Weight",
-												"type": "number"
-											}
 										},
 										"type": "object"
 									}
@@ -8379,20 +8228,13 @@
 															"type": "number"
 														},
 														"pool_weights": {
+															"additionalProperties": {
+																"type": "number"
+															},
 															"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 															"example": {
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-															},
-															"properties": {
-																"key": {
-																	"description": "Pool ID",
-																	"type": "string"
-																},
-																"value": {
-																	"description": "Weight",
-																	"type": "number"
-																}
 															},
 															"type": "object"
 														}
@@ -8420,14 +8262,13 @@
 													"type": "object"
 												},
 												"session_affinity": {
-													"default": "",
-													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+													"default": "none",
+													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 													"enum": [
 														"none",
 														"cookie",
 														"ip_cookie",
-														"header",
-														""
+														"header"
 													],
 													"example": "cookie",
 													"type": "string"
@@ -8541,14 +8382,13 @@
 								"type": "array"
 							},
 							"session_affinity": {
-								"default": "",
-								"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+								"default": "none",
+								"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 								"enum": [
 									"none",
 									"cookie",
 									"ip_cookie",
-									"header",
-									""
+									"header"
 								],
 								"example": "cookie",
 								"type": "string"
@@ -8908,20 +8748,13 @@
 															"type": "number"
 														},
 														"pool_weights": {
+															"additionalProperties": {
+																"type": "number"
+															},
 															"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 															"example": {
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-															},
-															"properties": {
-																"key": {
-																	"description": "Pool ID",
-																	"type": "string"
-																},
-																"value": {
-																	"description": "Weight",
-																	"type": "number"
-																}
 															},
 															"type": "object"
 														}
@@ -9115,20 +8948,13 @@
 																				"type": "number"
 																			},
 																			"pool_weights": {
+																				"additionalProperties": {
+																					"type": "number"
+																				},
 																				"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																				"example": {
 																					"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																					"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																				},
-																				"properties": {
-																					"key": {
-																						"description": "Pool ID",
-																						"type": "string"
-																					},
-																					"value": {
-																						"description": "Weight",
-																						"type": "number"
-																					}
 																				},
 																				"type": "object"
 																			}
@@ -9156,14 +8982,13 @@
 																		"type": "object"
 																	},
 																	"session_affinity": {
-																		"default": "",
-																		"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																		"default": "none",
+																		"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																		"enum": [
 																			"none",
 																			"cookie",
 																			"ip_cookie",
-																			"header",
-																			""
+																			"header"
 																		],
 																		"example": "cookie",
 																		"type": "string"
@@ -9277,14 +9102,13 @@
 													"type": "array"
 												},
 												"session_affinity": {
-													"default": "",
-													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+													"default": "none",
+													"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 													"enum": [
 														"none",
 														"cookie",
 														"ip_cookie",
-														"header",
-														""
+														"header"
 													],
 													"example": "cookie",
 													"type": "string"
@@ -9645,20 +9469,13 @@
 																	"type": "number"
 																},
 																"pool_weights": {
+																	"additionalProperties": {
+																		"type": "number"
+																	},
 																	"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																	"example": {
 																		"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																		"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																	},
-																	"properties": {
-																		"key": {
-																			"description": "Pool ID",
-																			"type": "string"
-																		},
-																		"value": {
-																			"description": "Weight",
-																			"type": "number"
-																		}
 																	},
 																	"type": "object"
 																}
@@ -9852,20 +9669,13 @@
 																						"type": "number"
 																					},
 																					"pool_weights": {
+																						"additionalProperties": {
+																							"type": "number"
+																						},
 																						"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
 																						"example": {
 																							"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																							"de90f38ced07c2e2f4df50b1f61d4194": 0.3
-																						},
-																						"properties": {
-																							"key": {
-																								"description": "Pool ID",
-																								"type": "string"
-																							},
-																							"value": {
-																								"description": "Weight",
-																								"type": "number"
-																							}
 																						},
 																						"type": "object"
 																					}
@@ -9893,14 +9703,13 @@
 																				"type": "object"
 																			},
 																			"session_affinity": {
-																				"default": "",
-																				"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+																				"default": "none",
+																				"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 																				"enum": [
 																					"none",
 																					"cookie",
 																					"ip_cookie",
-																					"header",
-																					""
+																					"header"
 																				],
 																				"example": "cookie",
 																				"type": "string"
@@ -10014,14 +9823,13 @@
 															"type": "array"
 														},
 														"session_affinity": {
-															"default": "",
-															"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"` or \"\" (default). The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
+															"default": "none",
+															"description": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are:\n- `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used.\n- `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address.\n- `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.",
 															"enum": [
 																"none",
 																"cookie",
 																"ip_cookie",
-																"header",
-																""
+																"header"
 															],
 															"example": "cookie",
 															"type": "string"

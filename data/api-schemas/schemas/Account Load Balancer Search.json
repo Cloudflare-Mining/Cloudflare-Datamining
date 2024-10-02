@@ -135,8 +135,8 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
+															"description": "Total number of results on the current page",
+															"example": 20,
 															"type": "number"
 														},
 														"page": {
@@ -145,7 +145,7 @@
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page",
 															"example": 20,
 															"type": "number"
 														},
@@ -153,12 +153,20 @@
 															"description": "Total results available without any search parameters",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages available",
+															"example": 100,
+															"type": "number"
 														}
 													},
 													"type": "object"
 												}
 											}
 										}
+									],
+									"required": [
+										"result_info"
 									],
 									"type": "object"
 								},
@@ -311,8 +319,8 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
+																	"description": "Total number of results on the current page",
+																	"example": 20,
 																	"type": "number"
 																},
 																"page": {
@@ -321,7 +329,7 @@
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page",
 																	"example": 20,
 																	"type": "number"
 																},
@@ -329,12 +337,20 @@
 																	"description": "Total results available without any search parameters",
 																	"example": 2000,
 																	"type": "number"
+																},
+																"total_pages": {
+																	"description": "Total number of pages available",
+																	"example": 100,
+																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
 													}
 												}
+											],
+											"required": [
+												"result_info"
 											],
 											"type": "object"
 										},

@@ -447,8 +447,8 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
+															"description": "Total number of results on the current page",
+															"example": 20,
 															"type": "number"
 														},
 														"page": {
@@ -457,7 +457,7 @@
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page",
 															"example": 20,
 															"type": "number"
 														},
@@ -465,12 +465,20 @@
 															"description": "Total results available without any search parameters",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages available",
+															"example": 100,
+															"type": "number"
 														}
 													},
 													"type": "object"
 												}
 											}
 										}
+									],
+									"required": [
+										"result_info"
 									],
 									"type": "object"
 								},
@@ -829,8 +837,8 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
+																	"description": "Total number of results on the current page",
+																	"example": 20,
 																	"type": "number"
 																},
 																"page": {
@@ -839,7 +847,7 @@
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page",
 																	"example": 20,
 																	"type": "number"
 																},
@@ -847,12 +855,20 @@
 																	"description": "Total results available without any search parameters",
 																	"example": 2000,
 																	"type": "number"
+																},
+																"total_pages": {
+																	"description": "Total number of pages available",
+																	"example": 100,
+																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
 													}
 												}
+											],
+											"required": [
+												"result_info"
 											],
 											"type": "object"
 										},
@@ -2600,97 +2616,63 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
+											"type": "array"
 										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "object"
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -2752,97 +2734,63 @@
 								{
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
 															},
-															"type": "array"
+															"message": {
+																"type": "string"
+															}
 														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
+													"type": "array"
 												},
-												{
-													"properties": {
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
 															},
-															"type": "object"
-														}
-													}
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											],
 											"type": "object"
 										},
@@ -3105,8 +3053,8 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
+															"description": "Total number of results on the current page",
+															"example": 20,
 															"type": "number"
 														},
 														"page": {
@@ -3115,7 +3063,7 @@
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page",
 															"example": 20,
 															"type": "number"
 														},
@@ -3123,12 +3071,20 @@
 															"description": "Total results available without any search parameters",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages available",
+															"example": 100,
+															"type": "number"
 														}
 													},
 													"type": "object"
 												}
 											}
 										}
+									],
+									"required": [
+										"result_info"
 									],
 									"type": "object"
 								},
@@ -3487,8 +3443,8 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
+																	"description": "Total number of results on the current page",
+																	"example": 20,
 																	"type": "number"
 																},
 																"page": {
@@ -3497,7 +3453,7 @@
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page",
 																	"example": 20,
 																	"type": "number"
 																},
@@ -3505,12 +3461,20 @@
 																	"description": "Total results available without any search parameters",
 																	"example": 2000,
 																	"type": "number"
+																},
+																"total_pages": {
+																	"description": "Total number of pages available",
+																	"example": 100,
+																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
 													}
 												}
+											],
+											"required": [
+												"result_info"
 											],
 											"type": "object"
 										},
