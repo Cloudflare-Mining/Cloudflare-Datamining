@@ -5,15 +5,22 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p>People need to Trust Cloudflare. Our team is responsible for trust in everything that Cloudflare does. Trust &amp; Safety responds to claims of abuse and legal requests for private customer data&nbsp; for a vast and diverse customer base while maintaining Cloudflare’s core principles of transparency, consistency, and due process. We navigate the complex web of country-specific law enforcement demands and content-related regulations on a global scale.&nbsp;</p>
+<p>We are looking for a Trust &amp; Safety Manager to join our global Trust &amp; Safety Platform Compliance team, and lead our team of Trust &amp; Safety Investigators. As manager, you will further develop and enhance our Trust &amp; Safety policies and procedures, to ensure efficiencies and exceptional customer experience. You will be leading a global team of highly skilled Trust &amp; Safety Investigators, and getting your hands dirty with the team in the queues, to create, modify and enhance our policies and processes. You will also partner with the Trust &amp; Safety Platform Integrity team to provide support as needed on abuse investigations. This is a position where you will also gain familiarity with the inner workings of Cloudflare’s technologies and policies.</p>
+<p><strong>This role is a hybrid one, located in Kuala Lumpur, Malaysia.</strong></p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Lead and manage the Trust &amp; Safety Platform Compliance team in APAC with effective leadership, ability to hire and retain talented staff, ability to train and develop a team in Trust &amp; Safety issues</li>
+	<li>Lead and manage the Trust &amp; Safety Platform Compliance team in Malaysia with effective leadership, ability to hire and retain talented staff, ability to train and develop a team in Trust &amp; Safety issues</li>
 	<li>You will develop deep expertise on the processes and be responsible for driving continuous process improvement initiatives, with a particular focus on customer experience</li>
-	<li>Create and implement proactive measures to stop fraud while minimizing potential false positives</li>
+	<li>Create and implement proactive measures to stop abusive behaviour while minimizing potential false positives</li>
+	<li>Handle abuse complaints regarding DMCA, Trademark, Phishing, CSAM, ICANN domain compliance and escalated issues</li>
+	<li>Handle and manage Takedown notices on behalf of Cloudflare</li>
+	<li>Investigate account compromises and take-overs through to resolution.</li>
 	<li>Through data-driven insights, you will develop recommendations for process improvements, new process standards, and agent tooling improvements that enable a more frictionless, consistent experience, and increased team efficiency</li>
 	<li>You will operationalize these recommendations through strong project management in partnership with Trust &amp; Safety, Finance, Product, and others.</li>
 	<li>Generate weekly, monthly and quarterly reports on Platform Compliance</li>
 	<li>Interact with internal and external partners such as vendors to improve Platform Compliance capabilities</li>
+	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
 	<li>Ensure that ongoing operations maintain a high level of stakeholder satisfaction</li>
 	<li>You will be part of an on-call leadership team, and may be a part of weekend and holiday coverage schedule</li>
 </ul>
