@@ -86,6 +86,9 @@
 	"email-security-bcc-journaling": {
 		"enabled": true
 	},
+	"email-security-submission-transparency": {
+		"enabled": false
+	},
 	"gartner-analyst-demo": {
 		"enabled": true
 	},
@@ -105,7 +108,7 @@
 		"enabled": true
 	},
 	"zt-access-app-oidc-protocol": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-access-auth-in-warp": {
 		"enabled": true
@@ -252,7 +255,7 @@
 		"enabled": true
 	},
 	"zt-user-audit-logs": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-user-risk-score": {
 		"enabled": true
