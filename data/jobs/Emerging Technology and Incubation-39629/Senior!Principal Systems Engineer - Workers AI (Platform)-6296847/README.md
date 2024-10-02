@@ -6,36 +6,33 @@
 	</div>
 </div>
 <p><strong>Available Locations: </strong>Austin, New York, Lisbon, London (Hybrid or Remote)</p>
-<p><strong>About the Department</strong></p>
+<h4><strong>About the Department</strong></h4>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h4><strong>About The Team</strong></h4>
+<p><strong>About the Team</strong></p>
 <p>Workers AI is Cloudflare’s AI inference service, enabling customers to use a wide variety of AI models both within Cloudflare’s Workers development platform and via API. The Workers AI team owns the whole stack that powers the product, from front-end development all the way to low-level inference code. Accordingly we’re a team with a diverse array of technical skills, but everyone on the team is curious and passionate about the possibilities of generative AI.</p>
-<p><strong>What you'll do</strong></p>
-<p>We are looking for a systems engineer to help us build and maintain the codebase that powers the Workers AI platform. This is a role for engineers that are familiar with Rust, WebAssembly, TypeScript and basic notions of Machine Learning and GPUs.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>What You’ll Do</strong></p>
+<p>The Workers AI platform team is responsible for scheduling models and routing requests to the best model instance to handle it. Our stack is built using Rust and Typescript and takes advantage of Cloudflare’s internal container platform. You will be a technical leader using quantitative metrics to help the team deliver improved flexibility and performance across the platform. This is a distributed systems role, and you will bring experience and expertise to the team in the areas of load balancing, scheduling, and resource sharing.</p>
+<p><strong>What You’ll Do</strong></p>
+<p>The Workers AI platform team is responsible for scheduling models and routing requests to the best model instance to handle it. Our stack is built using Rust and Typescript and takes advantage of Cloudflare’s internal container platform. You will be a technical leader using quantitative metrics to help the team deliver improved flexibility and performance across the platform. This is a distributed systems role, and you will bring experience and expertise to the team in the areas of load balancing, scheduling, and resource sharing.</p>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Experience leading a high performing team that provides AI and ML inference</li>
+	<li>Experience setting the architecture and technical direction of large, cross-team and cross-functional engineering projects</li>
 	<li>Strong communication skills</li>
 	<li>Comfortable with tight deadlines and short release cycles</li>
-	<li>Expert-level knowledge in Python for AI development, particularly pytorch or tensorflow.</li>
-	<li>Experience building large-scale distributed systems</li>
-	<li>Obsession with performance and observability.</li>
 	<li>Strong systems-level programming skills</li>
+	<li>Experience building large-scale distributed systems</li>
 	<li>Expert-level knowledge in a modern compiled language like Go, Rust or modern C++</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
-<p>Medical/Rx InsuranceDental InsuranceVision InsuranceFlexible Spending AccountsCommuter Spending AccountsFertility &amp; Family Forming BenefitsOn-demand mental health support and Employee Assistance ProgramGlobal Travel Medical Insurance</p>
+<p>Medical/Rx Insurance, Dental Insurance, Vision Insurance ,Flexible Spending Accounts, Commuter Spending Accounts, Fertility &amp; Family Forming Benefits, On-demand mental health support and Employee Assistance Program, Global Travel Medical Insurance</p>
 <p><strong>Financial Benefits</strong></p>
-<p>Short and Long Term Disability InsuranceLife &amp; Accident Insurance401(k) Retirement Savings PlanEmployee Stock Participation Plan</p>
+<p>Short and Long Term Disability Insurance, Life &amp; Accident Insurance401(k) Retirement Savings Plan, Employee Stock Participation Plan</p>
 <p><strong>Time Off</strong></p>
-<p>Flexible paid time off covering vacation and sick leaveLeave programs, including parental, pregnancy health, medical, and bereavement leave</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Flexible paid time off covering vacation and sick leave.&nbsp;Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

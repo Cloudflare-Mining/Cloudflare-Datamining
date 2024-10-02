@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6131821?gh_jid=6131821",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5989721?gh_jid=5989721",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,7 +9,7 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2927215,
+	"internal_job_id": 2884828,
 	"location": {
 		"name": "Hybrid or Remote"
 	},
@@ -17,38 +17,47 @@
 		{
 			"id": 164993,
 			"name": "Cross-post department",
-			"value": null,
+			"value": "Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "5700 - Customer Support",
+			"value": "4500 - Emerg Tech & Incubation",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Austin, US",
 				"Lisbon, Portugal",
-				"London, UK"
+				"London, UK",
+				"New York, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 6131821,
-	"updated_at": "2024-10-02T09:34:03-04:00",
+	"id": 5989721,
+	"updated_at": "2024-10-02T10:43:30-04:00",
 	"requisition_id": null,
-	"title": "Network Security Engineer",
+	"title": "Engineering Manager - Workers AI (AI/ML)",
 	"departments": [
 		{
-			"id": 29101,
-			"name": "Customer Support",
+			"id": 39629,
+			"name": "Emerging Technology and Incubation",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
+		{
+			"id": 19983,
+			"name": "Austin, TX",
+			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
 		{
 			"id": 19988,
 			"name": "London, United Kingdom",
@@ -57,23 +66,16 @@
 			"parent_id": 74843
 		},
 		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"location": "Lisboa, Lisboa, Portugal",
-			"child_ids": [],
-			"parent_id": 74843
-		},
-		{
-			"id": 82455,
-			"name": "Remote Portugal",
-			"location": null,
-			"child_ids": [],
-			"parent_id": 74843
-		},
-		{
-			"id": 82456,
-			"name": "Remote UK",
-			"location": null,
 			"child_ids": [],
 			"parent_id": 74843
 		}
