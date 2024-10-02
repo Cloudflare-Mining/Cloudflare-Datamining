@@ -4,6 +4,10 @@
 		"name": "Email Security Reporting",
 		"description": "Read access to CES Home, PhishGuard, and Submission Transparency",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": false
+			},
 			"ces_phishguard": {
 				"read": true,
 				"edit": false
@@ -27,6 +31,10 @@
 		"name": "Email Security Readonly",
 		"description": "Read access to all of CES, cannot see Raw Email, take action on emails, or make Submissions (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": false
+			},
 			"ces_integration": {
 				"read": true,
 				"edit": false
@@ -72,6 +80,10 @@
 		"name": "Email Security Analyst",
 		"description": "Write acccess to all of CES, except Settings which is read only (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": false
+			},
 			"ces_integration": {
 				"read": true,
 				"edit": false
@@ -992,6 +1004,10 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": false
+			},
 			"ces_integration": {
 				"read": true,
 				"edit": true
@@ -1076,6 +1092,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": false
+			},
 			"waf": {
 				"read": true,
 				"edit": true
@@ -1692,6 +1712,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": false
+			},
 			"waf": {
 				"read": true,
 				"edit": false
@@ -1867,6 +1891,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": false
+			},
 			"waf": {
 				"read": true,
 				"edit": true

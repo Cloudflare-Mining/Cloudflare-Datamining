@@ -232,6 +232,22 @@
 		]
 	},
 	{
+		"id": "cfa964bcdafc4ab39704e7476154e41b",
+		"name": "Account DNS Settings Read",
+		"description": "Grants read access to Account DNS Settings",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "dc44f27f48ab405392a5f69fe822bd01",
+		"name": "Account DNS Settings Write",
+		"description": "Grants write access to Account DNS Settings",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "de7a688cc47d43bd9ea700b467a09c96",
 		"name": "Account Firewall Access Rules Read",
 		"description": "Grants read access to account firewall access rules",
@@ -1869,6 +1885,22 @@
 		"description": "Grants write access to Cloudflare Access and Gateway seats",
 		"scopes": [
 			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "0a6cfe8cd3ed445e918579e2fb13087b",
+		"name": "Zone DNS Settings Read",
+		"description": "Grants read access to Zone DNS Settings",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "c4df38be41c247b3b4b7702e76eadae0",
+		"name": "Zone DNS Settings Write",
+		"description": "Grants write access to Zone DNS Settings",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
 		]
 	},
 	{
