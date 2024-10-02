@@ -410,20 +410,19 @@
 			"url": "/area1",
 			"pages": [
 				{
-					"title": "navigation.common.overview",
-					"url": "/area1"
+					"url": "/area1",
+					"title": "navigation.common.overview"
 				},
 				{
-					"title": "navigation.account.area_one.retro_scan",
-					"url": "/area1/retro-scan",
-					"hasPermission": null
-				},
-				{
-					"title": "navigation.account.area_one.dashboard",
-					"url": "https://horizon.area1security.com/api/cf-auth/login",
+					"title": "navigation.account.zero_trust.email_security.overview",
 					"labels": [
 						"external-link"
 					]
+				},
+				{
+					"url": "/area1/retro-scan",
+					"title": "navigation.account.area_one.retro_scan",
+					"hasPermission": null
 				}
 			]
 		},
@@ -641,8 +640,7 @@
 			"pages": [
 				{
 					"title": "navigation.account.images.overview",
-					"url": "/images",
-					"hasPermission": null
+					"url": "/images"
 				},
 				{
 					"title": "navigation.account.images.variants",
@@ -666,8 +664,7 @@
 				{
 					"title": "navigation.account.images.delivery_zones",
 					"url": "/images/delivery-zones",
-					"testId": "sidenav-delivery-zones-link",
-					"hasPermission": null
+					"testId": "sidenav-delivery-zones-link"
 				},
 				{
 					"title": "navigation.account.images.plans",

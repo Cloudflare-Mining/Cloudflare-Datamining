@@ -497,5 +497,21 @@
 	"workers_and_pages.observability.new_ui.obs_section.title": "Logpush & Tail Workers has moved",
 	"workers_and_pages.observability.new_ui.obs_section.description": "You can now access Logpush & Tail Workers from the Observability section in Settings.",
 	"workers_and_pages.observability.new_ui.cron_events.title": "View Cron events",
-	"workers_and_pages.observability.new_ui.cron_events.description": "Access Cron events from by clicking on View events under Details."
+	"workers_and_pages.observability.new_ui.cron_events.description": "Access Cron events from by clicking on View events under Details.",
+	"workers_and_pages.contexual_update_messages.bindings.env_var.add": "Add variable: %{name}",
+	"workers_and_pages.contexual_update_messages.bindings.env_var.update": "Updated variable: %{name}",
+	"workers_and_pages.contexual_update_messages.bindings.env_var.delete": "Deleted variable: %{name}",
+	"workers_and_pages.contexual_update_messages.bindings.secret.add": "Add secret: %{name}",
+	"workers_and_pages.contexual_update_messages.bindings.secret.update": "Updated secret: %{name}",
+	"workers_and_pages.contexual_update_messages.bindings.secret.delete": "Deleted secret: %{name}",
+	"workers_and_pages.contexual_update_messages.bindings.generic.add": "Added %{binding} binding %{name}",
+	"workers_and_pages.contexual_update_messages.bindings.generic.update": "Updated %{binding} binding %{name}",
+	"workers_and_pages.contexual_update_messages.bindings.generic.delete": "Deleted %{binding} binding %{name}",
+	"workers_and_pages.contexual_update_messages.smart_placement.enabled": "Enabled Smart Placement",
+	"workers_and_pages.contexual_update_messages.smart_placement.disabled": "Disabled Smart Placement",
+	"workers_and_pages.contexual_update_messages.compatibility_date": "Updated compatibility date to %{compatibilityDate}",
+	"workers_and_pages.contexual_update_messages.compatibility_flags": "Updated compatibility flags",
+	"workers_and_pages.contexual_update_messages.cpu_time_limit": "Updated CPU time limit to %{cpuTimeLimitMs} ms",
+	"workers_and_pages.contexual_update_messages.cpu_time_limit.cleared": "Removed CPU time limit",
+	"workers_and_pages.contexual_update_messages.usage_model": "Updated usage model to %{usageModel}"
 }
