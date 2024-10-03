@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.10
+
+### Patch Changes
+
+- 07ccc68431: fix: chart time dark on stratus fixies
+
 ## 5.1.9
 
 ### Patch Changes
