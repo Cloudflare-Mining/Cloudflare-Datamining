@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 73,
+	"version": "2024.9.346.0",
+	"short_version": "",
+	"size": 121704448,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "5ef98fbef99007a6ba319d0353036dba",
+	"fingerprint": "5105ab9d3bedb1de5c048b934a289546",
+	"uploaded_at": "2024-10-03T22:25:25.836Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains minor fixes and improvements.\r\n\r\n## Changes and improvements\r\n- Added list targets to the warp-cli to enhance the user experience with the Access for Infrastructure SSH solution.\r\n- Added pre-login configuration details to the warp-diag output.\r\n- Added a tunnel reset mtu subcommand to the warp-cli.\r\n- Added a JSON output option to the warp-cli.\r\n- Added the ability for warp-cli to use the team provided in the MDM file for initial registration.\r\n- Added the ability to execute a pcap on multiple interfaces with warp-cli and warp-dex.\r\n- Improved warp-dex default interface selection for pcaps; changed warp-dex cli output to JSON.\r\n- Fixed an issue where the client, when switching between WireGuard and MASQUE protocols, sometimes required a manual tunnel key reset.\r\n- Added MASQUE tunnel protocol support for Consumer WARP.\r\n\r\n## Known issues\r\n- Using MASQUE as the tunnel protocol may be incompatible if your organization has Regional Services enabled.\r\n\r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"5db4b8a663fcd33d851f05994e52660613e9fed8a082db898f5eef3a7692a0af"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}
