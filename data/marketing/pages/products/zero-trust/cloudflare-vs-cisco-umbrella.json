@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/products/zero-trust/vpn-replacement/",
+	"path": "/products/zero-trust/cloudflare-vs-cisco-umbrella/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "VPN Replacement - Solutions Page",
+				"pageName": "[JCC] [ZT PMM] Cloudflare vs. Cisco [V1] [April 2022]",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -21,25 +21,25 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "English for Locale",
-					"idID": "English for Locale",
-					"thTH": "English for Locale",
-					"ruRU": "Translated for Locale",
-					"svSE": "English for Locale",
-					"viVN": "English for Locale",
-					"trTR": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "Translated for Locale",
-					"arAR": "No Page for Locale"
+					"plPL": null,
+					"arAR": null
 				},
-				"relativePath": "products/zero-trust/vpn-replacement",
+				"relativePath": "products/zero-trust/cloudflare-vs-cisco-umbrella",
 				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "VPN Replacement | Zero Trust",
-					"metaDescription": "Augment or replace your VPN with ZTNA. Learn how ZTNA provides better security, performance, and visibility. Start by offloading higher risk apps.",
+					"metaTitle": "Replace Cisco Umbrella | DNS Security",
+					"metaDescription": "Learn why customers are switching from Cisco Umbrella to Cloudflare. Start with DNS filtering and accelerate your Zero Trust roadmap with Cloudflare.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2022-01-24T18:28:54.967Z",
-					"updatedAt": "2024-10-02T09:01:03.326Z"
+					"createdAt": "2021-09-14T17:23:04.303Z",
+					"updatedAt": "2023-02-15T19:25:44.482Z"
 				},
-				"contentfulId": "62xMZ1ricakE06Y0AZrMkT",
+				"contentfulId": "2FkSAxbFbU4CXlQWSuSfez",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -585,6 +585,30 @@
 										"showIconOnly": false,
 										"hideOnChinaSite": false,
 										"navigationItems": []
+									},
+									{
+										"contentTypeId": "navNavigationItem",
+										"contentfulId": "4n0mOaXl0qzMGGOYafC6ld",
+										"locale": "en-US",
+										"name": "Need help choosing?",
+										"description": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "30UfAJTObpHoS5QyhV7uaE",
+											"locale": "en-US",
+											"title": "Need help choosing?",
+											"description": null,
+											"url": "https://www.cloudflare.com/about-your-website/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										"navigationLinks": [],
+										"navIcon": null,
+										"showIconOnly": false,
+										"hideOnChinaSite": false,
+										"navigationItems": []
 									}
 								],
 								"mainLink": null,
@@ -726,6 +750,30 @@
 											"title": "Compare all plans",
 											"description": null,
 											"url": "/plans/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										"navigationLinks": [],
+										"navIcon": null,
+										"showIconOnly": false,
+										"hideOnChinaSite": false,
+										"navigationItems": []
+									},
+									{
+										"contentTypeId": "navNavigationItem",
+										"contentfulId": "9v52PtbQCWBo3GXrgl8bK",
+										"locale": "en-US",
+										"name": "Need help choosing?",
+										"description": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "6qPmW93taY8qaWy5atGXLu",
+											"locale": "en-US",
+											"title": "Need help choosing?",
+											"description": null,
+											"url": "https://www.cloudflare.com/about-your-website/",
 											"badges": null,
 											"specialLinkType": null,
 											"openInNewWindow": false,
@@ -2543,12 +2591,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "X2RTVnzFhYFnl1RYgIKZH",
-						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span\n            >Cloudflare named in 2024 Gartner® Magic Quadrant™ for SV-SASE.\n        </span>\n        <a\n            class=\"link-helper\"\n            href=\"https://www.cloudflare.com/lp/gartner-magic-quadrant-single-vendor-sase-2024/\"\n        >\n            <strong>Announcement ></strong></a\n        >\n    </div>\n</section>\n",
-						"htmlId": null
-					},
-					{
 						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
 						"contentTypeId": "bladePadding",
 						"height": 1,
@@ -2649,23 +2691,23 @@
 						]
 					},
 					{
-						"contentfulId": "yIsVobIlyMRoqIhu9CWMi",
+						"contentfulId": "1U2w79q0huEI8zJZRO9Fk2",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Replace your VPN with Cloudflare",
+						"title": "Cloudflare vs. Cisco ",
 						"titleSize": null,
-						"subtitle": "Strengthen security with fast, reliable Zero Trust Network Access",
+						"subtitle": "Choose Cloudflare over Cisco Umbrella for DNS filtering and Zero Trust",
 						"subtitleSize": null,
-						"copy": "Cloudflare's connectivity cloud helps you accelerate Zero Trust adoption. Augment — and eventually replace — your VPN, offloading your highest-risk users and apps quickly.\n",
+						"copy": "Start with Cloudflare Gateway today for DNS filtering optimized for security, speed, and simplicity of administration. Protect against ransomware, phishing, and shadow IT threats.\n\nLonger term, accelerate your Zero Trust journey by consolidating threat protection, data controls, and identity-based application access under Cloudflare Zero Trust's unified management experience. \n\nNo more switching between different Cisco interfaces or worrying about how Cisco will integrate disparate services on the backend.\n",
 						"buttonColor": "orange",
-						"buttonColor2": "orange-outline",
-						"buttonText1": "Contact Sales",
+						"buttonColor2": "orange",
+						"buttonText1": "Inquire about promo",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "vpn-replacement-contact-us",
-						"buttonText2": "Read the solution brief",
+						"button1ExtraClass": "zero-trust-cisco-umbrella-takout-2022-zt-pmm",
+						"buttonText2": "Read solution brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cfl.re/vpn-replacement-solution-brief",
+						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HLamulhgCyxvh34LETa2k/3eabcd2873edfdabc9c405137948d82f/Cloudflare_Gateway__Promotion_for_Cisco_Umbrella_DNS_customers_2022.pdf",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -2675,16 +2717,16 @@
 						"streamOptions": [
 							"controls"
 						],
-						"streamCaptions": "en",
+						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": false,
+						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Large",
+						"imageSize": null,
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -2694,57 +2736,54 @@
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "eb6978ee-a226-54dc-94c3-bb080edb2a97",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ndq5Lx6daFOEdqlqP8MLE/b7a8e7b7b9700d5d46e6517f8b706fd7/teams-access-zero-trust-spot-illustration.svg"
-								},
-								"description": ""
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/659UTStnstHymxDOQeX9yq/c60bda06de1caee60bf86dbdab4c59f3/cloudflare-dns-filtering-spot-illustration.svg"
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+							"description": "Illustration of a DNS Firewall"
+						},
+						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "2FtFT90ppyl0Vvw0MQNdTU",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": null,
-						"eyebrowHeading": "THE CLOUDFLARE DIFFERENCE",
-						"description": null,
-						"textLayout": "left",
-						"columnsLayout": "Four Columns",
-						"columnContent": [
+						"contentfulId": "1Mj3m8cniZbyqG7K5eGNvJ",
+						"backgroundColor": "light-blue",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": "With Umbrella, your organization is probably paying for capabilities that you don't really need. Cloudflare Gateway delivers the same rigorous security, high speed, and simple management that you expect from cloud-native DNS filtering solutions like Cisco Umbrella. Plus, we make it easy to adapt your approach over time to accomodate new users, new devices, and new threats.",
+						"title": "It's time to reevaluate your Cisco Umbrella subscription.",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3sYIMhFH4sDotQZGAgcwA5",
-								"title": "Strengthen your security posture",
-								"makeTitleLink": false,
+								"contentfulId": "4K2r2IJAQZIQSYviSd6D3p",
+								"title": "Block ransomware, malware, phishing, and other harmful Internet destinations.",
+								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Accelerate your adoption of a Zero Trust security model and reduce the risk of costly breaches.",
+								"description": "Cloudflare ingests best-in-class lists of risky domains and generates proprietary threat intelligence on hundreds of billions of recursive DNS queries per day.\n\nWith this global visibility, we excel at identifying and applying policies to 'new' and 'newly seen' domains.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": false,
+								"removeCardBorder": null,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "eb93065c-06f0-53bf-8f24-82f814b29726",
-									"altText": "security-shield-zero-trust",
-									"title": "security-shield-zero-trust",
+									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
+									"altText": "Security shield zero trust ",
+									"title": "Security shield zero trust ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/35yeieyQns5B8WsFes9Z20/8bf36cbf9edf546c30cc9e3e08235255/cloudflare-zero-trust.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
 										},
-										"description": "Shield with arrow icon"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -2758,17 +2797,53 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6Yu09nOiz0qAUExvuoIpBG",
-								"title": "Simplify IT operational complexity",
-								"makeTitleLink": false,
+								"contentfulId": "6fhEhiZOCZ7sjWzDg5va44",
+								"title": "Speed and reliability around the globe.",
+								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Reduce IT tickets and accelerate onboarding of new employees with a modernized access strategy and comprehensive visibility.",
+								"description": "Neither Gateway nor Umbrella have ever experienced outages in their DNS filtering services. \n\nBut only Cloudflare Gateway is built off of the world's fastest public DNS resolver (1.1.1.1). Plus, Cloudflare stands behind a 100% uptime SLA across our %{DataCenterCount} cities in %{CountryCount} countries.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": false,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0b7cd03c-c40f-5158-b2f1-51ebcde92c92",
+									"altText": "Performance cloud speed orange",
+									"title": "Performance cloud speed orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Hrl9MJuJGcsYRLaNNcCpS/3ca96c403b9a0195da1a8502d79ef76c/performance-cloud-speed.svg"
+										},
+										"description": "Cloud icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5jcS2uYJMU5u8Bc17BcPEv",
+								"title": "One policy manager, one device client, one unified experience.",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "In Gateway, admins can set precise DNS filtering policies across users from a single dashboard. \n\nUnlike with Cisco's multiple products and legacy VPN modules, as you evolve your [Zero Trust security approach](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) with Cloudflare, you can continue using our single, modern client across new services and use cases.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
 								"icon": null,
 								"iconAssetFile": {
 									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
@@ -2791,93 +2866,19 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3pIfVLFZ8xULTFX823dXc8",
-								"title": "Deliver better user experiences",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Eliminate the frustration of using a VPN with seamless, low-latency access to apps and other resources, powered by our massive global network.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
-									"altText": "Lightning bolt icon",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
-										},
-										"description": "Lightning bolt icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2YDbtPsLCrd08p1GeTMGo6",
-								"title": "Maximize your Zero Trust impact",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Expand the scope of VPN replacement beyond apps and networks to [infrastructure](https://blog.cloudflare.com/cloudflare-acquires-bastionzero).",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "6a5c5870-7d66-5fbc-9511-c53d717129b8",
-									"altText": "Cloudflare Carbon Impact Icon",
-									"title": "Cloudflare Carbon Impact Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Vvt7KtXuvnGyacELrs40c/a880c023a77b6ca6981f806e3c15ab88/cloudflare-carbon-impact.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
 							}
-						],
-						"sectionPadding": null,
-						"htmlId": null
+						]
 					},
 					{
-						"contentfulId": "2NIt6JXLN0BWR6EfH4Idto",
-						"title": "Enable faster, safer internal access with Zero Trust",
-						"copy": "Eliminate the poor performance and inherent vulnerabilities of VPN access with [Cloudflare's Zero Trust Network Access (ZTNA) service](https://www.cloudflare.com/zero-trust/products/access/). \n\n- Create a consistent, SaaS-like login process across all internal resources. Integration with preferred identity providers offers users a familiar experience.\n\n- Boost remote access performance by capitalizing on Cloudflare's extensive global network. Users enjoy fast performance from anywhere in the world.\n\n- Eliminate implicit trust of network \"insiders.\" Authenticate each request based on user identity, device posture, and other contextual factors.\n\n- Enhance your ZTNA deployment over time. Start with clientless access for quick time to value, then add [client-based](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/) capabilities and add inline [RBI](https://www.cloudflare.com/zero-trust/products/browser-isolation/) and [DLP](https://www.cloudflare.com/zero-trust/products/dlp/), or automate with Terraform.",
-						"toggleText": null,
+						"contentfulId": "2Ybfoglg1dBtPL9iqPqjiE",
+						"title": "Built on Cloudflare's network",
+						"copy": "All of Cloudflare's Zero Trust services are purpose-built on our own developer platform. This not only delivers a consistent user experience, but also enables us to innovate more rapidly. \n\nBy contrast, partial integrations between Cisco services – often bought through acquisitions – can create unexpected frictions. Your admins will be juggling multiple standalone [SWG](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) and [ZTNA](https://www.cloudflare.com/learning/access-management/what-is-ztna/) solutions and will weave an overly complex web of inconsistent policies over time. ",
+						"toggleText": "Home-built – Cloudflare",
 						"button": [],
-						"learnMoreUrl": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
-						"learnMoreText": "See SASE reference architecture",
+						"learnMoreUrl": null,
+						"learnMoreText": null,
 						"link": [],
-						"subheadline": null,
+						"subheadline": "Natively-integrated edge services keeps you moving fast towards Zero Trust",
 						"button1Text": null,
 						"button1Url": null,
 						"button1Color": null,
@@ -2894,55 +2895,92 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "435caf64-3206-5964-bad5-33c553c35148",
-							"altText": "Cloudflare Access Diagram",
-							"title": "Cloudflare Access Diagram Jul '24",
+							"id": "124313fc-49dc-579e-a532-f66c3407deb1",
+							"altText": null,
+							"title": "Cloudflare's home-built Zero Trust services",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gjNRPqN1scaDkw58fYSzt/87f312d3e9f6ee6c7adbfe8d067c4d55/Cloudflare_Access_Diagram.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6U0yzMRnsLD6TQbwB7V0Nz/4f2e9bff2646f9ccc95241369a6a2bb8/Aquire_Stitch_CF_643x438.svg"
 								},
-								"description": ""
+								"description": "Illustration of Earth in a cube"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "HOW IT WORKS",
+						"sectionTitle": "Advancing Zero Trust",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": true,
+						"imagePosition": false,
 						"imageSize": "large",
 						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "42SmUnWxLRzmMwReXGdYNi",
-						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nApplied Systems replaced their sluggish <br>VPN with Cloudflare \n</div>",
-						"htmlId": null
+						"togglesTo": [
+							{
+								"contentfulId": "8BObldmyAaoRoXegrju2I",
+								"title": "Built on Cloudflare's network",
+								"copy": "All of Cloudflare's Zero Trust services are purpose-built on our own developer platform. This not only delivers a consistent user experience, but also enables us to innovate more rapidly. \n\nBy contrast, partial integrations between Cisco services – often bought through acquisitions – can create unexpected frictions. Your admins will be juggling multiple standalone SWG and ZTNA solutions and will weave an overly complex web of inconsistent policies over time. ",
+								"toggleText": "Stitched together – Cisco",
+								"button": [],
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": [],
+								"subheadline": "Natively-integrated edge services keeps you moving fast towards Zero Trust",
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": "en",
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": null,
+								"imageAssetFile": {
+									"id": "df0ef436-a259-5a6b-ba70-6d1ab46622c6",
+									"altText": null,
+									"title": "[ZT PMM] Cisco's 'acquire and stitch' approach",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ccMTsNXYmUctRi1D2L2sw/45e0d27c1f82ee97a0276006dabea004/Aquire_Stitch_Cisco_643x438.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"featureList": []
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "7uH66pOXbweqkHrNKD9sZi",
+						"contentfulId": "5m3yhKIHgjN2zQIjRjQzcp",
 						"htmlId": null,
-						"mainHeadline": null,
+						"mainHeadline": "Simplify your Zero Trust journey",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"columnLayout": "Half & Half",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "7IowYPWCSEyOYLRd4jppMC",
-								"title": null,
+								"contentfulId": "73LkKS9FKnmGu3gnk0gEf2",
+								"title": "Simplify your Zero Trust journey with Cloudflare",
 								"htmlId": null,
-								"elementPosition": "relative",
+								"elementPosition": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -2961,133 +2999,43 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Applied Systems needed to address poor VPN performance and reduce management complexity while eliminating the risks of granting users full network access. ",
+													"value": "Switching to Cloudflare Gateway today for DNS filtering today can streamline your longer term Zero Trust adoption. Cloudflare brings together many once-distinct security services into a unified platform, called ",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
 												{
-													"nodeType": "text",
+													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": null
+														"uri": "https://www.cloudflare.com/zero-trust/"
 													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "The company replaced their VPN and outbound Internet access solutions with Cloudflare's SSE platform. As a result, Applied Systems gained more granular access control, has consolidated administration, and is delivering better user experiences. ",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\n",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "gCs1DjLSJFEO8D1FKPGdw",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\"We have received great feedback on Cloudflare Zero Trust — it's easier to deploy and better for our employees. We are much more secure as an organization with the same amount of time available to us.\"",
-													"marks": [
+													"value": null,
+													"marks": null,
+													"content": [
 														{
-															"type": "bold"
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Cloudflare Zero Trust",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
 														}
-													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+													]
+												},
 												{
 													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": "",
-													"marks": [
-														{
-															"type": "italic"
-														}
-													],
+													"value": ". With Cloudflare, leveling up security with equivalent solutions should be easier and more cost-efficient than with Cisco.",
+													"marks": [],
 													"content": null
 												}
 											]
@@ -3097,18 +3045,18 @@
 											"data": {
 												"target": {
 													"sys": {
-														"id": "6rP03Si8CMu3IL40TSDp0b",
+														"id": "2jrjL9hmr2BSiXMytmJQBr",
 														"type": "Link",
 														"linkType": "Asset"
 													},
 													"related_asset": [
 														{
-															"contentfulId": "6rP03Si8CMu3IL40TSDp0b",
+															"contentfulId": "2jrjL9hmr2BSiXMytmJQBr",
 															"locale": "en-US",
-															"title": "logo Applied",
+															"title": "[ZT PMM] Cloudflare vs Cisco ZT Journey",
 															"file": {
-																"name": "logo-applied.svg",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rP03Si8CMu3IL40TSDp0b/73b8423c469cc426cfa8e26ff27f0518/logo-applied.svg",
+																"name": "Cloudflare vs. Umbrella ZT diagram.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jrjL9hmr2BSiXMytmJQBr/4a30db456a5cf741726a0273d8071b7b/Cloudflare_vs._Umbrella_ZT_diagram.svg",
 																"internal": {
 																	"mediaType": "image/svg+xml"
 																}
@@ -3151,6 +3099,238 @@
 													"content": null
 												}
 											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "77Q7aZhYuPnbPWRIKGbAp2",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "One Column Narrow",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4rbBvnPEwg8b5BQTEucrMU",
+								"title": "Limited-time promo: Switch to Cloudflare Gateway today",
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-2",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Limited time promotion",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "If you currently use Cisco Umbrella's DNS Security Essentials or DNS Security Advantage, swap in Cloudflare Gateway today.",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\r\n\r\nFor a limited time...\r",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Start a Gateway subscription at no charge until the expiration of your current Umbrella contract for up to 12 months.\r",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "We will aim to beat the price you are paying Cisco for the paid period of the subscription.\r\n\r",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Additional terms and conditions apply",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "†\r\nSee below table for comparison of capabilities focused on DNS security.‡",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										}
 									]
 								}
@@ -3159,9 +3339,9 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "4sPjbzh0nUb6kZIsKmJKfm",
-						"title": "Ready to plan for your VPN replacement?",
-						"titleSize": "medium",
+						"contentfulId": "2VosZ89do0pMdGeOjS1jZX",
+						"title": "Switch to Cloudflare for DNS filtering today",
+						"titleSize": null,
 						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
@@ -3175,35 +3355,40 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2xPfqLfLJpEw1TLjijGbI9",
-							"elementName": "Contact us",
+							"contentfulId": "6pbOUO5LQqcm5pE6VLYndO",
+							"elementName": "[ZT PMM] Cisco Promo Button",
 							"standardText": null,
-							"text": "Contact us",
-							"url": "#",
+							"text": "Inquire about promo",
+							"url": null,
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "4RHesdBLxGyBRqY2AB5WGp",
-								"modalName": "VPN replacement - contact us",
-								"modalId": "vpn-replacement-contact-us",
+								"contentfulId": "3NgoFSUVDvqnAarZ0dYklh",
+								"modalName": "Zero Trust-cisco-umbrella-takout-2022 [ZT PMM]",
+								"modalId": "zero-trust-cisco-umbrella-takout-2022-zt-pmm",
 								"modalType": "single-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "1ujDGExdXSfyindmg265xQ",
-									"bladeName": "Zero Trust Ent Plan - Contact us",
+									"contentfulId": "3cJghzkBVZR396iZQ73XmX",
+									"bladeName": "Zero Trust-cisco-umbrella-takout-2022",
 									"backgroundColor": "white",
 									"marketoFormId": 1341,
 									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Zero Trust Contact Us - Ent Plan",
-									"marketoFormHeaderText": "Cloudflare Zero Trust",
-									"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
+									"marketoFormLeadSourceDetail": "[ACQ] Q1'22 WEB - GBL - Cisco Umbrella DNS Promo for Cloudflare Gateway",
+									"marketoFormHeaderText": "Cloudflare Gateway: DNS security",
+									"marketoFormDefaultComment": "Cloudflare Gateway: DNS security and Internet threat protection",
 									"showCommentBox": true,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
+									"marketoFormThankYouText": "Thank you!",
+									"marketoFormCustomSuccessMessage": "Someone from Cloudflare will be in touch with you shortly. If you want to learn more about comparing Cloudflare vs. Cisco Umbrella for DNS filtering security and a limited-time promo, download this solution brief.",
+									"marketoFormPdfDownload": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XSZ8FJizmWqqau0yct9pi/34a91722dcd13683e3e2e8f60b71128e/Cloudflare_Gateway__Promotion_for_Cisco_Umbrella_DNS_customers_2022.pdf"
+										},
+										"description": ""
+									},
 									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
+									"marketoFormAssetDownloadButtonText": "Download brief",
+									"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XSZ8FJizmWqqau0yct9pi/34a91722dcd13683e3e2e8f60b71128e/Cloudflare_Gateway__Promotion_for_Cisco_Umbrella_DNS_customers_2022.pdf",
 									"sendAdRoll": null,
 									"meta_adRollCustomSegment": null,
 									"enableSandbox": null,
@@ -3213,8 +3398,8 @@
 									"disableEnterpriseEmailNotification": null,
 									"enableRingout": null
 								},
-								"title": "Request a VPN replacement discussion",
-								"regularCopy": null,
+								"title": "Ready to try Cloudflare?",
+								"regularCopy": "Fill out the form below, and a Cloudflare representative will get in touch to discuss your threat prevention strategy. If you are a Cisco Umbrella customer today, you may be eligible for a limited time promotion.",
 								"splitFormDefaultTab": null,
 								"selfServeTabText": null,
 								"selfServeCopy": null,
@@ -3225,288 +3410,1760 @@
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"eyebrow": null
 					},
 					{
-						"contentfulId": "fWKzxTnsVEYvwqwa5oS5W",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare's connectivity cloud enhances access control and visibility",
-						"eyebrowHeading": "WHY CLOUDFLARE",
-						"description": "With Cloudflare's unified platform of cloud-native services, organizations can implement a Zero Trust security model that protects internal access better than VPNs.",
-						"textLayout": "left",
-						"columnsLayout": "Four Columns",
-						"columnContent": [
+						"contentfulId": "5Qf3tH0go4rnvbJ6LD57LA",
+						"contentTypeId": "bladePlansMatrix",
+						"hasFilter": null,
+						"htmlId": null,
+						"filterLabel": null,
+						"showInModal": null,
+						"title": "DNS filtering",
+						"modalButtonText": null,
+						"mobileMode": "Tabbed",
+						"sectionPadding": null,
+						"showMonthlyVsAnnualToggle": false,
+						"priceToggleDescription": null,
+						"plans": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "1grCSL0OtuEhl76S4V5SMQ",
-								"title": "Composable architecture",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Address a full range of security and networking requirements by capitalizing on extensive interoperability and customizable networking.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "efd45c7a-1ca1-5b55-b5ae-7f697427546b",
-									"altText": "Cloudflare R2 distributed storage",
-									"title": "R2 Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20XuCGpQeiIcEBqL8eYZhq/41b6bb30b987d56e97de94cbbf51dcdb/cloud-upload.svg"
-										},
-										"description": "Cloud upload icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "5efODz1qbczkjksBXVaMFB",
+								"showDescription": false,
+								"showPriceDescription": false,
+								"plan": {
+									"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+									"name": "Cisco Umbrella DNS services ",
+									"description": null,
+									"pricingDescription": null,
+									"price": null,
+									"currency": null,
+									"customPricingText": null,
+									"monthlyPricingText": null,
+									"annualPricingText": null,
+									"billingCycle": null,
+									"customPricingCta": null,
+									"monthlyPricingCta": null,
+									"annualPricingCta": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"learnMoreLink": null
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "PhDoR5noYTBS23X28pnw1",
-								"title": "Performance",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Deliver better user experiences with a global network that is approximately %{OperationMilliseconds} ms from ~%{GlobalInternetConnectedPercent}% of Internet users. \n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "d0d91ab6-8531-56fe-89d3-5fe996d9f7bf",
-									"altText": "Performance intelligent routing blue",
-									"title": "Performance intelligent routing blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yNR9Xrke2khvXTu9Rpdc3/e659935f9bc695024b5be6fb99900dd3/performance-intelligent-routing.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "z8vUoWO0xJZmQtkwdnVqS",
+								"showDescription": false,
+								"showPriceDescription": false,
+								"plan": {
+									"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+									"name": "Cloudflare Gateway",
+									"description": null,
+									"pricingDescription": null,
+									"price": null,
+									"currency": null,
+									"customPricingText": null,
+									"monthlyPricingText": null,
+									"annualPricingText": null,
+									"billingCycle": null,
+									"customPricingCta": null,
+									"monthlyPricingCta": null,
+									"annualPricingCta": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7qzmlKia0ahjvGJ5asIZnx",
-								"title": "Threat intelligence",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Prevent more attacks with intelligence gleaned from proxying ~20% of the web and blocking %{ThreatsBlockedPerDay} billion threats daily.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "746c8e68-0542-59e1-a219-d6a178c3543e",
-									"altText": null,
-									"title": "Threat intelligence radar icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Yx4fQ4JQKWiXHNopSEGHV/ab0d928d56a15ae462f4bfd09e1bcf93/cloudflare-radar.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2O26lWMcJ1qZxkVSHQKCsM",
-								"title": "Unified interface",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Reduce tool sprawl and alert fatigue by uniting every hybrid work security service in one UI.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "3eb2a090-6777-5cfa-ae9f-fba98ba92f39",
-									"altText": "Shield with checkmark icon",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/0K8UzbV8AINKBfgDlRAhK/cc511a44737676ddb0ca216c28d040fe/security-shield-protection-2.svg"
-										},
-										"description": "Shield with checkmark icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"learnMoreLink": null
 							}
 						],
-						"sectionPadding": null,
-						"htmlId": null
+						"planFeatures": [
+							{
+								"contentfulId": "yAu4iX5KlWw6xXWT6cQ7I",
+								"contentTypeId": "planElementFeatures",
+								"name": "600B+ recursive DNS queries per day to inform threat intelligence",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "41d59JFBmSIqiy5pgvoPbM",
+										"value": true,
+										"plan": {
+											"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+											"name": "Cisco Umbrella DNS services ",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "YrZg0Bqfxi8L5W8uTUijm",
+										"value": true,
+										"plan": {
+											"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+											"name": "Cloudflare Gateway",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "3XHfEsDWwhZwLAZzqqa2Oh",
+								"contentTypeId": "planElementFeatures",
+								"name": "Block domain requests and IP responses by security risks",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "2aC8qHtO8JLoKNxpjtWokn",
+										"value": true,
+										"plan": {
+											"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+											"name": "Cisco Umbrella DNS services ",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "2fg2DAZ37LxXS8tnnTM1AA",
+										"value": true,
+										"plan": {
+											"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+											"name": "Cloudflare Gateway",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "4O4Fitr8bAgv9O6eNw4mvO",
+								"contentTypeId": "planElementFeatures",
+								"name": "Anycast network footprint",
+								"description": "Note: Unlike with Cloudflare, Cisco's Anycast IPsec does not apply to all locations.",
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "2w8z5jhUc35ymUdH3LskbO",
+										"textValue": "37 locations in 23 countries",
+										"plan": {
+											"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+											"name": "Cisco Umbrella DNS services ",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "YDg8FRHQ9clTJ1UvIORBg",
+										"textValue": "300+ locations in 100+ countries",
+										"plan": {
+											"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+											"name": "Cloudflare Gateway",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "LpzTFnEgfYUXS5ib4TrS0",
+								"contentTypeId": "planElementFeatures",
+								"name": "User attribution and policy creation by identity provider",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "31LmyweO9Cdl5NR8DZTHYU",
+										"textValue": "Microsoft Active Directory included in DNS packages. Other IDPs available in higher-tier packages, but not available to DNS forwarding services only",
+										"plan": {
+											"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+											"name": "Cisco Umbrella DNS services ",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "7t7gj958Btl6PaXqz3upeE",
+										"textValue": "Integrations with: corporate SSOs (e.g. Microsoft AD, Okta); social identities (e.g. GitHub, Linkedin), and open source (e.g. OIDC, SAML 2.0)",
+										"plan": {
+											"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+											"name": "Cloudflare Gateway",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "2PXfPs7JOGrSS6hljHOGTT",
+								"contentTypeId": "planElementFeatures",
+								"name": "DNS log retention",
+								"description": null,
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "2DUT7MZXobLV5UZHjpgn7t",
+										"textValue": "30 days",
+										"plan": {
+											"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+											"name": "Cisco Umbrella DNS services ",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "7caALBU5UOkkDeAhKNmfoi",
+										"textValue": "6 months",
+										"plan": {
+											"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+											"name": "Cloudflare Gateway",
+											"description": null,
+											"pricingDescription": null,
+											"price": null,
+											"currency": null,
+											"customPricingText": null,
+											"monthlyPricingText": null,
+											"annualPricingText": null,
+											"billingCycle": null,
+											"customPricingCta": null,
+											"monthlyPricingCta": null,
+											"annualPricingCta": null
+										}
+									}
+								]
+							}
+						],
+						"planFeaturesGroup": []
 					},
 					{
-						"contentfulId": "4PCYmtYIDxYc4jm1c6XWUQ",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
+						"contentfulId": "4CefTib0GupNBOv1lhtj2W",
+						"contentTypeId": "bladePlansMatrix",
+						"hasFilter": true,
 						"htmlId": null,
-						"copy": null,
-						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": null,
+						"filterLabel": "Compare all",
+						"showInModal": true,
+						"title": null,
+						"modalButtonText": "Compare all features",
+						"mobileMode": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"showMonthlyVsAnnualToggle": false,
+						"priceToggleDescription": null,
+						"plans": [
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "5efODz1qbczkjksBXVaMFB",
+								"showDescription": false,
+								"showPriceDescription": false,
+								"plan": {
+									"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+									"name": "Cisco Umbrella DNS services ",
+									"description": null,
+									"pricingDescription": null,
+									"price": null,
+									"currency": null,
+									"customPricingText": null,
+									"monthlyPricingText": null,
+									"annualPricingText": null,
+									"billingCycle": null,
+									"customPricingCta": null,
+									"monthlyPricingCta": null,
+									"annualPricingCta": null
+								},
+								"learnMoreLink": null
+							},
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "z8vUoWO0xJZmQtkwdnVqS",
+								"showDescription": false,
+								"showPriceDescription": false,
+								"plan": {
+									"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+									"name": "Cloudflare Gateway",
+									"description": null,
+									"pricingDescription": null,
+									"price": null,
+									"currency": null,
+									"customPricingText": null,
+									"monthlyPricingText": null,
+									"annualPricingText": null,
+									"billingCycle": null,
+									"customPricingCta": null,
+									"monthlyPricingCta": null,
+									"annualPricingCta": null
+								},
+								"learnMoreLink": null
+							}
+						],
+						"planFeatures": [],
+						"planFeaturesGroup": [
+							{
+								"contentfulId": "fgUTxlBb8poYB3TwwxEjn",
+								"contentTypeId": "planElementFeaturesGroup",
+								"name": "Threat protection",
+								"features": [
+									{
+										"contentfulId": "2zyS9SEmDoTC2i2C32vI9l",
+										"contentTypeId": "planElementFeatures",
+										"name": "600B+ recursive DNS queries per day to inform threat intelligence",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "41d59JFBmSIqiy5pgvoPbM",
+												"value": true,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "YrZg0Bqfxi8L5W8uTUijm",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "2iobPnOMYoCH8Zl7yzERTy",
+										"contentTypeId": "planElementFeatures",
+										"name": "Block domain requests and IP responses by security risks",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "2aC8qHtO8JLoKNxpjtWokn",
+												"value": true,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "2fg2DAZ37LxXS8tnnTM1AA",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "2Fv87nLuUOvAtQDxSZRhZK",
+										"contentTypeId": "planElementFeatures",
+										"name": "Block direct-to-IP traffic for C2 callbacks that bypass DNS",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "4w9eRzJkdMVjqta91AEt7Q",
+												"textValue": "Depends on plan",
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5fOlU39z6bI541o7blbBpF",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "4eloLRFoVQDuYFQcLCcvTa",
+										"contentTypeId": "planElementFeatures",
+										"name": "Antivirus scanning",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5qPzQnjmk6saO4WYGeXXTP",
+												"textValue": "Selectively applied, depending on plan",
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "7u1TIUcoBw2jDoTjQpT3Iq",
+												"textValue": "All the time in all plans",
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "6krSn2OGnXRzaGgB3ehPVD",
+								"contentTypeId": "planElementFeaturesGroup",
+								"name": "Network scale",
+								"features": [
+									{
+										"contentfulId": "TV6zlFF0ZDSmSjalOczzd",
+										"contentTypeId": "planElementFeatures",
+										"name": "Anycast network footprint",
+										"description": "Note: Unlike with Cloudflare, Cisco's Anycast IPsec does not apply to all locations.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "2w8z5jhUc35ymUdH3LskbO",
+												"textValue": "37 locations in 23 countries",
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "YDg8FRHQ9clTJ1UvIORBg",
+												"textValue": "300+ locations in 100+ countries",
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "2bmTfrgW7q16gjkOt9ZolN",
+										"contentTypeId": "planElementFeatures",
+										"name": "Public DNS resolver",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6xZFjMxz7oWBWZ7lCDrelH",
+												"textValue": "208.67.222.222",
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "FUEaKbQXymgOf2ExHeDtw",
+												"textValue": "1.1.1.1 | Designed to prioritize privacy & ranked the fastest consistently by third parties",
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "47x2MOYkQQYYuPHycP26SD",
+										"contentTypeId": "planElementFeatures",
+										"name": "Uptime SLA",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "3ZfOO87G8s1P8c34pSAHCF",
+												"textValue": "99.999%",
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "1GCworujaPKZpKgctuQimr",
+												"textValue": "100%",
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "5ozyFvd9Oe9ntXYvLCwPbU",
+										"contentTypeId": "planElementFeatures",
+										"name": "All services running in all data centers",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3oNJys04gKMmLswMFL33aN",
+												"value": false,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "6dWKhalyfdryJl9sWqN5W",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "6xBJ9VeWZ1U3KMG2s03S6d",
+								"contentTypeId": "planElementFeaturesGroup",
+								"name": "Policy creation",
+								"features": [
+									{
+										"contentfulId": "3UBjqVZdzKYlmbHlIiQ2k2",
+										"contentTypeId": "planElementFeatures",
+										"name": "Category-based filtering",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1dgDCAsjDA4az7aOQvPwyR",
+												"value": true,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5soo50AyDrwwGq2WKLBIHb",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "6SpgNnANncpoSsWMGC3WGJ",
+										"contentTypeId": "planElementFeatures",
+										"name": "Block & allow for specific domains",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4ESARIiMBS88Rz38YC6LeK",
+												"value": true,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "46RnhM3FLGLfxeS1S2NbFg",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "3AjWbjiMhSu8HcT0TSTw1f",
+										"contentTypeId": "planElementFeatures",
+										"name": "Custom block pages and bypass options",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1BkWlhd9tsDn6IekYv86x6",
+												"value": true,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "6pcFkgnFq38fmjNieK5NQr",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "3ZfW9JaHSgnEOhMnshh8oN",
+										"contentTypeId": "planElementFeatures",
+										"name": "Allowlist only",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5A2b448X3E0XdqOQwtc14B",
+												"value": true,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "36ViYceEPl4S9R6dIkUfDa",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "GUQzDPVvMmxXTQ6dM7Ml4",
+										"contentTypeId": "planElementFeatures",
+										"name": "Enable SafeSearch",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "7xkiQZFm21SpcUDDM1w22s",
+												"value": true,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4fc1GetERAB1x2UeHxNYoT",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "LpzTFnEgfYUXS5ib4TrS0",
+										"contentTypeId": "planElementFeatures",
+										"name": "User attribution and policy creation by identity provider",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "31LmyweO9Cdl5NR8DZTHYU",
+												"textValue": "Microsoft Active Directory included in DNS packages. Other IDPs available in higher-tier packages, but not available to DNS forwarding services only",
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "7t7gj958Btl6PaXqz3upeE",
+												"textValue": "Integrations with: corporate SSOs (e.g. Microsoft AD, Okta); social identities (e.g. GitHub, Linkedin), and open source (e.g. OIDC, SAML 2.0)",
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "6sCYCiFuXgMwMMzNZlh0ut",
+										"contentTypeId": "planElementFeatures",
+										"name": "Overrides (respond to all DNS queries for a given domain to another destination)",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "6GQnMwB09C7P5Wir2WOXSY",
+												"value": false,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "71m6iyQXw32DmjpEYaY5cF",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "TrHas5EzGT7LUkjrTkdKi",
+										"contentTypeId": "planElementFeatures",
+										"name": "Policies based on regular expressions",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1d5UJDHuMN09oTrYLQB93Q",
+												"value": true,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "2IrXEjSyh6ZuMJEaAOvHKW",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "79pfDmzgubtEyVqDH1WaTF",
+								"contentTypeId": "planElementFeaturesGroup",
+								"name": "Administration and management",
+								"features": [
+									{
+										"contentfulId": "5zSLmmQlMsJir3Qmkc44Vu",
+										"contentTypeId": "planElementFeatures",
+										"name": "Automation support with Terraform",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5pYpxIwMtOtY7nkcbZtp8y",
+												"value": false,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5SddTwduNqN3zSOgiMjTIO",
+												"value": true,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "d1JLUnJnTQViFY9Iqk0WV",
+										"contentTypeId": "planElementFeatures",
+										"name": "Mobile device client",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "3UeA59AVffD4qQsEqiWzVM",
+												"textValue": "Apple, Android; Managed enrollment only",
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5iDwDLq8F2vtfp8UePlfdv",
+												"textValue": "Apple, Android; Managed and self-enrollment",
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "6RgDSFHWty8KEkgzbYGLmm",
+										"contentTypeId": "planElementFeatures",
+										"name": "Desktop (roaming) device client",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "3ZzusWskWJPmbn0lOcWppD",
+												"textValue": "Mac, Windows, Chrome OS",
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "16fDSoxVt8z78BbxDLEYjH",
+												"textValue": "Mac, Windows, Chrome OS, Linux",
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "ndogxUqO2QEDJs07kpu7u",
+										"contentTypeId": "planElementFeatures",
+										"name": "Virtual appliance",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1OscCoXWp1ZZ57RucGvPz7",
+												"value": true,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "17LU6631TIBEDUxzI1Ykca",
+												"value": false,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "2PXfPs7JOGrSS6hljHOGTT",
+										"contentTypeId": "planElementFeatures",
+										"name": "DNS log retention",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "2DUT7MZXobLV5UZHjpgn7t",
+												"textValue": "30 days",
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "7caALBU5UOkkDeAhKNmfoi",
+												"textValue": "6 months",
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "7f1tRCQFTs4lDF4KFQryS2",
+										"contentTypeId": "planElementFeatures",
+										"name": "Log export to cloud storage",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6GnrubkGR6dmcC30j7vyeM",
+												"textValue": "AWS S3 or Cisco-managed S3 bucket",
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6SqNzQAJlimEgLUoQRZ4Ln",
+												"textValue": "AWS S3, Google Cloud Storage, Microsoft Azure Blob Storage, and more",
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "5y9i5mBy0ZuyM9G6uiBEMQ",
+										"contentTypeId": "planElementFeatures",
+										"name": "Multi-org console",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5iQ9ENgDcK7fYZsFSnJbWL",
+												"value": true,
+												"plan": {
+													"contentfulId": "419u6YgAm5B62RvdY6yWuK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cisco Umbrella DNS Services -- Element Plan",
+													"name": "Cisco Umbrella DNS services ",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "2OrAJXLk2G9PjogioIBhs1",
+												"value": false,
+												"plan": {
+													"contentfulId": "2H3RMy0Z6KiZY6SD0Hrl8e",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[JCC] [ZT PMM] Cloudflare Gateway - Element Plan",
+													"name": "Cloudflare Gateway",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "KuZkRLQ9HIVnIrpdbrhOa",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "light-gray",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"sectionPadding": null,
+						"columnLayout": "One Column Wide",
+						"columns": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "3f1p2nb0Hpizvz2CWOxtnr",
-								"title": "Implementing Zero Trust for the Workforce",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Dive into the findings of this ESG survey to find out where most organizations are starting their Zero Trust journey and how they spend time across deployment phases.",
-								"learnMoreUrl": "/lp/esg-zero-trust-considerations-2024/",
-								"learnMoreText": "Get the eBook",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3wnpCnx0RythBnAauQN0jd",
+								"title": "Footnotes",
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "†  To take advantage of this promotion, you must purchase Cloudflare Gateway from Cloudflare by 15 April 2022. You must agree to Cloudflare's standard ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/enterpriseterms/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Enterprise Subscription Agreement",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " and to a 12-month minimum term following the expiration of your current contract. Expiration of your current contract is the earliest date at which you can terminate your contract with a minimal or no fee. The price beat does not apply to any introductory or promotional price of competitors'. The no charge period cannot exceed 12 months. Other usage limits may apply. You are only eligible for this promotion if your existing contract is with Cisco for DNS Security Essentials, DNS Security Advantage, or their ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://learn-umbrella.cisco.com/i/1155629-cisco-umbrella-dns-security-new-vs-legacy-package-comparison/0?source=hub&expanded=false&hubItemID=551856068&m4="
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "equivalent legacy",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " Umbrella packages - Professional and Insights. Your participation in this promotion is at Cloudflare's sole discretion. Cloudflare reserves the right to discontinue this promotion at any time.",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5F0RU9BP72NFBaHE3nJYIj",
-								"title": "Securing Cloudflare with Cloudflare One",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "See how Cloudflare's Zero Trust journey began with a homegrown solution back in 2015 to streamline internal access without the hassle of a VPN.",
-								"learnMoreUrl": "/case-studies/cloudflare-one/",
-								"learnMoreText": "Read the case study",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7MMb55btHUkg9Dgb9BC54J",
-								"title": "How to replace your VPN",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Walk through a series of modules that help you replace your VPN with Cloudflare, step by step.",
-								"learnMoreUrl": "https://developers.cloudflare.com/learning-paths/replace-vpn/",
-								"learnMoreText": "Get the implementation guide",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "‡ Based on publicly available information as of February 1, 2021",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
 							}
 						]
 					}
@@ -3515,27 +5172,32 @@
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "4RHesdBLxGyBRqY2AB5WGp",
-						"modalName": "VPN replacement - contact us",
-						"modalId": "vpn-replacement-contact-us",
+						"contentfulId": "3NgoFSUVDvqnAarZ0dYklh",
+						"modalName": "Zero Trust-cisco-umbrella-takout-2022 [ZT PMM]",
+						"modalId": "zero-trust-cisco-umbrella-takout-2022-zt-pmm",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "1ujDGExdXSfyindmg265xQ",
-							"bladeName": "Zero Trust Ent Plan - Contact us",
+							"contentfulId": "3cJghzkBVZR396iZQ73XmX",
+							"bladeName": "Zero Trust-cisco-umbrella-takout-2022",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Zero Trust Contact Us - Ent Plan",
-							"marketoFormHeaderText": "Cloudflare Zero Trust",
-							"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
+							"marketoFormLeadSourceDetail": "[ACQ] Q1'22 WEB - GBL - Cisco Umbrella DNS Promo for Cloudflare Gateway",
+							"marketoFormHeaderText": "Cloudflare Gateway: DNS security",
+							"marketoFormDefaultComment": "Cloudflare Gateway: DNS security and Internet threat protection",
 							"showCommentBox": true,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
+							"marketoFormThankYouText": "Thank you!",
+							"marketoFormCustomSuccessMessage": "Someone from Cloudflare will be in touch with you shortly. If you want to learn more about comparing Cloudflare vs. Cisco Umbrella for DNS filtering security and a limited-time promo, download this solution brief.",
+							"marketoFormPdfDownload": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XSZ8FJizmWqqau0yct9pi/34a91722dcd13683e3e2e8f60b71128e/Cloudflare_Gateway__Promotion_for_Cisco_Umbrella_DNS_customers_2022.pdf"
+								},
+								"description": ""
+							},
 							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
+							"marketoFormAssetDownloadButtonText": "Download brief",
+							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XSZ8FJizmWqqau0yct9pi/34a91722dcd13683e3e2e8f60b71128e/Cloudflare_Gateway__Promotion_for_Cisco_Umbrella_DNS_customers_2022.pdf",
 							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
@@ -3545,8 +5207,8 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Request a VPN replacement discussion",
-						"regularCopy": null,
+						"title": "Ready to try Cloudflare?",
+						"regularCopy": "Fill out the form below, and a Cloudflare representative will get in touch to discuss your threat prevention strategy. If you are a Cisco Umbrella customer today, you may be eligible for a limited time promotion.",
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
@@ -3554,7 +5216,7 @@
 						"enterpriseCopy": null
 					}
 				],
-				"keepHashUrlSyncedWithScrollPosition": false
+				"keepHashUrlSyncedWithScrollPosition": true
 			},
 			"site": {
 				"siteMetadata": {
@@ -3565,8 +5227,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/products/zero-trust/vpn-replacement/",
-			"contentfulId": "62xMZ1ricakE06Y0AZrMkT",
+			"pathname": "/products/zero-trust/cloudflare-vs-cisco-umbrella/",
+			"contentfulId": "2FkSAxbFbU4CXlQWSuSfez",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -3579,9 +5241,7 @@
 				"pt-BR",
 				"es-ES",
 				"es-LA",
-				"ru-RU",
-				"zh-Hans-CN",
-				"pl-PL"
+				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
