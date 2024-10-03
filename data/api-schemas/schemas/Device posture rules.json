@@ -1184,6 +1184,19 @@
 																		"example": "connected",
 																		"type": "string"
 																	},
+																	"operational_state": {
+																		"description": "Agent operational state.",
+																		"enum": [
+																			"na",
+																			"partially_disabled",
+																			"auto_fully_disabled",
+																			"fully_disabled",
+																			"auto_partially_disabled",
+																			"disabled_error",
+																			"db_corruption"
+																		],
+																		"type": "string"
+																	},
 																	"operator": {
 																		"description": "operator",
 																		"enum": [
@@ -2103,6 +2116,19 @@
 																					"connecting"
 																				],
 																				"example": "connected",
+																				"type": "string"
+																			},
+																			"operational_state": {
+																				"description": "Agent operational state.",
+																				"enum": [
+																					"na",
+																					"partially_disabled",
+																					"auto_fully_disabled",
+																					"fully_disabled",
+																					"auto_partially_disabled",
+																					"disabled_error",
+																					"db_corruption"
+																				],
 																				"type": "string"
 																			},
 																			"operator": {
@@ -3132,6 +3158,19 @@
 																	"example": "connected",
 																	"type": "string"
 																},
+																"operational_state": {
+																	"description": "Agent operational state.",
+																	"enum": [
+																		"na",
+																		"partially_disabled",
+																		"auto_fully_disabled",
+																		"fully_disabled",
+																		"auto_partially_disabled",
+																		"disabled_error",
+																		"db_corruption"
+																	],
+																	"type": "string"
+																},
 																"operator": {
 																	"description": "operator",
 																	"enum": [
@@ -4030,6 +4069,19 @@
 																				"connecting"
 																			],
 																			"example": "connected",
+																			"type": "string"
+																		},
+																		"operational_state": {
+																			"description": "Agent operational state.",
+																			"enum": [
+																				"na",
+																				"partially_disabled",
+																				"auto_fully_disabled",
+																				"fully_disabled",
+																				"auto_partially_disabled",
+																				"disabled_error",
+																				"db_corruption"
+																			],
 																			"type": "string"
 																		},
 																		"operator": {
@@ -4939,6 +4991,19 @@
 												"example": "connected",
 												"type": "string"
 											},
+											"operational_state": {
+												"description": "Agent operational state.",
+												"enum": [
+													"na",
+													"partially_disabled",
+													"auto_fully_disabled",
+													"fully_disabled",
+													"auto_partially_disabled",
+													"disabled_error",
+													"db_corruption"
+												],
+												"type": "string"
+											},
 											"operator": {
 												"description": "operator",
 												"enum": [
@@ -5835,6 +5900,19 @@
 																		"connecting"
 																	],
 																	"example": "connected",
+																	"type": "string"
+																},
+																"operational_state": {
+																	"description": "Agent operational state.",
+																	"enum": [
+																		"na",
+																		"partially_disabled",
+																		"auto_fully_disabled",
+																		"fully_disabled",
+																		"auto_partially_disabled",
+																		"disabled_error",
+																		"db_corruption"
+																	],
 																	"type": "string"
 																},
 																"operator": {
@@ -6735,6 +6813,19 @@
 																				"connecting"
 																			],
 																			"example": "connected",
+																			"type": "string"
+																		},
+																		"operational_state": {
+																			"description": "Agent operational state.",
+																			"enum": [
+																				"na",
+																				"partially_disabled",
+																				"auto_fully_disabled",
+																				"fully_disabled",
+																				"auto_partially_disabled",
+																				"disabled_error",
+																				"db_corruption"
+																			],
 																			"type": "string"
 																		},
 																		"operator": {
@@ -7654,6 +7745,19 @@
 												"example": "connected",
 												"type": "string"
 											},
+											"operational_state": {
+												"description": "Agent operational state.",
+												"enum": [
+													"na",
+													"partially_disabled",
+													"auto_fully_disabled",
+													"fully_disabled",
+													"auto_partially_disabled",
+													"disabled_error",
+													"db_corruption"
+												],
+												"type": "string"
+											},
 											"operator": {
 												"description": "operator",
 												"enum": [
@@ -8550,6 +8654,19 @@
 																		"connecting"
 																	],
 																	"example": "connected",
+																	"type": "string"
+																},
+																"operational_state": {
+																	"description": "Agent operational state.",
+																	"enum": [
+																		"na",
+																		"partially_disabled",
+																		"auto_fully_disabled",
+																		"fully_disabled",
+																		"auto_partially_disabled",
+																		"disabled_error",
+																		"db_corruption"
+																	],
 																	"type": "string"
 																},
 																"operator": {
@@ -9450,6 +9567,19 @@
 																				"connecting"
 																			],
 																			"example": "connected",
+																			"type": "string"
+																		},
+																		"operational_state": {
+																			"description": "Agent operational state.",
+																			"enum": [
+																				"na",
+																				"partially_disabled",
+																				"auto_fully_disabled",
+																				"fully_disabled",
+																				"auto_partially_disabled",
+																				"disabled_error",
+																				"db_corruption"
+																			],
 																			"type": "string"
 																		},
 																		"operator": {
