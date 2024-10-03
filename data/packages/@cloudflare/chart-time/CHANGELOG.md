@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.9
+
+### Patch Changes
+
+- 87705e6009: fix: chart time dark mode
+
 ## 5.1.8
 
 ### Patch Changes
