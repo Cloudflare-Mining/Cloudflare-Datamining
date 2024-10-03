@@ -721,7 +721,8 @@
 										},
 										"result": {
 											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"x-stainless-empty-object": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
