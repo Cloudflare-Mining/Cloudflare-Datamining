@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 64,
+	"version": "20241003.18",
+	"short_version": "2024.9.346.0",
+	"size": 79993994,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "a0ecec3cdf6d7f3362008e4dc3a77bff",
+	"fingerprint": "39f98172512d17e4bb8ecece6a746985",
+	"uploaded_at": "2024-10-03T22:17:44.714Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This release contains minor fixes and improvements.\n\nAll customers running macOS Ventura 13.0 and above (including macOS Sequoia) are advised to upgrade to this release. This release fixes an incompatibility with the firewall that may sometimes result in the firewall becoming disabled.\n\n## Changes and improvements\n- Added list targets to the warp-cli to enhance the user experience with the Access for Infrastructure SSH solution.\n- Added a tunnel reset mtu subcommand to the warp-cli.\n- Added the ability for warp-cli to use the team provided in the MDM file for initial registration.\n- Added a JSON output option to the warp-cli.\n- Added the ability to execute a pcap on multiple interfaces with warp-cli and warp-dex.\n- Improved warp-dex default interface selection for pcaps; changed warp-dex cli output to JSON.\n- Improved application posture check compatibility with symbolically linked files.\n- Fixed an issue where the client, when switching between WireGuard and MASQUE protocols, sometimes required a manual tunnel key reset.\n- Added MASQUE tunnel protocol support for Consumer WARP.\n\n## Known issues\n- Using MASQUE as the tunnel protocol may be incompatible if your organization has Regional Services enabled.\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}
