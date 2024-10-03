@@ -533,6 +533,10 @@
 		"tags": [
 			"DNS Settings for an Account"
 		],
+		"x-api-token-group": [
+			"Account DNS Settings Write",
+			"Account DNS Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#dns_records:read"
@@ -1213,6 +1217,9 @@
 		"summary": "Update DNS Settings",
 		"tags": [
 			"DNS Settings for an Account"
+		],
+		"x-api-token-group": [
+			"Account DNS Settings Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
