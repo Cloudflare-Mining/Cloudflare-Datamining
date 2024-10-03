@@ -5,43 +5,60 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong><br>At Cloudflare, we are on a mission to help build a better internet. Our Learning and Development team looks to help build a great employee experience by providing tools and resources for all Cloudflare employees to grow and develop in the skills critical for success. <br>We are looking for a Learning Partner to join our global Learning and Development team. You will be responsible for scaling and improving a variety of learning programs including our Orientation program, to increase our team’s impact.&nbsp;</p>
-<p>This role may be the perfect fit if you…&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>We are seeking a dynamic and results-driven SLED (State, Local, Education) Field Marketing Manager to join our marketing team. This role is crucial for developing and executing targeted marketing strategies to engage state and local government entities, as well as educational institutions. The candidate will have a passion for driving lead generation, and the ability to work collaboratively across departments. Building strong relationships with sales, partner, campaign, and product marketing organizations will be critical to success.&nbsp;</p>
+<p>This key individual will report to our Director, US Public Sector marketing and be responsible for coordinating and managing programs across a comprehensive marketing mix for US SLED and key partners.&nbsp; This may include ABM, thought leadership, events, web, content, social media and more.</p>
+<p><strong>Locations: DC &amp; Austin&nbsp;</strong></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Have a proven track record for improving systems and processes to enhance productivity and efficiency&nbsp;</li>
-	<li>Thrive when project managing large scale, company-wide initiatives in a fast paced environment</li>
-	<li>Pride yourself on continuously learning about the most recent best practices in corporate learning</li>
-	<li>Are skilled in group dynamics, and working with diverse groups of people&nbsp;</li>
-	<li>Are a skilled facilitator but are comfortable with more of a behind the scenes role&nbsp;</li>
-	<li>Are obsessed with using data in all your decision making</li>
+	<li><strong>Strategy Development:</strong> Create and implement comprehensive marketing strategies tailored to the SLED sector, aligning with overall business objectives and market trends Identify trends, opportunities, and competitive landscape within the SLED sector, using insights to inform marketing strategies. Align to the partner strategy and support development of co-marketing programs.</li>
+	<li><strong>Campaign Management:</strong> Plan, execute, and analyze field marketing campaigns and ABM initiatives, including events, webinars, and digital marketing, to drive engagement and lead generation. Including integrated plans with key partners.&nbsp;</li>
+	<li><strong>Collaboration:</strong> Work closely with sales teams to understand customer needs, tailor messaging, and provide the necessary tools and resources to support their efforts in the SLED market.</li>
+	<li><strong>Budget Management:</strong> Develop and manage the field marketing budget, ensuring effective allocation of resources to maximize ROI.</li>
+	<li><strong>Performance Analysis:</strong> Track and report on campaign performance metrics, providing insights and recommendations for continuous improvement.</li>
 </ul>
-<p><strong>Location: San Francisco or Austin</strong></p>
-<p><strong>KEY RESPONSIBILITIES&nbsp;</strong></p>
+<p><strong>Your Qualifications</strong></p>
 <ul>
-	<li>Support the execution and revamp of our New Hire Orientation: coordinate, organize and facilitate our orientation for U.S. employee, guiding our new hires throughout the process to create a comprehensive and best-in-class Onboarding program</li>
-	<li>Create and execute on strategy to scale, drive engagement and market our offerings</li>
-	<li>Regularly evaluate and refine our programs based on data, industry best practices, and evolving company needs, striving for continuous improvement.</li>
+	<li>7-10 years Marketing Experience in $1B+ B2B technology organization in cybersecurity or networking</li>
+	<li>Experience building market-to, through and with partner programs with resellers, distributors, and systems integrators.</li>
+	<li>Experience building industry integrated multi-touch programs which may include events, paid and earned media, website strategy, campaign planning and management.</li>
+	<li>Proven results achieving quantifiable contribution metrics such as qualified leads, pipeline, closed business.</li>
+	<li>Able to be effective working across organizational boundaries and building relationships to accomplish objectives.</li>
+	<li>BA/BS in Marketing, Business, Communications or other related fields.&nbsp; MBA a plus</li>
 </ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Design, publish and continually enhance learning materials&nbsp;</li>
-	<li>Facilitate effective delivery of training with clear and concise communication and professionalism in classroom and virtual(on-camera) settings</li>
-	<li>Serve as support in for LMS assistance (registration, attendance administration)</li>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $139,000 - $169,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $142,000 - $174,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $149,000 - $183,000.</li>
 </ul>
-<p><strong>Examples of desirable skills and knowledge</strong></p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Excellent project management and organizational skills</li>
-	<li>3+ years of experience in Human Resources/Learning &amp; Development/Training Teams&nbsp;</li>
-	<li>Experience designing and implementing company-wide initiatives, working with stakeholders and and cross-functional partners&nbsp;</li>
-	<li>Strong facilitation skills with the demonstrated ability to present information in a clear, concise, and confident manner through multiple modalities (in a virtual or in-person environment) to a variety of audiences</li>
-	<li>Proven experience in creating and delivering informal and formal learning solutions and utilize learning metrics/analytics to measure the impact of them</li>
-	<li>Enjoys working in a fast paced environment and adapts to change quickly</li>
-	<li>Self-sufficient, motivated and able to work independently and as part of team</li>
-	<li>Ability to collaborate, build trust, negotiate, influence and resolve conflict with peers, stakeholders and business unit leaders</li>
-	<li>Ability to read, analyze data and communicate informed needs and decisions to peers, learners, stakeholder, and front-line leaders</li>
-	<li>Ability to troubleshoot and resolve technical issues</li>
-	<li>Excellent written communication</li>
-	<li>Experience using Google Suite (Slides, Docs, etc.)</li>
-	<li>Experience with learning authoring tools (Articulate, Captivate, Illustrator, etc.) and email marketing platforms (e.g. Marketo, Mailchimp) a plus but not required</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
