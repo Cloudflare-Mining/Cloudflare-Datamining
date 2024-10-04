@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.20.0
+
+### Minor Changes
+
+- 103bb71eb6: Add Hyperdrive icon
+
 ## 12.19.0
 
 ### Minor Changes

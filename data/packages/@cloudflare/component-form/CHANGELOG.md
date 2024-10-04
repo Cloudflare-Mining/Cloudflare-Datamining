@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.49
+
+### Patch Changes
+
+- @cloudflare/component-listbox@2.1.18
+
 ## 5.0.48
 
 ### Patch Changes
