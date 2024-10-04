@@ -5,30 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>Cloudflare Announced Key Partnerships Across the Financial Services Sector, allowing the world’s largest financial institutions and their millions of customers and employees to benefit from Cloudflare’s faster, more reliable and more secure edge network and connectivity cloud. To further drive these initiatives, we are seeking to hire our first-ever Head of Financial Services (Go-to-Market).&nbsp;&nbsp;</p>
-<p><strong>Head of Financial Services Strategy and Go-to-Market will be responsible for:</strong></p>
+<h3>About the Department</h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p>The Workers organization makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the technology that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
+<h3>About the Team</h3>
+<p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the developer platform that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to. The Workers team is split into several groups, this group is focused on how we bring state to the edge.</p>
+<h3>What you'll do</h3>
+<p>In this role, you'll help design and build <a href="https://developers.cloudflare.com/hyperdrive/">Hyperdrive</a>, a service that enables connecting to your relational database from Workers and accelerates queries wherever they run around the world. You'll be part of a top-notch engineering team bringing Hyperdrive to market and keeping it running smoothly at global scale while implementing new features, ensuring reliability, and improving performance.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how Hyperdrive handles connection pools, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust, and C++.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Scale, build, and lead a world-class, cross-functional financial services team that sustains efficient and high long-term growth and serves as a repeatable structure for other industries</li>
-	<li>Understand the market, develop partnerships, and be seen as an industry leader at the intersection of technology and financial services&nbsp;</li>
-	<li>Create and drive new strategic go-to-market plans in coordination with the sales and product organizations to meet company growth and market share goals.</li>
-	<li>Assess the current sales methodologies and team structure to propose/implement necessary adjustments in order to optimize performance and build the infrastructure and incentives to facilitate further aggressive growth.</li>
-	<li>Maintain strong reporting and accountability against numbers, driving to exceed quotas, while developing and managing motivating incentive tools.</li>
-	<li>Act as a strategic thought leader and advisor to the President, Revenue and broader Executive Team; a true business leader and general manager.</li>
-	<li>Develop short and long-term market strategy and forecasts through market analysis and interpretation of data and communicate sales activities of execution and sales productivity with the senior management teams.</li>
-	<li>Build and leverage strong industry and customer relationships, consistently collecting and providing feedback on customer needs, market trends, and opportunities for continuous process, product, and solution improvement.&nbsp;</li>
-	<li>Build massive sales capacity and coverage, and develop a data-driven, metrics-centric sales operations function.</li>
-	<li>Work closely with functions and other executives across the organization to establish and develop a strong and collaborative partnership to ensure continued success.</li>
-	<li>Recruit, inspire, lead, mentor, motivate and instill operational rigor into the sales organization, to capitalize on the market opportunity for Cloudflare.</li>
-	<li>Create loyalty and followership among the current team. Help drive the mission/vision of Cloudflare to the sales force and broader organization.</li>
+	<li>4+ years of experience with (and love for) distributed systems and data</li>
+	<li>Willing and eager to share knowledge, and mentor</li>
+	<li>Great oral and written communications skills, especially concisely documenting complex concepts</li>
+	<li>Solid understanding of Rust or Go, including asynchronous programming</li>
+	<li>Strong systems level programming skills</li>
+	<li>Understanding of security issues and responsibilities</li>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)Solid Linux experienceFluent in analyses of data sets such as logsDesigning and building APIs</li>
+	<li>A desire for continuous learning and improvement</li>
 </ul>
-<p><strong>To be effective in this role, the Head of Go-to-Market will specifically have the following key pivotal experiences and expertise:</strong></p>
-<ul>
-	<li><strong>High Growth at Scale – </strong>Track record of leading an organization through rapid growth from $1B to $5B and beyond. Develops processes and strategies that enable the organization to scale with the business.</li>
-	<li><strong>Go-to-Market Complexity &amp; Financial Services Depth –</strong> Responsibility for a complex, platform/multi-product sales motion across field, inside and channel sales selling into a multi-segment (SMB to Enterprise) customer base.</li>
-	<li><strong>Infrastructure SaaS – </strong>Experience within a cloud-native, highly technical infrastructure SaaS business, and track record of managing a predictable and repeatable recurring revenue business model.</li>
-	<li><strong>Operational Rigor – </strong>Experience implementing complex strategy and operational improvements. Takes a data driven and efficiency-oriented approach to sales operations. Measurable success in improving sales enablement, hiring practices, productivity, sales strategy and programs.</li>
-	<li><strong>Impact-Oriented Strategic Builder</strong> <strong>–</strong> Execution-focused, team player, and a leader. To be effective in this role, the Head of Financial Services (Go-to-Market) will have the personal drive and enthusiasm to successfully navigate a growing company in an evolving marketplace.</li>
-</ul>
+<p><strong>Available Locations</strong>: Austin, Texas or London, UK</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
