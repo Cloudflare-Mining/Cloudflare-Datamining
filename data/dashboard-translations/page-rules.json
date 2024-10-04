@@ -144,7 +144,7 @@
 	"dynamic_redirects.rule.static": "Static",
 	"dynamic_redirects.status_code": "Status code",
 	"dynamic_redirects.wildcard.filter.option.title": "Wildcard pattern",
-	"dynamic_redirects.wildcard.filter.option.description": "The rule will only apply to traffic matching the wildcard pattern",
+	"dynamic_redirects.wildcard.filter.option.description": "Only apply the rule to requests matching the wildcard pattern",
 	"dynamic_redirects.wildcard.filter.title": "Wildcard pattern",
 	"dynamic_redirects.wildcard.filter.description": "By using the asterisk (*) character to create a pattern that can match many requests e.g. https://*.example.com/files/*",
 	"dynamic_redirects.wildcard.filter.warning": "Please include the protocol in the Request URL. Starting with *. will capture the protocol in ${1} (e.g., *.example.com will capture https://subdomain), which may cause incorrect redirects.",
