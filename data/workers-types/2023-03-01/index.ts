@@ -14,6 +14,7 @@ and limitations under the License.
 ***************************************************************************** */
 /* eslint-disable */
 // noinspection JSUnusedGlobalSymbols
+export declare var onmessage: never;
 /**
  * An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API.
  *
@@ -1552,28 +1553,34 @@ export declare abstract class Body {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response)
  */
-export declare class Response extends Body {
-  constructor(body?: BodyInit | null, init?: ResponseInit);
-  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirect_static) */
-  static redirect(url: string, status?: number): Response;
-  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/json_static) */
-  static json(any: any, maybeInit?: ResponseInit | Response): Response;
+export declare var Response: {
+  prototype: Response;
+  new (body?: BodyInit | null, init?: ResponseInit): Response;
+  redirect(url: string, status?: number): Response;
+  json(any: any, maybeInit?: ResponseInit | Response): Response;
+};
+/**
+ * This Fetch API interface represents the response to a request.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response)
+ */
+export interface Response extends Body {
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/clone) */
   clone(): Response;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/status) */
-  get status(): number;
+  status: number;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/statusText) */
-  get statusText(): string;
+  statusText: string;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/headers) */
-  get headers(): Headers;
+  headers: Headers;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/ok) */
-  get ok(): boolean;
+  ok: boolean;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirected) */
-  get redirected(): boolean;
+  redirected: boolean;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/url) */
-  get url(): string;
-  get webSocket(): WebSocket | null;
-  get cf(): any | undefined;
+  url: string;
+  webSocket: WebSocket | null;
+  cf: any | undefined;
 }
 export interface ResponseInit {
   status?: number;
@@ -1592,11 +1599,22 @@ export type RequestInfo<
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request)
  */
-export declare class Request<
+export declare var Request: {
+  prototype: Request;
+  new <CfHostMetadata = unknown, Cf = CfProperties<CfHostMetadata>>(
+    input: RequestInfo<CfProperties>,
+    init?: RequestInit<Cf>,
+  ): Request<CfHostMetadata, Cf>;
+};
+/**
+ * This Fetch API interface represents a resource request.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request)
+ */
+export interface Request<
   CfHostMetadata = unknown,
   Cf = CfProperties<CfHostMetadata>,
 > extends Body {
-  constructor(input: RequestInfo<CfProperties>, init?: RequestInit<Cf>);
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/clone) */
   clone(): Request<CfHostMetadata, Cf>;
   /**
@@ -1604,45 +1622,45 @@ export declare class Request<
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/method)
    */
-  get method(): string;
+  method: string;
   /**
    * Returns the URL of request as a string.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/url)
    */
-  get url(): string;
+  url: string;
   /**
    * Returns a Headers object consisting of the headers associated with request. Note that headers added in the network layer by the user agent will not be accounted for in this object, e.g., the "Host" header.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/headers)
    */
-  get headers(): Headers;
+  headers: Headers;
   /**
    * Returns the redirect mode associated with request, which is a string indicating how redirects for the request will be handled during fetching. A request will follow redirects by default.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/redirect)
    */
-  get redirect(): string;
-  get fetcher(): Fetcher | null;
+  redirect: string;
+  fetcher: Fetcher | null;
   /**
    * Returns the signal associated with request, which is an AbortSignal object indicating whether or not request has been aborted, and its abort event handler.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/signal)
    */
-  get signal(): AbortSignal;
-  get cf(): Cf | undefined;
+  signal: AbortSignal;
+  cf: Cf | undefined;
   /**
    * Returns request's subresource integrity metadata, which is a cryptographic hash of the resource being fetched. Its value consists of multiple hashes separated by whitespace. [SRI]
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/integrity)
    */
-  get integrity(): string;
+  integrity: string;
   /**
    * Returns a boolean indicating whether or not request can outlive the global in which it was created.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/keepalive)
    */
-  get keepalive(): boolean;
+  keepalive: boolean;
 }
 export interface RequestInit<Cf = CfProperties> {
   /* A string to set request's method. */
@@ -2332,7 +2350,7 @@ export declare class TextDecoderStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   string
 > {
-  constructor(param1?: string, param2?: TextDecoderStreamTextDecoderStreamInit);
+  constructor(label?: string, options?: TextDecoderStreamTextDecoderStreamInit);
   get encoding(): string;
   get fatal(): boolean;
   get ignoreBOM(): boolean;
@@ -2546,13 +2564,13 @@ export declare class URL {
   /*function toString() { [native code] }*/
   toString(): string;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static) */
-  static canParse(param0: string, param1?: string): boolean;
-  static parse(param1: string, param2?: string): URL | null;
+  static canParse(url: string, base?: string): boolean;
+  static parse(url: string, base?: string): URL | null;
 }
 /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
 export declare class URLSearchParams {
   constructor(
-    param0?: Iterable<Iterable<string>> | Record<string, string> | string,
+    init?: Iterable<Iterable<string>> | Record<string, string> | string,
   );
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/size) */
   get size(): number;
@@ -2561,7 +2579,7 @@ export declare class URLSearchParams {
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/append)
    */
-  append(param0: string, param1: string): void;
+  append(name: string, value: string): void;
   /**
    * Deletes the given search parameter, and its associated value, from the list of all search parameters.
    *
@@ -2573,13 +2591,13 @@ export declare class URLSearchParams {
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/get)
    */
-  get(param0: string): string | null;
+  get(name: string): string | null;
   /**
    * Returns all the values association with a given search parameter.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/getAll)
    */
-  getAll(param0: string): string[];
+  getAll(name: string): string[];
   /**
    * Returns a Boolean indicating if such a search parameter exists.
    *
@@ -2591,7 +2609,7 @@ export declare class URLSearchParams {
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/set)
    */
-  set(param0: string, param1: string): void;
+  set(name: string, value: string): void;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/sort) */
   sort(): void;
   /* Returns an array of key, value pairs for every entry in the search params. */
@@ -2721,8 +2739,24 @@ export type WebSocketEventMap = {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket)
  */
-export declare class WebSocket extends EventTarget<WebSocketEventMap> {
-  constructor(url: string, protocols?: string[] | string);
+export declare var WebSocket: {
+  prototype: WebSocket;
+  new (url: string, protocols?: string[] | string): WebSocket;
+  readonly READY_STATE_CONNECTING: number;
+  readonly CONNECTING: number;
+  readonly READY_STATE_OPEN: number;
+  readonly OPEN: number;
+  readonly READY_STATE_CLOSING: number;
+  readonly CLOSING: number;
+  readonly READY_STATE_CLOSED: number;
+  readonly CLOSED: number;
+};
+/**
+ * Provides the API for creating and managing a WebSocket connection to a server, as well as for sending and receiving data on the connection.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket)
+ */
+export interface WebSocket extends EventTarget<WebSocketEventMap> {
   accept(): void;
   /**
    * Transmits data using the WebSocket connection. data can be a string, a Blob, an ArrayBuffer, or an ArrayBufferView.
@@ -2738,38 +2772,30 @@ export declare class WebSocket extends EventTarget<WebSocketEventMap> {
   close(code?: number, reason?: string): void;
   serializeAttachment(attachment: any): void;
   deserializeAttachment(): any | null;
-  static readonly READY_STATE_CONNECTING: number;
-  static readonly CONNECTING: number;
-  static readonly READY_STATE_OPEN: number;
-  static readonly OPEN: number;
-  static readonly READY_STATE_CLOSING: number;
-  static readonly CLOSING: number;
-  static readonly READY_STATE_CLOSED: number;
-  static readonly CLOSED: number;
   /**
    * Returns the state of the WebSocket object's connection. It can have the values described below.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/readyState)
    */
-  get readyState(): number;
+  readyState: number;
   /**
    * Returns the URL that was used to establish the WebSocket connection.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/url)
    */
-  get url(): string | null;
+  url: string | null;
   /**
    * Returns the subprotocol selected by the server, if any. It can be used in conjunction with the array form of the constructor's second argument to perform subprotocol negotiation.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/protocol)
    */
-  get protocol(): string | null;
+  protocol: string | null;
   /**
    * Returns the extensions selected by the server, if any.
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/extensions)
    */
-  get extensions(): string | null;
+  extensions: string | null;
 }
 export declare const WebSocketPair: {
   new (): {
@@ -3550,7 +3576,7 @@ export type AiTextToImageInput = {
   strength?: number;
   guidance?: number;
 };
-export type AiTextToImageOutput = Uint8Array;
+export type AiTextToImageOutput = ReadableStream<Uint8Array>;
 export declare abstract class BaseAiTextToImage {
   inputs: AiTextToImageInput;
   postProcessedOutputs: AiTextToImageOutput;
@@ -4833,7 +4859,7 @@ export interface Hyperdrive {
 // Copyright (c) 2024 Cloudflare, Inc.
 // Licensed under the Apache 2.0 license found in the LICENSE file or at:
 //     https://opensource.org/licenses/Apache-2.0
-export type InfoResponse =
+export type ImageInfoResponse =
   | {
       format: "image/svg+xml";
     }
@@ -4843,7 +4869,7 @@ export type InfoResponse =
       width: number;
       height: number;
     };
-export type Transform = {
+export type ImageTransform = {
   fit?: "scale-down" | "contain" | "pad" | "squeeze" | "cover" | "crop";
   gravity?:
     | "left"
@@ -4893,7 +4919,7 @@ export type Transform = {
   };
   zoom?: number;
 };
-export type OutputOptions = {
+export type ImageOutputOptions = {
   format:
     | "image/jpeg"
     | "image/png"
@@ -4911,7 +4937,7 @@ export interface ImagesBinding {
    * @throws {@link ImagesError} with code 9412 if input is not an image
    * @param stream The image bytes
    */
-  info(stream: ReadableStream<Uint8Array>): Promise<InfoResponse>;
+  info(stream: ReadableStream<Uint8Array>): Promise<ImageInfoResponse>;
   /**
    * Begin applying a series of transformations to an image
    * @param stream The image bytes
@@ -4925,15 +4951,15 @@ export interface ImageTransformer {
    * You can then apply more transformations or retrieve the output.
    * @param transform
    */
-  transform(transform: Transform): ImageTransformer;
+  transform(transform: ImageTransform): ImageTransformer;
   /**
    * Retrieve the image that results from applying the transforms to the
    * provided input
    * @param options Options that apply to the output e.g. output format
    */
-  output(options: OutputOptions): Promise<TransformationResult>;
+  output(options: ImageOutputOptions): Promise<ImageTransformationResult>;
 }
-export interface TransformationResult {
+export interface ImageTransformationResult {
   /**
    * The image as a response, ready to store in cache or return to users
    */
