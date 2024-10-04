@@ -2685,6 +2685,14 @@
 						"compatEnableFlag": "python_external_bundle",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "setToStringTag",
+					"annotations": {
+						"compatDisableFlag": "do_not_set_tostring_tag",
+						"compatEnableDate": "2024-09-26",
+						"compatEnableFlag": "set_tostring_tag"
+					}
 				}
 			]
 		},
