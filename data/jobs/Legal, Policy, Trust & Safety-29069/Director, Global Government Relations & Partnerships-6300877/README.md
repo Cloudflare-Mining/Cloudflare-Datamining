@@ -5,28 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon, Portugal</p>
-<h3>About the Department</h3>
-<p>Cloudflare's Network Engineering Team builds and runs the infrastructure that runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world's largest networks with data centers in 190 cities worldwide and a couple of large specialized data centers for internal needs.</p>
-<h3>About the role</h3>
-<p>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network automation engineers who are building software solutions to improve network resilience and reduce engineering operational toil.</p>
-<p>You will work on a range of tools, infrastructure and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable and scalable solutions.</p>
-<h3>Examples Of Desirable Skills, Knowledge And Experience</h3>
+<h4>&nbsp;<strong>Public Policy at Cloudflare</strong></h4>
+<p>Cloudflare is one of the most dynamic and innovative companies operating on the Internet. At a time when policy and regulation are fundamentally changing the Internet and the way tech companies do business, we believe it is important to engage in discussions with governments to share Cloudflare’s unique approach. Cloudflare’s Public Policy team works on complicated and rapidly evolving policy issues, such as cybersecurity, privacy, intermediary liability, law enforcement access to data, and regulation of cloud services.</p>
+<p>We’re looking for a new team member to create a government relations function within the Cloudflare Public Policy team. As the Director, Global Government Relations &amp; Partnerships, you will help foster and promote our relationships with governments, serving as a liaison between Cloudflare executives and government officials, consistent with Cloudflare’s corporate philosophy. You’ll help us develop and communicate real-world solutions to the challenging cybersecurity and technology problems faced by governments around the world.&nbsp;</p>
+<p>We’re looking for someone who can build and maintain relationships with governments, and has a deep understanding of technology, public sector challenges, and regulatory constraints. The ideal candidate would be able to transition seamlessly from a technical conversation with engineers to a discussion with high-level government officials about how Cloudflare can help governments achieve their short and long-term technology goals.&nbsp;</p>
+<p>Because of the scope, complexity, and diversity of the company’s work, our Public Policy team members must be passionate, talented and able to work collaboratively across multi-functional teams to carry the Cloudflare narrative and promote Cloudflare externally.&nbsp;</p>
+<p>This is a fast-moving work environment with goals that are closely linked to business priorities. We anticipate that issues will include digital transformation, industry certifications, and government partnerships.</p>
+<p><strong>What You’ll Do</strong>&nbsp;&nbsp;</p>
+<p>As Director, Global Government Relations &amp; Partnerships, you’ll help build and execute a government relations plan consistent with the company’s business goals and overall philosophy. This role is ideal for someone who is proactive, energetic, a strategic thinker, a skilled communicator and above all else, someone who has a thirst for knowledge and continued growth, all while working as part of a great team.&nbsp; The Director, Global Government Relations &amp; Partnerships will report to the VP, Global Head of Public Policy.</p>
+<p>As part of the job, you will:&nbsp;</p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>3+ years of proven experience in hands-on server-side</li>
-	<li>Highly Proficient with modern Unix/Linux operating systems/distributions</li>
-	<li>Knowledge of programming languages like Python or Golang.</li>
-	<li>Experience with MySQL, Postgres (or equivalent SQL language)</li>
-	<li>Experience with CI/CD, containers and/or virtualization</li>
-	<li>Experience in systems Observability.</li>
+	<li>Work closely with other Public Policy team members to build and maintain relationships with key government stakeholders, and find opportunities to engage business and other third party organizations.</li>
+	<li>Liaise with internal teams, including public sector leadership, to collaborate on priorities and provide advice and recommendations on strategic decisions to assist with business objectives.&nbsp;</li>
+	<li>Advance Cloudflare’s business interests by facilitating conversations with government CIOs, CISOs, and other relevant stakeholders.</li>
+	<li>Develop a strategy to build a Public Sector Advisory Council to support strategic business objectives.&nbsp;</li>
+	<li>Identify relevant external events and forums to engage with public sector leaders and expand public sector market access.</li>
+	<li>Manage and direct external consultancies, lobbyists, and trade associations as appropriate to address business needs.</li>
+	<li>Engage with policymakers on authorization and appropriations processes in support of business interests.&nbsp;</li>
+	<li>Develop talking points, policy narratives and presentation materials for use at external events and meetings and for other communication purposes (company blog, position papers etc).</li>
+	<li>Provide timely updates to colleagues from Cloudflare’s Public Policy, Legal, Trust &amp; Safety Teams and other internal stakeholders.</li>
 </ul>
-<h3>Bonus Points but not required:</h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</li>
-	<li>Experience building and maintaining large distributed systems</li>
-	<li>Experience managing internal and/or external customer requirements and expectations</li>
+	<li>University degree&nbsp;</li>
+	<li>12 + years of experience working with the public sector on tech related issues</li>
+	<li>An existing network of relevant government, academic and industry contacts</li>
+	<li>Good understanding of government procurement and appropriations processes, as well as Cloudflare’s products</li>
+	<li>Track record of supporting sales teams and building strategic partnerships</li>
+	<li>Fluency / an interest in technology&nbsp;</li>
+	<li>Strong communications (written and oral) and interpersonal skills</li>
+	<li>Team player, and a sense of humor</li>
+	<li>Detail oriented, well organized and a sense of initiative</li>
+	<li>The ability to manage multiple issues and engage with a range of teams within Cloudflare</li>
 </ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

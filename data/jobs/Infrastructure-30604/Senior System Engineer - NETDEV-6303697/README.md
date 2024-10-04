@@ -14,7 +14,7 @@
 <h3>Examples Of Desirable Skills, Knowledge And Experience</h3>
 <ul>
 	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>3+ years of proven experience in hands-on server-side</li>
+	<li>5+ years of proven experience in hands-on server-side</li>
 	<li>Highly Proficient with modern Unix/Linux operating systems/distributions</li>
 	<li>Knowledge of programming languages like Python or Golang.</li>
 	<li>Experience with MySQL, Postgres (or equivalent SQL language)</li>

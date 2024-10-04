@@ -5,28 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon, Portugal</p>
-<h3>About the Department</h3>
-<p>Cloudflare's Network Engineering Team builds and runs the infrastructure that runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world's largest networks with data centers in 190 cities worldwide and a couple of large specialized data centers for internal needs.</p>
-<h3>About the role</h3>
-<p>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network automation engineers who are building software solutions to improve network resilience and reduce engineering operational toil.</p>
-<p>You will work on a range of tools, infrastructure and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable and scalable solutions.</p>
-<h3>Examples Of Desirable Skills, Knowledge And Experience</h3>
+<h4>About the department</h4>
+<p>The Marketing Engineering (MRKENG) team builds awareness by sharing how Cloudflare can make a positive impact for customers and prospects. This spans across all channels of client communication: our website, blog, emails, social media, events, ads, etc. We build the technology that allows internal customers to craft beautiful experiences and tell compelling stories about Cloudflare.</p>
+<h4>What you'll do</h4>
+<p>As a Full Stack engineer on the Marketing Engineering team, you will be responsible for building and maintaining the systems that comprise our marketing website, blog, marketing preferences, and more. You will build Cloudflare Workers deployed on our edge network and Node.js and Golang services to Kubernetes (experience with Cloudflare product equivalents is a plus). You’ll bring industry best practices for standing up and maintaining backend services plus a solid understanding of modern frontend development.</p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>3+ years of proven experience in hands-on server-side</li>
-	<li>Highly Proficient with modern Unix/Linux operating systems/distributions</li>
-	<li>Knowledge of programming languages like Python or Golang.</li>
-	<li>Experience with MySQL, Postgres (or equivalent SQL language)</li>
-	<li>Experience with CI/CD, containers and/or virtualization</li>
-	<li>Experience in systems Observability.</li>
+	<li>Build tools, frameworks, and libraries to help the front-end team build a better www.cloudflare.com</li>
+	<li>Optimize our TypeScript/Gatsby/Astro build system</li>
+	<li>Build Workers in TypeScript</li>
+	<li>Build services and tooling in TypeScript, AstroJS, and Golang</li>
+	<li>Review work from your peers throughout all stages of the development lifecycle</li>
+	<li>Plan and contribute to engineering work on large projects</li>
+	<li>Collaborate with team members to help bring out their best work</li>
 </ul>
-<h3>Bonus Points but not required:</h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</li>
-	<li>Experience building and maintaining large distributed systems</li>
-	<li>Experience managing internal and/or external customer requirements and expectations</li>
+	<li>More than 2 years of experience building and managing high volume software applications;&nbsp; Golang and Typescript are a plus</li>
+	<li>Experience building, deploying, and operating services</li>
+	<li>You enjoy getting things done and have a bias for action: you're a builder and a creator and have contributed to small teams that deliver results</li>
+	<li>Experience contributing to build systems for large JavaScript projects</li>
+	<li>Strong interpersonal and communication skills. Curiosity and empathy are coveted traits here!</li>
+	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript, and the DOM</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
