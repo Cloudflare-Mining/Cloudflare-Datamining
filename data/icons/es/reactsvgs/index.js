@@ -78,6 +78,7 @@ import Hamburger from './Hamburger';
 import Help from './Help';
 import HideEye from './HideEye';
 import Home from './Home';
+import Hyperdrive from './Hyperdrive';
 import Image from './Image';
 import Inbox from './Inbox';
 import InfoSign from './InfoSign';
@@ -259,6 +260,7 @@ export default {
   help: Help,
   'hide-eye': HideEye,
   home: Home,
+  hyperdrive: Hyperdrive,
   image: Image,
   inbox: Inbox,
   'info-sign': InfoSign,

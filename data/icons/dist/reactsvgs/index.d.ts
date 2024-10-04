@@ -80,6 +80,7 @@ declare const _default: {
     help: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'hide-eye': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     home: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    hyperdrive: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     image: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     inbox: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'info-sign': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
