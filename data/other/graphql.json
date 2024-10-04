@@ -339,6 +339,7 @@
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
+		"error": "Was the response an error: 1 , 0 for no error",
 		"gateway": "Gateway name",
 		"model": "Which models was the request sent to",
 		"provider": "Which provider was the request sent to",
@@ -3094,6 +3095,7 @@
 	},
 	"AccountMagicWANConnectorMetricsAdaptiveGroupsMax": {
 		"__description": "",
+		"haState": "current connector ha state",
 		"interfaceCount": "Number of interfaces of a given Type"
 	},
 	"AccountMagicWANConnectorMetricsAdaptiveGroupsOrderBy": {
@@ -4458,6 +4460,7 @@
 	"AccountWorkerPlacementAdaptiveGroups": {
 		"__description": "Worker placement metrics",
 		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountWorkerPlacementAdaptiveGroupsDimensions": {
@@ -4469,7 +4472,7 @@
 		"datetimeHour": "Request timestamp, truncated to start of an hour",
 		"datetimeMinute": "Request timestamp, truncated to start of an minute",
 		"httpStatus": "Response status of worker",
-		"isSample": "1 if the request was sampled to bypass Smart Placement, 0 otherwise",
+		"isSample": "1 if the request was sampled to bypass Smart Placement, 0 if it was processed using Smart Placement",
 		"placementUsed": "1 if the request was processed using Smart Placement, 0 if it was processed in default mode",
 		"requestDurationBucketMin": "Bucket of request duration rounded down to nearest 10*2^n",
 		"requestDurationBucketMin100ms": "Bucket of request duration rounded down to nearest 100ms",
@@ -4482,6 +4485,16 @@
 	},
 	"AccountWorkerPlacementAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountWorkerPlacementAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"requestDurationP25": "Request duration 25th percentile - milliseconds",
+		"requestDurationP50": "Request duration 50th percentile - milliseconds",
+		"requestDurationP75": "Request duration 75th percentile - milliseconds",
+		"requestDurationP90": "Request duration 90th percentile - milliseconds",
+		"requestDurationP95": "Request duration 95th percentile - milliseconds",
+		"requestDurationP99": "Request duration 99th percentile - milliseconds",
+		"requestDurationP999": "Request duration 99.9th percentile - milliseconds"
 	},
 	"AccountWorkerPlacementAdaptiveGroupsSum": {
 		"__description": "",
