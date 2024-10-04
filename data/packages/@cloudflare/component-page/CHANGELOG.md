@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.3.0
+
+### Minor Changes
+
+- a821584456: remove component-page min height
+
 ## 9.2.24
 
 ### Patch Changes
