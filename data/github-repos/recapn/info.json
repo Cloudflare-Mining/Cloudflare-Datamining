@@ -10,7 +10,13 @@
 	"homepage": null,
 	"archived": false,
 	"disabled": false,
-	"license": null,
+	"license": {
+		"key": "apache-2.0",
+		"name": "Apache License 2.0",
+		"spdx_id": "Apache-2.0",
+		"url": "https://api.github.com/licenses/apache-2.0",
+		"node_id": "MDc6TGljZW5zZTI="
+	},
 	"allow_forking": true,
 	"is_template": false,
 	"default_branch": "main",
@@ -21,7 +27,6 @@
 		"feat/num-conversions",
 		"feat/recapnc-schema-mod",
 		"feat/rpc",
-		"license",
 		"main",
 		"misc/const-ptr",
 		"refactor/type-kinds"
